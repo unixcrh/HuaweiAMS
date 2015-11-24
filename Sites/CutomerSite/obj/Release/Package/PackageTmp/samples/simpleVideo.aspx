@@ -24,7 +24,7 @@
     <video id="azuremediaplayer" class="azuremediaplayer amp-default-skin amp-big-play-centered" tabindex="0"></video>
     <script>
         var myOptions = {
-            "nativeControlsForTouch": false,
+            "nativeControlsForTouch": true,
             autoplay: true,
             controls: true,
             width: "640",

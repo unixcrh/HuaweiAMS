@@ -66,10 +66,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\icons\amslogo.png" />
     <Content Include="css\icons\buffering-rainbow-bg.png" />
     <Content Include="css\icons\buffering-rainbow.gif" />
     <Content Include="packages.config" />
     <Content Include="css\fonts\azuremediaplayer.woff" />
+    <Content Include="css\fonts\azuremediaplayer.eot" />
     <None Include="Properties\PublishProfiles\customertv-huawei.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
