@@ -25,7 +25,7 @@
     <textarea id="txtLog" style="width: 640px" rows="10"></textarea>
     <script>
         var myOptions = {
-            "nativeControlsForTouch": true,
+            "nativeControlsForTouch": false,
             autoplay: true,
             controls: true,
             width: "640",
@@ -33,8 +33,8 @@
             poster: ""
         };
         var myPlayer = amp("azuremediaplayer", myOptions);
-        myPlayer.addEventListener(amp.eventName.loadedmetadata, function () {
 
+        myPlayer.addEventListener(amp.eventName.loadedmetadata, function () {
             var txtLog = document.getElementById("txtLog");
             myPlayer.addEventListener(amp.eventName.downloadbitratechanged, bitrateEvent);
             myPlayer.addEventListener(amp.eventName.playbackbitratechanged, bitrateEvent);
@@ -79,7 +79,7 @@
                 }
             }
         });
-        myPlayer.src([{ src: "http://zhshenstudy.streaming.mediaservices.windows.net/ea9b6078-80e1-4954-85ca-4fef0064b112/Robotica_720.ism/manifest", type: "application/vnd.ms-sstr+xml" }, ]);
+        myPlayer.src([{ src: "http://cdn-zhshenstudy.streaming.mediaservices.windows.net/ea9b6078-80e1-4954-85ca-4fef0064b112/Robotica_720.ism/manifest", type: "application/vnd.ms-sstr+xml" }, ]);
     </script>
     <footer>
         <br />
