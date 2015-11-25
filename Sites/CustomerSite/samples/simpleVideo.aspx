@@ -79,7 +79,8 @@
                 }
             }
         });
-        myPlayer.src([{ src: "http://cdn-zhshenstudy.streaming.mediaservices.windows.net/ea9b6078-80e1-4954-85ca-4fef0064b112/Robotica_720.ism/manifest", type: "application/vnd.ms-sstr+xml" }, ]);
+
+        myPlayer.src([{ src: "http://cdn-zhshenstudy.streaming.mediaservices.windows.net/e194ceb9-d744-47c5-a7e7-5fbe93dd6942/Robotica_720.ism/manifest", type: "application/vnd.ms-sstr+xml" }]);
     </script>
     <footer>
         <br />
