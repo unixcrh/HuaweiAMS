@@ -12,10 +12,27 @@ namespace MCS.Library.Cloud.AMSHelper.Test
         {
             MediaServiceAccountSettings settings = MediaServiceAccountSettings.GetConfig();
 
-            OutputSettings(settings);
+            OutputAccountSettings(settings);
         }
 
-        private static void OutputSettings(MediaServiceAccountSettings settings)
+        [TestMethod]
+        public void ListConfigedChannels()
+        {
+            LiveChannelSettings settings = LiveChannelSettings.GetConfig();
+
+            OutputChannelSettings(settings);
+        }
+
+        private static void OutputChannelSettings(LiveChannelSettings settings)
+        {
+            foreach (LiveChannelConfigurationElement element in settings.Channels)
+            {
+                Console.WriteLine("Channel Name: {0}, Account Name: {1}",
+                    element.ChannelName, element.AccountName);
+            }
+        }
+
+        private static void OutputAccountSettings(MediaServiceAccountSettings settings)
         {
             foreach (MediaServiceAccountConfigurationElement element in settings.Accounts)
             {

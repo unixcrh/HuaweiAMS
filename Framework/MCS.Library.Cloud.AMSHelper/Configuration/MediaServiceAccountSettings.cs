@@ -17,7 +17,8 @@ namespace MCS.Library.Cloud.AMSHelper.Configuration
         {
             MediaServiceAccountSettings settings = (MediaServiceAccountSettings)ConfigurationBroker.GetSection("mediaServiceAccountSettings");
 
-            settings.CheckSectionNotNull("mediaServiceAccountSettings");
+            if (settings == null)
+                settings = new MediaServiceAccountSettings();
 
             return settings;
         }

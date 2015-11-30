@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCS.Library.Cloud.AMSHelper.Test", "MCS.Library.Cloud.AMSHelper.Test.csproj", "{669E491C-860B-4EB1-AFDD-B967870C6F23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCS.Library.Cloud.AMSHelper.Test", "MCS.Library.Cloud.AMSHelper.Test.csproj", "{D283258E-3C6D-488D-8121-A5841B7F7F36}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCS.Library.Cloud.AMSHelper", "..\..\MCS.Library.Cloud.AMSHelper\MCS.Library.Cloud.AMSHelper.csproj", "{451CBA45-0B45-487B-9579-604406688152}"
 EndProject
@@ -13,10 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{669E491C-860B-4EB1-AFDD-B967870C6F23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{669E491C-860B-4EB1-AFDD-B967870C6F23}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{669E491C-860B-4EB1-AFDD-B967870C6F23}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{669E491C-860B-4EB1-AFDD-B967870C6F23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D283258E-3C6D-488D-8121-A5841B7F7F36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D283258E-3C6D-488D-8121-A5841B7F7F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D283258E-3C6D-488D-8121-A5841B7F7F36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D283258E-3C6D-488D-8121-A5841B7F7F36}.Release|Any CPU.Build.0 = Release|Any CPU
 		{451CBA45-0B45-487B-9579-604406688152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{451CBA45-0B45-487B-9579-604406688152}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{451CBA45-0B45-487B-9579-604406688152}.Release|Any CPU.ActiveCfg = Release|Any CPU
