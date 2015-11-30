@@ -90,13 +90,16 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
     <Compile Include="ConfigurationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MediaChannelTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -104,6 +107,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\MCS.Library.Cloud.AMS.DataObjects\MCS.Library.Cloud.AMS.DataObjects.csproj">
+      <Project>{4f494561-9042-410f-8a93-f609595f563d}</Project>
+      <Name>MCS.Library.Cloud.AMS.DataObjects</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\MCS.Library.Cloud.AMSHelper\MCS.Library.Cloud.AMSHelper.csproj">
       <Project>{451cba45-0b45-487b-9579-604406688152}</Project>
       <Name>MCS.Library.Cloud.AMSHelper</Name>

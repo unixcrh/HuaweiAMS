@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.MediaServices.Client;
 
 namespace MCS.Library.Cloud.AMSHelper.Configuration
 {
@@ -43,5 +44,18 @@ namespace MCS.Library.Cloud.AMSHelper.Configuration
     /// </summary>
     public class MediaServiceAccountConfigurationElementCollection : NamedConfigurationElementCollection<MediaServiceAccountConfigurationElement>
     {
+        public MediaServicesCredentials GetCredentials(string configedName)
+        {
+            MediaServiceAccountConfigurationElement elem = this.CheckAndGet(configedName);
+
+            return new MediaServicesCredentials(elem.AccountName, elem.AccountKey);
+        }
+
+        public CloudMediaContext GetCloudMediaContext(string configedName)
+        {
+            MediaServicesCredentials credentials = this.GetCredentials(configedName);
+
+            return new CloudMediaContext(credentials);
+        }
     }
 }

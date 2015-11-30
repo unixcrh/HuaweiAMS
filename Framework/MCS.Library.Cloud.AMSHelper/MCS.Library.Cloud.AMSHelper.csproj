@@ -33,6 +33,9 @@
     <Reference Include="MCS.Library">
       <HintPath>..\..\Bin\MCS.Library.dll</HintPath>
     </Reference>
+    <Reference Include="MCS.Library.Cloud.AMS.DataObjects">
+      <HintPath>..\..\Bin\MCS.Library.Cloud.AMS.DataObjects.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\SDK\Microsoft.Azure.KeyVault.Core.dll</HintPath>
@@ -76,9 +79,8 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.20622.1351, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\TestProjects\MCS.Library.Cloud.AMSHelper.Test\packages\System.IdentityModel.Tokens.Jwt.4.0.2.206221351\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.IdentityModel.Tokens.Jwt">
+      <HintPath>..\..\SDK\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http.Extensions, Version=2.2.22.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -107,7 +109,7 @@
     <Compile Include="Configuration\LiveChannelSettings.cs" />
     <Compile Include="Configuration\MediaServiceAccountConfigurationElement.cs" />
     <Compile Include="Configuration\MediaServiceAccountSettings.cs" />
-    <Compile Include="DataObjects\Channelnfo.cs" />
+    <Compile Include="Mechanism\Converters.cs" />
     <Compile Include="Mechanism\LiveChannelManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
