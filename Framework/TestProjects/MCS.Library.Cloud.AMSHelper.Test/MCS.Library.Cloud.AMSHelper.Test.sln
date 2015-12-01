@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCS.Library.Cloud.AMSHelper.Test", "MCS.Library.Cloud.AMSHelper.Test.csproj", "{D283258E-3C6D-488D-8121-A5841B7F7F36}"
 	ProjectSection(ProjectDependencies) = postProject
 		{451CBA45-0B45-487B-9579-604406688152} = {451CBA45-0B45-487B-9579-604406688152}
+		{367C294F-27F7-4A82-9E47-0ED224AFF41E} = {367C294F-27F7-4A82-9E47-0ED224AFF41E}
 		{4F494561-9042-410F-8A93-F609595F563D} = {4F494561-9042-410F-8A93-F609595F563D}
 	EndProjectSection
 EndProject
@@ -14,7 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCS.Library.Cloud.AMSHelper
 		{4F494561-9042-410F-8A93-F609595F563D} = {4F494561-9042-410F-8A93-F609595F563D}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCS.Library.Cloud.AMS.DataObjects", "..\..\MCS.Library.Cloud.AMS.DataObjects\MCS.Library.Cloud.AMS.DataObjects.csproj", "{4F494561-9042-410F-8A93-F609595F563D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCS.Library.Cloud.AMS.Data", "..\..\MCS.Library.Cloud.AMS.Data\MCS.Library.Cloud.AMS.Data.csproj", "{4F494561-9042-410F-8A93-F609595F563D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCS.Library.Cloud.AMS.Data.Impl", "..\..\MCS.Library.Cloud.AMS.Data.Impl\MCS.Library.Cloud.AMS.Data.Impl.csproj", "{367C294F-27F7-4A82-9E47-0ED224AFF41E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +37,10 @@ Global
 		{4F494561-9042-410F-8A93-F609595F563D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F494561-9042-410F-8A93-F609595F563D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F494561-9042-410F-8A93-F609595F563D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{367C294F-27F7-4A82-9E47-0ED224AFF41E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{367C294F-27F7-4A82-9E47-0ED224AFF41E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{367C294F-27F7-4A82-9E47-0ED224AFF41E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{367C294F-27F7-4A82-9E47-0ED224AFF41E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-﻿using MCS.Library.Cloud.AMS.DataObjects;
+﻿using MCS.Library.Cloud.AMS.Data.Entities;
 using MCS.Library.Cloud.AMSHelper.Configuration;
 using Microsoft.WindowsAzure.MediaServices.Client;
 using System;

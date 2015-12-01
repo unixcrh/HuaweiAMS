@@ -7,8 +7,8 @@
     <ProjectGuid>{4F494561-9042-410F-8A93-F609595F563D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MCS.Library.Cloud.AMS.DataObjects</RootNamespace>
-    <AssemblyName>MCS.Library.Cloud.AMS.DataObjects</AssemblyName>
+    <RootNamespace>MCS.Library.Cloud.AMS.Data</RootNamespace>
+    <AssemblyName>MCS.Library.Cloud.AMS.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,6 +34,7 @@
       <HintPath>..\..\Bin\MCS.Library.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
@@ -44,10 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AMSChannel.cs" />
-    <Compile Include="Enumerations.cs" />
+    <Compile Include="Configuration\AMSDataAdapterSettings.cs" />
+    <Compile Include="Contracts\IAMSChannelAdapter.cs" />
+    <Compile Include="Entities\AMSChannel.cs" />
+    <Compile Include="Entities\Enumerations.cs" />
+    <Compile Include="Mechanism\ContractManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>IF NOT EXIST "$(ProjectDir)..\..\Bin" MD "$(ProjectDir)..\..\Bin"

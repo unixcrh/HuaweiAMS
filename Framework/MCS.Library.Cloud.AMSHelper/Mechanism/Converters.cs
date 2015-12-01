@@ -1,4 +1,4 @@
-﻿using MCS.Library.Cloud.AMS.DataObjects;
+﻿using MCS.Library.Cloud.AMS.Data.Entities;
 using MCS.Library.Core;
 using Microsoft.WindowsAzure.MediaServices.Client;
 using System;
@@ -29,6 +29,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
             AMSChannel result = new AMSChannel();
 
             result.ID = channel.Id;
+            result.AMSID = channel.Id;
             result.Name = channel.Name;
             result.Description = channel.Description;
             result.State = channel.State.ToAMSChannelState();

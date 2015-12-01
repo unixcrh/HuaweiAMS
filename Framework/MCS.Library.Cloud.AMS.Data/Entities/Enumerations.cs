@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MCS.Library.Cloud.AMS.DataObjects
+namespace MCS.Library.Cloud.AMS.Data.Entities
 {
     public enum AMSChannelState
     {

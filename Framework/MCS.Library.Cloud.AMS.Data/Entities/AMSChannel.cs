@@ -2,7 +2,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace MCS.Library.Cloud.AMS.DataObjects
+namespace MCS.Library.Cloud.AMS.Data.Entities
 {
     [Serializable]
     [DataContract]
@@ -10,6 +10,13 @@ namespace MCS.Library.Cloud.AMS.DataObjects
     {
         [DataMember]
         public string ID
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string AMSID
         {
             get;
             set;
