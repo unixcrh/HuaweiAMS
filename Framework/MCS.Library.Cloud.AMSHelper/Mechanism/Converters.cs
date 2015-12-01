@@ -33,7 +33,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
             result.Name = channel.Name;
             result.Description = channel.Description;
             result.State = channel.State.ToAMSChannelState();
-            result.LastModified = channel.LastModified;
+            result.AMSLastModified = channel.LastModified;
 
             return result;
         }

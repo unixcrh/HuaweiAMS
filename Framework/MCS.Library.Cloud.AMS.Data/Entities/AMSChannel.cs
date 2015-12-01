@@ -1,4 +1,5 @@
 ﻿using MCS.Library.Data.DataObjects;
+using MCS.Library.Data.Mapping;
 using System;
 using System.Runtime.Serialization;
 
@@ -6,9 +7,11 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
 {
     [Serializable]
     [DataContract]
+    [ORTableMapping("AMS.Channels")]
     public class AMSChannel
     {
         [DataMember]
+        [ORFieldMapping("ID", PrimaryKey = true)]
         public string ID
         {
             get;
@@ -37,6 +40,14 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
         }
 
         [DataMember]
+        public string AMSAcountName
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        [SqlBehavior(EnumUsage = EnumUsageTypes.UseEnumString)]
         public AMSChannelState State
         {
             get;
@@ -44,7 +55,15 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
         }
 
         [DataMember]
-        public DateTime LastModified
+        public DateTime AMSLastModified
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        [SqlBehavior(BindingFlags = ClauseBindingFlags.Select | ClauseBindingFlags.Where)]
+        public DateTime CreateTime
         {
             get;
             set;

@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.MediaServices.Client;
 using System;
 
-namespace MCS.Library.Cloud.AMSHelper.Test
+namespace MCS.Library.Cloud.AMSHelper.Test.AMS
 {
     [TestClass]
     public class MediaChannelTest
@@ -19,7 +19,7 @@ namespace MCS.Library.Cloud.AMSHelper.Test
 
             foreach (AMSChannel channel in channels)
             {
-                Console.WriteLine("{0}-{1}-{2}", channel.ID, channel.Name, channel.LastModified);
+                Console.WriteLine("{0}-{1}-{2}", channel.ID, channel.Name, channel.AMSLastModified);
             }
         }
     }

@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MCS.Library.Cloud.AMSHelper.Configuration;
 
-namespace MCS.Library.Cloud.AMSHelper.Test
+namespace MCS.Library.Cloud.AMSHelper.Test.AMS
 {
     [TestClass]
     public class ConfigurationTest
