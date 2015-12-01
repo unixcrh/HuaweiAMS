@@ -1,0 +1,17 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectItem Include="MCS.Library.Cloud.AMS.Data\MCS.Library.Cloud.AMS.Data.csproj" />
+    <ProjectItem Include="MCS.Library.Cloud.AMS.Data.Impl\MCS.Library.Cloud.AMS.Data.Impl.csproj" />
+    <ProjectItem Include="MCS.Library.Cloud.AMSHelper\MCS.Library.Cloud.AMSHelper.csproj" />
+  </ItemGroup>
+  <Target Name="BuildOtherProjects">
+    <MSBuild Projects="@(ProjectItem)" RebaseOutputs="True" />
+  </Target>
+</Project>
