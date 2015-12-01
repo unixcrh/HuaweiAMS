@@ -73,5 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AMSDB_Azure.zhshen-amsdb.publish.xml" />
+    <None Include="AMSDB_Azure.zhshen-amsdb-test.publish.xml" />
   </ItemGroup>
 </Project>
