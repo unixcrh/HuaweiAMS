@@ -71,4 +71,7 @@
       <Link>AMS\Tables\Channels.sql</Link>
     </Build>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="AMSDB_Azure.zhshen-amsdb.publish.xml" />
+  </ItemGroup>
 </Project>
