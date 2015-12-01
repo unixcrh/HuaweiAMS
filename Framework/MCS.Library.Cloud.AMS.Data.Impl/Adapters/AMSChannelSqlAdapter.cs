@@ -12,9 +12,11 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
 {
     public class AMSChannelSqlAdapter : UpdatableAndLoadableAdapterBase<AMSChannel, AMSChannelCollection>, IAMSChannelAdapter
     {
+        public static readonly AMSChannelSqlAdapter Instance = new AMSChannelSqlAdapter();
+
         public AMSChannelCollection GetAllChannels()
         {
-            throw new NotImplementedException();
+            return this.Load(builder => builder.AppendItem("1", "1"));
         }
 
         protected override string GetConnectionName()

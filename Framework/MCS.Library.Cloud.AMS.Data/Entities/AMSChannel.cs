@@ -40,7 +40,7 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
         }
 
         [DataMember]
-        public string AMSAcountName
+        public string AMSAccountName
         {
             get;
             set;
