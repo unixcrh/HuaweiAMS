@@ -37,7 +37,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
 
             return result;
         }
-
+ 
         public static AMSChannelState ToAMSChannelState(this ChannelState state)
         {
             return (AMSChannelState)((int)state);

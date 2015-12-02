@@ -31,6 +31,11 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
         /// <summary>
         /// 
         /// </summary>
-        Deleting = 4
+        Deleting = 4,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Disabled = 5
     }
 }

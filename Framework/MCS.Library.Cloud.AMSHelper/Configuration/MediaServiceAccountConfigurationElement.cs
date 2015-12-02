@@ -15,18 +15,6 @@ namespace MCS.Library.Cloud.AMSHelper.Configuration
     public class MediaServiceAccountConfigurationElement : NamedConfigurationElement
     {
         /// <summary>
-        /// Media Service Account Name
-        /// </summary>
-        [ConfigurationProperty("accountName", IsRequired = true)]
-        public string AccountName
-        {
-            get
-            {
-                return (string)this["accountName"];
-            }
-        }
-
-        /// <summary>
         /// Media Service Account Key
         /// </summary>
         [ConfigurationProperty("accountKey", IsRequired = true)]
@@ -46,16 +34,28 @@ namespace MCS.Library.Cloud.AMSHelper.Configuration
     {
         public MediaServicesCredentials GetCredentials(string configedName)
         {
-            MediaServiceAccountConfigurationElement elem = this.CheckAndGet(configedName);
+            MediaServicesCredentials result = null;
 
-            return new MediaServicesCredentials(elem.AccountName, elem.AccountKey);
+            if (this.ContainsKey(configedName))
+            {
+                MediaServiceAccountConfigurationElement elem = this.CheckAndGet(configedName);
+
+                result = new MediaServicesCredentials(elem.Name, elem.AccountKey);
+            }
+
+            return result;
         }
 
         public CloudMediaContext GetCloudMediaContext(string configedName)
         {
             MediaServicesCredentials credentials = this.GetCredentials(configedName);
 
-            return new CloudMediaContext(credentials);
+            CloudMediaContext result = null;
+
+            if (credentials != null)
+                result = new CloudMediaContext(credentials);
+
+            return result;
         }
     }
 }

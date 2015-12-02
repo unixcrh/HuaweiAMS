@@ -28,7 +28,7 @@ namespace MCS.Library.Cloud.AMSHelper.Test.AMS
             foreach (LiveChannelConfigurationElement element in settings.Channels)
             {
                 Console.WriteLine("Channel Name: {0}, Account Name: {1}",
-                    element.ChannelName, element.AccountName);
+                    element.ChannelName, element.Name);
             }
         }
 
@@ -37,7 +37,7 @@ namespace MCS.Library.Cloud.AMSHelper.Test.AMS
             foreach (MediaServiceAccountConfigurationElement element in settings.Accounts)
             {
                 Console.WriteLine("Account Name: {0}, Account Key: {1}",
-                    element.AccountName, element.AccountKey);
+                    element.Name, element.AccountKey);
             }
         }
     }
