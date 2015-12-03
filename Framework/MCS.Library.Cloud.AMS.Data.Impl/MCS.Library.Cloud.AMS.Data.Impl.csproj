@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adapters\AMSChannelSqlAdapter.cs" />
+    <Compile Include="Adapters\AMSEventSqlAdapter.cs" />
     <Compile Include="Common\ConnectionDefine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

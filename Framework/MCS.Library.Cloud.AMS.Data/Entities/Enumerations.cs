@@ -38,4 +38,32 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
         /// </summary>
         Disabled = 5
     }
+
+    public enum AMSEventState
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        Stopped = 0,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Starting = 1,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Running = 2,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Stopping = 3,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Disabled = 4
+    }
 }

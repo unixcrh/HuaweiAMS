@@ -48,6 +48,7 @@
     <Compile Include="Configuration\AMSDataAdapterSettings.cs" />
     <Compile Include="Contracts\IAMSChannelAdapter.cs" />
     <Compile Include="Entities\AMSChannel.cs" />
+    <Compile Include="Entities\AMSEvent.cs" />
     <Compile Include="Entities\Enumerations.cs" />
     <Compile Include="Mechanism\ContractManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

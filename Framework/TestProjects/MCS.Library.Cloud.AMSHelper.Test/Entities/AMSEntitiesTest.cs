@@ -8,20 +8,36 @@ using System.Linq;
 namespace MCS.Library.Cloud.AMSHelper.Test.Entities
 {
     [TestClass]
-    public class AMDEntitiesTest
+    public class AMSEntitiesTest
     {
         [TestMethod]
         public void UpdateAMSChannel()
         {
             AMSChannelSqlAdapter.Instance.ClearAll();
 
-            AMSChannel channel = PrepareData();
+            AMSChannel channel = DataHelper.PrepareChannelData();
             AMSChannelSqlAdapter.Instance.Update(channel);
 
             AMSChannel channelLoaded = AMSChannelSqlAdapter.Instance.LoadByInBuilder(builder => builder.AppendItem(channel.ID), "ID").SingleOrDefault();
 
             Assert.IsNotNull(channelLoaded);
             AssertEqual(channel, channelLoaded);
+        }
+
+        [TestMethod]
+        public void UpdateAMSEvent()
+        {
+            AMSEventSqlAdapter.Instance.ClearAll();
+
+            AMSChannel channel = DataHelper.PrepareChannelData();
+
+            AMSEvent eventData = DataHelper.PrepareEventData(channel.ID);
+
+            AMSEventSqlAdapter.Instance.Update(eventData);
+            AMSEvent eventLoaded = AMSEventSqlAdapter.Instance.LoadByChannelID(channel.ID).SingleOrDefault();
+
+            Assert.IsNotNull(eventLoaded);
+            AssertEqual(eventData, eventLoaded);
         }
 
         private static void AssertEqual(AMSChannel expected, AMSChannel actual)
@@ -35,16 +51,16 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
             Assert.AreEqual(expected.State, actual.State);
         }
 
-        private static AMSChannel PrepareData()
+        private static void AssertEqual(AMSEvent expected, AMSEvent actual)
         {
-            AMSChannel channel = new AMSChannel();
+            Assert.IsNotNull(expected);
+            Assert.IsNotNull(actual);
 
-            channel.ID = UuidHelper.NewUuidString();
-            channel.Name = "Test Channel";
-            channel.Description = "Test Channel Description";
-            channel.State = AMSChannelState.Running;
-
-            return channel;
+            Assert.AreEqual(expected.ID, actual.ID);
+            Assert.AreEqual(expected.ChannelID, actual.ChannelID);
+            Assert.AreEqual(expected.Name, actual.Name);
+            Assert.AreEqual(expected.Description, actual.Description);
+            Assert.AreEqual(expected.State, actual.State);
         }
     }
 }
