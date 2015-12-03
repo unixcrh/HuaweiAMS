@@ -143,6 +143,7 @@
     <Content Include="css\Font-awesome\css\font-awesome.min.css" />
     <Content Include="css\Font-awesome\font\fontawesome-webfont.svg" />
     <Content Include="default.aspx" />
+    <Content Include="forms\EditEvent.aspx" />
     <Content Include="list\AllChannels.aspx" />
     <Content Include="packages.config" />
     <Content Include="css\bootstrap\fonts\glyphicons-halflings-regular.eot" />
@@ -185,6 +186,13 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="forms\EditEvent.aspx.cs">
+      <DependentUpon>EditEvent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="forms\EditEvent.aspx.designer.cs">
+      <DependentUpon>EditEvent.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
