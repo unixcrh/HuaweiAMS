@@ -67,6 +67,8 @@
     <Build Include="Security\AMS.sql" />
     <Build Include="AMS\Tables\Channels.sql" />
     <Build Include="AMS\Tables\Channels_Properties.sql" />
+    <Build Include="AMS\Tables\Events.sql" />
+    <Build Include="AMS\Tables\Events_Properties.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AMSDB.refactorlog" />

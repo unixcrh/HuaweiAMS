@@ -3,7 +3,7 @@
 	[ID] NVARCHAR(36) NOT NULL PRIMARY KEY, 
 	[AMSID] NVARCHAR(64) NULL,
     [Name] NVARCHAR(64) NULL, 
-    [Description] NVARCHAR(255) NULL, 
+    [Description] NVARCHAR(MAX) NULL, 
 	[State] NVARCHAR(32) NULL,
 	[AMSAccountName] NVARCHAR(64) NULL,
     [AMSLastModified] DATETIME NULL, 
