@@ -1,5 +1,6 @@
 ﻿using MCS.Library.Cloud.AMS.Data.Adapters;
 using MCS.Library.Cloud.AMS.Data.Entities;
+using MCS.Library.Cloud.AMS.Data.Executors;
 using MCS.Library.Core;
 using MCS.Web.Responsive.Library;
 using MCS.Web.Responsive.Library.MVC;
@@ -51,7 +52,7 @@ namespace ChannelManagement.forms
         [ControllerMethod]
         protected void InitByEventID(string id)
         {
-            AMSEvent eventData = AMSEventSqlAdapter.Instance.LoadByInBuilder(builder => builder.AppendItem(id), "ID").SingleOrDefault();
+            AMSEvent eventData = AMSEventSqlAdapter.Instance.LoadByID(id);
 
             eventData.NullCheck(string.Format("不能找到ID为{0}的事件", id));
 
@@ -87,7 +88,17 @@ namespace ChannelManagement.forms
         {
             this.bindingControl.CollectData(true);
 
-            AMSEventSqlAdapter.Instance.Update(this.Data);
+            AMSEditEntityExecutor<AMSEvent> executor = new AMSEditEntityExecutor<AMSEvent>(
+                this.Data,
+                data => AMSEventSqlAdapter.Instance.Update(data),
+                AMSOperationType.EditEvent);
+
+            executor.Execute();
+
+            this.ClientScript.RegisterStartupScript(this.GetType(),
+                "back",
+                string.Format("document.getElementById(\"{0}\").click();", this.backUrl.ClientID),
+                true);
         }
 
         protected override void OnPreRender(EventArgs e)

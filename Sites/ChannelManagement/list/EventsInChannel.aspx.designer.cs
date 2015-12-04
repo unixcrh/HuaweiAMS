@@ -31,6 +31,15 @@ namespace ChannelManagement.list {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor addEventButton;
         
         /// <summary>
+        /// deleteEventButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button deleteEventButton;
+        
+        /// <summary>
         /// dataGrid control.
         /// </summary>
         /// <remarks>
@@ -47,5 +56,14 @@ namespace ChannelManagement.list {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::MCS.Web.Responsive.WebControls.DeluxeObjectDataSource eventDataSource;
+        
+        /// <summary>
+        /// refreshBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton refreshBtn;
     }
 }

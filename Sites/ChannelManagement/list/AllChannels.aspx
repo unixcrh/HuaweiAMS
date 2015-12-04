@@ -11,7 +11,7 @@
     <form id="serverForm" runat="server">
         <div class="container">
             <res:DeluxeGrid ID="dataGrid" runat="server" GridLines="None" AllowPaging="True"
-                GridTitle="订单列表" EnableViewState="false" AutoGenerateColumns="False" UseAccessibleHeader="False"
+                GridTitle="频道" EnableViewState="false" AutoGenerateColumns="False" UseAccessibleHeader="False"
                 ShowExportControl="True"
                 DataKeyNames="ID" AllowSorting="True" ShowCheckBoxes="false" CheckBoxPosition="Left">
                 <FooterStyle />
