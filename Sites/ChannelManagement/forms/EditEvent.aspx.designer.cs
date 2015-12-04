@@ -22,6 +22,15 @@ namespace ChannelManagement.forms {
         protected global::System.Web.UI.HtmlControls.HtmlForm serverForm;
         
         /// <summary>
+        /// bindingControl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::MCS.Web.Responsive.WebControls.DataBindingControl bindingControl;
+        
+        /// <summary>
         /// Name control.
         /// </summary>
         /// <remarks>
@@ -65,5 +74,14 @@ namespace ChannelManagement.forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button save;
+        
+        /// <summary>
+        /// backUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor backUrl;
     }
 }

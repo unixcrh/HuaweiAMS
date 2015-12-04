@@ -10,6 +10,14 @@
 <body>
     <div class="container">
         <form id="serverForm" runat="server" class="form-horizontal">
+            <res:DataBindingControl runat="server" ID="bindingControl" IsValidateOnSubmit="true" ValidateUnbindProperties="false">
+                <ItemBindings>
+                    <res:DataBindingItem DataPropertyName="Name" ControlID="Name" />
+                    <res:DataBindingItem DataPropertyName="Description" ControlID="Description" />
+                    <res:DataBindingItem DataPropertyName="StartTime" ControlID="StartTime" />
+                    <res:DataBindingItem DataPropertyName="EndTime" ControlID="EndTime" />
+                </ItemBindings>
+            </res:DataBindingControl>
             <div class="form-group form-group-sm">
                 <label class="col-sm-2 control-label" for="Name">事件名称</label>
                 <div class="col-sm-10">
@@ -26,7 +34,7 @@
             <div class="form-group form-group-sm">
                 <label class="col-sm-2 control-label" for="Name">起始时间</label>
                 <div class="col-sm-10">
-                    <res:DateTimePicker runat="server" ID="StartTime" Mode="DateTimePicker" ReadOnly="true" />
+                    <res:DateTimePicker runat="server" ID="StartTime" Mode="DateTimePicker" />
                 </div>
             </div>
             <div class="form-group form-group-sm">
@@ -39,7 +47,7 @@
                 <div class="col-sm-8"></div>
                 <div class="col-sm-4" style="">
                     <asp:Button runat="server" AccessKey="S" CssClass="btn btn-primary" ID="save" Text="保存(S)" OnClick="save_Click" />
-                    <button class="btn btn-default" onclick="return false;">返回</button>
+                    <a runat="server" id="backUrl" class="btn btn-default" href="#">返回</a>
                 </div>
             </div>
         </form>

@@ -4,6 +4,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChannelManagement", "ChannelManagement.csproj", "{62A60FFB-AA3B-4BD0-BD1A-4D26AAE8AD9C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{451CBA45-0B45-487B-9579-604406688152} = {451CBA45-0B45-487B-9579-604406688152}
+		{367C294F-27F7-4A82-9E47-0ED224AFF41E} = {367C294F-27F7-4A82-9E47-0ED224AFF41E}
+		{4F494561-9042-410F-8A93-F609595F563D} = {4F494561-9042-410F-8A93-F609595F563D}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCS.Library.Cloud.AMS.Data", "..\..\Framework\MCS.Library.Cloud.AMS.Data\MCS.Library.Cloud.AMS.Data.csproj", "{4F494561-9042-410F-8A93-F609595F563D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCS.Library.Cloud.AMS.Data.Impl", "..\..\Framework\MCS.Library.Cloud.AMS.Data.Impl\MCS.Library.Cloud.AMS.Data.Impl.csproj", "{367C294F-27F7-4A82-9E47-0ED224AFF41E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4F494561-9042-410F-8A93-F609595F563D} = {4F494561-9042-410F-8A93-F609595F563D}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MCS.Library.Cloud.AMSHelper", "..\..\Framework\MCS.Library.Cloud.AMSHelper\MCS.Library.Cloud.AMSHelper.csproj", "{451CBA45-0B45-487B-9579-604406688152}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4F494561-9042-410F-8A93-F609595F563D} = {4F494561-9042-410F-8A93-F609595F563D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +32,18 @@ Global
 		{62A60FFB-AA3B-4BD0-BD1A-4D26AAE8AD9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62A60FFB-AA3B-4BD0-BD1A-4D26AAE8AD9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62A60FFB-AA3B-4BD0-BD1A-4D26AAE8AD9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F494561-9042-410F-8A93-F609595F563D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F494561-9042-410F-8A93-F609595F563D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F494561-9042-410F-8A93-F609595F563D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F494561-9042-410F-8A93-F609595F563D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{367C294F-27F7-4A82-9E47-0ED224AFF41E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{367C294F-27F7-4A82-9E47-0ED224AFF41E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{367C294F-27F7-4A82-9E47-0ED224AFF41E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{367C294F-27F7-4A82-9E47-0ED224AFF41E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{451CBA45-0B45-487B-9579-604406688152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{451CBA45-0B45-487B-9579-604406688152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{451CBA45-0B45-487B-9579-604406688152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{451CBA45-0B45-487B-9579-604406688152}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

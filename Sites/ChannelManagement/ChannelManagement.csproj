@@ -145,6 +145,7 @@
     <Content Include="default.aspx" />
     <Content Include="forms\EditEvent.aspx" />
     <Content Include="list\AllChannels.aspx" />
+    <Content Include="list\EventsInChannel.aspx" />
     <Content Include="packages.config" />
     <Content Include="css\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="css\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
@@ -203,6 +204,13 @@
     </Compile>
     <Compile Include="list\AllChannels.aspx.designer.cs">
       <DependentUpon>AllChannels.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="list\EventsInChannel.aspx.cs">
+      <DependentUpon>EventsInChannel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="list\EventsInChannel.aspx.designer.cs">
+      <DependentUpon>EventsInChannel.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
