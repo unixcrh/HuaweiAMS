@@ -21,7 +21,7 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
             AMSChannel channelLoaded = AMSChannelSqlAdapter.Instance.LoadByInBuilder(builder => builder.AppendItem(channel.ID), "ID").SingleOrDefault();
 
             Assert.IsNotNull(channelLoaded);
-            AssertEqual(channel, channelLoaded);
+            channel.AreEqual(channelLoaded);
         }
 
         [TestMethod]
@@ -37,7 +37,7 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
             AMSEvent eventLoaded = AMSEventSqlAdapter.Instance.LoadByChannelID(channel.ID).SingleOrDefault();
 
             Assert.IsNotNull(eventLoaded);
-            AssertEqual(eventData, eventLoaded);
+            eventData.AreEqual(eventLoaded);
         }
 
         [TestMethod]
@@ -51,41 +51,14 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
             UserOperationLog logLoaded = UserOperationLogSqlAdapter.Instance.LoadByID(logID);
 
             Assert.IsNotNull(logLoaded);
-            AssertEqual(log, logLoaded);
+            log.AreEqual(logLoaded);
 
             logLoaded = UserOperationLogSqlAdapter.Instance.LoadByResourceID(log.ResourceID).SingleOrDefault();
 
             Assert.IsNotNull(logLoaded);
-            AssertEqual(log, logLoaded);
+            log.AreEqual(logLoaded);
         }
 
-        private static void AssertEqual(AMSChannel expected, AMSChannel actual)
-        {
-            Assert.IsNotNull(expected);
-            Assert.IsNotNull(actual);
-
-            Assert.AreEqual(expected.ID, actual.ID);
-            Assert.AreEqual(expected.Name, actual.Name);
-            Assert.AreEqual(expected.Description, actual.Description);
-            Assert.AreEqual(expected.State, actual.State);
-        }
-
-        private static void AssertEqual(AMSEvent expected, AMSEvent actual)
-        {
-            Assert.IsNotNull(expected);
-            Assert.IsNotNull(actual);
-
-            Assert.AreEqual(expected.ID, actual.ID);
-            Assert.AreEqual(expected.ChannelID, actual.ChannelID);
-            Assert.AreEqual(expected.Name, actual.Name);
-            Assert.AreEqual(expected.Description, actual.Description);
-            Assert.AreEqual(expected.State, actual.State);
-        }
-
-        private static void AssertEqual(UserOperationLog expected, UserOperationLog actual)
-        {
-            Assert.AreEqual(expected.ResourceID, actual.ResourceID);
-            Assert.AreEqual(expected.Subject, actual.Subject);
-        }
+        
     }
 }

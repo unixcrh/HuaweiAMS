@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
 
-namespace MCS.Library.Cloud.AMS.Data.Impl.Executors
+namespace MCS.Library.Cloud.AMS.Data.Executors
 {
     public abstract class AMSExecutorBase
     {

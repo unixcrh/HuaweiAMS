@@ -103,6 +103,8 @@
   <ItemGroup>
     <Compile Include="AMS\ConfigurationTest.cs" />
     <Compile Include="Entities\AMSEntitiesTest.cs" />
+    <Compile Include="Entities\AMSExecutorTest.cs" />
+    <Compile Include="Entities\AssertHelper.cs" />
     <Compile Include="Entities\DataHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AMS\MediaChannelTest.cs" />

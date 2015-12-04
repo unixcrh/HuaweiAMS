@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MCS.Library.Cloud.AMS.Data.Impl.Executors
+namespace MCS.Library.Cloud.AMS.Data.Executors
 {
     /// <summary>
     /// 编辑一般数据实体的执行器

@@ -55,6 +55,7 @@
     <Compile Include="Adapters\UserOperationLogSqlAdapter.cs" />
     <Compile Include="Common\ConnectionDefine.cs" />
     <Compile Include="DataSources\AMSEventDataSource.cs" />
+    <Compile Include="Executors\AMSDeleteEntityExecutor.cs" />
     <Compile Include="Executors\AMSEditEntityExecutor.cs" />
     <Compile Include="Executors\AMSExecutorBase.cs" />
     <Compile Include="Executors\AMSExecutorLogContextInfo.cs" />

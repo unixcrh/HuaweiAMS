@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MCS.Library.Cloud.AMS.Data.Impl.Executors
+namespace MCS.Library.Cloud.AMS.Data.Executors
 {
     public enum AMSOperationType
     {
