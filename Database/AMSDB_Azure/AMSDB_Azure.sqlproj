@@ -62,6 +62,8 @@
     <Folder Include="Security\" />
     <Folder Include="AMS\" />
     <Folder Include="AMS\Tables\" />
+    <Folder Include="AMS\Procedures" />
+    <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="..\AMSDB\Security\AMS.sql">
@@ -70,9 +72,24 @@
     <Build Include="..\AMSDB\AMS\Tables\Channels.sql">
       <Link>AMS\Tables\Channels.sql</Link>
     </Build>
+    <Build Include="..\AMSDB\AMS\Tables\Events.sql">
+      <Link>AMS\Tables\Events.sql</Link>
+    </Build>
+    <Build Include="..\AMSDB\AMS\Tables\UserOperationLogs.sql">
+      <Link>AMS\Tables\UserOperationLogs.sql</Link>
+    </Build>
+    <Build Include="..\AMSDB\AMS\Procedures\InitChannels.sql">
+      <Link>AMS\Procedures\InitChannels.sql</Link>
+    </Build>
+    <PostDeploy Include="..\AMSDB\Scripts\PostDeployment.sql">
+      <Link>Scripts\PostDeployment.sql</Link>
+    </PostDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="AMSDB_Azure.zhshen-amsdb.publish.xml" />
     <None Include="AMSDB_Azure.zhshen-amsdb-test.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="AMSDB_Azure.refactorlog" />
   </ItemGroup>
 </Project>
