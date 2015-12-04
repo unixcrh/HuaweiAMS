@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace MCS.Library.Cloud.AMS.Data.Executors
 {
-    public class AMSVDeleteEntityExecutor<TKey, TEntity> : AMSExecutorBase
+    public class AMSDeleteEntityExecutor<TKey, TEntity> : AMSExecutorBase
     {
         private TKey _Key;
         private Action<TKey> _DataAction = null;
 
-        public AMSVDeleteEntityExecutor(TKey key, Action<TKey> dataAction, AMSOperationType operationType)
+        public AMSDeleteEntityExecutor(TKey key, Action<TKey> dataAction, AMSOperationType operationType)
             : base(operationType)
         {
             this._Key = key;

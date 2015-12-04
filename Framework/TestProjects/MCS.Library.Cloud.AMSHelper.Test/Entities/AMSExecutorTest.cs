@@ -48,7 +48,7 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
 
             Assert.IsNotNull(eventLoaded);
 
-            AMSVDeleteEntityExecutor<string, AMSEvent> deleteExecutor = new AMSVDeleteEntityExecutor<string, AMSEvent>(eventData.ID,
+            AMSDeleteEntityExecutor<string, AMSEvent> deleteExecutor = new AMSDeleteEntityExecutor<string, AMSEvent>(eventData.ID,
                 key => AMSEventSqlAdapter.Instance.Delete(builder => builder.AppendItem("ID", key)), AMSOperationType.DeleteEvent);
 
             deleteExecutor.Execute();
