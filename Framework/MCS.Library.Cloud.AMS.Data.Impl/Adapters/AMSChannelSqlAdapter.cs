@@ -1,6 +1,5 @@
 ﻿using MCS.Library.Cloud.AMS.Data.Contracts;
 using MCS.Library.Cloud.AMS.Data.Entities;
-using MCS.Library.Cloud.AMS.Data.Impl;
 using MCS.Library.Core;
 using MCS.Library.Data.Adapters;
 using MCS.Library.Data.Builder;

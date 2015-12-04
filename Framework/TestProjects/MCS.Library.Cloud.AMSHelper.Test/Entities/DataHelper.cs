@@ -36,5 +36,15 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
 
             return data;
         }
+
+        public static UserOperationLog PrepareUserOperationLog(string resourceID)
+        {
+            UserOperationLog log = new UserOperationLog();
+
+            log.ResourceID = resourceID;
+            log.Subject = "测试日志";
+
+            return log;
+        }
     }
 }

@@ -37,6 +37,7 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,11 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conditions\EventQueryCondition.cs" />
     <Compile Include="Configuration\AMSDataAdapterSettings.cs" />
     <Compile Include="Contracts\IAMSChannelAdapter.cs" />
     <Compile Include="Entities\AMSChannel.cs" />
     <Compile Include="Entities\AMSEvent.cs" />
     <Compile Include="Entities\Enumerations.cs" />
+    <Compile Include="Entities\UserOperationLog.cs" />
     <Compile Include="Mechanism\ContractManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

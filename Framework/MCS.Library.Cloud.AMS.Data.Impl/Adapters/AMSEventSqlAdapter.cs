@@ -1,5 +1,4 @@
 ﻿using MCS.Library.Cloud.AMS.Data.Entities;
-using MCS.Library.Cloud.AMS.Data.Impl;
 using MCS.Library.Data.Adapters;
 using System;
 using System.Collections.Generic;

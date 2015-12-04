@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MCS.Library.Cloud.AMS.Data.Impl
+namespace MCS.Library.Cloud.AMS.Data
 {
     public static class ConnectionDefine
     {

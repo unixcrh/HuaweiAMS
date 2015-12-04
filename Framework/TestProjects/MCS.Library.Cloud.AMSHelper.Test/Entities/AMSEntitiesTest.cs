@@ -40,6 +40,25 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
             AssertEqual(eventData, eventLoaded);
         }
 
+        [TestMethod]
+        public void AddUserOperationLog()
+        {
+            string resourceID = UuidHelper.NewUuidString();
+
+            UserOperationLog log = DataHelper.PrepareUserOperationLog(resourceID);
+
+            long logID = UserOperationLogSqlAdapter.Instance.Add(log);
+            UserOperationLog logLoaded = UserOperationLogSqlAdapter.Instance.LoadByID(logID);
+
+            Assert.IsNotNull(logLoaded);
+            AssertEqual(log, logLoaded);
+
+            logLoaded = UserOperationLogSqlAdapter.Instance.LoadByResourceID(log.ResourceID).SingleOrDefault();
+
+            Assert.IsNotNull(logLoaded);
+            AssertEqual(log, logLoaded);
+        }
+
         private static void AssertEqual(AMSChannel expected, AMSChannel actual)
         {
             Assert.IsNotNull(expected);
@@ -61,6 +80,12 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
             Assert.AreEqual(expected.Name, actual.Name);
             Assert.AreEqual(expected.Description, actual.Description);
             Assert.AreEqual(expected.State, actual.State);
+        }
+
+        private static void AssertEqual(UserOperationLog expected, UserOperationLog actual)
+        {
+            Assert.AreEqual(expected.ResourceID, actual.ResourceID);
+            Assert.AreEqual(expected.Subject, actual.Subject);
         }
     }
 }

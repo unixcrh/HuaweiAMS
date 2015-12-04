@@ -52,9 +52,17 @@
   <ItemGroup>
     <Compile Include="Adapters\AMSChannelSqlAdapter.cs" />
     <Compile Include="Adapters\AMSEventSqlAdapter.cs" />
+    <Compile Include="Adapters\UserOperationLogSqlAdapter.cs" />
     <Compile Include="Common\ConnectionDefine.cs" />
+    <Compile Include="DataSources\AMSEventDataSource.cs" />
+    <Compile Include="Executors\AMSEditEntityExecutor.cs" />
+    <Compile Include="Executors\AMSExecutorBase.cs" />
+    <Compile Include="Executors\AMSExecutorLogContextInfo.cs" />
+    <Compile Include="Executors\AMSOperationContext.cs" />
+    <Compile Include="Executors\AMSOperationType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>IF NOT EXIST "$(ProjectDir)..\..\Bin" MD "$(ProjectDir)..\..\Bin"

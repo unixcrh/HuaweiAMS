@@ -1,5 +1,6 @@
 ﻿using MCS.Library.Data.DataObjects;
 using MCS.Library.Data.Mapping;
+using MCS.Library.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +34,7 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
         }
 
         [DataMember]
+        [StringLengthValidator(1, 128, MessageTemplate = "事件名称不能为空，且必须小于128个字符")]
         public string Name
         {
             get;
@@ -61,6 +63,7 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
         }
 
         [DataMember]
+        [SqlBehavior(BindingFlags = ClauseBindingFlags.Select | ClauseBindingFlags.Where)]
         public DateTime CreateTime
         {
             get;
