@@ -22,6 +22,10 @@
 <body>
     <h1>Sample: Clear</h1>
     <video id="azuremediaplayer" class="azuremediaplayer amp-default-skin amp-big-play-centered" tabindex="0"></video>
+    <form runat="server" id="serverForm">
+        <asp:TextBox runat="server" ID="videoUrl" Style="width: 600px"></asp:TextBox>
+        <asp:Button runat="server" ID="changeVideo" Text="播放" OnClick="changeVideo_Click" />
+    </form>
     <textarea id="txtLog" style="width: 640px" rows="10"></textarea>
     <script>
         var myOptions = {
@@ -80,7 +84,7 @@
             }
         });
 
-        myPlayer.src([{ src: "http://cdn-zhshenstudy.streaming.mediaservices.windows.net/e194ceb9-d744-47c5-a7e7-5fbe93dd6942/Robotica_720.ism/manifest", type: "application/vnd.ms-sstr+xml" }]);
+        myPlayer.src([{ src: document.getElementById("videoUrl").value, type: "application/vnd.ms-sstr+xml" }]);
     </script>
     <footer>
         <br />

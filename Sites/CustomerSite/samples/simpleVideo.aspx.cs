@@ -11,7 +11,12 @@ namespace CutomerSite.samples
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (this.IsPostBack == false)
+                this.videoUrl.Text = "http://cdn-zhshenstudy.streaming.mediaservices.windows.net/e194ceb9-d744-47c5-a7e7-5fbe93dd6942/Robotica_720.ism/manifest";
+        }
 
+        protected void changeVideo_Click(object sender, EventArgs e)
+        {
         }
     }
 }
