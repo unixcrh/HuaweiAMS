@@ -35,7 +35,7 @@ namespace MCS.Library.Cloud.AMS.Data.Configuration
         /// <summary>
         /// 默认有效时间，单位是秒。如果上一次锁的检查时间超过此有效时间，则表明已经超时
         /// </summary>
-        [ConfigurationProperty("defaultEffectiveTime", IsRequired = true, DefaultValue = "00:00:30")]
+        [ConfigurationProperty("defaultEffectiveTime", IsRequired = true, DefaultValue = "00:01:00")]
         public TimeSpan DefaultEffectiveTime
         {
             get

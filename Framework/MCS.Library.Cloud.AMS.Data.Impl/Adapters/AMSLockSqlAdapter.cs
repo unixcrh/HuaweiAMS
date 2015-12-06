@@ -165,7 +165,7 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
             WhereSqlClauseBuilder wBuilder = ORMapping.GetWhereSqlClauseBuilderByPrimaryKey(lockData, mappingInfo);
 
             if (forceOverride == false)
-                wBuilder.AppendItem("LockTime", "DATEADD(SECOND, -EffectiveTime, GETDATE())", "<", true);
+                wBuilder.AppendItem("LockTime", "DATEADD(SECOND, -EffectiveTime, GETUTCDATE())", "<", true);
 
             StringBuilder sql = new StringBuilder();
 
