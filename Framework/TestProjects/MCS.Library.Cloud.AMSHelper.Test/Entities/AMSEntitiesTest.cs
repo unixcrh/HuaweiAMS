@@ -41,6 +41,80 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
         }
 
         [TestMethod]
+        public void LoadNeedStartEventInTimeFrame()
+        {
+            AMSEventSqlAdapter.Instance.ClearAll();
+
+            AMSChannel channel = DataHelper.PrepareChannelData();
+
+            AMSEvent eventData = DataHelper.PrepareEventData(channel.ID);
+
+            eventData.StartTime = DateTime.UtcNow.Add(TimeSpan.FromMinutes(10));
+
+            AMSEventSqlAdapter.Instance.Update(eventData);
+
+            AMSEventCollection eventsLoaded = AMSEventSqlAdapter.Instance.LoadNeedStartEvents(TimeSpan.FromMinutes(15));
+
+            Assert.IsTrue(eventsLoaded.Count > 0);
+        }
+
+        [TestMethod]
+        public void LoadNeedStartEventOutTimeFrame()
+        {
+            AMSEventSqlAdapter.Instance.ClearAll();
+
+            AMSChannel channel = DataHelper.PrepareChannelData();
+
+            AMSEvent eventData = DataHelper.PrepareEventData(channel.ID);
+
+            eventData.StartTime = DateTime.UtcNow.Add(TimeSpan.FromMinutes(10));
+
+            AMSEventSqlAdapter.Instance.Update(eventData);
+
+            AMSEventCollection eventsLoaded = AMSEventSqlAdapter.Instance.LoadNeedStartEvents(TimeSpan.FromMinutes(5));
+
+            Assert.AreEqual(0, eventsLoaded.Count);
+        }
+
+        [TestMethod]
+        public void LoadNeedStopEventInTimeFrame()
+        {
+            AMSEventSqlAdapter.Instance.ClearAll();
+
+            AMSChannel channel = DataHelper.PrepareChannelData();
+
+            AMSEvent eventData = DataHelper.PrepareEventData(channel.ID);
+
+            eventData.State = AMSEventState.Running;
+            eventData.EndTime = DateTime.UtcNow.Add(-TimeSpan.FromMinutes(10));
+
+            AMSEventSqlAdapter.Instance.Update(eventData);
+
+            AMSEventCollection eventsLoaded = AMSEventSqlAdapter.Instance.LoadNeedStopEvents();
+
+            Assert.IsTrue(eventsLoaded.Count > 0);
+        }
+
+        [TestMethod]
+        public void LoadNeedStopEventOutTimeFrame()
+        {
+            AMSEventSqlAdapter.Instance.ClearAll();
+
+            AMSChannel channel = DataHelper.PrepareChannelData();
+
+            AMSEvent eventData = DataHelper.PrepareEventData(channel.ID);
+
+            eventData.State = AMSEventState.Running;
+            eventData.EndTime = DateTime.UtcNow.Add(TimeSpan.FromMinutes(10));
+
+            AMSEventSqlAdapter.Instance.Update(eventData);
+
+            AMSEventCollection eventsLoaded = AMSEventSqlAdapter.Instance.LoadNeedStopEvents();
+
+            Assert.AreEqual(0, eventsLoaded.Count);
+        }
+
+        [TestMethod]
         public void AddUserOperationLog()
         {
             string resourceID = UuidHelper.NewUuidString();
@@ -59,6 +133,6 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
             log.AreEqual(logLoaded);
         }
 
-        
+
     }
 }

@@ -30,7 +30,7 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
             data.Name = "Test Event";
             data.ChannelID = channelID;
             data.Description = "Test Event Description";
-            data.State = AMSEventState.Running;
+            data.State = AMSEventState.NotStart;
             data.StartTime = DateTime.UtcNow.AddDays(1);
             data.EndTime = DateTime.UtcNow.AddDays(2);
 

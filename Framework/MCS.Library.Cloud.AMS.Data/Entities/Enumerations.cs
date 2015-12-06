@@ -45,7 +45,7 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
         /// <summary>
         /// 
         /// </summary>
-        Stopped = 0,
+        NotStart = 0,
 
         /// <summary>
         /// 
@@ -65,7 +65,7 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
         /// <summary>
         /// 
         /// </summary>
-        Disabled = 4
+        Completed = 4
     }
 
     /// <summary>
