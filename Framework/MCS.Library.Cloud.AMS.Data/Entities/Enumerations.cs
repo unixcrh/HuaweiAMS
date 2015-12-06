@@ -90,4 +90,17 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
         [EnumItemDescription("已经上锁")]
         Locked
     }
+
+    public enum AMSQueueItemType
+    {
+        /// <summary>
+        /// 启东事件
+        /// </summary>
+        StartEvent,
+
+        /// <summary>
+        /// 停止事件
+        /// </summary>
+        StopEvent
+    }
 }

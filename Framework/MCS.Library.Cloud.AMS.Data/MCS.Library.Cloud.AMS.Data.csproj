@@ -54,6 +54,7 @@
     <Compile Include="Entities\AMSCheckLockException.cs" />
     <Compile Include="Entities\AMSCheckLockResult.cs" />
     <Compile Include="Entities\AMSEvent.cs" />
+    <Compile Include="Entities\AMSQueueItem.cs" />
     <Compile Include="Entities\Enumerations.cs" />
     <Compile Include="Entities\AMSLock.cs" />
     <Compile Include="Entities\UserOperationLog.cs" />

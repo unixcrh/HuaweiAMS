@@ -107,6 +107,7 @@
     <Compile Include="Entities\AssertHelper.cs" />
     <Compile Include="Entities\DataHelper.cs" />
     <Compile Include="Entities\LockTest.cs" />
+    <Compile Include="Entities\QueueTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AMS\MediaChannelTest.cs" />
   </ItemGroup>
