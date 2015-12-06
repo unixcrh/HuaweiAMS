@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MCS.Library.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -65,5 +66,28 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
         /// 
         /// </summary>
         Disabled = 4
+    }
+
+    /// <summary>
+    /// 锁的类型
+    /// </summary>
+    public enum AMSLockType
+    {
+        None = 0,
+
+        [EnumItemDescription("事件操作锁")]
+        EventLock = 1,
+    }
+
+    public enum AMSCheckLockStatus
+    {
+        [EnumItemDescription("没有上锁")]
+        NotLocked,
+
+        [EnumItemDescription("上锁但是已经过期")]
+        LockExpired,
+
+        [EnumItemDescription("已经上锁")]
+        Locked
     }
 }

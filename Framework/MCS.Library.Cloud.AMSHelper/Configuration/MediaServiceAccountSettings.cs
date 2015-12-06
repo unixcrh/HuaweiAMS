@@ -11,7 +11,7 @@ namespace MCS.Library.Cloud.AMSHelper.Configuration
     /// <summary>
     /// MediaService Account Settings
     /// </summary>
-    public class MediaServiceAccountSettings : ConfigurationSection
+    public class MediaServiceAccountSettings : DeluxeConfigurationSection
     {
         public static MediaServiceAccountSettings GetConfig()
         {

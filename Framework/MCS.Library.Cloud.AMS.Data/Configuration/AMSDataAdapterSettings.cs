@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MCS.Library.Cloud.AMS.Data.Configuration
 {
-    public class AMSDataAdapterSettings : ConfigurationSection
+    public class AMSDataAdapterSettings : DeluxeConfigurationSection
     {
         public static AMSDataAdapterSettings GetConfig()
         {

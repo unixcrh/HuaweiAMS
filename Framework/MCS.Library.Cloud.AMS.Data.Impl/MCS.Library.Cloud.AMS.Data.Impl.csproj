@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Adapters\AMSChannelSqlAdapter.cs" />
     <Compile Include="Adapters\AMSEventSqlAdapter.cs" />
+    <Compile Include="Adapters\AMSLockSqlAdapter.cs" />
     <Compile Include="Adapters\UserOperationLogSqlAdapter.cs" />
     <Compile Include="Common\ConnectionDefine.cs" />
     <Compile Include="DataSources\AMSEventDataSource.cs" />

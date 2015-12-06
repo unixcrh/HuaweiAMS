@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MCS.Library.Cloud.AMSHelper.Configuration
 {
-    public class LiveChannelSettings : ConfigurationSection
+    public class LiveChannelSettings : DeluxeConfigurationSection
     {
         public static LiveChannelSettings GetConfig()
         {
