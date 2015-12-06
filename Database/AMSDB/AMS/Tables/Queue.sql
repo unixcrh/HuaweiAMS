@@ -1,0 +1,10 @@
+﻿CREATE TABLE [AMS].[Queue]
+(
+	[ID] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Category] NVARCHAR(64) NULL, 
+    [ResourceID] NVARCHAR(36) NULL, 
+	[ResourceName] NVARCHAR(128) NULL,
+    [ItemType] NVARCHAR(32) NULL, 
+    [CreateTime] DATETIME NULL DEFAULT GETUTCDATE()
+)
+

@@ -78,6 +78,9 @@
     <Build Include="..\AMSDB\AMS\Tables\Locks.sql">
       <Link>AMS\Tables\Locks.sql</Link>
     </Build>
+    <Build Include="..\AMSDB\AMS\Tables\Queue.sql">
+      <Link>AMS\Tables\Queue.sql</Link>
+    </Build>
     <Build Include="..\AMSDB\AMS\Tables\UserOperationLogs.sql">
       <Link>AMS\Tables\UserOperationLogs.sql</Link>
     </Build>
