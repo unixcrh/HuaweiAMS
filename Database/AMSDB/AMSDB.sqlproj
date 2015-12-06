@@ -75,6 +75,8 @@
     <Build Include="AMS\Procedures\InitChannels.sql" />
     <Build Include="AMS\Tables\UserOperationLogs.sql" />
     <Build Include="AMS\Tables\UserOperationLogs_Properties.sql" />
+    <Build Include="AMS\Tables\Locks.sql" />
+    <Build Include="AMS\Tables\Locks_Properties.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AMSDB.refactorlog" />
