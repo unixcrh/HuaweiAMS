@@ -11,7 +11,20 @@ namespace CutomerSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            eastAsiaSample.HRef = string.Format("../samples/simpleVideo.aspx?url={0}",
+                "http://cdn-zhshenstudy.streaming.mediaservices.windows.net/85a27234-45e6-45b6-87f6-387a5485f8f7/Windows10CommercialDemo.ism/manifest");
+            northEuropeSample.HRef = string.Format("../samples/simpleVideo.aspx?url={0}",
+                "http://cdn-endpoint-zhshenneurope.streaming.mediaservices.windows.net/194de0a1-88c0-44e5-b47c-8940d8121b09/Windows10CommercialDemo.ism/manifest");
 
+            eastAsianSalesTraining.HRef = string.Format("../samples/simpleVideo.aspx?url={0}",
+                "http://cdn-zhshenstudy.streaming.mediaservices.windows.net/cd640c21-01d5-4461-a74f-029d3d05c86d/120c73a9-a9de-4417-a11a-e0b73d14609a.ism/manifest");
+            eastAsianSalesTrainingWithoutCDN.HRef = string.Format("../samples/simpleVideo.aspx?url={0}",
+                "http://zhshenstudy.streaming.mediaservices.windows.net/cd640c21-01d5-4461-a74f-029d3d05c86d/120c73a9-a9de-4417-a11a-e0b73d14609a.ism/manifest");
+
+            europeSalesTraining.HRef = string.Format("../samples/simpleVideo.aspx?url={0}",
+                "http://cdn-endpoint-zhshenneurope.streaming.mediaservices.windows.net/3b23c7c2-37d1-49d9-b74c-0902ef7ddaf0/ec0fc7f6-3d7e-49e3-b9aa-5625c8957051.ism/manifest");
+            europeSalesTrainingWithoutCDN.HRef = string.Format("../samples/simpleVideo.aspx?url={0}",
+                "http://endpoint-zhshenneurope.streaming.mediaservices.windows.net/3b23c7c2-37d1-49d9-b74c-0902ef7ddaf0/ec0fc7f6-3d7e-49e3-b9aa-5625c8957051.ism/manifest");
         }
     }
 }

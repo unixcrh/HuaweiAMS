@@ -11,7 +11,12 @@
         <div>
             测试页面
             <ul>
-                <li><a href="../samples/simpleVideo.aspx">Simple Video</a></li>
+                <li><a runat="server" id="eastAsiaSample" href="../samples/simpleVideo.aspx">East Asia Sample Video</a></li>
+                <li><a runat="server" id="northEuropeSample" href="../samples/simpleVideo.aspx">North Europe Sample Video</a></li>
+                <li><a runat="server" id="eastAsianSalesTraining" href="../samples/simpleVideo.aspx">East Asia Sales Training</a></li>
+                <li><a runat="server" id="eastAsianSalesTrainingWithoutCDN" href="../samples/simpleVideo.aspx">East Asia Sales Training Without CDN</a></li>
+                <li><a runat="server" id="europeSalesTraining" href="../samples/simpleVideo.aspx">North Europe Sales Training</a></li>
+                <li><a runat="server" id="europeSalesTrainingWithoutCDN" href="../samples/simpleVideo.aspx">North Europe Sales Training Without CDN</a></li>
             </ul>
         </div>
     </form>
