@@ -11,3 +11,6 @@
 )
 
 GO
+
+
+CREATE INDEX [IX_Locks_ResourceID] ON [AMS].[Locks] ([ResourceID])
