@@ -70,6 +70,27 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
             set;
         }
 
+        [DataMember]
+        public string PreviewUrl
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string PrimaryInputUrl
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string SecondaryInputUrl
+        {
+            get;
+            set;
+        }
+
         public void FillStatusFromCloud(AMSChannel channelInCloud)
         {
             channelInCloud.NullCheck("channelInCloud");
@@ -79,6 +100,9 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
             this.Description = channelInCloud.Description;
             this.State = channelInCloud.State;
             this.AMSLastModified = channelInCloud.AMSLastModified;
+            this.PreviewUrl = channelInCloud.PreviewUrl;
+            this.PrimaryInputUrl = channelInCloud.PrimaryInputUrl;
+            this.SecondaryInputUrl = channelInCloud.SecondaryInputUrl;
         }
     }
 
@@ -113,7 +137,7 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
                     channel.State = AMSChannelState.Disabled;
             }
 
-            foreach(AMSChannel channel in channelsWithStatus)
+            foreach (AMSChannel channel in channelsWithStatus)
             {
                 AMSChannel channelInResult = result.FindChannelByAMSID(channel.AMSID);
 

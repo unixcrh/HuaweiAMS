@@ -91,6 +91,27 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
             get;
             set;
         }
+
+        [DataMember]
+        public string AMSProgramID
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string DefaultPlaybackUrl
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string CDNPlaybackUrl
+        {
+            get;
+            set;
+        }
     }
 
     [Serializable]
