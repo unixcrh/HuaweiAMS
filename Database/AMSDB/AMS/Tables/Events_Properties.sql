@@ -87,3 +87,30 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'Events',
     @level2type = N'COLUMN',
     @level2name = N'CreateTime'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'AMS中Program的ID',
+    @level0type = N'SCHEMA',
+    @level0name = N'AMS',
+    @level1type = N'TABLE',
+    @level1name = N'Events',
+    @level2type = N'COLUMN',
+    @level2name = N'AMSProgramID'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'无CDN的视频回放地址',
+    @level0type = N'SCHEMA',
+    @level0name = N'AMS',
+    @level1type = N'TABLE',
+    @level1name = N'Events',
+    @level2type = N'COLUMN',
+    @level2name = N'DefaultPlaybackUrl'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'带CDN的视频回放地址',
+    @level0type = N'SCHEMA',
+    @level0name = N'AMS',
+    @level1type = N'TABLE',
+    @level1name = N'Events',
+    @level2type = N'COLUMN',
+    @level2name = N'CDNPlaybackUrl'

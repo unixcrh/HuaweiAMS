@@ -7,6 +7,11 @@
 	[State] NVARCHAR(32) NULL,
 	[AMSAccountName] NVARCHAR(64) NULL,
     [AMSLastModified] DATETIME NULL, 
-    [CreateTime] DATETIME NULL DEFAULT GETUTCDATE() 
+    [CreateTime] DATETIME NULL DEFAULT GETUTCDATE(), 
+    [PrimaryInputUrl] NVARCHAR(MAX) NULL, 
+    [SecondaryInputUrl] NVARCHAR(MAX) NULL, 
+    [PreviewUrl] NVARCHAR(MAX) NULL 
 )
 
+
+GO

@@ -69,3 +69,30 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'Channels',
     @level2type = N'COLUMN',
     @level2name = N'State'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'视频采集主地址',
+    @level0type = N'SCHEMA',
+    @level0name = N'AMS',
+    @level1type = N'TABLE',
+    @level1name = N'Channels',
+    @level2type = N'COLUMN',
+    @level2name = N'PrimaryInputUrl'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'视频采集辅助地址',
+    @level0type = N'SCHEMA',
+    @level0name = N'AMS',
+    @level1type = N'TABLE',
+    @level1name = N'Channels',
+    @level2type = N'COLUMN',
+    @level2name = N'SecondaryInputUrl'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'视频预览地址',
+    @level0type = N'SCHEMA',
+    @level0name = N'AMS',
+    @level1type = N'TABLE',
+    @level1name = N'Channels',
+    @level2type = N'COLUMN',
+    @level2name = N'PreviewUrl'
