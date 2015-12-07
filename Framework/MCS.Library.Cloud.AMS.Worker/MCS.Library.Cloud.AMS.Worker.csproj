@@ -102,7 +102,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tasks\AMSOperations.cs" />
     <Compile Include="Tasks\AMSTask.cs" />
+    <Compile Include="Tasks\LockHelper.cs" />
+    <Compile Include="Tasks\TraceHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configuration\" />

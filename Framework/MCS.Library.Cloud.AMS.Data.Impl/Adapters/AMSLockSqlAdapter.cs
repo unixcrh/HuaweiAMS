@@ -102,6 +102,13 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
             DbHelper.RunSql(sql, GetConnectionName());
         }
 
+        public void ClearAll()
+        {
+            string sql = string.Format("TRUNCATE TABLE {0}", GetMappingInfo().TableName);
+
+            DbHelper.RunSql(sql, GetConnectionName());
+        }
+
         private static AMSCheckLockResult BuildNotAvailableResult(AMSLock lockData)
         {
             AMSCheckLockResult result = new AMSCheckLockResult();

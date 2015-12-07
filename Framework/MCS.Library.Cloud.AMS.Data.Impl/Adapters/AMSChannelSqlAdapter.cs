@@ -21,6 +21,13 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
             return this.Load(builder => builder.AppendItem("1", "1"));
         }
 
+        public AMSChannel LoadByID(string id)
+        {
+            id.CheckStringIsNullOrEmpty("id");
+
+            return this.LoadByInBuilder(builder => builder.AppendItem(id), "ID").SingleOrDefault();
+        }
+
         /// <summary>
         /// 更新所有的频道数据
         /// </summary>

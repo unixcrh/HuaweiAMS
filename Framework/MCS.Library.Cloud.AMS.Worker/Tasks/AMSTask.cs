@@ -13,43 +13,52 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 {
     public static class AMSTask
     {
-        public static async Task ExeucteAllTasks(CancellationToken cancellationToken)
+        private static readonly TimeSpan DefaultDelayTime = TimeSpan.FromSeconds(1);
+
+        public static Task DoLoopTask(Action<CancellationToken> action, TimeSpan timeInterval, CancellationToken cancellationToken)
         {
-            await StartEventsInTimeFrame(cancellationToken);
-            await StopEventsInTimeFrame(cancellationToken);
-            await Task.Run(() =>
-            {
-                Task.Run(() =>
-                {
-                    Task.Delay(10000).Wait();
-                    Trace.TraceInformation("delay");
-                });
-            });
+            return Task.Run(() =>
+                    {
+                        while (cancellationToken.IsCancellationRequested == false)
+                        {
+                            action(cancellationToken);
+
+                            Task.Delay(timeInterval).Wait();
+                        }
+                    });
+        }
+
+        public static void StartAllTasks(CancellationToken cancellationToken)
+        {
+            DoLoopTask(StartEventsInTimeFrame, DefaultDelayTime, cancellationToken);
+            DoLoopTask(StopEventsInTimeFrame, DefaultDelayTime, cancellationToken);
+            DoLoopTask(ReadQueue, DefaultDelayTime, cancellationToken);
         }
 
         /// <summary>
         /// 检查需要启动的事件
         /// </summary>
         /// <returns></returns>
-        public static async Task StartEventsInTimeFrame(CancellationToken cancellationToken)
+        public static void StartEventsInTimeFrame(CancellationToken cancellationToken)
         {
-            await Task.Run(() =>
+            AMSEventCollection events = AMSEventSqlAdapter.Instance.LoadNeedStartEvents(TimeSpan.FromMinutes(5));
+
+            AMSQueueItemCollection messages = new AMSQueueItemCollection();
+
+            foreach (AMSEvent eventData in events)
             {
-                AMSEventCollection events = AMSEventSqlAdapter.Instance.LoadNeedStartEvents(TimeSpan.FromMinutes(5));
+                if (cancellationToken.IsCancellationRequested)
+                    break;
 
-                AMSQueueItemCollection messages = new AMSQueueItemCollection();
-
-                foreach (AMSEvent eventData in events)
+                if (LockHelper.IsLockAvailable(eventData))
                 {
-                    if (cancellationToken.IsCancellationRequested)
-                        break;
+                    messages.Add(CreateMessage(eventData, AMSQueueItemType.StartEvent));
 
-                    if (IsLockAvailable(eventData))
-                        Trace.TraceInformation(eventData.ID);
+                    Trace.TraceInformation("Add start new event {0} to queue.", eventData.ID);
                 }
+            }
 
-                GetQueue().AddMessages(string.Empty, messages.ToArray());
-            });
+            GetQueue().AddMessages(string.Empty, messages.ToArray());
         }
 
         /// <summary>
@@ -57,28 +66,45 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public static async Task StopEventsInTimeFrame(CancellationToken cancellationToken)
+        public static void StopEventsInTimeFrame(CancellationToken cancellationToken)
         {
-            await Task.Run(() =>
+            AMSEventCollection events = AMSEventSqlAdapter.Instance.LoadNeedStopEvents();
+
+            AMSQueueItemCollection messages = new AMSQueueItemCollection();
+
+            foreach (AMSEvent eventData in events)
             {
-                AMSEventCollection events = AMSEventSqlAdapter.Instance.LoadNeedStopEvents();
+                if (cancellationToken.IsCancellationRequested)
+                    break;
 
-                AMSQueueItemCollection messages = new AMSQueueItemCollection();
-
-                foreach (AMSEvent eventData in events)
+                if (LockHelper.IsLockAvailable(eventData))
                 {
-                    if (cancellationToken.IsCancellationRequested)
-                        break;
-
-                    if (IsLockAvailable(eventData))
-                    {
-                        messages.Add(CreateMessage(eventData, AMSQueueItemType.StopEvent));
-                        Trace.TraceInformation(eventData.ID);
-                    }
+                    messages.Add(CreateMessage(eventData, AMSQueueItemType.StopEvent));
+                    Trace.TraceInformation("Add stop new event {0} to queue.", eventData.ID);
                 }
+            }
 
-                GetQueue().AddMessages(string.Empty, messages.ToArray());
-            });
+            GetQueue().AddMessages(string.Empty, messages.ToArray());
+        }
+
+        public static void ReadQueue(CancellationToken cancellationToken)
+        {
+            AMSQueueItem message = GetQueue().GetMessages(string.Empty).SingleOrDefault();
+
+            if (message != null)
+            {
+                Trace.TraceInformation("Message: ID={0}, ResourceID={1}, Name={2}, ItemType={3}",
+                    message.ID, message.ResourceID, message.ResourceID, message.ItemType);
+
+                switch (message.ItemType)
+                {
+                    case AMSQueueItemType.StartEvent:
+                        AMSOperations.StartEvent(message.ResourceID, cancellationToken);
+                        break;
+                    case AMSQueueItemType.StopEvent:
+                        break;
+                }
+            }
         }
 
         private static IQueue<AMSQueueItem> GetQueue()
@@ -95,37 +121,6 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
             message.ResourceName = eventData.Name;
 
             return message;
-        }
-
-        private static AMSCheckLockResult ExtendLockTime(AMSEvent eventData)
-        {
-            AMSLock lockData = PrepareEventLock(eventData);
-
-            return AMSLockSqlAdapter.Instance.ExtendLockTime(lockData);
-        }
-
-        private static bool IsLockAvailable(AMSEvent eventData)
-        {
-            AMSLock lockData = PrepareEventLock(eventData);
-
-            AMSCheckLockResult lockResult = AMSLockSqlAdapter.Instance.AddLock(lockData);
-
-            return lockResult.Available;
-        }
-
-        /// <summary>
-        /// 准备事件相关的锁
-        /// </summary>
-        /// <returns></returns>
-        private static AMSLock PrepareEventLock(AMSEvent eventData)
-        {
-            AMSLock lockData = new AMSLock();
-
-            lockData.LockID = eventData.ID;
-            lockData.LockType = AMSLockType.EventLock;
-            lockData.Description = string.Format("为事件(ID: {0}, Name: {1})加锁", eventData.ID, eventData.Name);
-
-            return lockData;
         }
     }
 }

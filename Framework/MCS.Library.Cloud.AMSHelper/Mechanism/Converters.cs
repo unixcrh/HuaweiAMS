@@ -29,15 +29,24 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
             AMSChannel result = new AMSChannel();
 
             result.ID = channel.Id;
+
+            channel.FillAMSChannel(result);
+
+            return result;
+        }
+ 
+        public static void FillAMSChannel(this IChannel channel, AMSChannel result)
+        {
+            channel.NullCheck("channel");
+            result.NullCheck("result");
+
             result.AMSID = channel.Id;
             result.Name = channel.Name;
             result.Description = channel.Description;
             result.State = channel.State.ToAMSChannelState();
             result.AMSLastModified = channel.LastModified;
-
-            return result;
         }
- 
+
         public static AMSChannelState ToAMSChannelState(this ChannelState state)
         {
             return (AMSChannelState)((int)state);

@@ -15,12 +15,36 @@ namespace MCS.Library.Cloud.AMS.Worker.Test
 
         static void Main(string[] args)
         {
-            while (true)
-            {
-                AMSTask.ExeucteAllTasks(cancellationTokenSource.Token).Wait();
+            Trace.TraceInformation("启动任务");
 
-                Trace.TraceInformation("Working");
-                Task.Delay(1000).Wait();
+            AMSTask.StartAllTasks(cancellationTokenSource.Token);
+
+            while (cancellationTokenSource.IsCancellationRequested == false)
+            {
+                Console.WriteLine("Please input command...");
+                string cmd = Console.ReadLine();
+
+                switch (cmd.ToLower())
+                {
+                    case "exit":
+                        cancellationTokenSource.Cancel();
+                        break;
+                    case "clearevents":
+                        DataHelper.ClearAllEvents();
+                        Console.WriteLine("All events cleared");
+                        break;
+                    case "addevent":
+                        DataHelper.AddEvent();
+                        break;
+                    case "clearqueue":
+                        DataHelper.ClearQueue();
+                        Console.WriteLine("Queue cleared");
+                        break;
+                    case "clearlocks":
+                        LockHelper.ClearAll();
+                        Console.WriteLine("Lock cleared");
+                        break;
+                }
             }
         }
     }
