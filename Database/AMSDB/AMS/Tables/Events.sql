@@ -20,3 +20,6 @@ GO
 CREATE INDEX [IX_Events_ChannelID] ON [AMS].[Events] ([ChannelID])
 
 GO
+
+
+CREATE INDEX [IX_Events_StartTime] ON [AMS].[Events] ([StartTime])
