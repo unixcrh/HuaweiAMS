@@ -44,12 +44,12 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
             DoLoopTask(StopEventsInTimeFrame, DefaultDelayTime, cancellationToken);
             DoLoopTask(ReadQueue, DefaultDelayTime, cancellationToken);
 
-            DoLoopTask(SyncChannelInfo, settings.Durations.GetDuration("syncChannelInfoInterval", DefaultDelayTime), cancellationToken);
-            DoLoopTask(StopChannel, settings.Durations.GetDuration("stopChannelInterval", DefaultDelayTime), cancellationToken);
-            DoLoopTask(DeleteProgram, settings.Durations.GetDuration("deleteProgamInterval", DefaultDelayTime), cancellationToken);
+            DoLoopTask(GenerateSyncChannelInfoMessages, settings.Durations.GetDuration("syncChannelInfoInterval", DefaultDelayTime), cancellationToken);
+            DoLoopTask(GenerateStopChannelMessages, settings.Durations.GetDuration("stopChannelInterval", DefaultDelayTime), cancellationToken);
+            DoLoopTask(GenerateDeleteProgramMessages, settings.Durations.GetDuration("deleteProgamInterval", DefaultDelayTime), cancellationToken);
         }
 
-        public static void SyncChannelInfo(CancellationToken cancellationToken)
+        public static void GenerateSyncChannelInfoMessages(CancellationToken cancellationToken)
         {
             AMSQueueItem message = new AMSQueueItem();
 
@@ -58,16 +58,30 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
             GetQueue().AddMessages(string.Empty, message);
         }
 
-        public static void StopChannel(CancellationToken cancellationToken)
+        public static void GenerateStopChannelMessages(CancellationToken cancellationToken)
         {
-            AMSQueueItem message = new AMSQueueItem();
+            AMSWorkerSettings settings = AMSWorkerSettings.GetConfig();
 
-            message.ItemType = AMSQueueItemType.StopChannel;
+            AMSChannelCollection channels =
+                AMSChannelSqlAdapter.Instance.LoadNeedStopChannels(settings.Durations.GetDuration("stopChannelLeadTime", TimeSpan.FromHours(1)));
 
-            GetQueue().AddMessages(string.Empty, message);
+            AMSQueueItemCollection messages = new AMSQueueItemCollection();
+
+            foreach (AMSChannel channel in channels)
+            {
+                AMSQueueItem message = new AMSQueueItem();
+
+                message.ItemType = AMSQueueItemType.StopChannel;
+                message.ResourceID = channel.ID;
+                message.ResourceName = channel.Name;
+
+                messages.Add(message);
+            }
+
+            GetQueue().AddMessages(string.Empty, messages.ToArray());
         }
 
-        public static void DeleteProgram(CancellationToken cancellationToken)
+        public static void GenerateDeleteProgramMessages(CancellationToken cancellationToken)
         {
             AMSQueueItem message = new AMSQueueItem();
 
@@ -82,7 +96,8 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
         /// <returns></returns>
         public static void StartEventsInTimeFrame(CancellationToken cancellationToken)
         {
-            AMSEventCollection events = AMSEventSqlAdapter.Instance.LoadNeedStartEvents(TimeSpan.FromMinutes(5));
+            AMSWorkerSettings settings = AMSWorkerSettings.GetConfig();
+            AMSEventCollection events = AMSEventSqlAdapter.Instance.LoadNeedStartEvents(settings.Durations.GetDuration("createChannelWarmup", TimeSpan.FromMinutes(20)));
 
             AMSQueueItemCollection messages = new AMSQueueItemCollection();
 
@@ -151,8 +166,10 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
                             AMSOperations.SyncChannelInfo(cancellationToken);
                             break;
                         case AMSQueueItemType.StopChannel:
+                            AMSOperations.StopChannel(message.ResourceID, cancellationToken);
                             break;
                         case AMSQueueItemType.DeleteProgram:
+                            AMSOperations.DeleteProgram(cancellationToken);
                             break;
                     }
                 }

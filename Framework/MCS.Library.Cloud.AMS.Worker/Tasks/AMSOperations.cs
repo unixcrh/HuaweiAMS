@@ -1,5 +1,6 @@
 ﻿using MCS.Library.Cloud.AMS.Data.Adapters;
 using MCS.Library.Cloud.AMS.Data.Entities;
+using MCS.Library.Cloud.AMS.Worker.Configuration;
 using MCS.Library.Cloud.AMSHelper.Mechanism;
 using MCS.Library.Core;
 using System;
@@ -70,9 +71,40 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 
         public static void SyncChannelInfo(CancellationToken cancellationToken)
         {
+            Trace.TraceInformation("开始同步频道信息");
+
             AMSChannelCollection channels = LiveChannelManager.GetAllChannels(true);
 
             AMSChannelSqlAdapter.Instance.UpdateAllChannels(channels);
+
+            Trace.TraceInformation("完成同步频道信息");
+        }
+
+        public static void StopChannel(string channelID, CancellationToken cancellationToken)
+        {
+            AMSChannel channel = AMSChannelSqlAdapter.Instance.LoadByID(channelID);
+
+            if (channel != null)
+            {
+                Trace.TraceInformation("停止频道:\n{0}", channel.ToTraceInfo());
+
+                if (channel.State == AMSChannelState.Stopped)
+                    AMSChannelSqlAdapter.Instance.UpdateState(channel.ID, AMSChannelState.Stopping);
+
+                LiveChannelManager.StopChannel(channel);
+                AMSChannelSqlAdapter.Instance.Update(channel);
+
+                Trace.TraceInformation("频道已停止:\n{0}", channel.ToTraceInfo());
+            }
+        }
+
+        public static void DeleteProgram(CancellationToken cancellationToken)
+        {
+            Trace.TraceInformation("删除过期的节目");
+
+            int count = LiveChannelManager.DeleteAllExpiredPrograms(AMSWorkerSettings.GetConfig().Durations.GetDuration("programExpireTime", TimeSpan.FromDays(1)));
+
+            Trace.TraceInformation("删除了{0}个过期的节目", count);
         }
 
         /// <summary>
@@ -119,11 +151,11 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
             AMSChannel channel = AMSChannelSqlAdapter.Instance.LoadByID(eventData.ChannelID);
 
             if (channel != null)
-            { 
                 LiveChannelManager.StopProgram(channel, eventData);
+            else
+                eventData.State = AMSEventState.Completed;
 
-                AMSEventSqlAdapter.Instance.Update(eventData);
-            }
+            AMSEventSqlAdapter.Instance.Update(eventData);
 
             Trace.TraceInformation("节目已停止:\n{0}", eventData.ToTraceInfo());
         }

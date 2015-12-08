@@ -30,7 +30,7 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
 
         public AMSChannelCollection LoadNeedStopChannels(TimeSpan leadTime)
         {
-            InSqlClauseBuilder inBuilder = new InSqlClauseBuilder("State");
+            InSqlClauseBuilder inBuilder = new InSqlClauseBuilder("OuterC.State");
 
             inBuilder.AppendItem(
                 AMSChannelState.Running.ToString(),
@@ -39,13 +39,17 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
 
             WhereSqlClauseBuilder wBuilder = new WhereSqlClauseBuilder();
 
+            wBuilder.AppendItem("E.StartTime", "GETUTCDATE()", ">=", true);
             wBuilder.AppendItem("E.StartTime",
                 string.Format("DATEADD(second, {0}, GETUTCDATE())", (int)leadTime.TotalSeconds),
-                ">", true);
+                "<", true);
 
-            string sql =
-                string.Format("SELECT C.* FROM AMS.Channels C INNER JOIN AMS.Events E ON C.ID = E.ChannelID WHERE {0} AND {1}",
-                inBuilder.ToSqlStringWithInOperator(TSqlBuilder.Instance), wBuilder.ToSqlString(TSqlBuilder.Instance));
+            string subSql = string.Format("SELECT C.ID FROM AMS.Channels C INNER JOIN AMS.Events E ON C.ID = E.ChannelID WHERE {0}",
+                wBuilder.ToSqlString(TSqlBuilder.Instance));
+
+            string sql = string.Format("SELECT * FROM AMS.Channels OuterC WHERE {0} AND OuterC.ID NOT IN ({1})",
+                        inBuilder.ToSqlStringWithInOperator(TSqlBuilder.Instance),
+                        subSql);
 
             return this.QueryData(sql);
         }

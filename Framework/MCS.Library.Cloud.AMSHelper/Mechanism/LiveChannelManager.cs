@@ -23,12 +23,15 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
         public static AMSChannelCollection GetAllChannels(bool mergeInfoFromCloud = false)
         {
             AMSChannelCollection channelsInDB = ContractManager.GetAMSChannelAdapter().GetAllChannels();
-            AMSChannelCollection channelsFromConfig = GetChannelsFromConfig();
+            //AMSChannelCollection channelsFromConfig = GetChannelsFromConfig();
 
+            //if (mergeInfoFromCloud)
+            //    FillChannelsInfoFromCloud(channelsFromConfig);
             if (mergeInfoFromCloud)
-                FillChannelsInfoFromCloud(channelsFromConfig);
+                FillChannelsInfoFromCloud(channelsInDB);
 
-            return channelsInDB.MergeFrom(channelsFromConfig);
+            //return channelsInDB.MergeFrom(channelsFromConfig);
+            return channelsInDB.MergeFrom(channelsInDB);
         }
 
         public static void StartChannel(AMSChannel channel)
@@ -95,7 +98,53 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
                             eventData.State = AMSEventState.Completed;
                     }
                     else
-                        eventData.State = AMSEventState.Stopping;
+                        eventData.State = AMSEventState.Completed;
+                }
+            }
+        }
+
+        public static int DeleteAllExpiredPrograms(TimeSpan expiredTime)
+        {
+            int count = 0;
+
+            AMSChannelCollection channels = GetAllChannels(false);
+
+            foreach (AMSChannel channel in channels)
+            {
+                CloudMediaContext context = MediaServiceAccountSettings.GetConfig().Accounts.GetCloudMediaContext(channel.AMSAccountName);
+
+                IChannel amsChannel = GetChannelByID(context, channel.AMSID);
+
+                if (amsChannel != null)
+                {
+                    foreach (IProgram program in amsChannel.Programs.ToArray())
+                    {
+                        if (program.State == ProgramState.Stopped && (program.LastModified + expiredTime) < DateTime.UtcNow)
+                        {
+                            TraceOperation("Delete Program", () => program.Delete());
+                            count++;
+                        }
+                    }
+                }
+            }
+
+            return count;
+        }
+
+        public static void StopChannel(AMSChannel channel)
+        {
+            if (channel != null && channel.AMSID.IsNotEmpty())
+            {
+                CloudMediaContext context = MediaServiceAccountSettings.GetConfig().Accounts.GetCloudMediaContext(channel.AMSAccountName);
+
+                IChannel amsChannel = GetChannelByID(context, channel.AMSID);
+
+                if (amsChannel != null)
+                {
+                    if (amsChannel.State == ChannelState.Running)
+                        TraceOperation("Stop Channel", () => amsChannel.Stop());
+
+                    amsChannel.FillAMSChannel(channel);
                 }
             }
         }
