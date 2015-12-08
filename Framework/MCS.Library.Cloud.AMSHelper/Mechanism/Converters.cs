@@ -17,7 +17,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
 
             AMSChannelCollection result = new AMSChannelCollection();
 
-            channels.ForEach(c => result.Add(c.ToAMSChannel()));
+            channels.AsEnumerable().ForEach(c => result.Add(c.ToAMSChannel()));
 
             return result;
         }
@@ -115,7 +115,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
 
             int index = 0;
 
-            foreach (ChannelEndpoint endpoint in endpoints)
+            foreach (ChannelEndpoint endpoint in endpoints.AsEnumerable())
             {
                 if (index == 1)
                 {

@@ -23,6 +23,9 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 
                 if (eventData != null)
                 {
+                    if (eventData.State == AMSEventState.NotStart)
+                        AMSEventSqlAdapter.Instance.UpdateState(eventData.ID, AMSEventState.Starting);
+
                     AMSChannel channel = StartChannel(eventData.ChannelID, cancellationToken);
 
                     if (cancellationToken.IsCancellationRequested == false)
@@ -36,15 +39,40 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
                     }
                 }
             }
-            catch (System.Exception ex)
+            finally
             {
-                Trace.TraceError(ex.ToString());
+                if (eventData != null)
+                    LockHelper.Unlock(eventData);
+            }
+        }
+
+        public static void StopEvent(string eventID, CancellationToken cancellationToken)
+        {
+            AMSEvent eventData = null;
+            try
+            {
+                eventData = AMSEventSqlAdapter.Instance.LoadByID(eventID);
+
+                if (eventData != null)
+                {
+                    if (eventData.State == AMSEventState.Running)
+                        AMSEventSqlAdapter.Instance.UpdateState(eventData.ID, AMSEventState.Stopping);
+
+                    StopProgram(eventData, cancellationToken);
+                }
             }
             finally
             {
                 if (eventData != null)
                     LockHelper.Unlock(eventData);
             }
+        }
+
+        public static void SyncChannelInfo(CancellationToken cancellationToken)
+        {
+            AMSChannelCollection channels = LiveChannelManager.GetAllChannels(true);
+
+            AMSChannelSqlAdapter.Instance.UpdateAllChannels(channels);
         }
 
         /// <summary>
@@ -61,6 +89,9 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
             {
                 Trace.TraceInformation("启动频道:\n{0}", channel.ToTraceInfo());
 
+                if (channel.State == AMSChannelState.Stopped)
+                    AMSChannelSqlAdapter.Instance.UpdateState(channel.ID, AMSChannelState.Starting);
+
                 LiveChannelManager.StartChannel(channel);
                 AMSChannelSqlAdapter.Instance.Update(channel);
 
@@ -76,7 +107,25 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 
             LiveChannelManager.StartProgram(channel, eventData);
 
+            AMSEventSqlAdapter.Instance.Update(eventData);
+
             Trace.TraceInformation("节目已启动:\n{0}", channel.ToTraceInfo());
+        }
+
+        private  static void StopProgram(AMSEvent eventData, CancellationToken cancellationToken)
+        {
+            Trace.TraceInformation("停止节目:\n{0}", eventData.ToTraceInfo());
+
+            AMSChannel channel = AMSChannelSqlAdapter.Instance.LoadByID(eventData.ChannelID);
+
+            if (channel != null)
+            { 
+                LiveChannelManager.StopProgram(channel, eventData);
+
+                AMSEventSqlAdapter.Instance.Update(eventData);
+            }
+
+            Trace.TraceInformation("节目已停止:\n{0}", eventData.ToTraceInfo());
         }
     }
 }

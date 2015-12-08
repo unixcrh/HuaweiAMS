@@ -64,8 +64,38 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
                     if (program == null)
                         program = CreateProgram(context, amsChannel, eventData);
 
-                    if (program.State == ProgramState.Stopped)
-                        TraceOperation("Program", () => program.Start());
+                    if (channel.State == AMSChannelState.Running && program.State == ProgramState.Stopped)
+                        TraceOperation("Start Program", () => program.Start());
+
+                    program.FillAMSEvent(eventData);
+                }
+            }
+        }
+
+        public static void StopProgram(AMSChannel channel, AMSEvent eventData)
+        {
+            if (channel != null && channel.AMSID.IsNotEmpty())
+            {
+                CloudMediaContext context = MediaServiceAccountSettings.GetConfig().Accounts.GetCloudMediaContext(channel.AMSAccountName);
+
+                IChannel amsChannel = GetChannelByID(context, channel.AMSID);
+
+                if (amsChannel != null)
+                {
+                    IProgram program = GetProgramByEvent(amsChannel, eventData);
+
+                    if (program != null)
+                    {
+                        if (program.State == ProgramState.Running)
+                            TraceOperation("Stop Program", () => program.Stop());
+
+                        program.FillAMSEvent(eventData);
+
+                        if (eventData.State == AMSEventState.NotStart)
+                            eventData.State = AMSEventState.Completed;
+                    }
+                    else
+                        eventData.State = AMSEventState.Stopping;
                 }
             }
         }
@@ -103,16 +133,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
 
         private static IAccessPolicy GetOrCreateAccessPolicy(CloudMediaContext context)
         {
-            IAccessPolicy result = null;
-
-            foreach (IAccessPolicy policy in context.AccessPolicies)
-            {
-                if (policy.Name == DefaultPolicyName)
-                {
-                    result = policy;
-                    break;
-                }
-            }
+            IAccessPolicy result = context.AccessPolicies.Where(p => p.Name == DefaultPolicyName).FirstOrDefault();
 
             if (result == null)
                 result = context.AccessPolicies.Create(DefaultPolicyName, TimeSpan.FromDays(3000), AccessPermissions.Read | AccessPermissions.List);
@@ -127,34 +148,12 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
 
         private static IAsset GetAssetByName(CloudMediaContext context, string assetName)
         {
-            IAsset result = null;
-
-            foreach (IAsset asset in context.Assets)
-            {
-                if (asset.Name == assetName)
-                {
-                    result = asset;
-                    break;
-                }
-            }
-
-            return result;
+            return context.Assets.Where(a => a.Name == assetName).FirstOrDefault();
         }
 
         private static IChannel GetChannelByID(CloudMediaContext context, string channelID)
         {
-            IChannel result = null;
-
-            foreach (IChannel c in context.Channels)
-            {
-                if (c.Id == channelID)
-                {
-                    result = c;
-                    break;
-                }
-            }
-
-            return result;
+            return context.Channels.Where(c => c.Id == channelID).FirstOrDefault();
         }
 
         private static IProgram GetProgramByEvent(IChannel channel, AMSEvent eventData)
@@ -162,16 +161,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
             IProgram result = null;
 
             if (channel != null)
-            {
-                foreach (IProgram p in channel.Programs)
-                {
-                    if (p.Name == GetProgramName(eventData))
-                    {
-                        result = p;
-                        break;
-                    }
-                }
-            }
+                result = channel.Programs.Where(p => p.Name == GetProgramName(eventData)).FirstOrDefault();
 
             return result;
         }

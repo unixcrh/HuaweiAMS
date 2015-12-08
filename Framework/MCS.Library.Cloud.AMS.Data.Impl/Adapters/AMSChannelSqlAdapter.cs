@@ -28,6 +28,28 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
             return this.LoadByInBuilder(builder => builder.AppendItem(id), "ID").SingleOrDefault();
         }
 
+        public AMSChannelCollection LoadNeedStopChannels(TimeSpan leadTime)
+        {
+            InSqlClauseBuilder inBuilder = new InSqlClauseBuilder("State");
+
+            inBuilder.AppendItem(
+                AMSChannelState.Running.ToString(),
+                AMSChannelState.Starting.ToString(),
+                AMSChannelState.Stopping.ToString());
+
+            WhereSqlClauseBuilder wBuilder = new WhereSqlClauseBuilder();
+
+            wBuilder.AppendItem("E.StartTime",
+                string.Format("DATEADD(second, {0}, GETUTCDATE())", (int)leadTime.TotalSeconds),
+                ">", true);
+
+            string sql =
+                string.Format("SELECT C.* FROM AMS.Channels C INNER JOIN AMS.Events E ON C.ID = E.ChannelID WHERE {0} AND {1}",
+                inBuilder.ToSqlStringWithInOperator(TSqlBuilder.Instance), wBuilder.ToSqlString(TSqlBuilder.Instance));
+
+            return this.QueryData(sql);
+        }
+
         /// <summary>
         /// 更新所有的频道数据
         /// </summary>
@@ -52,6 +74,29 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
             }
 
             return DbHelper.RunSqlWithTransaction(strB.ToString(), this.GetConnectionName());
+        }
+
+        /// <summary>
+        /// 更新频道的状态
+        /// </summary>
+        /// <param name="channelID"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public int UpdateState(string channelID, AMSChannelState state)
+        {
+            channelID.CheckStringIsNullOrEmpty("channelID");
+
+            SqlClauseBuilderBase wBuilder = new WhereSqlClauseBuilder().AppendItem("ID", channelID);
+
+            Dictionary<string, object> context = new Dictionary<string, object>();
+            ORMappingItemCollection mappings = this.GetMappingInfo(context);
+
+            SqlClauseBuilderBase uBuilder = new UpdateSqlClauseBuilder().AppendItem("State", state.ToString());
+
+            string sql = string.Format("UPDATE {0} SET {1} WHERE {2}",
+                mappings.TableName, uBuilder.ToSqlString(TSqlBuilder.Instance), wBuilder.ToSqlString(TSqlBuilder.Instance));
+
+            return DbHelper.RunSql(sql, this.GetConnectionName());
         }
 
         protected override string GetConnectionName()

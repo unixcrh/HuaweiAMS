@@ -101,6 +101,21 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
         /// <summary>
         /// 停止事件
         /// </summary>
-        StopEvent
+        StopEvent,
+
+        /// <summary>
+        /// 同步频道信息
+        /// </summary>
+        SyncChannelInfo,
+
+        /// <summary>
+        /// 停用频道
+        /// </summary>
+        StopChannel,
+
+        /// <summary>
+        /// 删除节目
+        /// </summary>
+        DeleteProgram
     }
 }

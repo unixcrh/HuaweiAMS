@@ -2,6 +2,7 @@
 using MCS.Library.Core;
 using MCS.Library.Data.Adapters;
 using MCS.Library.Data.Builder;
+using MCS.Library.Data.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,7 +62,10 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
         {
             InSqlClauseBuilder stateBuilder = new InSqlClauseBuilder("State");
 
-            stateBuilder.AppendItem(AMSEventState.Running.ToString(), AMSEventState.Stopping.ToString());
+            stateBuilder.AppendItem(
+                AMSEventState.Running.ToString(),
+                AMSEventState.Starting.ToString(),
+                AMSEventState.Stopping.ToString());
 
             WhereSqlClauseBuilder timeBuilder = new WhereSqlClauseBuilder();
 
@@ -75,6 +79,44 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
             id.CheckStringIsNullOrEmpty("id");
 
             this.Delete(builder => builder.AppendItem("ID", id));
+        }
+
+        public int UpdateState(string eventID, AMSEventState state)
+        {
+            eventID.CheckStringIsNullOrEmpty("eventID");
+
+            SqlClauseBuilderBase wBuilder = new WhereSqlClauseBuilder().AppendItem("ID", eventID);
+
+            Dictionary<string, object> context = new Dictionary<string, object>();
+            ORMappingItemCollection mappings = this.GetMappingInfo(context);
+
+            SqlClauseBuilderBase uBuilder = new UpdateSqlClauseBuilder().AppendItem("State", state.ToString());
+
+            string sql = string.Format("UPDATE {0} SET {1} WHERE {2}",
+                mappings.TableName, uBuilder.ToSqlString(TSqlBuilder.Instance), wBuilder.ToSqlString(TSqlBuilder.Instance));
+
+            return DbHelper.RunSql(sql, this.GetConnectionName());
+        }
+
+        /// <summary>
+        /// 更新某一状态下所有时间的完成时间
+        /// </summary>
+        /// <param name="endTime"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public int UpdateEndTime(DateTime endTime, AMSEventState state)
+        {
+            SqlClauseBuilderBase wBuilder = new WhereSqlClauseBuilder().AppendItem("State", state.ToString());
+
+            SqlClauseBuilderBase uBuilder = new UpdateSqlClauseBuilder().AppendItem("EndTime", endTime);
+
+            Dictionary<string, object> context = new Dictionary<string, object>();
+            ORMappingItemCollection mappings = this.GetMappingInfo(context);
+
+            string sql = string.Format("UPDATE {0} SET {1} WHERE {2}",
+                mappings.TableName, uBuilder.ToSqlString(TSqlBuilder.Instance), wBuilder.ToSqlString(TSqlBuilder.Instance));
+
+            return DbHelper.RunSql(sql, this.GetConnectionName());
         }
     }
 }

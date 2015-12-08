@@ -44,6 +44,9 @@ namespace MCS.Library.Cloud.AMS.Worker.Test
                         LockHelper.ClearAll();
                         Console.WriteLine("Lock cleared");
                         break;
+                    case "endevents":
+                        Console.WriteLine("{0} events updated.", DataHelper.EndAllRunningEvents());
+                        break;
                 }
             }
         }

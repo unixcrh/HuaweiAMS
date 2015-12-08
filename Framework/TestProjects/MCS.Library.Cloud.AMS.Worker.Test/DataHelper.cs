@@ -39,5 +39,10 @@ namespace MCS.Library.Cloud.AMS.Worker.Test
         {
             AMSQueueSqlAdapter.Instance.ClearQueue();
         }
+
+        public static int EndAllRunningEvents()
+        {
+            return AMSEventSqlAdapter.Instance.UpdateEndTime(DateTime.UtcNow, AMSEventState.Running);
+        }
     }
 }

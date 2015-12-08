@@ -1,5 +1,6 @@
 ﻿using MCS.Library.Cloud.AMS.Data.Adapters;
 using MCS.Library.Cloud.AMS.Data.Entities;
+using MCS.Library.Cloud.AMS.Worker.Configuration;
 using MCS.Library.Core;
 using System;
 using System.Collections.Generic;
@@ -21,18 +22,58 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
                     {
                         while (cancellationToken.IsCancellationRequested == false)
                         {
-                            action(cancellationToken);
+                            try
+                            {
+                                action(cancellationToken);
 
-                            Task.Delay(timeInterval).Wait();
+                                Task.Delay(timeInterval).Wait();
+                            }
+                            catch (System.Exception ex)
+                            {
+                                Trace.TraceError(ex.ToString());
+                            }
                         }
                     });
         }
 
         public static void StartAllTasks(CancellationToken cancellationToken)
         {
+            AMSWorkerSettings settings = AMSWorkerSettings.GetConfig();
+
             DoLoopTask(StartEventsInTimeFrame, DefaultDelayTime, cancellationToken);
             DoLoopTask(StopEventsInTimeFrame, DefaultDelayTime, cancellationToken);
             DoLoopTask(ReadQueue, DefaultDelayTime, cancellationToken);
+
+            DoLoopTask(SyncChannelInfo, settings.Durations.GetDuration("syncChannelInfoInterval", DefaultDelayTime), cancellationToken);
+            DoLoopTask(StopChannel, settings.Durations.GetDuration("stopChannelInterval", DefaultDelayTime), cancellationToken);
+            DoLoopTask(DeleteProgram, settings.Durations.GetDuration("deleteProgamInterval", DefaultDelayTime), cancellationToken);
+        }
+
+        public static void SyncChannelInfo(CancellationToken cancellationToken)
+        {
+            AMSQueueItem message = new AMSQueueItem();
+
+            message.ItemType = AMSQueueItemType.SyncChannelInfo;
+
+            GetQueue().AddMessages(string.Empty, message);
+        }
+
+        public static void StopChannel(CancellationToken cancellationToken)
+        {
+            AMSQueueItem message = new AMSQueueItem();
+
+            message.ItemType = AMSQueueItemType.StopChannel;
+
+            GetQueue().AddMessages(string.Empty, message);
+        }
+
+        public static void DeleteProgram(CancellationToken cancellationToken)
+        {
+            AMSQueueItem message = new AMSQueueItem();
+
+            message.ItemType = AMSQueueItemType.DeleteProgram;
+
+            GetQueue().AddMessages(string.Empty, message);
         }
 
         /// <summary>
@@ -96,13 +137,24 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
                 Trace.TraceInformation("Message: ID={0}, ResourceID={1}, Name={2}, ItemType={3}",
                     message.ID, message.ResourceID, message.ResourceID, message.ItemType);
 
-                switch (message.ItemType)
+                if (AMSWorkerSettings.GetConfig().ItemTypes.IsEnabled(message.ItemType))
                 {
-                    case AMSQueueItemType.StartEvent:
-                        AMSOperations.StartEvent(message.ResourceID, cancellationToken);
-                        break;
-                    case AMSQueueItemType.StopEvent:
-                        break;
+                    switch (message.ItemType)
+                    {
+                        case AMSQueueItemType.StartEvent:
+                            AMSOperations.StartEvent(message.ResourceID, cancellationToken);
+                            break;
+                        case AMSQueueItemType.StopEvent:
+                            AMSOperations.StopEvent(message.ResourceID, cancellationToken);
+                            break;
+                        case AMSQueueItemType.SyncChannelInfo:
+                            AMSOperations.SyncChannelInfo(cancellationToken);
+                            break;
+                        case AMSQueueItemType.StopChannel:
+                            break;
+                        case AMSQueueItemType.DeleteProgram:
+                            break;
+                    }
                 }
             }
         }
