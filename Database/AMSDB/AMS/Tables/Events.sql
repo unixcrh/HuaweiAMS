@@ -12,7 +12,9 @@
     [CreateTime] DATETIME NULL DEFAULT GETUTCDATE(), 
     [AMSProgramID] NVARCHAR(50) NULL, 
     [DefaultPlaybackUrl] NVARCHAR(MAX) NULL, 
-    [CDNPlaybackUrl] NVARCHAR(MAX) NULL
+    [CDNPlaybackUrl] NVARCHAR(MAX) NULL, 
+    [PosterUrl] NVARCHAR(MAX) NULL, 
+    [LogoUrl] NVARCHAR(MAX) NULL
 )
 
 GO
@@ -23,3 +25,4 @@ GO
 
 
 CREATE INDEX [IX_Events_StartTime] ON [AMS].[Events] ([StartTime])
+

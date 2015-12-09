@@ -114,3 +114,21 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'Events',
     @level2type = N'COLUMN',
     @level2name = N'CDNPlaybackUrl'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'海报地址',
+    @level0type = N'SCHEMA',
+    @level0name = N'AMS',
+    @level1type = N'TABLE',
+    @level1name = N'Events',
+    @level2type = N'COLUMN',
+    @level2name = N'PosterUrl'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'图标地址',
+    @level0type = N'SCHEMA',
+    @level0name = N'AMS',
+    @level1type = N'TABLE',
+    @level1name = N'Events',
+    @level2type = N'COLUMN',
+    @level2name = N'LogoUrl'
