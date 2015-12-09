@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="AMSWorker" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="ChannelRole">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=huaweiams;AccountKey=ruBOWMwZfxlKgxDhuxssCy1pN9EtrmbXiFkmhXlWcMB+0FwEYGN9Uvqb4kboLK+PMQ2XPI7JhmwkTIrS4pyrEQ==" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>
