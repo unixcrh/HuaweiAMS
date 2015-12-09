@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>2.8</ProductVersion>
-    <ProjectGuid>ef249a4c-68d2-4833-92ac-02e64ea33547</ProjectGuid>
+    <ProjectGuid>e73a83ea-cfa1-49b1-88d2-fe10e762397a</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AMSWorker</RootNamespace>
@@ -39,7 +39,7 @@
   <ItemGroup>
     <ProjectReference Include="ChannelRole\ChannelRole.csproj">
       <Name>ChannelRole</Name>
-      <Project>{8f5f77a9-cd05-432a-91e3-9c4381042f47}</Project>
+      <Project>{78a0e41b-e050-4b20-b7a9-d05f879114bf}</Project>
       <Private>True</Private>
       <RoleType>Worker</RoleType>
       <RoleName>ChannelRole</RoleName>
@@ -48,9 +48,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ChannelRoleContent\" />
+    <Folder Include="Profiles" />
   </ItemGroup>
   <ItemGroup>
     <DiagnosticsConfiguration Include="ChannelRoleContent\diagnostics.wadcfgx" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishProfile Include="Profiles\HuaWeiAMSWorkerProduction.azurePubxml" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

@@ -9,6 +9,7 @@ using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Diagnostics;
 using Microsoft.WindowsAzure.ServiceRuntime;
 using Microsoft.WindowsAzure.Storage;
+using MCS.Library.Cloud.AMS.Worker.Tasks;
 
 namespace ChannelRole
 {
@@ -23,6 +24,8 @@ namespace ChannelRole
 
             try
             {
+                AMSTask.StartAllTasks(cancellationTokenSource.Token);
+
                 this.RunAsync(this.cancellationTokenSource.Token).Wait();
             }
             finally
@@ -63,7 +66,7 @@ namespace ChannelRole
             // TODO: Replace the following with your own logic.
             while (!cancellationToken.IsCancellationRequested)
             {
-                Trace.TraceInformation("Working");
+                //Trace.TraceInformation("Working");
                 await Task.Delay(1000);
             }
         }

@@ -3,20 +3,20 @@
   <PropertyGroup>
     <AzureCredentials>{"ServiceManagementEndpoint":"https:\/\/management.core.windows.net\/","SubscriptionId":"a008add4-610d-4640-940c-bf03957e8061"}</AzureCredentials>
     <AzureDeleteDeploymentOnFailure>False</AzureDeleteDeploymentOnFailure>
-    <AzureDeploymentLabel>AMSChannelAndEventsWorker</AzureDeploymentLabel>
+    <AzureDeploymentLabel>AMSWorker</AzureDeploymentLabel>
     <AzureDeploymentReplacementMethod>AutomaticUpgrade</AzureDeploymentReplacementMethod>
     <AzureSlot>Production</AzureSlot>
     <AzureEnableRemoteDesktop>True</AzureEnableRemoteDesktop>
     <AzureEnableWebDeploy>False</AzureEnableWebDeploy>
     <AzureFallbackToDeleteAndRecreateIfUpgradeFails>False</AzureFallbackToDeleteAndRecreateIfUpgradeFails>
-    <AzureHostedServiceLabel>AMSChannelService</AzureHostedServiceLabel>
-    <AzureHostedServiceName>amschannelservice</AzureHostedServiceName>
+    <AzureHostedServiceLabel>HuaWeiAMSWorker</AzureHostedServiceLabel>
+    <AzureHostedServiceName>huaweiamsworker</AzureHostedServiceName>
     <AzureEnableIntelliTrace>False</AzureEnableIntelliTrace>
     <AzureEnableProfiling>False</AzureEnableProfiling>
     <AzureServiceConfiguration>Cloud</AzureServiceConfiguration>
     <AzureSolutionConfiguration>Release</AzureSolutionConfiguration>
-    <AzureStorageAccountLabel>37portalvhds740ccbxzky42</AzureStorageAccountLabel>
-    <AzureStorageAccountName>37portalvhds740ccbxzky42</AzureStorageAccountName>
+    <AzureStorageAccountLabel>huaweiams</AzureStorageAccountLabel>
+    <AzureStorageAccountName>huaweiams</AzureStorageAccountName>
     <AzureAppendTimestampToDeploymentLabel>True</AzureAppendTimestampToDeploymentLabel>
   </PropertyGroup>
 </Project>
