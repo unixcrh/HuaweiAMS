@@ -71,13 +71,13 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 
         public static void SyncChannelInfo(CancellationToken cancellationToken)
         {
-            Trace.TraceInformation("开始同步频道信息");
+            Trace.TraceInformation("Start Sync Channel Info");
 
             AMSChannelCollection channels = LiveChannelManager.GetAllChannels(true);
 
             AMSChannelSqlAdapter.Instance.UpdateAllChannels(channels);
 
-            Trace.TraceInformation("完成同步频道信息");
+            Trace.TraceInformation("Complete Sync Channel Info");
         }
 
         public static void StopChannel(string channelID, CancellationToken cancellationToken)
@@ -86,7 +86,7 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 
             if (channel != null)
             {
-                Trace.TraceInformation("停止频道:\n{0}", channel.ToTraceInfo());
+                Trace.TraceInformation("Stop Channel:\n{0}", channel.ToTraceInfo());
 
                 if (channel.State == AMSChannelState.Stopped)
                     AMSChannelSqlAdapter.Instance.UpdateState(channel.ID, AMSChannelState.Stopping);
@@ -94,17 +94,17 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
                 LiveChannelManager.StopChannel(channel);
                 AMSChannelSqlAdapter.Instance.Update(channel);
 
-                Trace.TraceInformation("频道已停止:\n{0}", channel.ToTraceInfo());
+                Trace.TraceInformation("Channel Stopped:\n{0}", channel.ToTraceInfo());
             }
         }
 
         public static void DeleteProgram(CancellationToken cancellationToken)
         {
-            Trace.TraceInformation("删除过期的节目");
+            Trace.TraceInformation("Delete expired programs");
 
             int count = LiveChannelManager.DeleteAllExpiredPrograms(AMSWorkerSettings.GetConfig().Durations.GetDuration("programExpireTime", TimeSpan.FromDays(1)));
 
-            Trace.TraceInformation("删除了{0}个过期的节目", count);
+            Trace.TraceInformation("{0} programs deleted", count);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 
             if (channel != null)
             {
-                Trace.TraceInformation("启动频道:\n{0}", channel.ToTraceInfo());
+                Trace.TraceInformation("Start Channel:\n{0}", channel.ToTraceInfo());
 
                 if (channel.State == AMSChannelState.Stopped)
                     AMSChannelSqlAdapter.Instance.UpdateState(channel.ID, AMSChannelState.Starting);
@@ -127,7 +127,7 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
                 LiveChannelManager.StartChannel(channel);
                 AMSChannelSqlAdapter.Instance.Update(channel);
 
-                Trace.TraceInformation("频道已启动:\n{0}", channel.ToTraceInfo());
+                Trace.TraceInformation("Channel Started:\n{0}", channel.ToTraceInfo());
             }
 
             return channel;
@@ -135,18 +135,18 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 
         private static void StartProgram(AMSEvent eventData, AMSChannel channel, CancellationToken cancellationToken)
         {
-            Trace.TraceInformation("启动节目:\n{0}", channel.ToTraceInfo());
+            Trace.TraceInformation("Start Program:\n{0}", channel.ToTraceInfo());
 
             LiveChannelManager.StartProgram(channel, eventData);
 
             AMSEventSqlAdapter.Instance.Update(eventData);
 
-            Trace.TraceInformation("节目已启动:\n{0}", channel.ToTraceInfo());
+            Trace.TraceInformation("Program Started:\n{0}", channel.ToTraceInfo());
         }
 
         private  static void StopProgram(AMSEvent eventData, CancellationToken cancellationToken)
         {
-            Trace.TraceInformation("停止节目:\n{0}", eventData.ToTraceInfo());
+            Trace.TraceInformation("Stop Program:\n{0}", eventData.ToTraceInfo());
 
             AMSChannel channel = AMSChannelSqlAdapter.Instance.LoadByID(eventData.ChannelID);
 
@@ -157,7 +157,7 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 
             AMSEventSqlAdapter.Instance.Update(eventData);
 
-            Trace.TraceInformation("节目已停止:\n{0}", eventData.ToTraceInfo());
+            Trace.TraceInformation("Program Stopped:\n{0}", eventData.ToTraceInfo());
         }
     }
 }

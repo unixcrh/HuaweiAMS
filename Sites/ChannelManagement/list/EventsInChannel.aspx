@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EventsInChannel.aspx.cs" Inherits="ChannelManagement.list.EventsInChannel" %>
 
+<%@ Register Src="~/Templates/ChannelHeader.ascx" TagPrefix="ams" TagName="ChannelHeader" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -7,8 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>频道中的事件</title>
     <script type="text/javascript">
-        function onDeleteEventButtonClick()
-        {
+        function onDeleteEventButtonClick() {
             var canDelete = $find("dataGrid").get_clientSelectedKeys().length > 0;
 
             if (canDelete > 0)
@@ -18,14 +19,20 @@
 
             return canDelete;
         }
+
+        function onDeleteEventClick(id) {
+            if (window.confirm("确定删除事件吗？") == false)
+                return false;
+        }
     </script>
 </head>
 <body>
     <form id="serverForm" runat="server">
         <div class="container">
+            <ams:ChannelHeader runat="server" ID="ChannelHeader" CurrentName="事件列表" />
             <div>
                 <a runat="server" id="addEventButton" class="btn btn-success">增加事件...</a>
-                <asp:Button runat="server" ID="deleteEventButton" class="btn btn-default" Text="删除事件..." OnClientClick="return onDeleteEventButtonClick();" OnClick="deleteEventButton_Click"/>
+                <asp:Button runat="server" ID="deleteEventButton" class="btn btn-default" Text="删除事件..." OnClientClick="return onDeleteEventButtonClick();" OnClick="deleteEventButton_Click" />
             </div>
             <res:DeluxeGrid ID="dataGrid" runat="server" GridLines="None" AllowPaging="True" ShowCheckBoxes="true"
                 GridTitle="事件列表" EnableViewState="false" AutoGenerateColumns="False" UseAccessibleHeader="False"
@@ -39,7 +46,7 @@
                 <HeaderStyle />
                 <AlternatingRowStyle />
                 <Columns>
-                    <asp:HyperLinkField HeaderText="事件" DataTextField="Name" DataNavigateUrlFields="ID" DataNavigateUrlFormatString="../forms/EditEvent.aspx?id={0}" />
+                    <asp:HyperLinkField HeaderText="事件" DataTextField="Name" DataNavigateUrlFields="ChannelID,ID" DataNavigateUrlFormatString="../forms/EditEvent.aspx?channelID={0}&id={1}" />
                     <asp:TemplateField HeaderText="开始时间">
                         <ItemTemplate>
                             <%#((DateTime)Eval("StartTime")) == DateTime.MinValue ? string.Empty : ((DateTime)Eval("StartTime")).ToString("yyyy-MM-dd HH:mm:ss")%>
@@ -53,6 +60,57 @@
                     <asp:BoundField DataField="State" HeaderText="状态">
                         <ItemStyle HorizontalAlign="Left" />
                     </asp:BoundField>
+                    <asp:TemplateField HeaderText="操作">
+                        <ItemTemplate>
+                            <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+                                <a class="btn btn-xs btn-success" href='../forms/EventPlayer.aspx?channelID=<%#Eval("ChannelID") %>&id=<%#Eval("ID") %>'>
+                                    <i class="icon-play bigger-120"></i>
+                                </a>
+
+                                <a class="btn btn-xs btn-info" href="../forms/EditEvent.aspx?channelID=<%#Eval("ChannelID") %>&id=<%#Eval("ID") %>">
+                                    <i class="icon-edit bigger-120"></i>
+                                </a>
+
+                                <asp:Button runat="server" CssClass="btn btn-xs btn-danger">
+                                    <i class="icon-trash bigger-120"></i>
+                                </asp:Button>
+
+                                <%--<button class="btn btn-xs btn-warning">
+                                    <i class="icon-flag bigger-120"></i>
+                                </button>--%>
+                            </div>
+                            <div class="visible-xs visible-sm hidden-md hidden-lg">
+                                <div class="dropdown">
+                                    <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
+                                        <i class="icon-cog icon-only bigger-110"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
+                                        <li>
+                                            <a href='../forms/EventPlayer.aspx?channelID=<%#Eval("ChannelID") %>&id=<%#Eval("ID") %>' class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
+                                                <span class="blue">
+                                                    <i class="icon-play bigger-120"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="../forms/EditEvent.aspx?channelID=<%#Eval("ChannelID") %>&id=<%#Eval("ID") %>" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
+                                                <span class="green">
+                                                    <i class="icon-edit bigger-120"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
+                                                <span class="red">
+                                                    <i class="icon-trash bigger-120"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
                 <PagerSettings Position="TopAndBottom" Mode="NextPreviousFirstLast" />
             </res:DeluxeGrid>

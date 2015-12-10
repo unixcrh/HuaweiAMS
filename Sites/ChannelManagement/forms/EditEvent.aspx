@@ -1,5 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditEvent.aspx.cs" Inherits="ChannelManagement.forms.EditEvent" %>
 
+<%@ Register Src="~/Templates/ChannelHeader.ascx" TagPrefix="ams" TagName="ChannelHeader" %>
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,6 +12,7 @@
 </head>
 <body>
     <div class="container">
+        <ams:ChannelHeader runat="server" ID="ChannelHeader" CurrentName="编辑频道" />
         <form id="serverForm" runat="server" class="form-horizontal">
             <res:DataBindingControl runat="server" ID="bindingControl" IsValidateOnSubmit="true" ValidateUnbindProperties="false">
                 <ItemBindings>

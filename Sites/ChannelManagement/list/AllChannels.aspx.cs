@@ -12,7 +12,7 @@ namespace ChannelManagement.list
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.dataGrid.DataSource = LiveChannelManager.GetAllChannels(true);
+            this.dataGrid.DataSource = LiveChannelManager.GetAllChannels(false);
             this.dataGrid.DataBind();
         }
     }

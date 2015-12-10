@@ -88,7 +88,7 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
             if (category.IsNotEmpty())
                 builder.AppendItem("Category", category);
 
-            string sql = string.Format("SELECT TOP {0} * FROM {1} WITH(UPDLOCK READPAST)", count, GetTableName());
+            string sql = string.Format("SELECT TOP {0} * FROM {1} WITH(UPDLOCK, READPAST)", count, GetTableName());
 
             if (builder.IsEmpty == false)
                 sql += " WHERE " + builder.ToSqlString(TSqlBuilder.Instance);

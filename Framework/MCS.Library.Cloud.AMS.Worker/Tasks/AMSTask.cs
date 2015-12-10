@@ -25,12 +25,14 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
                             try
                             {
                                 action(cancellationToken);
-
-                                Task.Delay(timeInterval).Wait();
                             }
                             catch (System.Exception ex)
                             {
                                 Trace.TraceError(ex.ToString());
+                            }
+                            finally
+                            {
+                                Task.Delay(timeInterval).Wait();
                             }
                         }
                     });

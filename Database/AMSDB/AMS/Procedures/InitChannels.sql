@@ -3,6 +3,8 @@ AS
 BEGIN
 	--IF (NOT EXISTS(SELECT TOP 1 * FROM AMS.Channels))
 	BEGIN
+		TRUNCATE TABLE AMS.Channels
+
 		INSERT INTO AMS.Channels(ID, AMSID, AMSAccountName, Name, [Description], PreviewUrl, PrimaryInputUrl, SecondaryInputUrl)
 		VALUES(CAST(NEWID() AS NVARCHAR(36)), 'nb:chid:UUID:67e9c167-8421-41d0-8bcc-06b753791fe0', 'zhshenstudy', 'TheFirst', '', 
 		'http://thefirst-zhshenstudy.channel.mediaservices.windows.net/preview.isml/manifest',

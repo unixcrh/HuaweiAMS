@@ -22,6 +22,15 @@ namespace ChannelManagement.list {
         protected global::System.Web.UI.HtmlControls.HtmlForm serverForm;
         
         /// <summary>
+        /// ChannelHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ChannelManagement.Templates.ChannelHeader ChannelHeader;
+        
+        /// <summary>
         /// addEventButton control.
         /// </summary>
         /// <remarks>

@@ -54,7 +54,7 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 
             lockData.LockID = eventData.ID;
             lockData.LockType = AMSLockType.EventLock;
-            lockData.Description = string.Format("为事件(ID: {0}, Name: {1})加锁", eventData.ID, eventData.Name);
+            lockData.Description = string.Format("Add lock for event(ID: {0}, Name: {1})", eventData.ID, eventData.Name);
 
             return lockData;
         }
