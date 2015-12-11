@@ -84,8 +84,14 @@
     <Build Include="..\AMSDB\AMS\Tables\UserOperationLogs.sql">
       <Link>AMS\Tables\UserOperationLogs.sql</Link>
     </Build>
+    <Build Include="..\AMSDB\AMS\Tables\UserViews.sql">
+      <Link>AMS\Tables\UserViews.sql</Link>
+    </Build>
     <Build Include="..\AMSDB\AMS\Procedures\InitChannels.sql">
       <Link>AMS\Procedures\InitChannels.sql</Link>
+    </Build>
+    <Build Include="..\AMSDB\AMS\Procedures\InitEvents.sql">
+      <Link>AMS\Procedures\InitEvents.sql</Link>
     </Build>
     <PostDeploy Include="..\AMSDB\Scripts\PostDeployment.sql">
       <Link>Scripts\PostDeployment.sql</Link>
