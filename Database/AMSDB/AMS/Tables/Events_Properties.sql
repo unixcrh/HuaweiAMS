@@ -132,3 +132,30 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'Events',
     @level2type = N'COLUMN',
     @level2name = N'LogoUrl'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'观看次数',
+    @level0type = N'SCHEMA',
+    @level0name = N'AMS',
+    @level1type = N'TABLE',
+    @level1name = N'Events',
+    @level2type = N'COLUMN',
+    @level2name = N'Views'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'用户评分满分为5分，0.5分为最小单位',
+    @level0type = N'SCHEMA',
+    @level0name = N'AMS',
+    @level1type = N'TABLE',
+    @level1name = N'Events',
+    @level2type = N'COLUMN',
+    @level2name = N'Rating'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'演讲者',
+    @level0type = N'SCHEMA',
+    @level0name = N'AMS',
+    @level1type = N'TABLE',
+    @level1name = N'Events',
+    @level2type = N'COLUMN',
+    @level2name = N'Speakers'

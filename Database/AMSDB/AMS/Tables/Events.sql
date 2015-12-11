@@ -4,6 +4,7 @@
 	[ChannelID] NVARCHAR(36) NOT NULL,
     [Name] NVARCHAR(128) NULL, 
     [Description] NVARCHAR(MAX) NULL,
+	[Speakers] NVARCHAR(255) NULL,
 	[State] NVARCHAR(32) NULL,
     [StartTime] DATETIME NULL, 
     [EndTime] DATETIME NULL, 
@@ -14,7 +15,9 @@
     [DefaultPlaybackUrl] NVARCHAR(MAX) NULL, 
     [CDNPlaybackUrl] NVARCHAR(MAX) NULL, 
     [PosterUrl] NVARCHAR(MAX) NULL, 
-    [LogoUrl] NVARCHAR(MAX) NULL
+    [LogoUrl] NVARCHAR(MAX) NULL, 
+    [Views] BIGINT NULL DEFAULT 0, 
+    [Rating] DECIMAL(18, 2) NULL DEFAULT 0
 )
 
 GO
@@ -25,4 +28,3 @@ GO
 
 
 CREATE INDEX [IX_Events_StartTime] ON [AMS].[Events] ([StartTime])
-
