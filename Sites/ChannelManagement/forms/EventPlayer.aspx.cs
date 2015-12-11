@@ -35,7 +35,7 @@ namespace ChannelManagement.forms
             eventData.NullCheck(string.Format("不能找到ID为{0}的事件", id));
 
             if (eventData.PosterUrl.IsNullOrEmpty())
-                eventData.PosterUrl = this.ResolveUrl("~/images/amsPoster1.png");
+                eventData.PosterUrl = UriHelper.MakeAbsolute(new Uri(this.ResolveUrl("~/images/amsPoster1.png"), UriKind.RelativeOrAbsolute), this.Request.Url).ToString();
 
             this.Data = eventData;
         }
