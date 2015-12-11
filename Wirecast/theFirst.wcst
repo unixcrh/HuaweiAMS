@@ -1,27 +1,27 @@
 <document version="6" os="windows" original_document_path="D:\ProjectsInGitHub\HuaweiAMS\Wirecast\theFirst.wcst">
 	<open_windows>
-		<vamWindowGlass frame="0,0,1936,1056" asset_icon_scale="0.5" asset_icon_updateFPS="15" selected_layer="1836282929" vam_main_splitter="0.65" />
+		<vamWindowGlass frame="0,0,1936,1056" asset_icon_scale="0.5" asset_icon_updateFPS="15" selected_layer="1836282930" vam_main_splitter="0.65" />
 	</open_windows>
 	<vam_state master_audio_shown="1000" transition_0_unique_id="-- CUT --" transition_1_unique_id="-- SMOOTH --" transition_2_unique_id="side" />
 	<transition_data />
 	<chroma_key_data />
 	<advanced_output>
 		<output_list output_last_selected="df355358-4949-46bc-b6e3-d01cf6fc6b5a">
-			<output output_enabled="1" output_type="2" output_transport="7" output_url="rtmp://thefirst-zhshenstudy.channel.mediaservices.windows.net:1935/live/c386e0f077614e32862af4234cc19118" output_location="myStream" output_branding="p_output_azure_brand" output_display_name="Azure Media Services" output_display_group_name="Azure Media Services" output_guid="467b42a4-8d55-49fa-9f1c-82b3904a65dc" unique_id="1" output_presetname="Azure H.264 720p 16:9 (1280x720)" impersonate_fme_2_5="0" flash_user_agent="Wirecast/FM 1.0" output_location_with_bitrate="myStream" output_settings_complete="1" output_id="df355358-4949-46bc-b6e3-d01cf6fc6b5a" />
+			<output output_enabled="1" output_type="2" output_transport="7" output_url="rtmp://thefirst-zhshenstudy.channel.mediaservices.windows.net:1935/live/c386e0f077614e32862af4234cc19118" output_location="myStream" output_branding="p_output_azure_brand" output_display_name="Azure Media Services" output_display_group_name="Azure Media Services" output_guid="467b42a4-8d55-49fa-9f1c-82b3904a65dc" unique_id="1" output_presetname="Azure MainConcept H.264" impersonate_fme_2_5="0" flash_user_agent="Wirecast/FM 1.0" output_location_with_bitrate="myStream" output_settings_complete="1" output_id="df355358-4949-46bc-b6e3-d01cf6fc6b5a" />
 			<output replay_quality="standard" replay_audio_enabled="0" replay_record_folder="C:\Users\Zheng Shen\Videos" replay_limit_record_duration="1" replaydialog_record_unit="1" replay_max_record_duration="60000" replay_shot_default_duration="30" replay_create_in_layer="1" replay_create_in_playlist="" replay_show_preview="1" replay_shot_template_asset_id="" replay_create_from_template="0" replay_activate_on_broadcast="0" replay_activate_on_record="0" replay_prompt_delete_shot="1" replay_keep_record_on_delete_shot="0" output_guid="b1078bf7-32da-4da8-92d1-eb689beb75ab" output_presetname="b1078bf7-32da-4da8-92d1-eb689beb75ab" output_type="6" output_enabled="1" unique_id="2" />
 		</output_list>
 	</advanced_output>
 	<output_presets>
-		<preset output_presetname="Azure H.264 720p 16:9 (1280x720)">
+		<preset output_presetname="Azure MainConcept H.264">
 			<movie format="Flash" output_system="">
-				<track mo_width="1280" mo_height="720" type="1986618479" colourspace="846624121" mo_enabled="1" codecname="x264" fps="30" compressed="1" timescale="3000" target_bit_rate="2025" profile="1835100526" limit_bit_rate="0" key_frame_rate="60" timecode_interval="30" timecode_on="0" FlashVideoDisableH264BFrames="0" codec_quality="" x264_gpu_on="0" x264_commandline="" absolute_time_stamps="1" key_frame_aligned="1" strict_cbr="1" main_concept="1" />
+				<track mo_width="1280" mo_height="720" type="1986618479" colourspace="846624121" mo_enabled="1" codecname="H.264" fps="30" compressed="1" timescale="3000" target_bit_rate="2025" profile="1835100526" limit_bit_rate="0" key_frame_rate="60" timecode_interval="30" timecode_on="0" FlashVideoDisableH264BFrames="0" codec_quality="veryfast" x264_gpu_on="0" x264_commandline="" absolute_time_stamps="1" key_frame_aligned="1" strict_cbr="1" main_concept="1" />
 				<track type="1635083375" bps="16" channels="2" samplerate="44100" mo_enabled="1" codecname="MPEG-4 Audio" target_bit_rate="128" timescale="44100" />
 			</movie>
 		</preset>
 		<preset output_presetname="b1078bf7-32da-4da8-92d1-eb689beb75ab">
 			<movie format="Replay" output_system="replay">
-				<track mo_width="640" mo_height="480" type="1986618479" colourspace="846624121" mo_enabled="1" codecname="H.264" fps="30" compressed="1" timescale="3000" target_bit_rate="500" profile="1835100526" limit_bit_rate="0" key_frame_rate="240" timecode_interval="30" timecode_on="0" FlashVideoDisableH264BFrames="0" codec_quality="" x264_gpu_on="0" x264_commandline="" absolute_time_stamps="0" key_frame_aligned="0" strict_cbr="0" main_concept="1" />
-				<track type="1635083375" bps="16" channels="2" samplerate="44100" mo_enabled="1" codecname="MPEG-4 Audio" target_bit_rate="128" timescale="44100" />
+				<track mo_width="1280" mo_height="720" type="1986618479" colourspace="846624121" mo_enabled="1" codecname="H.264" fps="30" compressed="1" timescale="3000" target_bit_rate="500" profile="1835100526" limit_bit_rate="0" key_frame_rate="240" timecode_interval="30" timecode_on="0" FlashVideoDisableH264BFrames="0" codec_quality="" x264_gpu_on="0" x264_commandline="" absolute_time_stamps="0" key_frame_aligned="0" strict_cbr="0" main_concept="1" />
+				<track type="1635083375" bps="16" channels="2" samplerate="44100" mo_enabled="0" codecname="MPEG-4 Audio" target_bit_rate="128" timescale="44100" />
 			</movie>
 		</preset>
 	</output_presets>
@@ -51,8 +51,8 @@
 		<asset name="Blank Shot" unique_id="2306b214-8ffa-48e3-8d67-249d8cf8252d_shot" type="shot" media-type="9" vam_state="1" created_for_layer="1" blank_shot="1" visible="1" />
 		<asset name="Blank Shot" unique_id="bedd9a14-38aa-4f35-86f9-69e7f19ce85b_shot" type="shot" media-type="9" visible="1" created_for_layer="2" blank_shot="1" vam_state="7" />
 		<asset name="Blank Shot" unique_id="4b4d4727-f565-4f33-ad6a-efd7f5bb9c5f_shot" type="shot" media-type="9" visible="1" created_for_layer="3" blank_shot="1" vam_state="1" />
-		<asset name="Blank Shot" unique_id="29b98aef-86b8-45de-8f74-3e556e1362fc_shot" type="shot" media-type="9" vam_state="1" created_for_layer="4" blank_shot="1" />
-		<asset type="capture" unique_id="Integrated Camera::\\?\usb#vid_04f2&amp;pid_b217&amp;mi_00#7&amp;6db4ca1&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" name="Integrated Camera" guid="\\?\usb#vid_04f2&amp;pid_b217&amp;mi_00#7&amp;6db4ca1&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" url="Integrated Camera" excluded="0" format="video" video_tracks="1" media-type="2" square_pixel_height="360" square_pixel_width="640" isusb="1" />
+		<asset name="Blank Shot" unique_id="29b98aef-86b8-45de-8f74-3e556e1362fc_shot" type="shot" media-type="9" visible="1" created_for_layer="4" blank_shot="1" vam_state="1" />
+		<asset type="capture" unique_id="Integrated Camera::\\?\usb#vid_04f2&amp;pid_b217&amp;mi_00#7&amp;6db4ca1&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" name="Integrated Camera" guid="\\?\usb#vid_04f2&amp;pid_b217&amp;mi_00#7&amp;6db4ca1&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" url="Integrated Camera" excluded="0" format="video" video_tracks="1" media-type="2" square_pixel_width="640" square_pixel_height="360" isusb="1" />
 		<asset name="Integrated Camera" unique_id="8e1aae13-9338-4031-8da3-ba0438aab3e6_shot" type="shot" media-type="9" vam_state="6" audio_tracks="0" video_tracks="1" still_image_tracks="0" veil_track_count="0" alpha_track_count="0" created_for_layer="5" visible="1" />
 	</assets>
 	<xml_tag />
