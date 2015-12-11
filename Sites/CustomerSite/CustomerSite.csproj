@@ -74,6 +74,24 @@
     <Content Include="css\icons\buffering-rainbow-bg.png" />
     <Content Include="css\icons\buffering-rainbow.gif" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="menu\css\main.css" />
+    <Content Include="menu\css\mui.css" />
+    <Content Include="menu\css\mui.min.css" />
+    <Content Include="menu\images\42x42.gif" />
+    <Content Include="menu\images\60x60.gif" />
+    <Content Include="menu\images\cbd.jpg" />
+    <Content Include="menu\images\iconfont-tianjia.png" />
+    <Content Include="menu\images\login-1.png" />
+    <Content Include="menu\images\logo.png" />
+    <Content Include="menu\images\muwu.jpg" />
+    <Content Include="menu\images\pull_arrow.png" />
+    <Content Include="menu\images\pull_fresh.png" />
+    <Content Include="menu\images\shuijiao.jpg" />
+    <Content Include="menu\images\yuantiao.jpg" />
+    <Content Include="menu\index.html" />
+    <Content Include="menu\js\jquery-1.11.3.js" />
+    <Content Include="menu\js\mui.js" />
+    <Content Include="menu\js\mui.min.js" />
     <Content Include="packages.config" />
     <Content Include="css\fonts\azuremediaplayer.woff" />
     <Content Include="css\fonts\azuremediaplayer.eot" />
@@ -85,6 +103,9 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="menu\.project" />
+    <Content Include="menu\fonts\mui.ttf" />
+    <Content Include="menu\manifest.json" />
     <None Include="Properties\PublishProfiles\customertv-huawei.pubxml" />
     <None Include="scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="scripts\bootstrap.js" />
@@ -129,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="menu\unpackage\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

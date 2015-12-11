@@ -30,11 +30,11 @@
     <script>
         var myOptions = {
             "nativeControlsForTouch": false,
-            autoplay: true,
+            autoplay: false,
             controls: true,
             width: "640",
             height: "400",
-            poster: ""
+            poster: "https://c.s-microsoft.com/zh-cn/CMSImages/Store_Anniversary_1127_1920x720_ZH_CN.jpg?version=e78bd56d-0106-e9e9-995d-472b15eb58a6"
         };
         var myPlayer = amp("azuremediaplayer", myOptions);
 

@@ -12,7 +12,7 @@ namespace CutomerSite
         protected void Page_Load(object sender, EventArgs e)
         {
             eastAsiaSample.HRef = string.Format("../samples/simpleVideo.aspx?url={0}",
-                "http://cdn-zhshenstudy.streaming.mediaservices.windows.net/85a27234-45e6-45b6-87f6-387a5485f8f7/Windows10CommercialDemo.ism/manifest");
+                "http://cdn-zhshenstudy.streaming.mediaservices.windows.net/e2fd9dc9-c247-48d8-bbec-0ddd1ec06fdc/c7392fac-3ced-47d4-87ac-c4cf40a0d984.ism/manifest");
             northEuropeSample.HRef = string.Format("../samples/simpleVideo.aspx?url={0}",
                 "http://cdn-endpoint-zhshenneurope.streaming.mediaservices.windows.net/194de0a1-88c0-44e5-b47c-8940d8121b09/Windows10CommercialDemo.ism/manifest");
 
