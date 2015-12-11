@@ -18,6 +18,7 @@
                 <ItemBindings>
                     <res:DataBindingItem DataPropertyName="Name" ControlID="Name" />
                     <res:DataBindingItem DataPropertyName="Description" ControlID="Description" />
+                    <res:DataBindingItem DataPropertyName="Speakers" ControlID="Speakers" ControlPropertyName="Text" />
                     <res:DataBindingItem DataPropertyName="StartTime" ControlID="StartTime" />
                     <res:DataBindingItem DataPropertyName="EndTime" ControlID="EndTime" />
                 </ItemBindings>
@@ -29,10 +30,15 @@
                 </div>
             </div>
             <div class="form-group form-group-sm">
+                <label class="col-sm-2 control-label" for="Name">演讲者</label>
+                <div class="col-sm-10">
+                    <asp:TextBox runat="server" CssClass="form-control" type="text" ID="Speakers" placeholder="演讲者" />
+                </div>
+            </div>
+            <div class="form-group form-group-sm">
                 <label class="col-sm-2 control-label" for="Name">事件描述</label>
                 <div class="col-sm-10">
-
-                    <asp:TextBox runat="server" CssClass="form-control" type="text" ID="Description" TextMode="MultiLine" placeholder="事件描述" />
+                    <asp:TextBox runat="server" CssClass="form-control" Rows="5" type="text" ID="Description" TextMode="MultiLine" placeholder="事件描述" />
                 </div>
             </div>
             <div class="form-group form-group-sm">

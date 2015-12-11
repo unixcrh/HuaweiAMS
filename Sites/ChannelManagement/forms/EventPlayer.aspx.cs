@@ -1,4 +1,8 @@
-﻿using System;
+﻿using MCS.Library.Cloud.AMS.Data.Adapters;
+using MCS.Library.Cloud.AMS.Data.Entities;
+using MCS.Library.Core;
+using MCS.Web.Responsive.Library.MVC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +15,41 @@ namespace ChannelManagement.forms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.HttpMethod.ToLower() == "post" && Request.Form["__VIEWSTATE"] == null)
+            {
+            }
+            else
+            {
+                if (this.IsPostBack == false && this.IsCallback == false)
+                    ControllerHelper.ExecuteMethodByRequest(this);
 
+                this.bindingControl.Data = this.Data;
+            }
+        }
+
+        [ControllerMethod]
+        protected void InitByEventID(string id)
+        {
+            AMSEvent eventData = AMSEventSqlAdapter.Instance.LoadByID(id);
+
+            eventData.NullCheck(string.Format("不能找到ID为{0}的事件", id));
+
+            if (eventData.PosterUrl.IsNullOrEmpty())
+                eventData.PosterUrl = this.ResolveUrl("~/images/amsPoster1.png");
+
+            this.Data = eventData;
+        }
+
+        private AMSEvent Data
+        {
+            get
+            {
+                return (AMSEvent)this.ViewState["Data"];
+            }
+            set
+            {
+                this.ViewState["Data"] = value;
+            }
         }
     }
 }

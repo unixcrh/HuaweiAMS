@@ -52,7 +52,7 @@
                             <%#((DateTime)Eval("StartTime")) == DateTime.MinValue ? string.Empty : ((DateTime)Eval("StartTime")).ToString("yyyy-MM-dd HH:mm:ss")%>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="开始时间">
+                    <asp:TemplateField HeaderText="结束时间">
                         <ItemTemplate>
                             <%#((DateTime)Eval("EndTime")) == DateTime.MinValue ? string.Empty : ((DateTime)Eval("EndTime")).ToString("yyyy-MM-dd HH:mm:ss")%>
                         </ItemTemplate>
@@ -71,9 +71,9 @@
                                     <i class="icon-edit bigger-120"></i>
                                 </a>
 
-                                <asp:Button runat="server" CssClass="btn btn-xs btn-danger">
+                               <%-- <asp:LinkButton runat="server" CssClass="btn btn-xs btn-danger" CommandName="DeleteEvent" CommandArgument='<%#Eval("ID") %>'>
                                     <i class="icon-trash bigger-120"></i>
-                                </asp:Button>
+                                </asp:LinkButton>--%>
 
                                 <%--<button class="btn btn-xs btn-warning">
                                     <i class="icon-flag bigger-120"></i>
@@ -99,13 +99,13 @@
                                                 </span>
                                             </a>
                                         </li>
-                                        <li>
+                                        <%--<li>
                                             <a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
                                                 <span class="red">
                                                     <i class="icon-trash bigger-120"></i>
                                                 </span>
                                             </a>
-                                        </li>
+                                        </li>--%>
                                     </ul>
                                 </div>
                             </div>

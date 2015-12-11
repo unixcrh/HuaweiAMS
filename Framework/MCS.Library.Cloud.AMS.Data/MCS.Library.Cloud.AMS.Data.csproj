@@ -58,6 +58,7 @@
     <Compile Include="Entities\Enumerations.cs" />
     <Compile Include="Entities\AMSLock.cs" />
     <Compile Include="Entities\UserOperationLog.cs" />
+    <Compile Include="Entities\AMSUserView.cs" />
     <Compile Include="Mechanism\ContractManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

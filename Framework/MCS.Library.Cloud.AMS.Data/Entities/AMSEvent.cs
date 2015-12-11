@@ -49,6 +49,13 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
         }
 
         [DataMember]
+        public string Speakers
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
         public DateTime StartTime
         {
             get;
@@ -108,6 +115,34 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
 
         [DataMember]
         public string CDNPlaybackUrl
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string PosterUrl
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string LogoUrl
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public Decimal Rating
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public long Views
         {
             get;
             set;
