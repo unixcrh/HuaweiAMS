@@ -79,6 +79,7 @@
     <Build Include="AMS\Tables\Locks_Properties.sql" />
     <Build Include="AMS\Tables\Queue.sql" />
     <Build Include="AMS\Tables\Queue_Properties.sql" />
+    <Build Include="AMS\Tables\UserViews.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AMSDB.refactorlog" />
