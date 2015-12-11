@@ -24,10 +24,13 @@ namespace ChannelManagement.Templates
         }
 
         [ControllerMethod]
-        protected void InitByChannelID(string channelID)
+        protected void InitByChannelID(string channelID, string id)
         {
             if (channelID.IsNotEmpty())
                 this.Channel = AMSChannelSqlAdapter.Instance.LoadByID(channelID);
+
+            if (id.IsNotEmpty())
+                this.Event = AMSEventSqlAdapter.Instance.LoadByID(id);
         }
 
         public string CurrentName
@@ -46,11 +49,23 @@ namespace ChannelManagement.Templates
         {
             get
             {
-                return (AMSChannel)this.ViewState["Data"];
+                return (AMSChannel)this.ViewState["Channel"];
             }
             set
             {
-                this.ViewState["Data"] = value;
+                this.ViewState["Channel"] = value;
+            }
+        }
+
+        public AMSEvent Event
+        {
+            get
+            {
+                return (AMSEvent)this.ViewState["Event"];
+            }
+            set
+            {
+                this.ViewState["Event"] = value;
             }
         }
 
@@ -66,7 +81,13 @@ namespace ChannelManagement.Templates
             this.header.Controls.Clear();
 
             if (this.Channel != null)
+            {
                 AddItem(this.header, this.Channel.Name, this.ResolveUrl("~/list/AllChannels.aspx"));
+
+                if (this.Event != null)
+                    AddItem(this.header, "事件列表", this.ResolveUrl(string.Format("~/list/EventsInChannel.aspx?channelID={0}", this.Channel.ID)));
+            }
+
 
             if (this.CurrentName.IsNotEmpty())
                 AddItem(this.header, this.CurrentName, string.Empty);

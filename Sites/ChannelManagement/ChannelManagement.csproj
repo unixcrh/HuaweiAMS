@@ -143,6 +143,9 @@
     <Content Include="css\Font-awesome\css\font-awesome.css" />
     <Content Include="css\Font-awesome\css\font-awesome.min.css" />
     <Content Include="css\Font-awesome\font\fontawesome-webfont.svg" />
+    <Content Include="css\icons\amslogo.png" />
+    <Content Include="css\icons\buffering-rainbow-bg.png" />
+    <Content Include="css\icons\buffering-rainbow.gif" />
     <Content Include="default.aspx" />
     <Content Include="forms\EditEvent.aspx" />
     <Content Include="forms\EventPlayer.aspx" />
@@ -164,6 +167,8 @@
     <Content Include="css\bootstrap\css\bootstrap-theme.min.css.map" />
     <Content Include="css\Font-awesome\font\azuremediaplayer.eot" />
     <Content Include="css\Font-awesome\font\azuremediaplayer.woff" />
+    <Content Include="css\fonts\azuremediaplayer.eot" />
+    <Content Include="css\fonts\azuremediaplayer.woff" />
     <None Include="Properties\PublishProfiles\channelManagement-huawei.pubxml" />
     <None Include="scripts\jquery-2.1.4-vsdoc.js" />
     <Content Include="scripts\jquery-2.1.4.min.map" />
