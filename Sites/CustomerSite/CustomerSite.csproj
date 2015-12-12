@@ -43,6 +43,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MCS.Library">
+      <HintPath>..\..\Bin\MCS.Library.dll</HintPath>
+    </Reference>
+    <Reference Include="MCS.Library.Cloud.AMS.Data">
+      <HintPath>..\..\Bin\MCS.Library.Cloud.AMS.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MCS.Library.Cloud.AMS.Data.Impl">
+      <HintPath>..\..\Bin\MCS.Library.Cloud.AMS.Data.Impl.dll</HintPath>
+    </Reference>
+    <Reference Include="MCS.Library.Data">
+      <HintPath>..\..\Bin\MCS.Library.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MCS.Web.Library.Script.Json">
+      <HintPath>..\..\Bin\MCS.Web.Library.Script.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="MCS.Web.Responsive.Library">
+      <HintPath>..\..\Bin\MCS.Web.Responsive.Library.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -73,7 +91,13 @@
     <Content Include="css\icons\amslogo.png" />
     <Content Include="css\icons\buffering-rainbow-bg.png" />
     <Content Include="css\icons\buffering-rainbow.gif" />
+    <Content Include="css\main.css" />
+    <Content Include="css\mui\mui.css" />
+    <Content Include="css\mui\mui.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="forms\EventPlayer.aspx" />
+    <Content Include="images\amsPoster1.png" />
+    <Content Include="list\AllEvents.aspx" />
     <Content Include="menu\css\main.css" />
     <Content Include="menu\css\mui.css" />
     <Content Include="menu\css\mui.min.css" />
@@ -103,9 +127,12 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="menu\.project" />
+    <Content Include="menu\.project">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="menu\fonts\mui.ttf" />
     <Content Include="menu\manifest.json" />
+    <Content Include="css\fonts\mui.ttf" />
     <None Include="Properties\PublishProfiles\customertv-huawei.pubxml" />
     <None Include="scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="scripts\bootstrap.js" />
@@ -126,6 +153,8 @@
     <Content Include="Global.asax" />
     <Content Include="samples\simpleVideo.aspx" />
     <Content Include="scripts\azuremediaplayer.min.js" />
+    <Content Include="scripts\mui.js" />
+    <Content Include="scripts\mui.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -136,8 +165,22 @@
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="forms\EventPlayer.aspx.cs">
+      <DependentUpon>EventPlayer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="forms\EventPlayer.aspx.designer.cs">
+      <DependentUpon>EventPlayer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="list\AllEvents.aspx.cs">
+      <DependentUpon>AllEvents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="list\AllEvents.aspx.designer.cs">
+      <DependentUpon>AllEvents.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="samples\simpleVideo.aspx.cs">
