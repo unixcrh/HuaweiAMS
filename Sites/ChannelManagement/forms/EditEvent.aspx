@@ -9,7 +9,7 @@
 <head runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>编辑事件</title>
-    <script src="../scripts/jquery-2.1.4.min.js"></script>
+    <%--<script src="../scripts/jquery-2.1.4.min.js"></script>--%>
     <style type="text/css">
         .poster {
             width: 320px;
