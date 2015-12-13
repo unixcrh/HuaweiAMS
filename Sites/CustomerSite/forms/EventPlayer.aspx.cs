@@ -1,4 +1,5 @@
-﻿using MCS.Library.Cloud.AMS.Data.Adapters;
+﻿using CutomerSite.Helpers;
+using MCS.Library.Cloud.AMS.Data.Adapters;
 using MCS.Library.Cloud.AMS.Data.Entities;
 using MCS.Library.Core;
 using MCS.Web.Library.Script;
@@ -31,27 +32,9 @@ namespace CutomerSite.forms
                     if (eventData.PosterUrl.IsNullOrEmpty())
                         eventData.PosterUrl = UriHelper.MakeAbsolute(new Uri(this.ResolveUrl("~/images/amsPoster1.png"), UriKind.RelativeOrAbsolute), this.Request.Url).ToString();
 
-                    this.pageEventData.Value = GetEventsJson(eventData);
+                    this.pageEventData.Value = DataHelper.GetSingleEventJson(eventData);
                 }
             }
-        }
-
-        private static string GetEventsJson(AMSEvent eventData)
-        {
-            var simpleEventData = new
-            {
-                id = eventData.ID,
-                name = eventData.Name,
-                description = eventData.Description,
-                speakers = eventData.Speakers,
-                url = eventData.CDNPlaybackUrl,
-                poster = eventData.PosterUrl,
-                views = string.Format("{0:#,##0}", eventData.Views),
-                startTime = string.Format("{0:yyyy-MM-dd HH:mm:ss}", eventData.StartTime),
-                endTime = string.Format("{0:yyyy-MM-dd HH:mm:ss}", eventData.EndTime)
-            };
-
-            return JSONSerializerExecute.Serialize(simpleEventData);
         }
     }
 }

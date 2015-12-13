@@ -140,6 +140,7 @@
     <Content Include="scripts\jquery-2.1.4.js" />
     <Content Include="scripts\jquery-2.1.4.min.js" />
     <Content Include="scripts\jquery-2.1.4.min.map" />
+    <Content Include="services\QueryService.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -175,6 +176,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DataHelper.cs" />
     <Compile Include="list\AllEvents.aspx.cs">
       <DependentUpon>AllEvents.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -189,6 +191,9 @@
     </Compile>
     <Compile Include="samples\simpleVideo.aspx.designer.cs">
       <DependentUpon>simpleVideo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="services\QueryService.ashx.cs">
+      <DependentUpon>QueryService.ashx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

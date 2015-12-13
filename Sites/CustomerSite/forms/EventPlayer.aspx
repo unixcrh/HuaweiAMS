@@ -165,7 +165,7 @@
                 var myOptions = {
                     "nativecontrolsfortouch": false,
                     poster: eventData.poster,
-                    autoplay: true,
+                    autoplay: false,
                     controls: true,
                     preload: "auto"
                 };

@@ -17,7 +17,7 @@
                 <li><a runat="server" id="eastAsianSalesTrainingWithoutCDN" href="../samples/simpleVideo.aspx">East Asia Sales Training Without CDN</a></li>
                 <li><a runat="server" id="europeSalesTraining" href="../samples/simpleVideo.aspx">North Europe Sales Training</a></li>
                 <li><a runat="server" id="europeSalesTrainingWithoutCDN" href="../samples/simpleVideo.aspx">North Europe Sales Training Without CDN</a></li>
-                <li><a runat="server" id="A1" href="~/menu/index.html">Menu..</a></li>
+                <li><a runat="server" id="A1" href="~/list/AllEvents.aspx">Menu..</a></li>
             </ul>
         </div>
     </form>

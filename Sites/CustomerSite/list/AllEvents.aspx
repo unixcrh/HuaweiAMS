@@ -88,6 +88,10 @@
         </div>
     </div>
     <script>
+        var pageIndex = 0;
+        var totalCount = -1;
+        var pageSize = 5;
+
         $(document).ready(function () {
             var jsonData = $("#firstPageData").val();
             var currentPageData = JSON.parse(jsonData);
@@ -96,10 +100,15 @@
         });
 
         function appendData(pageData) {
-            $.each(pageData, function (i, data) {
+            pageIndex = pageData.pageIndex;
+            totalCount = pageData.totalCount;
+            pageSize = pageData.pageSize;
+
+            $.each(pageData.events, function (i, data) {
                 var li = $("<li>").addClass("mui-table-view-cell mui-media").appendTo("#listContainer");
+                //li.click(function () { window.location.href = 'a.aspx' });
                 var anchor = $("<a>").attr("href", "../forms/EventPlayer.aspx?id=" + data.id).appendTo(li);
-                var img = $("<img>").attr("src", "images/muwu.jpg").addClass("mui-media-object mui-pull-left").appendTo(anchor);
+                var img = $("<img>").attr("src", data.logo).addClass("mui-media-object mui-pull-left").appendTo(anchor);
                 var div = $("<div>").addClass("mui-media-body").text(data.name).appendTo(anchor);
 
                 $("<p>").addClass("mui-ellipsis").text(data.description).appendTo(div);
@@ -118,23 +127,57 @@
                     contentover: "释放立即刷新", //可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
                     contentrefresh: "正在刷新...", //可选，正在刷新状态时，下拉刷新控件上显示的标题内容
                     callback: function () {
-                        setTimeout(function () {
-                            $($(".mui-table-view").children()[0]).before($(".mui-table-view").children()[2]);
+                        $.getJSON("../services/QueryService.ashx?opType=AllEvents", function (data) {
+
+                            if (typeof (data.stackTrace) != "undefined") {
+                                showBack.error("对不起，网络连接异常");
+                                console.error(data.message);
+                            }
+                            else {
+                                $("#listContainer").empty();
+                                appendData(data);
+                            }
+                        }).done(function () {
+                            console.log("second success");
                             mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
-                        }, 2000);
-                    } //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+                        }).fail(function (e) {
+                            console.log("error");
+                            
+                            showBack.error("对不起，网络连接异常");
+                        }).always(function () {
+                            mui('#refreshContainer').pullRefresh().endPullupToRefresh();
+                        });
+                    }
                 },
                 up: {
                     contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
                     contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
                     callback: function () {
-                        setTimeout(function () {
-                            showBack.error("对不起，网络连接异常");
-                            mui('#refreshContainer').pullRefresh().endPullupToRefresh();
-                            /*$(".mui-table-view").append($(".mui-table-view").html());//必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
-						  */
-                        }, 2000);
+                        if ((pageIndex + 1) * pageSize < totalCount) {
+                            var url = "../services/QueryService.ashx?opType=AllEvents&pageIndex=" + pageIndex + 1 + "&totalCount=" + totalCount;
 
+                            $.getJSON(url, function (data) {
+                                if (typeof (data.stackTrace) != "undefined") {
+                                    showBack.error("对不起，网络连接异常");
+                                    console.error(data.message);
+                                }
+                                else {
+                                    appendData(data);
+                                }
+                            }).done(function () {
+                                console.log("second success");
+                                mui('#refreshContainer').pullRefresh().endPullupToRefresh();
+                            }).fail(function (e) {
+                                console.log("error");
+                                showBack.error("对不起，网络连接异常");
+
+                            }).always(function () {
+                                mui('#refreshContainer').pullRefresh().endPullupToRefresh();
+                            });
+                        }
+                        else {
+                            mui('#refreshContainer').pullRefresh().endPullupToRefresh();
+                        }
                     }
                 }
             }

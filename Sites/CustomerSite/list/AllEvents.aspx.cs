@@ -1,5 +1,7 @@
-﻿using MCS.Library.Cloud.AMS.Data.DataSources;
+﻿using CutomerSite.Helpers;
+using MCS.Library.Cloud.AMS.Data.DataSources;
 using MCS.Library.Cloud.AMS.Data.Entities;
+using MCS.Library.Core;
 using MCS.Web.Library.Script;
 using System;
 using System.Collections;
@@ -23,23 +25,9 @@ namespace CutomerSite.list
 
             AMSEventCollection events = dataSource.Query(0, PageSize, ref totalCount);
 
-            this.firstPageData.Value = GetEventsJson(events);
+            this.firstPageData.Value = DataHelper.GetEventsListJson(0, DataHelper.DefaultPageSize, totalCount, events);
             this.totalCount.Value = totalCount.ToString();
             this.pageSize.Value = PageSize.ToString();
-        }
-
-        private static string GetEventsJson(IEnumerable<AMSEvent> events)
-        {
-            ArrayList list = new ArrayList();
-
-            foreach (AMSEvent eventData in events)
-            {
-                var simpleEventData = new { id = eventData.ID, name = eventData.Name, description = eventData.Description, speakers = eventData.Speakers };
-
-                list.Add(simpleEventData);
-            }
-
-            return JSONSerializerExecute.Serialize(list);
         }
     }
 }
