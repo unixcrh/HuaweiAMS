@@ -110,6 +110,7 @@
     <Compile Include="Configuration\LiveChannelSettings.cs" />
     <Compile Include="Configuration\MediaServiceAccountConfigurationElement.cs" />
     <Compile Include="Configuration\MediaServiceAccountSettings.cs" />
+    <Compile Include="Configuration\StorageSettings.cs" />
     <Compile Include="Mechanism\Converters.cs" />
     <Compile Include="Mechanism\LiveChannelManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

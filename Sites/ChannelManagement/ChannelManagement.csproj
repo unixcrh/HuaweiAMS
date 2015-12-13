@@ -169,6 +169,7 @@
     <Content Include="css\Font-awesome\font\azuremediaplayer.woff" />
     <Content Include="css\fonts\azuremediaplayer.eot" />
     <Content Include="css\fonts\azuremediaplayer.woff" />
+    <Content Include="forms\UploadReceiver.ashx" />
     <None Include="Properties\PublishProfiles\channelManagement-huawei.pubxml" />
     <None Include="scripts\jquery-2.1.4-vsdoc.js" />
     <Content Include="scripts\jquery-2.1.4.min.map" />
@@ -177,6 +178,7 @@
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -212,6 +214,9 @@
     </Compile>
     <Compile Include="forms\EventPlayer.aspx.designer.cs">
       <DependentUpon>EventPlayer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="forms\UploadReceiver.ashx.cs">
+      <DependentUpon>UploadReceiver.ashx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

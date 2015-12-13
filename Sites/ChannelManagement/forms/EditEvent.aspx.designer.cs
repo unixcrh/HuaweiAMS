@@ -40,6 +40,15 @@ namespace ChannelManagement.forms {
         protected global::MCS.Web.Responsive.WebControls.DataBindingControl bindingControl;
         
         /// <summary>
+        /// EventID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden EventID;
+        
+        /// <summary>
         /// Name control.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,24 @@ namespace ChannelManagement.forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::MCS.Web.Responsive.WebControls.DateTimePicker EndTime;
+        
+        /// <summary>
+        /// PosterUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden PosterUrl;
+        
+        /// <summary>
+        /// LogoUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden LogoUrl;
         
         /// <summary>
         /// save control.
