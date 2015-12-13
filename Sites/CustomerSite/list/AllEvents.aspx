@@ -26,57 +26,6 @@
         <div class="mui-scroll">
             <!--数据列表-->
             <ul id="listContainer" class="mui-table-view">
-                <%--<li class="mui-table-view-cell mui-media">
-                    <a href="javascript:;">
-                        <img class="mui-media-object mui-pull-left" src="../images/shuijiao.jpg">
-                        <div>
-                            <div>我是标题1我是标题1我是标题1我是标题1</div>
-                            <p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-                            <div style="margin-top: 10px;">
-                                <span class="mui-icon mui-icon-star"></span>
-                                <span class="mui-icon mui-icon-star"></span>
-                                <span class="mui-icon mui-icon-star"></span>
-                                <span class="mui-icon mui-icon-star"></span>
-                                <span class="mui-icon mui-icon-star"></span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li class="mui-table-view-cell mui-media">
-                    <a href="javascript:;">
-                        <img class="mui-media-object mui-pull-left" src="images/muwu.jpg">
-                        <div class="mui-media-body">
-                            木屋
-                            <p class='mui-ellipsis'>想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="mui-table-view-cell mui-media">
-                    <a href="javascript:;">
-                        <img class="mui-media-object mui-pull-left" src="images/cbd.jpg">
-                        <div class="mui-media-body">
-                            CBD
-                            <p class='mui-ellipsis'>烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="mui-table-view-cell mui-media">
-                    <a href="javascript:;">
-                        <img class="mui-media-object mui-pull-left" src="images/shuijiao.jpg">
-                        <div class="mui-media-body">
-                            <p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-                        </div>
-                    </a>
-                </li>
-                <li class="mui-table-view-cell mui-media">
-                    <a href="javascript:;">
-                        <img class="mui-media-object mui-pull-left" src="images/muwu.jpg">
-                        <div class="mui-media-body">
-                            木屋
-                            <p class='mui-ellipsis'>想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-                        </div>
-                    </a>
-                </li>--%>
             </ul>
         </div>
     </div>
@@ -96,6 +45,10 @@
             var jsonData = $("#firstPageData").val();
             var currentPageData = JSON.parse(jsonData);
 
+            mui(".mui-table-view").on("tap", "a", function () {
+                window.location.href = $(this).attr("href");
+            });
+
             appendData(currentPageData);
         });
 
@@ -106,7 +59,7 @@
 
             $.each(pageData.events, function (i, data) {
                 var li = $("<li>").addClass("mui-table-view-cell mui-media").appendTo("#listContainer");
-                //li.click(function () { window.location.href = 'a.aspx' });
+
                 var anchor = $("<a>").attr("href", "../forms/EventPlayer.aspx?id=" + data.id).appendTo(li);
                 var img = $("<img>").attr("src", data.logo).addClass("mui-media-object mui-pull-left").appendTo(anchor);
                 var div = $("<div>").addClass("mui-media-body").text(data.name).appendTo(anchor);
@@ -142,7 +95,7 @@
                             mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
                         }).fail(function (e) {
                             console.log("error");
-                            
+
                             showBack.error("对不起，网络连接异常");
                         }).always(function () {
                             mui('#refreshContainer').pullRefresh().endPullupToRefresh();
