@@ -102,6 +102,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AMS\ConfigurationTest.cs" />
+    <Compile Include="AMS\StorageTest.cs" />
     <Compile Include="Entities\AMSEntitiesTest.cs" />
     <Compile Include="Entities\AMSExecutorTest.cs" />
     <Compile Include="Entities\AssertHelper.cs" />
