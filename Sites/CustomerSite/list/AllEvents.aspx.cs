@@ -15,19 +15,17 @@ namespace CutomerSite.list
 {
     public partial class AllEvents : System.Web.UI.Page
     {
-        private const int PageSize = 5;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             AMSEventDataSource dataSource = new AMSEventDataSource();
 
             int totalCount = 0;
 
-            AMSEventCollection events = dataSource.Query(0, PageSize, ref totalCount);
+            AMSEventCollection events = dataSource.Query(0, DataHelper.DefaultPageSize, ref totalCount);
 
             this.firstPageData.Value = DataHelper.GetEventsListJson(0, DataHelper.DefaultPageSize, totalCount, events);
             this.totalCount.Value = totalCount.ToString();
-            this.pageSize.Value = PageSize.ToString();
+            this.pageSize.Value = DataHelper.DefaultPageSize.ToString();
         }
     }
 }

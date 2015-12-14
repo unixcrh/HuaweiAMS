@@ -44,6 +44,13 @@ namespace CutomerSite.services
 
                         result = DataHelper.GetEventsListJson(pageIndex, DataHelper.DefaultPageSize, totalCount, events);
                         break;
+                    case OperationType.SingleEvent:
+                        string eventID = Res.Request.GetRequestQueryString("id", string.Empty);
+                        AMSEvent eventData = DataHelper.GetEventByID(eventID);
+                        if (eventData != null)
+                            result = DataHelper.GetSingleEventJson(eventData);
+
+                        break;
                 }
             }
             catch (System.Exception ex)

@@ -15,23 +15,23 @@ a {
 }
 
 .mui-table-view .mui-media-object {
-    width: 150px;
-    height: 100px;
-    line-height: 100px;
-    max-width: 150px;
+    width: 100px;
+    height: 66px;
+    max-width: 100px;
+    line-height: 66px;
 }
 
 .title {
     margin: 35px 15px 10px;
 }
 
-    .title + .content {
-        margin: 10px 15px 35px;
-        color: #bbb;
-        text-indent: 1em;
-        font-size: 14px;
-        line-height: 24px;
-    }
+.title + .content {
+    margin: 10px 15px 35px;
+    color: #bbb;
+    text-indent: 1em;
+    font-size: 14px;
+    line-height: 24px;
+}
 
 .mui-table-view {
     margin-bottom: 0px;
@@ -80,8 +80,8 @@ a {
     left: 15%;
     top: 50%;
     margin-top: -25px;
-    font-size:16px;
-    font-family:"微软雅黑";
+    font-size: 16px;
+    font-family: "微软雅黑";
 }
 
 .back {
@@ -95,5 +95,5 @@ a {
     left: 0px;
     opacity: 0.1;
     position: absolute;
-    background-color:white;
+    background-color: white;
 }

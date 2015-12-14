@@ -25,15 +25,10 @@ namespace CutomerSite.forms
         {
             if (id.IsNotEmpty())
             {
-                AMSEvent eventData = AMSEventSqlAdapter.Instance.LoadByID(id);
+                AMSEvent eventData = DataHelper.GetEventByID(id);
 
                 if (eventData != null)
-                {
-                    if (eventData.PosterUrl.IsNullOrEmpty())
-                        eventData.PosterUrl = UriHelper.MakeAbsolute(new Uri(this.ResolveUrl("~/images/amsPoster1.png"), UriKind.RelativeOrAbsolute), this.Request.Url).ToString();
-
                     this.pageEventData.Value = DataHelper.GetSingleEventJson(eventData);
-                }
             }
         }
     }

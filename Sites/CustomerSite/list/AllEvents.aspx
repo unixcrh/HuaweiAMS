@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="../scripts/jquery-2.1.4.min.js"></script>
     <script src="../scripts/mui.min.js"></script>
-    <link href="../css/mui/mui.min.css" rel="stylesheet" />
+    <link href="../css/mui/mui.css" rel="stylesheet" />
     <link href="../css/main.css" rel="stylesheet" />
 </head>
 <body>
@@ -64,7 +64,7 @@
                 var img = $("<img>").attr("src", data.logo).addClass("mui-media-object mui-pull-left").appendTo(anchor);
                 var div = $("<div>").addClass("mui-media-body").text(data.name).appendTo(anchor);
 
-                $("<p>").addClass("mui-ellipsis").text(data.description).appendTo(div);
+                $("<p>").addClass("mui-ellipsis").text(data.speakers).appendTo(div);
             });
         }
 

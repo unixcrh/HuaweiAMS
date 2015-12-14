@@ -24,6 +24,7 @@
         <div id="refreshContainer" class="mui-content mui-scroll-wrapper">
             <div class="mui-scroll">
                 <div>
+                    <input type="hidden" id="eventID" />
                     <p class='mui-ellipsis' id="timeScope"></p>
                 </div>
                 <div>
@@ -60,25 +61,45 @@
                         contentover: "释放立即刷新", //可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
                         contentrefresh: "正在刷新...", //可选，正在刷新状态时，下拉刷新控件上显示的标题内容
                         callback: function () {
-                            setTimeout(function () {
-                                $($(".mui-table-view").children()[0]).before($(".mui-table-view").children()[2]);
+                            //setTimeout(function () {
+                            //    $($(".mui-table-view").children()[0]).before($(".mui-table-view").children()[2]);
+                            //    mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
+                            //}, 2000);
+                            $.getJSON("../services/QueryService.ashx?opType=SingleEvent&id=" + $("#eventID").val(), function (data) {
+
+                                if (typeof (data.stackTrace) != "undefined") {
+                                    showBack.error("对不起，网络连接异常");
+                                    console.error(data.message);
+                                }
+                                else {
+                                    $("#listContainer").empty();
+                                    initData(data);
+                                }
+                            }).done(function () {
+                                console.log("second success");
                                 mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
-                            }, 2000);
+                            }).fail(function (e) {
+                                console.log("error");
+
+                                showBack.error("对不起，网络连接异常");
+                            }).always(function () {
+                                mui('#refreshContainer').pullRefresh().endPullupToRefresh();
+                            });
                         } //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
                     },
-                    up: {
-                        contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
-                        contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
-                        callback: function () {
-                            setTimeout(function () {
-                                showBack.error("对不起，网络连接异常");
-                                mui('#refreshContainer').pullRefresh().endPullupToRefresh();
-                                /*$(".mui-table-view").append($(".mui-table-view").html());//必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
-                              */
-                            }, 2000);
+                    //up: {
+                    //    contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
+                    //    contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
+                    //    callback: function () {
+                    //        setTimeout(function () {
+                    //            showBack.error("对不起，网络连接异常");
+                    //            mui('#refreshContainer').pullRefresh().endPullupToRefresh();
+                    //            /*$(".mui-table-view").append($(".mui-table-view").html());//必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+                    //          */
+                    //        }, 2000);
 
-                        }
-                    }
+                    //    }
+                    //}
                 }
             });
             //点击左上角侧滑图标，打开侧滑菜单；
@@ -155,6 +176,7 @@
             });
 
             function initData(eventData) {
+                $("#eventID").val(eventData.id);
                 $("#timeScope").text(eventData.startTime + "到" + eventData.endTime);
 
                 $("#eventName").text(eventData.name);
