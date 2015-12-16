@@ -1,14 +1,13 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AllEvents.aspx.cs" Inherits="CutomerSite.list.AllEvents" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpcomingEvents.aspx.cs" Inherits="CutomerSite.list.UpcomingEvents" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>往期视频</title>
+    <title>即将直播</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="../scripts/jquery-2.1.4.min.js"></script>
     <script src="../scripts/mui.min.js"></script>
-    <script src="../scripts/lepus-webview-sdk.js"></script>
     <link href="../css/mui/mui.min.css" rel="stylesheet" />
     <link href="../css/main.css" rel="stylesheet" />
     <style type="text/css">
@@ -20,32 +19,7 @@
         .mui-popover {
             height: 300px;
         }
-
-        .hidden {
-            display: none;
-        }
     </style>
-    <script>
-        function initMenu() {
-            if (SDK.Lepus.Sys.isLepus()) {
-                var contentData = {
-                    shareType: SDK.Lepus.More.SHARE_TYPE_LINK,
-                    shareIcon: "",
-                    shareTitle: "即将播出",
-                    shareContent: "这里是分享文本",
-                    shareUrl: "#",
-                    shareSource: "来源"
-                }
-
-                var menuItem = { operateType: SDK.Lepus.More.OPERATE_OPEN_NEW_URL, content: contentData };
-
-                var jsonData = JSON.stringify({ menuMore: [menuItem] });
-
-                SDK.Lepus.More.initMore(jsonData, function () {
-                });
-            }
-        }
-    </script>
 </head>
 <body>
     <div>
@@ -53,36 +27,19 @@
         <input runat="server" id="totalCount" />
         <input runat="server" id="pageSize" />
     </div>
-    <div id="headerContainer" class="hidden">
-        <header class="mui-bar mui-bar-nav">
-            <%--<a class="mui-icon mui-icon-bars mui-pull-left"></a>--%>
-            <%--<a class="mui-icon mui-icon-search mui-pull-right"></a>--%>
-            <a class="mui-icon mui-icon-arrowleft mui-pull-left"></a>
-            <h1 class="mui-title">往期视频</h1>
-            <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" href="#topPopover"></a>
-        </header>
-    </div>
-
-    <div runat="server" id="uid"></div>
+    <header class="mui-bar mui-bar-nav">
+        <a class="mui-icon mui-icon-arrowleft mui-pull-left"></a>
+        <h1 class="mui-title">即将直播</h1>
+        <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" href="#topPopover"></a>
+    </header>
     <div id="refreshContainer" class="mui-content mui-scroll-wrapper">
         <div class="mui-scroll">
-            <%--<div runat="server" id="httpHeaders">
-            </div>--%>
             <!--数据列表-->
             <ul id="listContainer" class="mui-table-view">
             </ul>
         </div>
     </div>
     <div id="menu_back" class="menu_back"></div>
-    <%-- <div id="menu" class="mui-content menu">
-        <div class="title">侧滑导航</div>
-        <div class="content">
-            <ul>
-                <li>全部视频</li>
-                <li>局部视频</li>
-            </ul>
-        </div>
-    </div>--%>
     <!--右上角弹出菜单-->
     <div id="topPopover" class="mui-popover">
         <div class="mui-popover-arrow"></div>
@@ -114,10 +71,6 @@
             });
 
             appendData(currentPageData);
-
-            initMenu();
-            //if (isLepus())
-            //    $("#headerContainer").addClass("hidden");
         });
 
         function appendData(pageData) {
@@ -148,7 +101,7 @@
                     contentover: "释放立即刷新", //可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
                     contentrefresh: "正在刷新...", //可选，正在刷新状态时，下拉刷新控件上显示的标题内容
                     callback: function () {
-                        $.getJSON("../services/QueryService.ashx?opType=AllEvents", function (data) {
+                        $.getJSON("../services/QueryService.ashx?opType=UpcomingEvents", function (data) {
 
                             if (typeof (data.stackTrace) != "undefined") {
                                 showBack.error("对不起，网络连接异常");
@@ -175,7 +128,7 @@
                     contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
                     callback: function () {
                         if ((pageIndex + 1) * pageSize < totalCount) {
-                            var url = "../services/QueryService.ashx?opType=AllEvents&pageIndex=" + pageIndex + 1 + "&totalCount=" + totalCount;
+                            var url = "../services/QueryService.ashx?opType=UpcomingEvents&pageIndex=" + pageIndex + 1 + "&totalCount=" + totalCount;
 
                             $.getJSON(url, function (data) {
                                 if (typeof (data.stackTrace) != "undefined") {
@@ -203,20 +156,13 @@
                 }
             }
         });
-        //点击左上角侧滑图标，打开侧滑菜单；
-        //document.querySelector('.mui-icon-bars').addEventListener('tap', function (e) {
-        //    $("#menu").animate({
-        //        marginLeft: '0%'
-        //    }, 100);
-        //    $("#menu_back").show();
-        //});
+
         document.querySelector('.menu_back').addEventListener('tap', function (e) {
             $("#menu").animate({
                 marginLeft: '-100%'
             }, 300);
             $("#menu_back").hide();
         });
-
         var showBack = function () {
             function init() {
                 var backHtml = "<div class=\"back\"></div>" +

@@ -1,4 +1,5 @@
 ﻿using MCS.Library.Cloud.AMS.Data.Adapters;
+using MCS.Library.Cloud.AMS.Data.DataSources;
 using MCS.Library.Cloud.AMS.Data.Entities;
 using MCS.Library.Core;
 using MCS.Web.Library.Script;
@@ -41,6 +42,32 @@ namespace CutomerSite.Helpers
             };
 
             return JSONSerializerExecute.Serialize(allData);
+        }
+
+        public static AMSEventCollection GetStartedEvents(int pageIndex, int pageSize, int totalCount)
+        {
+            AMSEventDataSource dataSource = new AMSEventDataSource();
+
+            int retTotalCount = totalCount;
+
+            AMSEventCollection events = dataSource.Query(pageIndex * DataHelper.DefaultPageSize, DataHelper.DefaultPageSize, "StartTime < GETUTCDATE()", "StartTime DESC", ref retTotalCount);
+
+            events.TotalCount = retTotalCount;
+
+            return events;
+        }
+
+        public static AMSEventCollection GetUpcomingEvents(int pageIndex, int pageSize, int totalCount)
+        {
+            AMSEventDataSource dataSource = new AMSEventDataSource();
+
+            int retTotalCount = totalCount;
+
+            AMSEventCollection events = dataSource.Query(pageIndex * DataHelper.DefaultPageSize, DataHelper.DefaultPageSize, "StartTime >= GETUTCDATE()", "StartTime", ref retTotalCount);
+
+            events.TotalCount = retTotalCount;
+
+            return events;
         }
 
         public static AMSEvent GetEventByID(string id)

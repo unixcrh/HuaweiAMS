@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>事件播放</title>
+    <title id="videoTitle" runat="server"></title>
     <link href="../css/azuremediaplayer.min.css" rel="stylesheet" />
     <link href="../css/mui/mui.min.css" rel="stylesheet" />
     <link href="../css/main.css" rel="stylesheet" />
@@ -35,6 +35,9 @@
                 </div>
                 <div id="videoContainer">
                     <video id="azuremediaplayer" class="azuremediaplayer aazuremediaplayer amp-default-skin amp-big-play-centered" width="100%" height="100%" tabindex="0"></video>
+                </div>
+                <div id="buttonContainer">
+                    <button id="enterFullScreen">全屏</button>
                 </div>
                 <div>
                     <p id="description" />
@@ -194,6 +197,10 @@
                 var myPlayer = amp("azuremediaplayer", myOptions);
 
                 myPlayer.src([{ src: eventData.url, type: "application/vnd.ms-sstr+xml" }]);
+
+                mui("#buttonContainer").on("tap", "button", function () {
+                    myPlayer.enterFullscreen();
+                });
             }
         </script>
     </div>

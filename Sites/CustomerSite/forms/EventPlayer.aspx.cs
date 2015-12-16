@@ -28,7 +28,10 @@ namespace CutomerSite.forms
                 AMSEvent eventData = DataHelper.GetEventByID(id);
 
                 if (eventData != null)
+                {
                     this.pageEventData.Value = DataHelper.GetSingleEventJson(eventData);
+                    this.videoTitle.Text = HttpUtility.HtmlEncode(eventData.Name);
+                }
             }
         }
     }

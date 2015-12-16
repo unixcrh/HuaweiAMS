@@ -11,6 +11,7 @@ namespace CutomerSite.services
     {
         None,
         AllEvents,
+        UpcomingEvents,
         SingleEvent
     }
 
@@ -35,14 +36,10 @@ namespace CutomerSite.services
                 switch (opType)
                 {
                     case OperationType.AllEvents:
-                        AMSEventDataSource dataSource = new AMSEventDataSource();
-
-                        int pageIndex = Res.Request.GetRequestQueryValue("pageIndex", 0);
-                        int totalCount = Res.Request.GetRequestQueryValue("totalCount", -1); ;
-
-                        AMSEventCollection events = dataSource.Query(pageIndex * DataHelper.DefaultPageSize, DataHelper.DefaultPageSize, ref totalCount);
-
-                        result = DataHelper.GetEventsListJson(pageIndex, DataHelper.DefaultPageSize, totalCount, events);
+                        result = QueryEvents((pageIndex, pageSize, totalCount) => DataHelper.GetStartedEvents(pageIndex, pageSize, totalCount));
+                        break;
+                    case OperationType.UpcomingEvents:
+                        result = QueryEvents((pageIndex, pageSize, totalCount) => DataHelper.GetUpcomingEvents(pageIndex, pageSize, totalCount));
                         break;
                     case OperationType.SingleEvent:
                         string eventID = Res.Request.GetRequestQueryString("id", string.Empty);
@@ -62,6 +59,16 @@ namespace CutomerSite.services
                 context.Response.Write(result);
                 context.Response.End();
             }
+        }
+
+        private static string QueryEvents(Func<int, int, int, AMSEventCollection> getEvents)
+        {
+            int pageIndex = Res.Request.GetRequestQueryValue("pageIndex", 0);
+            int totalCount = Res.Request.GetRequestQueryValue("totalCount", -1);
+
+            AMSEventCollection events = getEvents(pageIndex, DataHelper.DefaultPageSize, totalCount);
+
+            return DataHelper.GetEventsListJson(pageIndex, DataHelper.DefaultPageSize, events.TotalCount, events);
         }
 
         public bool IsReusable

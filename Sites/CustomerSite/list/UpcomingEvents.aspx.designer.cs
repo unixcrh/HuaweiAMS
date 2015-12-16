@@ -10,7 +10,7 @@
 namespace CutomerSite.list {
     
     
-    public partial class AllEvents {
+    public partial class UpcomingEvents {
         
         /// <summary>
         /// firstPageData control.
@@ -38,14 +38,5 @@ namespace CutomerSite.list {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText pageSize;
-        
-        /// <summary>
-        /// uid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl uid;
     }
 }
