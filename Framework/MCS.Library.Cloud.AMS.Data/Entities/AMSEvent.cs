@@ -153,5 +153,10 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
     [DataContract]
     public class AMSEventCollection : EditableDataObjectCollectionBase<AMSEvent>
     {
+        public int TotalCount
+        {
+            get;
+            set;
+        }
     }
 }
