@@ -83,6 +83,9 @@
         function generateFrame() {
             $("#frameContainer").empty();
             var frame = $("<iframe>").attr("name", "imageFrame").appendTo("#frameContainer");
+
+            $("#fileContainer").empty();
+            var file = $("<input>").attr("id", "uploadFile").attr("name", "uploadFile").attr("type", "file").appendTo("#fileContainer");
         }
     </script>
 </head>
@@ -170,7 +173,9 @@
             <form action="UploadReceiver.ashx" target="imageFrame" method="post" enctype="multipart/form-data">
                 <input type="hidden" id="fileID" name="fileID" />
                 <input type="hidden" id="fileType" name="fileType" />
-                <input type="file" id="uploadFile" name="uploadFile" />
+                <div id="fileContainer">
+                    <input type="file" id="uploadFile" name="uploadFile" />
+                </div>
                 <input type="submit" id="fileSubmit" />
             </form>
             <div id="frameContainer">
