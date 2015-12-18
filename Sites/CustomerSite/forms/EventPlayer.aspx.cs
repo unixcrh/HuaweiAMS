@@ -10,6 +10,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using MCS.Web.Responsive.Library;
+using Res = MCS.Web.Responsive.Library;
+using CutomerSite.services;
+using System.Collections.Specialized;
 
 namespace CutomerSite.forms
 {
@@ -29,7 +33,7 @@ namespace CutomerSite.forms
 
                 if (eventData != null)
                 {
-                    this.pageEventData.Value = DataHelper.GetSingleEventJson(eventData);
+                    this.pageEventData.Value = DataHelper.GetSingleEventJson(eventData, WebHelper.GetVideoAddressType());
                     this.videoTitle.Text = HttpUtility.HtmlEncode(eventData.Name);
                 }
             }
@@ -38,6 +42,30 @@ namespace CutomerSite.forms
         protected override void OnPreRender(EventArgs e)
         {
             this.RegisterApplicationRoot();
+
+            VideoAddressType videoAddressType = WebHelper.GetVideoAddressType();
+
+            this.videoAddressType.Value = videoAddressType.ToString();
+
+            VideoAddressType targetType = VideoAddressType.Mooncake;
+
+            string buttonText = string.Empty;
+
+            switch (videoAddressType)
+            {
+                case VideoAddressType.Default:
+                    targetType = VideoAddressType.Mooncake;
+                    buttonText = "切换到中国CDN";
+                    break;
+                case VideoAddressType.Mooncake:
+                    targetType = VideoAddressType.Default;
+                    buttonText = "切换到默认CDN";
+                    break;
+            }
+
+            switchVideoAddressType.HRef = UriHelper.ReplaceUriParams(this.Request.Url.ToString(),
+                parameters => parameters["videoAddressType"] = targetType.ToString());
+            switchVideoAddressType.InnerText = buttonText;
 
             base.OnPreRender(e);
         }

@@ -16,6 +16,15 @@ namespace CutomerSite.services
     }
 
     /// <summary>
+    /// 
+    /// </summary>
+    public enum VideoAddressType
+    {
+        Default,
+        Mooncake
+    }
+
+    /// <summary>
     /// Summary description for QueryService
     /// </summary>
     public class QueryService : IHttpHandler
@@ -45,7 +54,7 @@ namespace CutomerSite.services
                         string eventID = Res.Request.GetRequestQueryString("id", string.Empty);
                         AMSEvent eventData = DataHelper.GetEventByID(eventID);
                         if (eventData != null)
-                            result = DataHelper.GetSingleEventJson(eventData);
+                            result = DataHelper.GetSingleEventJson(eventData, WebHelper.GetVideoAddressType());
 
                         break;
                 }

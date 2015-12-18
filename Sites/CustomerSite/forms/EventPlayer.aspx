@@ -19,6 +19,7 @@
 <body>
     <div>
         <input runat="server" id="pageEventData" type="hidden" />
+        <input runat="server" id="videoAddressType" type="hidden" />
         <header class="mui-bar mui-bar-nav">
             <a class="mui-icon mui-icon-bars mui-pull-left"></a>
             <a class="mui-icon mui-icon-search mui-pull-right"></a>
@@ -40,7 +41,7 @@
                     <video id="azuremediaplayer" class="azuremediaplayer aazuremediaplayer amp-default-skin amp-big-play-centered" width="100%" height="100%" tabindex="0"></video>
                 </div>
                 <div id="buttonContainer">
-                    <button id="enterFullScreen">全屏</button>
+                    <a class="mui-btn" id="switchVideoAddressType" runat="server">切换到</a>
                 </div>
                 <div>
                     <p id="description" />
@@ -67,10 +68,6 @@
                         contentover: "释放立即刷新", //可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
                         contentrefresh: "正在刷新...", //可选，正在刷新状态时，下拉刷新控件上显示的标题内容
                         callback: function () {
-                            //setTimeout(function () {
-                            //    $($(".mui-table-view").children()[0]).before($(".mui-table-view").children()[2]);
-                            //    mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
-                            //}, 2000);
                             $.getJSON("../services/QueryService.ashx?opType=SingleEvent&id=" + $("#eventID").val(), function (data) {
 
                                 if (typeof (data.stackTrace) != "undefined") {
@@ -179,6 +176,10 @@
 
                     initData(eventData);
                 }
+
+                mui("#buttonContainer").on("tap", "a", function () {
+                    window.location.href = $(this).attr("href");
+                });
             });
 
             function initData(eventData) {

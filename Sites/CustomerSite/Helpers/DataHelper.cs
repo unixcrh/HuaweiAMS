@@ -1,4 +1,5 @@
-﻿using MCS.Library.Cloud.AMS.Data.Adapters;
+﻿using CutomerSite.services;
+using MCS.Library.Cloud.AMS.Data.Adapters;
 using MCS.Library.Cloud.AMS.Data.DataSources;
 using MCS.Library.Cloud.AMS.Data.Entities;
 using MCS.Library.Core;
@@ -85,7 +86,7 @@ namespace CutomerSite.Helpers
             return eventData;
         }
 
-        public static string GetSingleEventJson(AMSEvent eventData)
+        public static string GetSingleEventJson(AMSEvent eventData, VideoAddressType addressType)
         {
             var simpleEventData = new
             {
@@ -93,7 +94,7 @@ namespace CutomerSite.Helpers
                 name = eventData.Name,
                 description = eventData.Description,
                 speakers = eventData.Speakers,
-                url = eventData.CDNPlaybackUrl,
+                url = ChangeVideoAddress(eventData.CDNPlaybackUrl, addressType),
                 poster = eventData.PosterUrl,
                 views = string.Format("{0:#,##0}", eventData.Views),
                 startTime = string.Format("{0:yyyy-MM-dd HH:mm:ss}", eventData.StartTime),
@@ -110,6 +111,17 @@ namespace CutomerSite.Helpers
             var error = new { message = ex.Message, stackTrace = ex.StackTrace };
 
             return JSONSerializerExecute.Serialize(error);
+        }
+
+        private static string ChangeVideoAddress(string url, VideoAddressType addressType)
+        {
+            Uri target = new Uri(url);
+            string result = url;
+
+            if (addressType == VideoAddressType.Mooncake)
+                result = url.Replace(target.Host, "video.cqkfz.com");
+
+            return result;
         }
     }
 }
