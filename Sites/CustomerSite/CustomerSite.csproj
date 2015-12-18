@@ -148,7 +148,9 @@
     <Content Include="scripts\jquery-2.1.4.js" />
     <Content Include="scripts\jquery-2.1.4.min.js" />
     <Content Include="scripts\jquery-2.1.4.min.map" />
+    <Content Include="scripts\lepus-util.js" />
     <Content Include="scripts\lepus-webview-sdk.js" />
+    <Content Include="scripts\lepus.mobile.js" />
     <Content Include="services\QueryService.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

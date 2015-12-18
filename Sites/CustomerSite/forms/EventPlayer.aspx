@@ -12,15 +12,31 @@
     <script src="../scripts/jquery-2.1.4.min.js"></script>
     <script src="../scripts/mui.min.js"></script>
     <script src="../Helpers/applicationInfo.aspx"></script>
+    <script src="../scripts/lepus.mobile.js"></script>
+    <script src="../scripts/lepus-util.js"></script>
     <script src="../scripts/lepus-webview-sdk.js"></script>
     <script src="../scripts/amsCommon.js"></script>
     <script src="../scripts/azuremediaplayer.min.js"></script>
+    <style type="text/css">
+        #topPopover .mui-popover-arrow {
+            left: auto;
+            right: 6px;
+        }
+
+        .mui-popover {
+            height: 300px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div>
         <input runat="server" id="pageEventData" type="hidden" />
         <input runat="server" id="videoAddressType" type="hidden" />
-        <header class="mui-bar mui-bar-nav">
+        <header class="mui-bar mui-bar-nav hidden">
             <a class="mui-icon mui-icon-bars mui-pull-left"></a>
             <a class="mui-icon mui-icon-search mui-pull-right"></a>
             <h1 class="mui-title" id="eventName"></h1>
@@ -180,6 +196,8 @@
                 mui("#buttonContainer").on("tap", "a", function () {
                     window.location.href = $(this).attr("href");
                 });
+
+                ams.initMenu();
             });
 
             function initData(eventData) {

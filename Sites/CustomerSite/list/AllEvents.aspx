@@ -9,6 +9,8 @@
     <script src="../scripts/jquery-2.1.4.min.js"></script>
     <script src="../scripts/mui.min.js"></script>
     <script src="../Helpers/applicationInfo.aspx"></script>
+    <script src="../scripts/lepus.mobile.js"></script>
+    <script src="../scripts/lepus-util.js"></script>
     <script src="../scripts/lepus-webview-sdk.js"></script>
     <script src="../scripts/amsCommon.js"></script>
     <link href="../css/mui/mui.min.css" rel="stylesheet" />
