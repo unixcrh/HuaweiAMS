@@ -11,6 +11,9 @@
     <link href="../css/main.css" rel="stylesheet" />
     <script src="../scripts/jquery-2.1.4.min.js"></script>
     <script src="../scripts/mui.min.js"></script>
+    <script src="../Helpers/applicationInfo.aspx"></script>
+    <script src="../scripts/lepus-webview-sdk.js"></script>
+    <script src="../scripts/amsCommon.js"></script>
     <script src="../scripts/azuremediaplayer.min.js"></script>
 </head>
 <body>

@@ -24,11 +24,19 @@ namespace CutomerSite.list
             this.totalCount.Value = events.TotalCount.ToString();
             this.pageSize.Value = DataHelper.DefaultPageSize.ToString();
 
+
             //HttpCookie cookie = this.Request.Cookies.Get("login_uid");
 
             //if (cookie != null)
             //    this.uid.InnerText = cookie.Value;
             //OutputHeaders();
+        }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            this.RegisterApplicationRoot();
+
+            base.OnPreRender(e);
         }
 
         //private void OutputHeaders()

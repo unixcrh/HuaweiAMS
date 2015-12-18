@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="../scripts/jquery-2.1.4.min.js"></script>
     <script src="../scripts/mui.min.js"></script>
+    <script src="../Helpers/applicationInfo.aspx"></script>
     <script src="../scripts/lepus-webview-sdk.js"></script>
+    <script src="../scripts/amsCommon.js"></script>
     <link href="../css/mui/mui.min.css" rel="stylesheet" />
     <link href="../css/main.css" rel="stylesheet" />
     <style type="text/css">
@@ -25,27 +27,6 @@
             display: none;
         }
     </style>
-    <script>
-        function initMenu() {
-            if (SDK.Lepus.Sys.isLepus()) {
-                var contentData = {
-                    shareType: SDK.Lepus.More.SHARE_TYPE_LINK,
-                    shareIcon: "",
-                    shareTitle: "即将播出",
-                    shareContent: "这里是分享文本",
-                    shareUrl: "#",
-                    shareSource: "来源"
-                }
-
-                var menuItem = { operateType: SDK.Lepus.More.OPERATE_OPEN_NEW_URL, content: contentData };
-
-                var jsonData = JSON.stringify({ menuMore: [menuItem] });
-
-                SDK.Lepus.More.initMore(jsonData, function () {
-                });
-            }
-        }
-    </script>
 </head>
 <body>
     <div>
@@ -115,9 +96,7 @@
 
             appendData(currentPageData);
 
-            initMenu();
-            //if (isLepus())
-            //    $("#headerContainer").addClass("hidden");
+            ams.initMenu();
         });
 
         function appendData(pageData) {

@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="../scripts/jquery-2.1.4.min.js"></script>
     <script src="../scripts/mui.min.js"></script>
+    <script src="../Helpers/applicationInfo.aspx"></script>
+    <script src="../scripts/lepus-webview-sdk.js"></script>
+    <script src="../scripts/amsCommon.js"></script>
     <link href="../css/mui/mui.min.css" rel="stylesheet" />
     <link href="../css/main.css" rel="stylesheet" />
     <style type="text/css">
@@ -19,6 +22,10 @@
         .mui-popover {
             height: 300px;
         }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -27,11 +34,13 @@
         <input runat="server" id="totalCount" />
         <input runat="server" id="pageSize" />
     </div>
-    <header class="mui-bar mui-bar-nav">
-        <a class="mui-icon mui-icon-arrowleft mui-pull-left"></a>
-        <h1 class="mui-title">即将直播</h1>
-        <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" href="#topPopover"></a>
-    </header>
+    <div id="headerContainer" class="hidden">
+        <header class="mui-bar mui-bar-nav">
+            <a class="mui-icon mui-icon-arrowleft mui-pull-left"></a>
+            <h1 class="mui-title">即将直播</h1>
+            <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" href="#topPopover"></a>
+        </header>
+    </div>
     <div id="refreshContainer" class="mui-content mui-scroll-wrapper">
         <div class="mui-scroll">
             <!--数据列表-->
@@ -71,6 +80,8 @@
             });
 
             appendData(currentPageData);
+
+            ams.initMenu();
         });
 
         function appendData(pageData) {

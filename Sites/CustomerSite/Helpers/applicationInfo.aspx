@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="applicationInfo.aspx.cs" Inherits="CutomerSite.Helpers.applicationInfo" %>

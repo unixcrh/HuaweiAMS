@@ -20,5 +20,12 @@ namespace CutomerSite.list
             this.totalCount.Value = events.TotalCount.ToString();
             this.pageSize.Value = DataHelper.DefaultPageSize.ToString();
         }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            this.RegisterApplicationRoot();
+
+            base.OnPreRender(e);
+        }
     }
 }

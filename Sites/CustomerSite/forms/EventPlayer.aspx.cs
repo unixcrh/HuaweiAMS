@@ -34,5 +34,12 @@ namespace CutomerSite.forms
                 }
             }
         }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            this.RegisterApplicationRoot();
+
+            base.OnPreRender(e);
+        }
     }
 }

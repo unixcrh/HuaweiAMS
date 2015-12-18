@@ -96,9 +96,13 @@
     <Content Include="css\mui\mui.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="forms\EventPlayer.aspx" />
+    <Content Include="Helpers\applicationInfo.aspx" />
     <Content Include="images\amsPoster1.png" />
+    <Content Include="images\movie.png" />
     <Content Include="images\logo.png" />
+    <Content Include="images\rightArrow.png" />
     <Content Include="list\AllEvents.aspx" />
+    <Content Include="list\MoreMenu.aspx" />
     <Content Include="list\UpcomingEvents.aspx" />
     <Content Include="menu\css\main.css" />
     <Content Include="menu\css\mui.css" />
@@ -138,6 +142,7 @@
     <Content Include="css\fonts\mui.ttf" />
     <None Include="Properties\PublishProfiles\customertv-huawei.pubxml" />
     <None Include="scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="scripts\amsCommon.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jquery-2.1.4.js" />
@@ -180,13 +185,28 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\applicationInfo.aspx.cs">
+      <DependentUpon>applicationInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Helpers\applicationInfo.aspx.designer.cs">
+      <DependentUpon>applicationInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\DataHelper.cs" />
+    <Compile Include="Helpers\WebHelper.cs" />
     <Compile Include="list\AllEvents.aspx.cs">
       <DependentUpon>AllEvents.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="list\AllEvents.aspx.designer.cs">
       <DependentUpon>AllEvents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="list\MoreMenu.aspx.cs">
+      <DependentUpon>MoreMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="list\MoreMenu.aspx.designer.cs">
+      <DependentUpon>MoreMenu.aspx</DependentUpon>
     </Compile>
     <Compile Include="list\UpcomingEvents.aspx.cs">
       <DependentUpon>UpcomingEvents.aspx</DependentUpon>
