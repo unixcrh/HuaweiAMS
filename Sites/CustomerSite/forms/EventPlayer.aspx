@@ -2,13 +2,14 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title id="videoTitle" runat="server"></title>
     <link href="../css/azuremediaplayer.min.css" rel="stylesheet" />
     <link href="../css/mui/mui.min.css" rel="stylesheet" />
     <link href="../css/main.css" rel="stylesheet" />
+    <script src="../scripts/azuremediaplayer.min.js"></script>
     <script src="../scripts/jquery-2.1.4.min.js"></script>
     <script src="../scripts/mui.min.js"></script>
     <script src="../Helpers/applicationInfo.aspx"></script>
@@ -16,7 +17,6 @@
     <script src="../scripts/lepus-util.js"></script>
     <script src="../scripts/lepus-webview-sdk.js"></script>
     <script src="../scripts/amsCommon.js"></script>
-    <script src="../scripts/azuremediaplayer.min.js"></script>
     <style type="text/css">
         #topPopover .mui-popover-arrow {
             left: auto;
@@ -106,28 +106,9 @@
                             });
                         } //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
                     },
-                    //up: {
-                    //    contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
-                    //    contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
-                    //    callback: function () {
-                    //        setTimeout(function () {
-                    //            showBack.error("对不起，网络连接异常");
-                    //            mui('#refreshContainer').pullRefresh().endPullupToRefresh();
-                    //            /*$(".mui-table-view").append($(".mui-table-view").html());//必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
-                    //          */
-                    //        }, 2000);
-
-                    //    }
-                    //}
                 }
             });
-            //点击左上角侧滑图标，打开侧滑菜单；
-            document.querySelector('.mui-icon-bars').addEventListener('tap', function (e) {
-                $("#menu").animate({
-                    marginLeft: '0%'
-                }, 300);
-                $("#menu_back").show();
-            });
+
             document.querySelector('.menu_back').addEventListener('tap', function (e) {
                 $("#menu").animate({
                     marginLeft: '-100%'
@@ -209,20 +190,27 @@
                 $("#speakers").text(eventData.speakers);
                 $("#views").text(eventData.views + "次观看");
 
+                //var myOptions = {
+                //    "nativecontrolsfortouch": false,
+                //    //poster: eventData.poster,
+                //    autoplay: false,
+                //    controls: true
+                //    //preload: "auto"
+                //};
+
                 var myOptions = {
-                    "nativecontrolsfortouch": false,
-                    poster: eventData.poster,
+                    "nativeControlsForTouch": false,
                     autoplay: false,
                     controls: true,
                     preload: "auto"
                 };
-                var myPlayer = amp("azuremediaplayer", myOptions);
 
-                myPlayer.src([{ src: eventData.url, type: "application/vnd.ms-sstr+xml" }]);
+                if (eventData.url != "") {
+                    var myPlayer = amp("azuremediaplayer", myOptions);
 
-                mui("#buttonContainer").on("tap", "button", function () {
-                    myPlayer.enterFullscreen();
-                });
+
+                    myPlayer.src([{ src: eventData.url, type: "application/vnd.ms-sstr+xml" }]);
+                }
             }
         </script>
     </div>

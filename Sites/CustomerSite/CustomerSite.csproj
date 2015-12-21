@@ -88,6 +88,11 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="css\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="css\bootstrap\css\bootstrap.css" />
+    <Content Include="css\bootstrap\css\bootstrap.min.css" />
+    <Content Include="css\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="css\icons\amslogo.png" />
     <Content Include="css\icons\buffering-rainbow-bg.png" />
     <Content Include="css\icons\buffering-rainbow.gif" />
@@ -102,6 +107,7 @@
     <Content Include="images\logo.png" />
     <Content Include="images\rightArrow.png" />
     <Content Include="list\AllEvents.aspx" />
+    <Content Include="list\CompletedEvents.aspx" />
     <Content Include="list\MoreMenu.aspx" />
     <Content Include="list\UpcomingEvents.aspx" />
     <Content Include="menu\css\main.css" />
@@ -140,8 +146,18 @@
     <Content Include="menu\fonts\mui.ttf" />
     <Content Include="menu\manifest.json" />
     <Content Include="css\fonts\mui.ttf" />
+    <Content Include="css\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="css\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="css\bootstrap\css\bootstrap.css.map" />
+    <Content Include="css\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="css\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="css\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="css\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="css\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Properties\PublishProfiles\customertv-huawei.pubxml" />
     <None Include="scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="samples\FlashVideo.aspx" />
+    <Content Include="samples\Html5Video.aspx" />
     <Content Include="scripts\amsCommon.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
@@ -203,6 +219,13 @@
     <Compile Include="list\AllEvents.aspx.designer.cs">
       <DependentUpon>AllEvents.aspx</DependentUpon>
     </Compile>
+    <Compile Include="list\CompletedEvents.aspx.cs">
+      <DependentUpon>CompletedEvents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="list\CompletedEvents.aspx.designer.cs">
+      <DependentUpon>CompletedEvents.aspx</DependentUpon>
+    </Compile>
     <Compile Include="list\MoreMenu.aspx.cs">
       <DependentUpon>MoreMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -218,6 +241,20 @@
       <DependentUpon>UpcomingEvents.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="samples\FlashVideo.aspx.cs">
+      <DependentUpon>FlashVideo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="samples\FlashVideo.aspx.designer.cs">
+      <DependentUpon>FlashVideo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="samples\Html5Video.aspx.cs">
+      <DependentUpon>Html5Video.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="samples\Html5Video.aspx.designer.cs">
+      <DependentUpon>Html5Video.aspx</DependentUpon>
+    </Compile>
     <Compile Include="samples\simpleVideo.aspx.cs">
       <DependentUpon>simpleVideo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

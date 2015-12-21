@@ -8,6 +8,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 namespace CutomerSite.Helpers
@@ -28,6 +29,7 @@ namespace CutomerSite.Helpers
                     name = eventData.Name,
                     description = eventData.Description,
                     speakers = eventData.Speakers,
+                    timeDescription = GetTimeDescription(eventData.StartTime, eventData.EndTime),
                     logo = eventData.LogoUrl.IsNotEmpty() ? eventData.LogoUrl : "/images/amsPoster1.png"
                 };
 
@@ -115,13 +117,33 @@ namespace CutomerSite.Helpers
 
         private static string ChangeVideoAddress(string url, VideoAddressType addressType)
         {
-            Uri target = new Uri(url);
             string result = url;
 
-            if (addressType == VideoAddressType.Mooncake)
-                result = url.Replace(target.Host, "video.cqkfz.com");
+            if (url.IsNotEmpty())
+            {
+                Uri target = new Uri(url);
+
+                if (addressType == VideoAddressType.Mooncake)
+                    result = url.Replace(target.Host, "video.cqkfz.com");
+            }
 
             return result;
+        }
+
+        private static string GetTimeDescription(DateTime startTime, DateTime endTime)
+        {
+            TimeSpan ts = endTime - startTime;
+
+            StringBuilder strB = new StringBuilder();
+
+            strB.AppendFormat("{0:yyyy-MM-dd HH:mm}", startTime);
+
+            strB.AppendFormat(" 时长{0:}小时", ts.Hours);
+
+            if (ts.Minutes > 0)
+                strB.AppendFormat("{1:00}分钟", ts.Minutes);
+
+            return strB.ToString();
         }
     }
 }
