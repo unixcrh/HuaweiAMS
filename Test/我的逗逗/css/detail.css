@@ -1,0 +1,350 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+html,body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	color: #000;
+	margin: 0;
+	padding: 0;
+}
+.hide{
+	display:none
+}
+.containdiv {
+	height: 100%;
+	width: 100%;
+}
+
+.detaildiv {
+	position:relative;
+	height: 40%;
+}
+
+.detailtext {
+	position:absolute;
+	width: 86%;
+	height:85%;
+	font-size: 1em;
+	color: #FFFFFF;
+	left: 7%;
+	display: table;
+}
+.detailtext .conspan {
+	text-align: left;
+	text-shadow: none;
+	display: table-cell;
+	vertical-align: middle;
+	/* word-break: break-all;
+	white-space: pre-wrap; */
+}
+
+.detailinfo{
+	position:absolute;
+	height: 15%;
+	width:100%;
+	bottom:0;
+	background-color:rgba(0,0,0,0.1);
+}
+
+.detailinfo span{
+	color: white;
+	font-size: 0.8em;
+}
+
+#lookdiv, #oldPraiseDiv {
+	width: 15px;
+}
+
+.detailinfo div.reviewdiv{
+	position: absolute;
+	top: 25%;
+	left:5%;
+	padding-left: 6%;
+	background: url(../img/dou_45.png) no-repeat 0 center;
+	background-size: 15%;
+}
+
+.detailinfo div.lookdiv{
+	position: absolute;
+	top: 25%;
+	right: 5%;
+	padding-left: 6%;
+	background: url(../img/dou_46.png) no-repeat 0 center;
+	background-size: 60%;
+}
+
+.detailinfo div.lookdiv-old{
+	position: absolute;
+	top: 25%;
+	right: 18%;
+	padding-left: 6%;
+	background: url(../img/dou_46.png) no-repeat 0 center;
+	background-size: 60%;
+}
+
+.detailinfo div.oldPraiseDiv-no{
+	position: absolute;
+	top: 25%;
+	right: 4%;
+	padding-left: 6%;
+	background: url(../img/dou_60.png) no-repeat 0 center;
+	background-size: 60%;
+}
+
+.detailinfo div.oldPraiseDiv-yes{
+	position: absolute;
+	top: 25%;
+	right: 4%;
+	padding-left: 6%;
+	background: url(../img/dou_59.png) no-repeat 0 center;
+	background-size: 60%;
+}
+
+.praisediv {
+	position: relative;
+	/* height: 60%; */
+}
+
+.reviewlist li{
+	border-bottom: 1px solid #c5c5c5;
+}
+
+li div.liDiv{
+	background: url(../img/dou_47.png) no-repeat 4% 35%;
+	background-size: 13%;
+	padding: 5% 2% 5% 20%;
+}
+
+li p.licontent{
+	color: #272727;
+	font-size: 0.9em;
+	word-break: break-all;
+	white-space: pre-wrap;
+}
+
+li p.litime{
+	color:#b4b4b4;
+	font-size: 0.7em;
+	margin-top: 4%;
+}
+
+.imgdiv {
+	text-align: center;
+	/* background-image: url("../img/dou_1.png"); */
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-top: 20%;
+	height: 38%;
+}
+
+
+
+.praisecountdiv {
+	text-align: center;
+	padding-top: 3%;
+}
+
+.cardDiv {
+	height: 100%;
+	width: 100%;
+	/* display: none; */
+}
+
+.cardTopDiv {
+	height: 30.6%;
+	border-bottom: 2px dashed #FFFFFF;
+}
+
+.logoDiv {
+	height: 40%;
+	position: relative;
+}
+
+.logoDiv .status{
+	height: 100%;
+}
+
+.logoDiv .status .statusImg{
+	height: 70px;
+	width: 70px;
+	float: right;
+}
+
+.logoDiv .cardImgDiv {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	left: 2%;
+	top: 10px;
+	background:url() no-repeat 0 center;
+	background-size:100%;
+	border-radius:50%;
+}
+
+.logoDiv .cardImgDiv img {
+	text-align: center;
+	padding-top: 20%;
+	width: 60px;
+	height: 60px;
+}
+
+.logoDiv .providerDiv {
+	margin-left: 20%;
+	padding-top: 8%;
+	float: left;
+}
+
+.logoDiv .providerDiv span {
+	text-align: center;
+	font-size: 1em;
+	color: #FFFFFF;
+}
+
+.cardTopDiv .ctitleDiv {
+	text-align: center;
+	font-size: 1.3em;
+	color: #FFFFFF;
+	height: 30%;
+	padding: 10px 5px 0px;
+}
+
+.cardTopDiv .contentDiv {
+	text-align: center;
+	font-size: 0.9em;
+	color: #FFFFFF;
+	height: 35%;
+}
+
+.cardTopDiv .priodDiv {
+	text-align: center;
+	font-size: 0.8em;
+	color: rgba(255, 255, 255, 0.7);
+	height: 15%;
+	padding-top: 2%;
+}
+
+.cardBottomDiv .content {
+	height: 85%;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-right: 10px;
+}
+
+.cardBottomDiv .content img {
+	max-height: 100%;
+	max-width: 100%;
+}
+
+
+.cardBottomDiv .carddetail {
+	height: 45%;
+}
+
+.cardBottomDiv .content .carddetail .detail {
+	padding-top: 5%;
+	padding-left: 3%;
+	font-size: 0.9em;
+	color: #B0B0B0;
+}
+
+.cardBottomDiv .content .carddetail .detailInfo {
+	padding-top: 5%;
+	padding-left: 3%;
+	font-size: 1em;
+}
+
+.cardBottomDiv .content .careLabel {
+	height: 55%;
+}
+
+.cardBottomDiv .content .careLabel .label {
+	padding-top: 5%;
+	padding-left: 3%;
+	font-size: 0.9em;
+	color: #B0B0B0;
+}
+
+.cardBottomDiv .content .careLabel .labelInfo {
+	padding-top: 5%;
+	padding-left: 3%;
+	font-size: 1em;
+}
+
+.reciveBtn {
+	height: 55px;
+	text-align: center;
+	background-color: #45C01A;
+	color: #FFFFFF;
+	position: fixed;
+	font-weight: bold;
+	width: 100%;
+	line-height: 55px;
+	bottom: 0px;
+	font-size: 1.1em; 
+}
+
+.cardBottomDiv .reciveBtn div {
+	text-align: center;
+	background-color: #45C01A;
+	color: #FFFFFF;
+	padding-top: 3%;
+}
+
+.exchangeCodeDiv {
+	display: block;  
+	border-bottom: 4px solid #EBEBEB; 
+	width: 100%;
+	height: 60px;
+	text-indent: 10px;
+}
+
+.exchangeCodeDiv .code { 
+	font-size: 1.2em; 
+	line-height: 40px;
+}
+
+.exchangeCodeDiv .codeTip { 
+	font-size: 0.9em;
+	color: #B0B0B0; 
+	line-height: 5px;
+}
+
+.praisediv .nocomment{
+	position: absolute;
+	/* top: 6%;
+	left: 8%; */
+	margin: 8%;
+}
+
+@media screen and (min-width:600px) {
+	body {
+		font-size: 26px;
+	}
+	.logoDiv .cardImgDiv {
+		height: 80px;
+		width: 80px;
+	}
+} 
+@media screen and (width:480px) {
+	body {
+		font-size: 20px;
+	}
+	.logoDiv .status .statusImg{
+		height: 80px;
+		width: 80px;
+		float: right;
+	}
+	.logoDiv .cardImgDiv {
+		height: 70px;
+		width: 70px;
+	}
+} 

@@ -1,0 +1,318 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+html,body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	font-family: sans-serif;
+	font-size: 16px;
+}
+
+.hide {
+	display: none;
+}
+
+#pageone {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+#pageone div.content {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	background-color: #f1f1f1;
+}
+
+#pageone div.userimg{
+	position:absolute;
+	width:100%;
+	height:15%;
+	top:41%;
+	z-index: 2;
+	text-align: center;
+}
+
+#pageone div.userimg .backUserImg{
+	margin: 0 auto;
+	border-radius:50%;
+	background-size:cover; 
+}
+
+.advisediv {
+	position: fixed;
+	top: 5%;
+	left: 28%;
+	background: url("../img/dou_32.png") no-repeat 95% center;
+	background-size: 15%;
+	border-radius: 3px;
+	background-color: rgba(0,0,0,0.6);
+	padding: 2% 9% 2% 4%;
+	margin : 0 auto;
+	color: #cccccc;
+	box-sizing:border-box;
+	z-index: 5;
+}
+
+.versionAdvisediv {
+	position: fixed;
+	top: 5%;
+	left: 8%;
+	right: 8%;
+	background-size: 15%;
+	border-radius: 3px;
+	background-color: rgba(0,0,0,0.6);
+	padding: 2% 9% 2% 4%;
+	margin : 0 auto;
+	color: #cccccc;
+	box-sizing:border-box;
+	text-align: center;
+	z-index: 5;
+}
+
+#pageone div.userdiv{
+	position:absolute;
+	width:100%;
+	top:80%;
+	z-index:2; 
+	text-align: center;
+	/* background: url("../img/dou_33.gif") no-repeat 10px center; */
+}
+#pageone div.userdiv div.text{
+	 display:inline-block;
+	 color:#999999;
+	 font-size:0.9em;
+	 vertical-align: middle;
+	 line-height: 100%;
+}
+
+#pageone div.userdiv div.text img.loadingimg{
+	display:inline-block;
+	height:30px;
+	vertical-align: middle;
+	/* -webkit-animation:xuan 2s linear .5s infinite; */
+}
+
+
+#pageone div.result{
+	position:absolute;
+	width: 90%;
+	left: 5%;
+	bottom: 10%;
+	background:#FFF;
+	border:1px solid #dedede;
+	border-radius:4px;
+}
+
+#pageone div.result .text{
+	padding:5% 0 5% 22%;
+	background:url(../img/dou_6.png) no-repeat 5% center;
+	background-size:15%;
+	width: 78%;	
+}
+
+#pageone div.result #episode-nan{
+	padding:10px; 
+	width: 95%;	
+	font-size: 0.9em;
+	text-align: left;
+}
+
+
+#pageone div.result .text p{ 
+	line-height:140%;
+	white-space:nowrap;
+   	overflow: hidden; 
+   	text-overflow:ellipsis;
+}
+
+#pageone div.result .text p.result-title{
+	color: #9f9f9f;
+	font-size: 0.8em;
+}
+
+#pageone div.result .text p.result-content{
+	font-size: 1.0em;
+}
+
+#pageone div.handlogo{
+	position: absolute;
+	width: 100%;
+	height: 60%;
+	top: 18%;
+}
+
+#pageone div.content div.dou-up {
+	position: relative;
+	width: 48%;
+	height: 50%;
+	left: 26%;
+	background-image: url("../img/dou_10.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	background-color:#f1f1f1;
+	z-index: 3;
+}
+
+#pageone div.content div.dou-down {
+	position: relative;
+	width: 48%;
+	height: 50%;
+	left: 26%;
+	background-image: url("../img/dou_14.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: top;
+	z-index: 3;
+}
+
+#pageone div.content div.line-up {
+	position: absolute;
+	width: 100%;
+	height: 2%;
+	top: 50%;
+	background-image: url("../img/dou_12.png");
+	background-size: contain;
+	z-index: 4;
+}
+
+#pageone div.content div.line-down {
+	position: absolute;
+	width: 100%;
+	height: 2%;
+	top: 50%;
+	background-image: url("../img/dou_13.png");
+	background-size: contain;
+	z-index: 4;
+}
+
+#haspage {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background-color: #ffffff;
+}
+
+#haspage .hasImgDiv{
+	width:100%; 
+	height:60%;
+	text-align: center;
+}
+
+#haspage .hasImgDiv img {
+	width:60%; 
+	height:60%;
+	padding-top: 20%;
+}
+
+#haspage .hasTip{
+	text-align: center;
+	font-size: 0.8em;
+    color: #999999;
+}
+
+#haspage .hasCountTip{
+	margin : 10px 10px 10px 10px;
+	text-align: center;
+	font-size: 0.95em;
+	color: #616161;
+}
+
+#haspage .hasmessage{
+	text-align: center;
+	font-size: 0.95em;
+	color: #616161;
+	padding-top: 6%;
+}
+
+#haspage div.hascontent{
+	height: 10%;
+}
+
+#haspage .hasBtnDiv{
+	height:8%;
+	padding: 0.5%;
+	text-align: center;
+	margin-top: 6%;
+}
+
+#haspage .hasBtn{
+  height: 100%;
+  width: 65%;
+  padding: 0.5%;
+  border: 0;
+  background-color: #45c01a;
+  border-radius:4px;
+  font-size: 1.1em;
+  color: #ffffff;
+  outline: none;
+}
+
+#haspage .hasCountTip span {
+	color: #ef7922;
+}
+
+
+.anima-up{
+	-webkit-animation:up 1.5s ease 0 1 normal;
+}
+
+.anima-down{
+	-webkit-animation:down 1.5s ease 0 1 normal;
+}
+
+@-webkit-keyframes up 
+{
+	0%   {-webkit-transform:translateY(0);}
+	40%  {-webkit-transform:translateY(-80px);}
+	60%  {-webkit-transform:translateY(-80px);}
+	100%   {-webkit-transform:translateY(0);}
+}
+
+@-webkit-keyframes down 
+{
+	0%   {-webkit-transform:translateY(0);}
+	40%  {-webkit-transform:translateY(80px);}
+	60%  {-webkit-transform:translateY(80px);}
+	100%   {-webkit-transform:translateY(0);}
+}
+
+.result{
+	-webkit-animation:result 0.6s ease-in 0 1 normal;
+}
+
+@-webkit-keyframes result 
+{
+	0%   {-webkit-transform:translateY(-160px);opacity: 0.1;}
+	100%   {-webkit-transform:translateY(0);opacity: 1;}
+}
+
+@-webkit-keyframes xuan 
+{
+	0% {-webkit-transform-origin:center;-webkit-transform:rotate(0deg);}
+	100% {-webkit-transform-origin:center;-webkit-transform:rotate(360deg);}
+}
+
+@media screen and (width:600px){
+	body{font-size:22px}
+	#pageone div.userdiv div.text img.loadingimg{height: 43px}
+}
+@media screen and (width:480px){
+	body{font-size:20px}
+	#pageone div.result .text{
+		padding:24px 0 24px 22%;
+	}
+}

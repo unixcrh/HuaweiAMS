@@ -1,0 +1,141 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+html,body {
+	position: relative;
+	height: 100%;
+}
+
+body {
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	color: #000;
+	margin: 0;
+	padding: 0;
+	background-color:rgba(0,0,0,0.1);
+}
+
+img {
+	width: expression(this.width > 95% ? 95%: true); 
+	max-width: 95%;
+}
+
+.hide{
+	display: none;
+}
+
+.detailtext {
+	position:relative;
+	font-size: 0.9em;
+	padding: 3%;
+	line-height:25px;
+	background-color:white;
+}
+
+.praisediv {
+	position: relative;
+	
+}
+
+.nocomment{
+	padding:8%;
+}
+
+p[style="text-align: center;"]{
+	font-size: 0.8em;
+	color:gray;
+	
+}
+.border-line{
+	margin-top:3%;
+	height:30px;
+	
+}
+.title{
+	width:20%;
+	text-align: center;
+	color: #A3A1A1;
+	float:left;
+	padding-top:8px;
+}
+.border-line-left{
+	height: 1px;
+  	width: 40%;
+  	border-bottom: 1px dashed #A3A1A1;
+  	float:left;
+  	padding-top:15px;
+}
+.border-line-right{
+	height: 1px;
+  	width: 40%;
+  	border-bottom: 1px dashed #A3A1A1;
+  	float:left;
+  	padding-top:15px;
+}
+.border-line-en{
+	margin-top:3%;
+	height:30px;
+	
+}
+.title-en{
+	height:100%;
+	width:40%;
+	text-align: center;
+	color: #A3A1A1;
+	float:left;
+	padding-top:8px;
+}
+.border-line-left-en{
+	height: 1px;
+  	width: 30%;
+  	border-bottom: 1px dashed #A3A1A1;
+  	float:left;
+  	padding-top:15px;
+}
+.border-line-right-en{
+	height: 1px;
+  	width: 30%;
+  	border-bottom: 1px dashed #A3A1A1;
+  	float:left;
+  	padding-top:15px;
+}
+p[style="color:gray"]{
+	font-size: 0.8em;
+	color:gray;
+	/*text-align: left;*/
+}
+@media screen and (min-width:600px) {
+	body {
+		font-size: 26px;
+	}
+} 
+@media screen and (width:480px) {
+	body {
+		font-size: 20px;
+	}
+} 
+/*评论列表CSS**/
+.reviewlist li{
+	border-bottom: 1px solid #c5c5c5;
+}
+
+li div.liDiv{
+	background: url(../img/dou_47.png) no-repeat 4% 35%;
+	background-size: 13%;
+	padding: 3% 3% 3% 20%;
+}
+
+li p.licontent{
+	color: #272727;
+	font-size: 0.9em;
+	word-break: break-all;
+	white-space: pre-wrap;
+}
+
+li p.litime{
+	color:#b4b4b4;
+	font-size: 0.7em;
+	margin-top: 3%;
+}

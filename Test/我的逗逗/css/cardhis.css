@@ -1,0 +1,235 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+html,body {
+	position: relative;
+	height: 100%;
+}
+
+.hide {
+	display: none;
+}
+
+body {
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	color: #000;
+	margin: 0;
+	padding: 0;
+}
+
+.cardListDiv {
+	height: 100%;
+	width: 100%;
+	background-color: #f1f1f1;
+	position: absolute;
+}
+
+.cardList {
+	height: 100%;
+	width: 100%;
+	background-color: #EBEBEB;
+}
+
+.cardDiv {
+	height: 18%;
+	background-color: #EBEBEB;
+	margin: 5px;
+	position: relative;
+}
+
+.logoDiv {
+	height: 69%;
+	background-color: #D38A65;
+	border-bottom: 2px dashed #FFFFFF;
+	position: relative;
+}
+
+.proDiv {
+	height: 30%;
+	background-color: #FFFFFF;
+}
+
+.cardImgDiv {
+	text-align: center;
+	position: absolute;
+	height: 80%;
+	background: url() no-repeat 0 center;
+	background-size: 100%;
+	border-radius:50%;
+	top: 11%;
+	left: 2%;
+}
+
+.cardImgDiv .titleImg {
+	text-align: center;
+	width: 50px;
+	height: 50px;
+}
+
+.cardDiv .logoDiv .status {
+	height: 100%;
+	float: right;
+}
+
+.cardDiv .logoDiv .status .statusImg {
+	height: 70px;
+	width: 70px;
+}
+
+.cardDefultIMg {
+	display: none;
+	text-align: center;
+	padding-top: 50%;
+	background-color: #f1f1f1;
+}
+
+.cardDefultIMg img {
+	width: 100%;
+	text-align: center;
+	width: 80px;
+	height: 80px;
+}
+
+.cardDefultIMg p {
+	width: 100%;
+	padding-top: 5%;
+	text-align: center;
+	font-size: 1.0em;
+}
+
+.hisDefultIMg {
+	display: none;
+	text-align: center;
+	padding-top: 50%;
+	background-color: #f1f1f1;
+}
+
+.hisDefultIMg img {
+	width: 80px;
+	height: 80px;
+	text-align: center;
+}
+
+.hisDefultIMg p {
+	width: 100%;
+	padding-top: 5%;
+	text-align: center;
+	font-size: 1.0em;
+}
+
+.title {
+	margin-left: 20%;
+	line-height: 100%;
+	float: left;
+	width: 60%;
+}
+
+.title span {
+	text-align: left;
+	font-size: 1.1em;
+	color: #FFFFFF;
+	text-shadow: none;
+}
+
+.proDiv .providerDiv {
+	width: 94%;
+	padding-left: 3%;
+	padding-right: 3%;
+	padding-top: 2%;
+	font-size: 0.9em;
+	color: #999999;
+}
+
+.proDiv .providerDiv .pdtitle {
+	float: left;
+}
+.proDiv .providerDiv .pdtime {
+	float: right;
+}
+
+.proDiv .priodDiv {
+	width: 60%;
+	margin-left: 40%;
+	padding-top: 2%;
+	text-align: left;
+	font-size: 0.9em;
+	color: #999999;
+}
+
+.hisListDiv {
+	height: 100%;
+	position: relative;
+	background-color: #f1f1f1;
+}
+
+.hislist {
+	height: 100%;
+	position: relative;
+}
+
+.hisListDiv .hislist .hisDiv {
+	border-bottom: 1px solid #CCD1D9;
+	height: 11%;
+	background-color: #f1f1f1;
+}
+
+.hisListDiv .hisDiv .hisImgDiv {
+	text-align: center;
+	height: 100%;
+	float: left;
+}
+
+.hisListDiv .hislist .hisDiv .hisImgDiv .hisImg {
+	height: 70%;
+	padding-left: 10px;
+}
+
+.hisInfoDiv {
+	margin-left: 18%;
+	padding-top: 2.8%;
+	width: 80%;
+}
+
+.hisInfoDiv .hisContent {
+	font-size: 0.9em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding-top: 1%;
+}
+
+.hisInfoDiv .hisTime {
+	font-size: 0.7em;
+	color: #999999;
+	padding-top: 5px;
+}
+
+@media screen and (min-width:600px) {
+	body {
+		font-size: 20px
+	}
+	.hisInfoDiv .hisTime {
+		padding-top: 3%;
+	}
+}
+
+@media screen and (width:480px) {
+	body {
+		font-size: 20px
+	}
+	.cardDiv .logoDiv .status .statusImg {
+		height: 80px;
+		width: 80px;
+	}
+	
+	.hisListDiv .hislist .hisDiv .hisImgDiv .hisImg {
+		height: 70%;
+		margin-top: 8px;
+	}
+	.hisInfoDiv .hisTime {
+		padding-top: 3%;
+	}
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html manifest="tupian.appcache">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>我的逗逗</title>
+<link rel="stylesheet" href="css/mydd.css?version=2.66">
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="./js/lepus.mobile.js?version=2.66"></script>
+<script type="text/javascript" src="js/lepus-util.js?version=2.66"></script>
+<script type="text/javascript" src="js/lepus-webview-sdk.js?version=2.66"></script>
+<script type="text/javascript" src="js/mydd.js?version=2.66"></script>
+</head>
+<body>
+	<input type="hidden" id="language" value="cn">
+	<div class="myddDiv" id="myddDiv">
+		<div class="doudou-item" style="margin: 10px 0px;;" id="secret">
+			<div class="div-img" id="cImgDiv">
+				<img class="icon" id="cImg" src="img/dou_52.png" />
+			</div>
+			<div class="title" id="cNameDiv">发秘密</div>
+			<img id="ctImg" class="arrow" src="img/dou_32.png" />
+		</div>
+		<div class="doudou-item" id="notice">
+			<div class="div-img" id="cImgDiv">
+				<img class="icon" id="cImg" src="img/dou_53.png" />
+			</div>
+			<div class="title" id="cNameDiv">通知</div>
+			<div id="noticeCount" class="paocount hide"></div>
+			<img id="ctImg" class="arrow" src="img/dou_32.png" />
+		</div>
+		<div class="doudou-item" style="margin-top:1px;" id="card">
+			<div class="div-img" id="cImgDiv">
+				<img class="icon" id="cImg" src="img/dou_19.png" />
+			</div>
+			<div class="title" id="cNameDiv">卡包</div>
+			<div id="cardCount" class="paocount hide"></div>
+			<img id="ctImg" class="arrow" src="img/dou_32.png" />
+		</div>
+		<div class="doudou-item" style="margin-top:1px;" id="history">
+			<div class="div-img" id="hImgDiv">
+				<img id="hImg" class="icon" src="img/dou_20.png" />
+			</div>
+			<div class="title" id="hNameDiv">历史</div>
+			<img id="htImg" class="arrow" src="img/dou_32.png" />
+		</div>
+		<div id="sound" class="doudou-item" style="margin:15px 0px;">
+			<div class="div-img" id="cImgDiv">
+				<img class="icon" src="img/dou_42.png" />
+			</div>
+			<div class="title" >音效</div>
+			<button id="soundbtn" value=true type="button" class="soundbtn">
+				<img id="soundimg" class="soundimg" src="img/dou_43.png" />
+			</button>
+		</div>
+	</div>
+</body>
+</html>

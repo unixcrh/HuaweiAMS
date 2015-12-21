@@ -1,0 +1,109 @@
+html,body {
+	position: relative;
+	height: 100%;
+}
+
+.hide {
+	display: none;
+}
+
+body {
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	color: #000;
+	margin: 0;
+	padding: 0;
+}
+
+.hisDefultIMg {
+	display: none;
+	text-align: center;
+	padding-top: 50%;
+	
+}
+
+.hisDefultIMg img {
+	width: 80px;
+	height: 80px;
+	text-align: center;
+}
+
+.hisDefultIMg p {
+	width: 100%;
+	padding-top: 5%;
+	text-align: center;
+	font-size: 1.0em;
+}
+.hisListDiv {
+	height: 100%;
+}
+.hislist{
+	background-color: #f1f1f1;
+}
+div[class^="hisDiv"] {
+	border-bottom: 1px solid #CCD1D9;
+	height: 11%;
+	position: relative;
+}
+.hisImgDiv{
+	height: 100%;
+	padding-left: 2%;
+	position:absolute;
+	left:1%;
+	padding-top: 2.5%;
+	width:20%;
+}
+.hisInfoDiv{
+	margin-left: 18%;
+	padding-top: 2%;
+	width: 80%;
+}
+.hisImg {
+	height: 70%;
+	
+}
+.praiseImgDiv{
+	
+	color: #999999;
+}
+.praiseCount{
+	float: left;
+}
+.praiseCountBg{
+	background: url(../img/dou_56.png) no-repeat;
+	background-size: 100%;
+	float: left;
+	margin-left: 5px;
+	width: 16px;
+	height: 16px;
+}
+.hisContent {
+	font-size: 0.9em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding-top: 2%;
+	clear: both;
+}
+
+.hisTime {
+	font-size: 0.7em;
+	color: #999999;
+	padding-top: 2%;
+	padding-bottom: 2%;
+}
+
+@media screen and (min-width:600px) {
+	body {
+		font-size: 20px
+	}
+}
+
+@media screen and (width:480px) {
+	body {
+		font-size: 20px
+	}
+	.hisListDiv .hislist .hisDiv .hisImgDiv .hisImg {
+		height: 70%;
+	}
+}
