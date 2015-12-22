@@ -1,6 +1,7 @@
 ﻿using MCS.Library.Cloud.AMS.Data.Entities;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 {
     public static class TraceHelper
     {
+        internal static TraceSource AMSTaskTraceSource = new TraceSource("amsTaskTraceSource");
+
         public static string ToTraceInfo(this AMSChannel channel)
         {
             StringBuilder strB = new StringBuilder();

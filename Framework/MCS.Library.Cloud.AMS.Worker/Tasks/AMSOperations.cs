@@ -71,13 +71,13 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 
         public static void SyncChannelInfo(CancellationToken cancellationToken)
         {
-            Trace.TraceInformation("Start Sync Channel Info");
+            TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60013, "Start Sync Channel Info");
 
             AMSChannelCollection channels = LiveChannelManager.GetAllChannels(true);
 
             AMSChannelSqlAdapter.Instance.UpdateAllChannels(channels);
 
-            Trace.TraceInformation("Complete Sync Channel Info");
+            TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60013, "Complete Sync Channel Info");
         }
 
         public static void StopChannel(string channelID, CancellationToken cancellationToken)
@@ -86,7 +86,7 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 
             if (channel != null)
             {
-                Trace.TraceInformation("Stop Channel:\n{0}", channel.ToTraceInfo());
+                TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60014, "Stop Channel:\n{0}", channel.ToTraceInfo());
 
                 if (channel.State == AMSChannelState.Stopped)
                     AMSChannelSqlAdapter.Instance.UpdateState(channel.ID, AMSChannelState.Stopping);
@@ -94,17 +94,17 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
                 LiveChannelManager.StopChannel(channel);
                 AMSChannelSqlAdapter.Instance.Update(channel);
 
-                Trace.TraceInformation("Channel Stopped:\n{0}", channel.ToTraceInfo());
+                TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60014, "Channel Stopped:\n{0}", channel.ToTraceInfo());
             }
         }
 
         public static void DeleteProgram(CancellationToken cancellationToken)
         {
-            Trace.TraceInformation("Delete expired programs");
+            TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60015, "Delete expired programs");
 
             int count = LiveChannelManager.DeleteAllExpiredPrograms(AMSWorkerSettings.GetConfig().Durations.GetDuration("programExpireTime", TimeSpan.FromDays(1)));
 
-            Trace.TraceInformation("{0} programs deleted", count);
+            TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60015, "{0} programs deleted", count);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 
             if (channel != null)
             {
-                Trace.TraceInformation("Start Channel:\n{0}", channel.ToTraceInfo());
+                TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60016, "Start Channel:\n{0}", channel.ToTraceInfo());
 
                 if (channel.State == AMSChannelState.Stopped)
                     AMSChannelSqlAdapter.Instance.UpdateState(channel.ID, AMSChannelState.Starting);
@@ -127,7 +127,7 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
                 LiveChannelManager.StartChannel(channel);
                 AMSChannelSqlAdapter.Instance.Update(channel);
 
-                Trace.TraceInformation("Channel Started:\n{0}", channel.ToTraceInfo());
+                TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60016, "Channel Started:\n{0}", channel.ToTraceInfo());
             }
 
             return channel;
@@ -135,18 +135,18 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 
         private static void StartProgram(AMSEvent eventData, AMSChannel channel, CancellationToken cancellationToken)
         {
-            Trace.TraceInformation("Start Program:\n{0}", channel.ToTraceInfo());
+            TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60017, "Start Program:\n{0}", channel.ToTraceInfo());
 
             LiveChannelManager.StartProgram(channel, eventData);
 
             AMSEventSqlAdapter.Instance.Update(eventData);
 
-            Trace.TraceInformation("Program Started:\n{0}", channel.ToTraceInfo());
+            TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60017, "Program Started:\n{0}", channel.ToTraceInfo());
         }
 
-        private  static void StopProgram(AMSEvent eventData, CancellationToken cancellationToken)
+        private static void StopProgram(AMSEvent eventData, CancellationToken cancellationToken)
         {
-            Trace.TraceInformation("Stop Program:\n{0}", eventData.ToTraceInfo());
+            TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60018, "Stop Program:\n{0}", eventData.ToTraceInfo());
 
             AMSChannel channel = AMSChannelSqlAdapter.Instance.LoadByID(eventData.ChannelID);
 
@@ -157,7 +157,7 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 
             AMSEventSqlAdapter.Instance.Update(eventData);
 
-            Trace.TraceInformation("Program Stopped:\n{0}", eventData.ToTraceInfo());
+            TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60018, "Program Stopped:\n{0}", eventData.ToTraceInfo());
         }
     }
 }

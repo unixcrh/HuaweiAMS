@@ -28,7 +28,7 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
                             }
                             catch (System.Exception ex)
                             {
-                                Trace.TraceError(ex.ToString());
+                                TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Error, 60010, ex.ToString());
                             }
                             finally
                             {
@@ -112,7 +112,7 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
                 {
                     messages.Add(CreateMessage(eventData, AMSQueueItemType.StartEvent));
 
-                    Trace.TraceInformation("Add start new event {0} to queue.", eventData.ID);
+                    TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60011, "Add start new event {0} to queue.", eventData.ID);
                 }
             }
 
@@ -138,7 +138,7 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
                 if (LockHelper.IsLockAvailable(eventData))
                 {
                     messages.Add(CreateMessage(eventData, AMSQueueItemType.StopEvent));
-                    Trace.TraceInformation("Add stop new event {0} to queue.", eventData.ID);
+                    TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60012, "Add stop new event {0} to queue.", eventData.ID);
                 }
             }
 
@@ -151,8 +151,8 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 
             if (message != null)
             {
-                Trace.TraceInformation("Message: ID={0}, ResourceID={1}, Name={2}, ItemType={3}",
-                    message.ID, message.ResourceID, message.ResourceID, message.ItemType);
+                //Trace.TraceInformation("Message: ID={0}, ResourceID={1}, Name={2}, ItemType={3}",
+                //    message.ID, message.ResourceID, message.ResourceID, message.ItemType);
 
                 if (AMSWorkerSettings.GetConfig().ItemTypes.IsEnabled(message.ItemType))
                 {
