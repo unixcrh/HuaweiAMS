@@ -14,6 +14,8 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
 {
     public static class LiveChannelManager
     {
+        internal static TraceSource AMSOpTraceSource = new TraceSource("amsOpTraceSource");
+
         /// <summary>
         /// 获取所有的频道信息。从数据库中读取，同时和配置文件中的频道合并。
         /// 配置文件中不存在的，则标志为Disabled。
@@ -284,20 +286,22 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
 
         private static void TraceOperation(string opName, Action action)
         {
+            AMSOpTraceSource.TraceEvent(TraceEventType.Information, 61000, "Start: {0}", opName);
+
             Trace.TraceInformation("Start: {0}", opName);
 
             action();
 
-            Trace.TraceInformation("Start: {0}", opName);
+            AMSOpTraceSource.TraceEvent(TraceEventType.Information, 61000, "Complete: {0}", opName);
         }
 
         private static T TraceOperation<T>(string opName, Func<T> func)
         {
-            Trace.TraceInformation("Start: {0}", opName);
+            AMSOpTraceSource.TraceEvent(TraceEventType.Information, 61000, "Start: {0}", opName);
 
             T result = func();
 
-            Trace.TraceInformation("Complete: {0}", opName);
+            AMSOpTraceSource.TraceEvent(TraceEventType.Information, 61000, "Complete: {0}", opName);
 
             return result;
         }
