@@ -22,6 +22,8 @@ namespace CutomerSite.forms
         protected void Page_Load(object sender, EventArgs e)
         {
             ControllerHelper.ExecuteMethodByRequest(this);
+
+            userAgent.InnerText = this.Request.UserAgent;
         }
 
         [ControllerMethod]

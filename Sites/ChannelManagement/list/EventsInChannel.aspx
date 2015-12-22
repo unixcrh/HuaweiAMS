@@ -46,18 +46,18 @@
                 <HeaderStyle />
                 <AlternatingRowStyle />
                 <Columns>
-                    <asp:HyperLinkField HeaderText="事件" DataTextField="Name" DataNavigateUrlFields="ChannelID,ID" DataNavigateUrlFormatString="../forms/EditEvent.aspx?channelID={0}&id={1}" />
-                    <asp:TemplateField HeaderText="开始时间">
+                    <asp:HyperLinkField SortExpression="Name" HeaderText="事件" DataTextField="Name" DataNavigateUrlFields="ChannelID,ID" DataNavigateUrlFormatString="../forms/EditEvent.aspx?channelID={0}&id={1}" />
+                    <asp:TemplateField HeaderText="开始时间" SortExpression="Name">
                         <ItemTemplate>
                             <%#((DateTime)Eval("StartTime")) == DateTime.MinValue ? string.Empty : ((DateTime)Eval("StartTime")).ToString("yyyy-MM-dd HH:mm:ss")%>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="结束时间">
+                    <asp:TemplateField HeaderText="结束时间" SortExpression="EndTime">
                         <ItemTemplate>
                             <%#((DateTime)Eval("EndTime")) == DateTime.MinValue ? string.Empty : ((DateTime)Eval("EndTime")).ToString("yyyy-MM-dd HH:mm:ss")%>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="State" HeaderText="状态">
+                    <asp:BoundField DataField="State" HeaderText="状态" SortExpression="State">
                         <ItemStyle HorizontalAlign="Left" />
                     </asp:BoundField>
                     <asp:TemplateField HeaderText="操作">

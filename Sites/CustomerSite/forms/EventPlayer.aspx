@@ -62,6 +62,9 @@
                 <div>
                     <p id="description" />
                 </div>
+                <div>
+                    <p id="userAgent" runat="server" />
+                </div>
             </div>
         </div>
         <div id="menu_back" class="menu_back"></div>
@@ -208,6 +211,14 @@
                 if (eventData.url != "") {
                     var myPlayer = amp("azuremediaplayer", myOptions);
 
+                    myPlayer.addEventListener(amp.eventName.loadedmetadata, function () {
+                        var stream = myPlayer.currentVideoStreamList().streams ? myPlayer.currentVideoStreamList().streams[0] : undefined;
+                        if (stream) {
+                            var track0 = stream.tracks[0];
+
+                            stream.selectTrackByIndex(0);
+                        }
+                    });
 
                     myPlayer.src([{ src: eventData.url, type: "application/vnd.ms-sstr+xml" }]);
                 }

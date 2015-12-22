@@ -141,7 +141,7 @@ namespace CutomerSite.Helpers
             strB.AppendFormat(" 时长{0:}小时", ts.Hours);
 
             if (ts.Minutes > 0)
-                strB.AppendFormat("{1:00}分钟", ts.Minutes);
+                strB.AppendFormat("{0:00}分钟", ts.Minutes);
 
             return strB.ToString();
         }

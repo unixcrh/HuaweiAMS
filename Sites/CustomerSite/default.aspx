@@ -21,6 +21,7 @@
                 <li><a runat="server" id="europeSalesTrainingWithoutCDN" class="btn btn-default" href="../samples/simpleVideo.aspx">North Europe Sales Training Without CDN</a></li>
                 <li><a runat="server" id="A1" class="btn btn-default" href="~/list/AllEvents.aspx">Menu...</a></li>
                 <li><a runat="server" id="A4" class="btn btn-default" href="~/list/MoreMenu.aspx">More Menu...</a></li>
+                <li><a runat="server" id="A5" class="btn btn-default" href="~/samples/FixedBitrate.aspx">固定码率播放...</a></li>
                 <li><a runat="server" id="A2" class="btn btn-default" href="~/samples/Html5Video.aspx">纯Html5 MP4...</a></li>
                 <li><a runat="server" id="A3" class="btn btn-default" href="~/samples/FlashVideo.aspx">优先使用Flash播放...</a></li>
             </ul>
