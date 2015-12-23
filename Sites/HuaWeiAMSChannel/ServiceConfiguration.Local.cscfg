@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="HuaWeiAMSChannel" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="ChannelManagement">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="zhshen" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCECIscF1Yqeu7T4B1iBryPJowDQYJKoZIhvcNAQEBBQAEggEAXivzcO902Z401zICzIf4oIpiTV2tETNNQ27r2fzGbyBQiOfjuf9ETdhxrkjNgkZVEKIpPlWz3/lfS1xf/4nUwXjXhGGP09aXY2hNtpOev+Xd8KWD44zxe39uaxAvonJgLaRv3rcDJ0ZrOjG+npxDwQR1J2PIa8KQ+XwDi6Q7/OYt8YCRKIrqD1bsLYXmr3UBtT26tB5gXM0UWu2iMqsePxCmtk21xl0dWwLG0nZFghYkE7RJYxwMDjb92kr05GMqHF/MjxRk16DwZ6Djck3mVDWgagmmWlXW5bhObpSo8jkTD0H8Hy67mS4i22eOOUCpso2lgvDL+COylbZVtlooXTAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECHxYlHg+lSdHgBAmtVMeL+q/0Ca47vAl+F7T" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2017-01-15T23:59:59.0000000+08:00" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
+    </ConfigurationSettings>
+    <Certificates>
+      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="AFA11B87FFDB0868E39E4747879F6516FC3CC1A4" thumbprintAlgorithm="sha1" />
+    </Certificates>
+  </Role>
+</ServiceConfiguration>
