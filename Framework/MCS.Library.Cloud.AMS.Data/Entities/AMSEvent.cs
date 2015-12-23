@@ -56,6 +56,7 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
         }
 
         [DataMember]
+        [ORFieldMapping("StartTime", UtcTimeToLocal = true)]
         public DateTime StartTime
         {
             get;
@@ -63,6 +64,7 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
         }
 
         [DataMember]
+        [ORFieldMapping("EndTime", UtcTimeToLocal = true)]
         public DateTime EndTime
         {
             get;
@@ -71,6 +73,7 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
 
         [DataMember]
         [SqlBehavior(BindingFlags = ClauseBindingFlags.Select | ClauseBindingFlags.Where)]
+        [ORFieldMapping("StartTime", UtcTimeToLocal = true)]
         public DateTime CreateTime
         {
             get;

@@ -23,7 +23,18 @@ namespace CutomerSite.forms
         {
             ControllerHelper.ExecuteMethodByRequest(this);
 
-            userAgent.InnerText = this.Request.UserAgent;
+            string agentText = this.Request.UserAgent;
+            userAgent.InnerText = agentText;
+
+            if (agentText.IndexOf("android 5", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                agentText.IndexOf("android 6", StringComparison.OrdinalIgnoreCase) >= 0)
+            {
+                this.fixedBitrate.Value = "true";
+            }
+            else
+            {
+                this.fixedBitrate.Value = "false";
+            }
         }
 
         [ControllerMethod]

@@ -64,6 +64,7 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
 
         [DataMember]
         [SqlBehavior(BindingFlags = ClauseBindingFlags.Select | ClauseBindingFlags.Where)]
+        [ORFieldMapping("StartTime", UtcTimeToLocal = true)]
         public DateTime CreateTime
         {
             get;

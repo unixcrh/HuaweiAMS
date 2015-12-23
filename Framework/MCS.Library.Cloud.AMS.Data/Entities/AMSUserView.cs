@@ -37,6 +37,7 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
 
         [DataMember]
         [SqlBehavior(BindingFlags = ClauseBindingFlags.Select | ClauseBindingFlags.Where)]
+        [ORFieldMapping("StartTime", UtcTimeToLocal = true)]
         public DateTime CreateTime
         {
             get;
@@ -51,6 +52,7 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
 
         [DataMember]
         [SqlBehavior(BindingFlags = ClauseBindingFlags.Select | ClauseBindingFlags.Where, DefaultExpression = "GETUTCDATE()")]
+        [ORFieldMapping("StartTime", UtcTimeToLocal = true)]
         public DateTime LastAccessTime
         {
             get;

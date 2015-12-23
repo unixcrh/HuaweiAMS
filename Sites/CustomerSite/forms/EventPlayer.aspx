@@ -35,6 +35,7 @@
 <body>
     <div>
         <input runat="server" id="pageEventData" type="hidden" />
+        <input runat="server" id="fixedBitrate" type="hidden" />
         <input runat="server" id="videoAddressType" type="hidden" />
         <header class="mui-bar mui-bar-nav hidden">
             <a class="mui-icon mui-icon-bars mui-pull-left"></a>
@@ -213,7 +214,7 @@
 
                     myPlayer.addEventListener(amp.eventName.loadedmetadata, function () {
                         var stream = myPlayer.currentVideoStreamList().streams ? myPlayer.currentVideoStreamList().streams[0] : undefined;
-                        if (stream) {
+                        if (stream && $("#fixedBitrate").val() == "true") {
                             var track0 = stream.tracks[0];
 
                             stream.selectTrackByIndex(0);

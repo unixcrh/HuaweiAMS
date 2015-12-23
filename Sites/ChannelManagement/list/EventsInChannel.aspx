@@ -36,7 +36,7 @@
             </div>
             <res:DeluxeGrid ID="dataGrid" runat="server" GridLines="None" AllowPaging="True" ShowCheckBoxes="true"
                 GridTitle="事件列表" EnableViewState="false" AutoGenerateColumns="False" UseAccessibleHeader="False"
-                ShowExportControl="True" DataSourceID="eventDataSource"
+                ShowExportControl="True" DataSourceID="eventDataSource" PageSize="5"
                 DataKeyNames="ID" AllowSorting="True" CheckBoxPosition="Left" EmptyDataText="该频道下没有事件">
                 <FooterStyle />
                 <RowStyle />
@@ -71,7 +71,7 @@
                                     <i class="icon-edit bigger-120"></i>
                                 </a>
 
-                               <%-- <asp:LinkButton runat="server" CssClass="btn btn-xs btn-danger" CommandName="DeleteEvent" CommandArgument='<%#Eval("ID") %>'>
+                                <%-- <asp:LinkButton runat="server" CssClass="btn btn-xs btn-danger" CommandName="DeleteEvent" CommandArgument='<%#Eval("ID") %>'>
                                     <i class="icon-trash bigger-120"></i>
                                 </asp:LinkButton>--%>
 
