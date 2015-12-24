@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [AMS].[UserViews]
 (
 	[EventID] NVARCHAR(36) NOT NULL , 
-    [UserID] NVARCHAR(36) NOT NULL, 
-	[UserName] NVARCHAR(64) NOT NULL, 
+    [UserID] NVARCHAR(50) NOT NULL, 
+	[UserName] NVARCHAR(64) NULL, 
     [CreateTime] DATETIME NULL DEFAULT GETUTCDATE(), 
     [LastClientAccessIP] NVARCHAR(255) NULL, 
     [LastAccessTime] DATETIME NULL DEFAULT GETUTCDATE(), 
