@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using Res = MCS.Web.Responsive.Library;
 
 namespace CutomerSite.Helpers
 {
@@ -115,6 +116,13 @@ namespace CutomerSite.Helpers
             return JSONSerializerExecute.Serialize(error);
         }
 
+        public static void UpdateUserView(string eventID)
+        {
+            AMSUserView userView = CreateUserView(eventID);
+
+            AMSUserViewSqlAdapter.Instance.UpdateUserView(userView);
+        }
+
         private static string ChangeVideoAddress(string url, VideoAddressType addressType)
         {
             string result = url;
@@ -144,6 +152,28 @@ namespace CutomerSite.Helpers
                 strB.AppendFormat("{0:00}分钟", ts.Minutes);
 
             return strB.ToString();
+        }
+
+        private static AMSUserView CreateUserView(string eventID)
+        {
+            AMSUserView result = null;
+
+            if (HttpContext.Current.User != null)
+            {
+                string userName = HttpContext.Current.User.Identity.Name;
+
+                if (userName.IsNotEmpty())
+                {
+                    result = new AMSUserView();
+
+                    result.EventID = eventID;
+                    result.UserID = userName;
+                    result.UserName = userName;
+                    result.LastClientAccessIP = Res.Request.GetClientIP();
+                }
+            }
+
+            return result;
         }
     }
 }

@@ -48,6 +48,8 @@ namespace CutomerSite.forms
                 {
                     this.pageEventData.Value = DataHelper.GetSingleEventJson(eventData, WebHelper.GetVideoAddressType());
                     this.videoTitle.Text = HttpUtility.HtmlEncode(eventData.Name);
+
+                    DataHelper.UpdateUserView(id);
                 }
             }
         }
