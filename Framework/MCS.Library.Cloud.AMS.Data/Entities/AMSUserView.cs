@@ -52,7 +52,7 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
 
         [DataMember]
         [SqlBehavior(BindingFlags = ClauseBindingFlags.Select | ClauseBindingFlags.Where, DefaultExpression = "GETUTCDATE()")]
-        [ORFieldMapping("StartTime", UtcTimeToLocal = true)]
+        [ORFieldMapping("LastAccessTime", UtcTimeToLocal = true)]
         public DateTime LastAccessTime
         {
             get;

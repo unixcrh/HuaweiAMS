@@ -46,5 +46,17 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
 
             return log;
         }
+
+        public static AMSUserView PrepareUserView(string eventID)
+        {
+            AMSUserView userView = new AMSUserView();
+
+            userView.UserID = UuidHelper.NewUuidString();
+            userView.UserName = userView.UserID;
+            userView.EventID = eventID;
+            userView.LastClientAccessIP = "127.0.0.1";
+
+            return userView;
+        }
     }
 }

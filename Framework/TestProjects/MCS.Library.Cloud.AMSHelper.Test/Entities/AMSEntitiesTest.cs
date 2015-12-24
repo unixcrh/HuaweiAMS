@@ -1,6 +1,7 @@
 ﻿using MCS.Library.Cloud.AMS.Data.Adapters;
 using MCS.Library.Cloud.AMS.Data.Entities;
 using MCS.Library.Core;
+using MCS.Library.Data.Builder;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
@@ -133,6 +134,68 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
             log.AreEqual(logLoaded);
         }
 
+        [TestMethod]
+        public void UpdateUserView()
+        {
+            AMSEventSqlAdapter.Instance.ClearAll();
+            AMSUserViewSqlAdapter.Instance.ClearAll();
 
+            AMSChannel channel = DataHelper.PrepareChannelData();
+
+            AMSEvent eventData = DataHelper.PrepareEventData(channel.ID);
+
+            AMSEventSqlAdapter.Instance.Update(eventData);
+
+            AMSUserView userView = DataHelper.PrepareUserView(eventData.ID);
+
+            AMSUserViewSqlAdapter.Instance.UpdateUserView(userView);
+
+            WhereSqlClauseBuilder builder = new WhereSqlClauseBuilder();
+
+            builder.AppendItem("EventID", userView.EventID);
+            builder.AppendItem("UserID", userView.UserID);
+
+            AMSUserView userViewLoaded = AMSUserViewSqlAdapter.Instance.LoadByBuilder(builder).Single();
+
+            AMSEvent eventLoaded = AMSEventSqlAdapter.Instance.LoadByID(eventData.ID);
+
+            Assert.AreEqual(1, eventLoaded.Views);
+        }
+
+        [TestMethod]
+        public void UpdateExistedUserView()
+        {
+            AMSEventSqlAdapter.Instance.ClearAll();
+            AMSUserViewSqlAdapter.Instance.ClearAll();
+
+            AMSChannel channel = DataHelper.PrepareChannelData();
+
+            AMSEvent eventData = DataHelper.PrepareEventData(channel.ID);
+
+            AMSEventSqlAdapter.Instance.Update(eventData);
+
+            AMSUserView userView = DataHelper.PrepareUserView(eventData.ID);
+
+            AMSUserViewSqlAdapter.Instance.UpdateUserView(userView);
+
+            WhereSqlClauseBuilder builder = new WhereSqlClauseBuilder();
+
+            builder.AppendItem("EventID", userView.EventID);
+            builder.AppendItem("UserID", userView.UserID);
+
+            AMSUserView userViewLoaded = AMSUserViewSqlAdapter.Instance.LoadByBuilder(builder).Single();
+
+            AMSEvent eventLoaded = AMSEventSqlAdapter.Instance.LoadByID(eventData.ID);
+
+            Assert.AreEqual(1, eventLoaded.Views);
+
+            //再保存一下
+            AMSUserViewSqlAdapter.Instance.UpdateUserView(userView);
+
+            eventLoaded = AMSEventSqlAdapter.Instance.LoadByID(eventData.ID);
+
+            //用户观看次数依然是1
+            Assert.AreEqual(1, eventLoaded.Views);
+        }
     }
 }
