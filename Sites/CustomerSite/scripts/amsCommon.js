@@ -18,6 +18,17 @@ ams.initMenu = function () {
     }
 }
 
+function appendTimeOffsetToUrl(url) {
+    var offset = jstz.get_date_offset(new Date());
+
+    if (url.indexOf("?") >= 0)
+        url += "&";
+    else
+        url += "?";
+
+    return url + "timeOffset=" + offset;
+}
+
 var showBack = function () {
     function init() {
         var backHtml = "<div class=\"back\"></div>" +

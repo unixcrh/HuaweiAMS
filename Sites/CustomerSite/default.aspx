@@ -12,9 +12,9 @@
     <script>
         function onDocumentLoad()
         {
-            var offset = jstz.get_date_offset(new Date());
+            //var offset = jstz.get_date_offset(new Date());
 
-            alert(offset);
+            //alert(offset);
         }
     </script>
 </head>

@@ -17,6 +17,10 @@
     <script src="../scripts/lepus-util.js"></script>
     <script src="../scripts/lepus-webview-sdk.js"></script>
     <script src="../scripts/amsCommon.js"></script>
+
+    <script src="../scripts/jstz.main.js"></script>
+    <script src="../scripts/jstz.rules.js"></script>
+
     <style type="text/css">
         #topPopover .mui-popover-arrow {
             left: auto;
@@ -80,9 +84,10 @@
             var main = null;
             var showMenu = false;
 
-            function getServiceUrl()
-            {
-                return "../services/QueryService.ashx?opType=SingleEvent&id=" + $("#eventID").val();
+            function getServiceUrl() {
+                var url = "../services/QueryService.ashx?opType=SingleEvent&id=" + $("#eventID").val();
+
+                return appendTimeOffsetToUrl(url);
             }
 
             mui.init({

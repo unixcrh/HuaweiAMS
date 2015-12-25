@@ -6,6 +6,9 @@
 <head runat="server">
     <title>即将直播</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="../css/mui/mui.min.css" rel="stylesheet" />
+    <link href="../css/main.css" rel="stylesheet" />
+
     <script src="../scripts/jquery-2.1.4.min.js"></script>
     <script src="../scripts/mui.min.js"></script>
     <script src="../Helpers/applicationInfo.aspx"></script>
@@ -13,8 +16,10 @@
     <script src="../scripts/lepus-util.js"></script>
     <script src="../scripts/lepus-webview-sdk.js"></script>
     <script src="../scripts/amsCommon.js"></script>
-    <link href="../css/mui/mui.min.css" rel="stylesheet" />
-    <link href="../css/main.css" rel="stylesheet" />
+
+    <script src="../scripts/jstz.main.js"></script>
+    <script src="../scripts/jstz.rules.js"></script>
+
     <style type="text/css">
         #topPopover .mui-popover-arrow {
             left: auto;
@@ -79,6 +84,10 @@
 
         var serviceURL = "../services/QueryService.ashx?opType=UpcomingEvents";
 
+        function getServiceURL() {
+            return appendTimeOffsetToUrl(serviceURL);
+        }
+
         $(document).ready(function () {
             var jsonData = $("#firstPageData").val();
             var currentPageData = JSON.parse(jsonData);
@@ -96,7 +105,7 @@
         function initLoadData() {
             showBack.message("加载数据...", true);
 
-            $.getJSON(serviceURL, function (data) {
+            $.getJSON(getServiceURL(), function (data) {
                 if (afterReloadAllData(data))
                     showBack.hide();
             }).done(function () {
@@ -116,7 +125,7 @@
             $.each(pageData.events, function (i, data) {
                 var li = $("<li>").addClass("mui-table-view-cell mui-media").appendTo("#listContainer");
 
-                var anchor = $("<a>").attr("href", "../forms/EventPlayer.aspx?id=" + data.id).appendTo(li);
+                var anchor = $("<a>").attr("href", appendTimeOffsetToUrl("../forms/EventPlayer.aspx?id=" + data.id)).appendTo(li);
                 var img = $("<img>").attr("src", data.logo).addClass("mui-media-object mui-pull-left").appendTo(anchor);
                 var div = $("<div>").addClass("mui-media-body").text(data.name).appendTo(anchor);
 
@@ -152,7 +161,7 @@
                     contentover: "释放立即刷新", //可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
                     contentrefresh: "正在刷新...", //可选，正在刷新状态时，下拉刷新控件上显示的标题内容
                     callback: function () {
-                        $.getJSON(serviceURL, function (data) {
+                        $.getJSON(getServiceURL(), function (data) {
 
                             afterReloadAllData(data);
                         }).done(function () {
@@ -174,7 +183,7 @@
                         if ((pageIndex + 1) * pageSize < totalCount) {
                             var url = "../services/QueryService.ashx?opType=UpcomingEvents&pageIndex=" + pageIndex + 1 + "&totalCount=" + totalCount;
 
-                            $.getJSON(url, function (data) {
+                            $.getJSON(appendTimeOffsetToUrl(url), function (data) {
                                 if (typeof (data.stackTrace) != "undefined") {
                                     showBack.error("对不起，网络连接异常");
                                     console.error(data.message);

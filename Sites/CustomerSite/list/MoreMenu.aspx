@@ -6,6 +6,10 @@
 <head runat="server">
     <title>更多...</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <script src="../scripts/jstz.main.js"></script>
+    <script src="../scripts/jstz.rules.js"></script>
+    <script src="../scripts/amsCommon.js"></script>
+
     <style type="text/css">
         * {
             padding: 0px;
@@ -150,19 +154,17 @@
         }
     </style>
     <script type="text/javascript">
-        //function onDocumentLoad() {
-        //    var v = new Date() * 1;
+        function onDocumentLoad() {
+            appendTimeOffset(document.getElementById("upcomingEventsLink"));
+            appendTimeOffset(document.getElementById("completedEventsLink"));
+        }
 
-        //    appendVersion(document.getElementById("upcomingEventsLink"), v);
-        //    appendVersion(document.getElementById("completedEventsLink"), v);
-        //}
-
-        //function appendVersion(link, v) {
-        //    link.href = link.href + "?v=" + v;
-        //}
+        function appendTimeOffset(link) {
+            link.href = appendTimeOffsetToUrl(link.href);
+        }
     </script>
 </head>
-<body>
+<body onload="onDocumentLoad();">
     <div class="myddDiv" id="myddDiv">
         <div class="doudou-item" style="margin: 10px 0px" id="secret">
             <a id="upcomingEventsLink" href="UpcomingEvents.aspx">

@@ -5,8 +5,12 @@
 <html>
 <head>
     <title></title>
+    <script src="../scripts/jstz.main.js"></script>
+    <script src="../scripts/jstz.rules.js"></script>
+    <script src="../scripts/amsCommon.js"></script>
+
     <script type="text/javascript">
-        window.location.href = "UpcomingEvents.aspx";
+        window.location.href = appendTimeOffsetToUrl("UpcomingEvents.aspx");
     </script>
 </head>
 <body></body>

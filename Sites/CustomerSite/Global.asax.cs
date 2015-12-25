@@ -1,10 +1,12 @@
-﻿using System;
+﻿using MCS.Library.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
+using Res = MCS.Web.Responsive.Library;
 
 namespace CutomerSite
 {
@@ -33,6 +35,11 @@ namespace CutomerSite
 
                 HttpContext.Current.User = pricipal;
             }
+
+            double minuteOffset = Res.Request.GetRequestQueryValue("timeOffset", 0.0d);
+
+            TimeZoneContext.Current.CurrentTimeZone =
+                TimeZoneInfo.CreateCustomTimeZone("TimeZoneInfoContext", TimeSpan.FromMinutes(minuteOffset), "TimeZoneInfoContext", "TimeZoneInfoContext");
         }
     }
 }
