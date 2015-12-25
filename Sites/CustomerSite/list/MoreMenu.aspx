@@ -149,11 +149,23 @@
             margin-top: 3px;
         }
     </style>
+    <script type="text/javascript">
+        function onDocumentLoad() {
+            var v = new Date() * 1;
+
+            appendVersion(document.getElementById("upcomingEventsLink"), v);
+            appendVersion(document.getElementById("completedEventsLink"), v);
+        }
+
+        function appendVersion(link, v) {
+            link.href = link.href + "?v=" + v;
+        }
+    </script>
 </head>
-<body>
+<body onload="onDocumentLoad();">
     <div class="myddDiv" id="myddDiv">
         <div class="doudou-item" style="margin: 10px 0px" id="secret">
-            <a href="UpcomingEvents.aspx">
+            <a id="upcomingEventsLink" href="UpcomingEvents.aspx">
                 <div class="div-img" id="cImgDiv">
                     <img class="icon" id="cImg" src="../images/movie.png" />
                 </div>
@@ -162,7 +174,7 @@
             </a>
         </div>
         <div class="doudou-item" id="notice">
-            <a href="CompletedEvents.aspx">
+            <a id="completedEventsLink" href="CompletedEvents.aspx">
                 <div class="div-img" id="cImgDiv">
                     <img class="icon" id="cImg" src="../images/movie.png" />
                 </div>

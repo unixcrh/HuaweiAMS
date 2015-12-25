@@ -120,7 +120,8 @@ namespace CutomerSite.Helpers
         {
             AMSUserView userView = CreateUserView(eventID);
 
-            AMSUserViewSqlAdapter.Instance.UpdateUserView(userView);
+            if (userView != null)
+                AMSUserViewSqlAdapter.Instance.UpdateUserView(userView);
         }
 
         private static string ChangeVideoAddress(string url, VideoAddressType addressType)

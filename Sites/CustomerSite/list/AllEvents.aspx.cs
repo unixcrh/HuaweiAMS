@@ -18,7 +18,6 @@ namespace CutomerSite.list
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.Response.Redirect("UpcomingEvents.aspx");
         }
     }
 }

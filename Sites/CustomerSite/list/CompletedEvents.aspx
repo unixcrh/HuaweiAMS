@@ -109,7 +109,8 @@
             $.each(pageData.events, function (i, data) {
                 var li = $("<li>").addClass("mui-table-view-cell mui-media").appendTo("#listContainer");
 
-                var anchor = $("<a>").attr("href", "../forms/EventPlayer.aspx?id=" + data.id).appendTo(li);
+                var v = new Date() * 1
+                var anchor = $("<a>").attr("href", "../forms/EventPlayer.aspx?id=" + data.id + "&v=" + v).appendTo(li);
                 var img = $("<img>").attr("src", data.logo).addClass("mui-media-object mui-pull-left").appendTo(anchor);
                 var div = $("<div>").addClass("mui-media-body").text(data.name).appendTo(anchor);
 
