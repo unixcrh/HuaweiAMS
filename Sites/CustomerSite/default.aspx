@@ -7,8 +7,18 @@
     <title>测试页面</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="scripts/jstz.rules.js"></script>
+    <script src="scripts/jstz.main.js"></script>
+    <script>
+        function onDocumentLoad()
+        {
+            var offset = jstz.get_date_offset(new Date());
+
+            alert(offset);
+        }
+    </script>
 </head>
-<body>
+<body onload="onDocumentLoad();">
     <form id="serverForm" runat="server">
         <div>
             测试页面

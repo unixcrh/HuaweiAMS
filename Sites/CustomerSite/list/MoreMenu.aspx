@@ -150,19 +150,19 @@
         }
     </style>
     <script type="text/javascript">
-        function onDocumentLoad() {
-            var v = new Date() * 1;
+        //function onDocumentLoad() {
+        //    var v = new Date() * 1;
 
-            appendVersion(document.getElementById("upcomingEventsLink"), v);
-            appendVersion(document.getElementById("completedEventsLink"), v);
-        }
+        //    appendVersion(document.getElementById("upcomingEventsLink"), v);
+        //    appendVersion(document.getElementById("completedEventsLink"), v);
+        //}
 
-        function appendVersion(link, v) {
-            link.href = link.href + "?v=" + v;
-        }
+        //function appendVersion(link, v) {
+        //    link.href = link.href + "?v=" + v;
+        //}
     </script>
 </head>
-<body onload="onDocumentLoad();">
+<body>
     <div class="myddDiv" id="myddDiv">
         <div class="doudou-item" style="margin: 10px 0px" id="secret">
             <a id="upcomingEventsLink" href="UpcomingEvents.aspx">

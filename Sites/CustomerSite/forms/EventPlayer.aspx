@@ -80,6 +80,11 @@
             var main = null;
             var showMenu = false;
 
+            function getServiceUrl()
+            {
+                return "../services/QueryService.ashx?opType=SingleEvent&id=" + $("#eventID").val();
+            }
+
             mui.init({
                 pullRefresh: {
                     container: "#refreshContainer", //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
@@ -88,22 +93,12 @@
                         contentover: "释放立即刷新", //可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
                         contentrefresh: "正在刷新...", //可选，正在刷新状态时，下拉刷新控件上显示的标题内容
                         callback: function () {
-                            $.getJSON("../services/QueryService.ashx?opType=SingleEvent&id=" + $("#eventID").val(), function (data) {
+                            $.getJSON(getServiceUrl(), function (data) {
 
-                                if (typeof (data.stackTrace) != "undefined") {
-                                    showBack.error("对不起，网络连接异常");
-                                    console.error(data.message);
-                                }
-                                else {
-                                    $("#listContainer").empty();
-                                    initData(data);
-                                }
+                                afterReloadAllData(data);
                             }).done(function () {
-                                console.log("second success");
                                 mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
                             }).fail(function (e) {
-                                console.log("error");
-
                                 showBack.error("对不起，网络连接异常");
                             }).always(function () {
                                 mui('#refreshContainer').pullRefresh().endPullupToRefresh();
@@ -119,39 +114,6 @@
                 }, 300);
                 $("#menu_back").hide();
             });
-            var showBack = function () {
-                function init() {
-                    var backHtml = "<div class=\"back\"></div>" +
-                        "<div class=\"warm\"></div>";
-                    var newNode = document.createElement("div");
-                    newNode.setAttribute("id", "back");
-                    newNode.innerHTML = backHtml;
-                    return newNode;
-                }
-                var instance;
-                return {
-                    show: function () {
-                        if (instance) {
-                            $("#back").show();
-                        } else {
-                            instance = init();
-                            document.body.appendChild(instance);
-                        }
-                    }, hide: function () {
-                        $("#back").hide();
-                    }, error: function (txt) {
-                        showBack.show();
-                        $("#back").children('.warm').html(txt);
-                        $("#back").children('.warm').show();
-                        //显示两秒之后刷新
-                        setTimeout(function () {
-                            $("#back").children('.warm').fadeOut('slow', function () {
-                                $("#back").hide();
-                            });
-                        }, 2000)
-                    }
-                }
-            }();
         </script>
         <script>
             var videoWidth = 500;
@@ -183,7 +145,38 @@
                 });
 
                 ams.initMenu();
+                initLoadData();
             });
+
+            function initLoadData() {
+                showBack.message("加载数据...", true);
+
+                $.getJSON(getServiceUrl(), function (data) {
+                    if (afterReloadAllData(data))
+                        showBack.hide();
+                }).done(function () {
+
+                }).fail(function (e) {
+                    showBack.error("对不起，网络连接异常");
+                }).always(function () {
+
+                });
+            }
+
+            function afterReloadAllData(data) {
+                var result = true;
+
+                if (typeof (data.stackTrace) != "undefined") {
+                    result = false;
+                    showBack.error("对不起，网络连接异常");
+                }
+                else {
+                    $("#listContainer").empty();
+                    initData(data);
+                }
+
+                return result;
+            }
 
             function initData(eventData) {
                 $("#eventID").val(eventData.id);

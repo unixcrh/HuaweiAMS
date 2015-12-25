@@ -25,13 +25,13 @@ a {
     margin: 35px 15px 10px;
 }
 
-.title + .content {
-    margin: 10px 15px 35px;
-    color: #bbb;
-    text-indent: 1em;
-    font-size: 14px;
-    line-height: 24px;
-}
+    .title + .content {
+        margin: 10px 15px 35px;
+        color: #bbb;
+        text-indent: 1em;
+        font-size: 14px;
+        line-height: 24px;
+    }
 
 .mui-table-view {
     margin-bottom: 0px;
@@ -96,4 +96,15 @@ a {
     opacity: 0.1;
     position: absolute;
     background-color: white;
+}
+
+.spinnerContainer {
+    width: 24px;
+    height: 24px;
+    display: inline;
+    padding-top: -4px;
+}
+
+.message {
+    display: inline;
 }

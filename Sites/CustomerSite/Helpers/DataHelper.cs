@@ -54,7 +54,7 @@ namespace CutomerSite.Helpers
 
             int retTotalCount = totalCount;
 
-            AMSEventCollection events = dataSource.Query(pageIndex * DataHelper.DefaultPageSize, DataHelper.DefaultPageSize, "StartTime < GETUTCDATE()", "StartTime DESC", ref retTotalCount);
+            AMSEventCollection events = dataSource.Query(pageIndex * DataHelper.DefaultPageSize, DataHelper.DefaultPageSize, "EndTime <= GETUTCDATE()", "StartTime DESC", ref retTotalCount);
 
             events.TotalCount = retTotalCount;
 
@@ -67,7 +67,7 @@ namespace CutomerSite.Helpers
 
             int retTotalCount = totalCount;
 
-            AMSEventCollection events = dataSource.Query(pageIndex * DataHelper.DefaultPageSize, DataHelper.DefaultPageSize, "StartTime >= GETUTCDATE()", "StartTime", ref retTotalCount);
+            AMSEventCollection events = dataSource.Query(pageIndex * DataHelper.DefaultPageSize, DataHelper.DefaultPageSize, "EndTime > GETUTCDATE()", "StartTime", ref retTotalCount);
 
             events.TotalCount = retTotalCount;
 

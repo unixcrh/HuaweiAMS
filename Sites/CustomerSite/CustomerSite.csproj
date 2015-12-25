@@ -165,6 +165,8 @@
     <Content Include="scripts\jquery-2.1.4.js" />
     <Content Include="scripts\jquery-2.1.4.min.js" />
     <Content Include="scripts\jquery-2.1.4.min.map" />
+    <Content Include="scripts\jstz.main.js" />
+    <Content Include="scripts\jstz.rules.js" />
     <Content Include="scripts\lepus-util.js" />
     <Content Include="scripts\lepus-webview-sdk.js" />
     <Content Include="scripts\lepus.mobile.js" />

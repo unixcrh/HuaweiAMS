@@ -24,7 +24,10 @@ namespace CutomerSite.forms
             ControllerHelper.ExecuteMethodByRequest(this);
 
             string agentText = this.Request.UserAgent;
-            userAgent.InnerText = agentText;
+            userAgent.InnerText = agentText + " login_uid: ";
+
+            if (this.User != null)
+                userAgent.InnerText += this.User.Identity.Name;
 
             if (agentText.IndexOf("android 5", StringComparison.OrdinalIgnoreCase) >= 0 ||
                 agentText.IndexOf("android 6", StringComparison.OrdinalIgnoreCase) >= 0)

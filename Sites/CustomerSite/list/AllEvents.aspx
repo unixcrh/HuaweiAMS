@@ -6,9 +6,7 @@
 <head>
     <title></title>
     <script type="text/javascript">
-        var dt = new Date();
-
-        window.location.href = "UpcomingEvents.aspx?v=" + dt * 1;
+        window.location.href = "UpcomingEvents.aspx";
     </script>
 </head>
 <body></body>

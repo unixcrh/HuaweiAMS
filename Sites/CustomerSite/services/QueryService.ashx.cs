@@ -38,7 +38,8 @@ namespace CutomerSite.services
 
             try
             {
-                //throw new Exception("产生了错误...");
+                //System.Threading.Thread.Sleep(2000);
+                //throw new ApplicationException("这是一个异常...");
 
                 OperationType opType = Res.Request.GetRequestQueryValue("opType", OperationType.None);
 
@@ -53,6 +54,7 @@ namespace CutomerSite.services
                     case OperationType.SingleEvent:
                         string eventID = Res.Request.GetRequestQueryString("id", string.Empty);
                         AMSEvent eventData = DataHelper.GetEventByID(eventID);
+
                         if (eventData != null)
                             result = DataHelper.GetSingleEventJson(eventData, WebHelper.GetVideoAddressType());
 

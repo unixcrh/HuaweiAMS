@@ -77,6 +77,8 @@
         var totalCount = -1;
         var pageSize = 5;
 
+        var serviceURL = "../services/QueryService.ashx?opType=UpcomingEvents";
+
         $(document).ready(function () {
             var jsonData = $("#firstPageData").val();
             var currentPageData = JSON.parse(jsonData);
@@ -88,7 +90,23 @@
             appendData(currentPageData);
 
             ams.initMenu();
+            initLoadData();
         });
+
+        function initLoadData() {
+            showBack.message("加载数据...", true);
+
+            $.getJSON(serviceURL, function (data) {
+                if (afterReloadAllData(data))
+                    showBack.hide();
+            }).done(function () {
+
+            }).fail(function (e) {
+                showBack.error("对不起，网络连接异常");
+            }).always(function () {
+
+            });
+        }
 
         function appendData(pageData) {
             pageIndex = pageData.pageIndex;
@@ -98,14 +116,28 @@
             $.each(pageData.events, function (i, data) {
                 var li = $("<li>").addClass("mui-table-view-cell mui-media").appendTo("#listContainer");
 
-                var v = new Date() * 1
-                var anchor = $("<a>").attr("href", "../forms/EventPlayer.aspx?id=" + data.id + "&v=" + v).appendTo(li);
+                var anchor = $("<a>").attr("href", "../forms/EventPlayer.aspx?id=" + data.id).appendTo(li);
                 var img = $("<img>").attr("src", data.logo).addClass("mui-media-object mui-pull-left").appendTo(anchor);
                 var div = $("<div>").addClass("mui-media-body").text(data.name).appendTo(anchor);
 
                 var speaker = $("<p>").addClass("mui-ellipsis").text(data.speakers).appendTo(div);
                 $("<p>").addClass("mui-ellipsis smallFont").text(data.timeDescription).appendTo(speaker);
             });
+        }
+
+        function afterReloadAllData(data) {
+            var result = true;
+
+            if (typeof (data.stackTrace) != "undefined") {
+                result = false;
+                showBack.error("对不起，网络连接异常");
+            }
+            else {
+                $("#listContainer").empty();
+                appendData(data);
+            }
+
+            return result;
         }
 
         var menu = null;
@@ -120,16 +152,9 @@
                     contentover: "释放立即刷新", //可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
                     contentrefresh: "正在刷新...", //可选，正在刷新状态时，下拉刷新控件上显示的标题内容
                     callback: function () {
-                        $.getJSON("../services/QueryService.ashx?opType=UpcomingEvents", function (data) {
+                        $.getJSON(serviceURL, function (data) {
 
-                            if (typeof (data.stackTrace) != "undefined") {
-                                showBack.error("对不起，网络连接异常");
-                                console.error(data.message);
-                            }
-                            else {
-                                $("#listContainer").empty();
-                                appendData(data);
-                            }
+                            afterReloadAllData(data);
                         }).done(function () {
                             console.log("second success");
                             mui('#refreshContainer').pullRefresh().endPulldownToRefresh();
@@ -182,39 +207,6 @@
             }, 300);
             $("#menu_back").hide();
         });
-        var showBack = function () {
-            function init() {
-                var backHtml = "<div class=\"back\"></div>" +
-                    "<div class=\"warm\"></div>";
-                var newNode = document.createElement("div");
-                newNode.setAttribute("id", "back");
-                newNode.innerHTML = backHtml;
-                return newNode;
-            }
-            var instance;
-            return {
-                show: function () {
-                    if (instance) {
-                        $("#back").show();
-                    } else {
-                        instance = init();
-                        document.body.appendChild(instance);
-                    }
-                }, hide: function () {
-                    $("#back").hide();
-                }, error: function (txt) {
-                    showBack.show();
-                    $("#back").children('.warm').html(txt);
-                    $("#back").children('.warm').show();
-                    //显示两秒之后刷新
-                    setTimeout(function () {
-                        $("#back").children('.warm').fadeOut('slow', function () {
-                            $("#back").hide();
-                        });
-                    }, 2000)
-                }
-            }
-        }();
     </script>
 </body>
 </html>
