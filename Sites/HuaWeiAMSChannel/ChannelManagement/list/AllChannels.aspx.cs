@@ -16,8 +16,6 @@ namespace ChannelManagement.list
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            timeOffset.InnerText = TimeZoneContext.Current.CurrentTimeZone.BaseUtcOffset.ToString();
-
             WebUtility.RequiredScript(typeof(ClientMsgResources));
 
             this.dataGrid.DataSource = LiveChannelManager.GetAllChannels(false);

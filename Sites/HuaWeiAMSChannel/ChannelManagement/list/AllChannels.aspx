@@ -55,8 +55,10 @@
 </head>
 <body>
     <form id="serverForm" runat="server">
-        <div >Time offset <div runat="server" id="timeOffset"></div></div>
         <div class="container">
+            <ol runat="server" id="header" class="breadcrumb">
+                <li><a href="../Authenticate/ChangePassword.aspx">修改密码</a></li>
+            </ol>
             <res:DeluxeGrid ID="dataGrid" runat="server" GridLines="None" AllowPaging="True"
                 GridTitle="频道" EnableViewState="false" AutoGenerateColumns="False" UseAccessibleHeader="False"
                 ShowExportControl="True"

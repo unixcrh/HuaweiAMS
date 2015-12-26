@@ -54,7 +54,7 @@ namespace ChannelManagement.Authenticate
             principal.Identities[0].Claims.Add(new Claim("AMSAdminID", user.UserID));
             principal.Identities[0].Claims.Add(new Claim("AMSAdminName", user.Name));
 
-            SessionSecurityToken token = sam.CreateSessionSecurityToken(principal, null, DateTime.Now, DateTime.Now.AddMinutes(20), false);
+            SessionSecurityToken token = sam.CreateSessionSecurityToken(principal, null, DateTime.Now, DateTime.Now.AddMinutes(60), false);
 
             sam.WriteSessionTokenToCookie(token);
         }
