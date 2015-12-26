@@ -22,6 +22,15 @@ namespace ChannelManagement.list {
         protected global::System.Web.UI.HtmlControls.HtmlForm serverForm;
         
         /// <summary>
+        /// timeOffset control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl timeOffset;
+        
+        /// <summary>
         /// dataGrid control.
         /// </summary>
         /// <remarks>

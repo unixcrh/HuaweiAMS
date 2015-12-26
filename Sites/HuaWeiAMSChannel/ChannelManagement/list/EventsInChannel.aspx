@@ -36,7 +36,7 @@
             </div>
             <res:DeluxeGrid ID="dataGrid" runat="server" GridLines="None" AllowPaging="True" ShowCheckBoxes="true"
                 GridTitle="事件列表" EnableViewState="false" AutoGenerateColumns="False" UseAccessibleHeader="False"
-                ShowExportControl="True" DataSourceID="eventDataSource" PageSize="5"
+                ShowExportControl="True" DataSourceID="eventDataSource"
                 DataKeyNames="ID" AllowSorting="True" CheckBoxPosition="Left" EmptyDataText="该频道下没有事件">
                 <FooterStyle />
                 <RowStyle />

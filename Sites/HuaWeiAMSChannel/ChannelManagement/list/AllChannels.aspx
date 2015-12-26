@@ -55,6 +55,7 @@
 </head>
 <body>
     <form id="serverForm" runat="server">
+        <div >Time offset <div runat="server" id="timeOffset"></div></div>
         <div class="container">
             <res:DeluxeGrid ID="dataGrid" runat="server" GridLines="None" AllowPaging="True"
                 GridTitle="频道" EnableViewState="false" AutoGenerateColumns="False" UseAccessibleHeader="False"

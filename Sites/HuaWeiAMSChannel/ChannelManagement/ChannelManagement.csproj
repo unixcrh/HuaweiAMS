@@ -87,6 +87,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\SDK\Microsoft.Data.Services.Client.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\SDK\Microsoft.IdentityModel.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.TransientFaultHandling.Core">
       <HintPath>..\..\..\SDK\Microsoft.Practices.TransientFaultHandling.Core.dll</HintPath>
     </Reference>
@@ -115,6 +119,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\SDK\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.IdentityModel" />
     <Reference Include="System.IdentityModel.Tokens.Jwt">
       <HintPath>..\..\..\SDK\System.IdentityModel.Tokens.Jwt.dll</HintPath>
     </Reference>
@@ -140,6 +145,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Authenticate\SignIn.aspx" />
     <Content Include="packages.config" />
     <Content Include="css\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="css\bootstrap\css\bootstrap-theme.min.css.map" />
@@ -194,10 +200,19 @@
     <None Include="scripts\jquery-2.1.4-vsdoc.js" />
     <Content Include="scripts\jquery-2.1.4.js" />
     <Content Include="scripts\jquery-2.1.4.min.js" />
+    <Content Include="scripts\jstz.main.js" />
+    <Content Include="scripts\jstz.rules.js" />
     <Content Include="Templates\ChannelHeader.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authenticate\SignIn.aspx.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Authenticate\SignIn.aspx.designer.cs">
+      <DependentUpon>SignIn.aspx</DependentUpon>
+    </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
