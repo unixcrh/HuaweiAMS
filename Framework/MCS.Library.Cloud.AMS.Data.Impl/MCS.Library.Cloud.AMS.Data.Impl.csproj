@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\AMSAdminSqlAdapter.cs" />
     <Compile Include="Adapters\AMSChannelSqlAdapter.cs" />
     <Compile Include="Adapters\AMSEventSqlAdapter.cs" />
     <Compile Include="Adapters\AMSLockSqlAdapter.cs" />
