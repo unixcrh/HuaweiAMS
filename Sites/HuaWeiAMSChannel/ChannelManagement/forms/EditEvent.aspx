@@ -87,12 +87,25 @@
             $("#fileContainer").empty();
             var file = $("<input>").attr("id", "uploadFile").attr("name", "uploadFile").attr("type", "file").appendTo("#fileContainer");
         }
+
+        function validateData() {
+            event.returnValue = false;
+
+            var args = {};
+
+            var validateResult = $HGRootNS.DataBindingControl.checkBindingControlData(null, args);
+            result = validateResult.isValid;
+
+            event.returnValue = result;
+
+            return result;
+        }
     </script>
 </head>
 <body>
     <div class="container">
         <ams:ChannelHeader runat="server" ID="ChannelHeader" CurrentName="编辑频道" />
-        <form id="serverForm" runat="server" class="form-horizontal">
+        <form id="serverForm" runat="server" class="form-horizontal" target="innerFrame">
             <res:DataBindingControl runat="server" ID="bindingControl" IsValidateOnSubmit="true" ValidateUnbindProperties="false">
                 <ItemBindings>
                     <res:DataBindingItem DataPropertyName="ID" ControlID="EventID" ControlPropertyName="Value" />
@@ -162,7 +175,7 @@
             <div class="form-group form-group-sm">
                 <div class="col-sm-8"></div>
                 <div class="col-sm-4" style="">
-                    <asp:Button runat="server" AccessKey="S" CssClass="btn btn-primary" ID="save" Text="保存(S)" OnClick="save_Click" />
+                    <asp:Button runat="server" AccessKey="S" CssClass="btn btn-primary" ID="save" Text="保存(S)" OnClick="save_Click" OnClientClick="return validateData();" />
                     <a runat="server" id="backUrl" class="btn btn-default" href="#">返回</a>
                 </div>
             </div>
@@ -181,6 +194,7 @@
             <div id="frameContainer">
                 <%--<iframe name="imageFrame"></iframe>--%>
             </div>
+            <iframe name="innerFrame"></iframe>
         </div>
     </div>
 </body>

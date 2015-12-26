@@ -86,19 +86,28 @@ namespace ChannelManagement.forms
 
         protected void save_Click(object sender, EventArgs e)
         {
-            this.bindingControl.CollectData(true);
+            try
+            {
+                this.bindingControl.CollectData(true);
 
-            AMSEditEntityExecutor<AMSEvent> executor = new AMSEditEntityExecutor<AMSEvent>(
-                this.Data,
-                data => AMSEventSqlAdapter.Instance.Update(data),
-                AMSOperationType.EditEvent);
+                AMSEditEntityExecutor<AMSEvent> executor = new AMSEditEntityExecutor<AMSEvent>(
+                    this.Data,
+                    data => AMSEventSqlAdapter.Instance.Update(data),
+                    AMSOperationType.EditEvent);
 
-            executor.Execute();
+                executor.Execute();
 
-            this.ClientScript.RegisterStartupScript(this.GetType(),
-                "back",
-                string.Format("document.getElementById(\"{0}\").click();", this.backUrl.ClientID),
-                true);
+                this.ClientScript.RegisterStartupScript(this.GetType(),
+                    "back",
+                    string.Format("top.document.getElementById(\"{0}\").click();", this.backUrl.ClientID),
+                    true);
+            }
+            catch (System.Exception ex)
+            {
+                this.ClientScript.RegisterStartupScript(this.GetType(), "Exception",
+                    string.Format("top.$showError('{0}');", ScriptHelper.CheckScriptString(ex.Message, false)),
+                    true);
+            }
         }
 
         protected override void OnPreRender(EventArgs e)
