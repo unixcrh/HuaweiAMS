@@ -14,6 +14,7 @@ using MCS.Web.Responsive.Library;
 using Res = MCS.Web.Responsive.Library;
 using CutomerSite.services;
 using System.Collections.Specialized;
+using System.Text;
 
 namespace CutomerSite.forms
 {
@@ -29,6 +30,10 @@ namespace CutomerSite.forms
             if (this.User != null)
                 userAgent.InnerText += this.User.Identity.Name;
 
+            userAgent.InnerHtml += "<br/>" + GetCoookies().Replace("\n", "<br/>");
+            allCookies.InnerHtml = "AllCookies: <br/>";
+            allCookies.InnerHtml += this.Request.Headers["Cookie"].Replace(";", "<br/>");
+
             if (agentText.IndexOf("android 5", StringComparison.OrdinalIgnoreCase) >= 0 ||
                 agentText.IndexOf("android 6", StringComparison.OrdinalIgnoreCase) >= 0)
             {
@@ -38,6 +43,19 @@ namespace CutomerSite.forms
             {
                 this.fixedBitrate.Value = "false";
             }
+        }
+
+        private static string GetCoookies()
+        {
+            StringBuilder strB = new StringBuilder();
+            foreach (string key in HttpContext.Current.Request.Cookies.AllKeys)
+            {
+                HttpCookie cookie = HttpContext.Current.Request.Cookies.Get(key);
+
+                strB.AppendFormat("Name={0}, Value={1}\n", cookie.Name, cookie.Value);
+            }
+
+            return strB.ToString();
         }
 
         [ControllerMethod]

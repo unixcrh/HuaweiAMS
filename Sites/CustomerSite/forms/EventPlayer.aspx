@@ -70,6 +70,9 @@
                 <div>
                     <p id="userAgent" runat="server" />
                 </div>
+                <div>
+                    <p id="allCookies" runat="server" />
+                </div>
             </div>
         </div>
         <div id="menu_back" class="menu_back"></div>
