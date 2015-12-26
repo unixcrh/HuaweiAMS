@@ -50,7 +50,7 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
 
             AMSEvent eventData = DataHelper.PrepareEventData(channel.ID);
 
-            eventData.StartTime = DateTime.UtcNow.Add(TimeSpan.FromMinutes(10));
+            eventData.StartTime = DateTime.Now.Add(TimeSpan.FromMinutes(10));
 
             AMSEventSqlAdapter.Instance.Update(eventData);
 
@@ -106,7 +106,7 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
             AMSEvent eventData = DataHelper.PrepareEventData(channel.ID);
 
             eventData.State = AMSEventState.Running;
-            eventData.EndTime = DateTime.UtcNow.Add(TimeSpan.FromMinutes(10));
+            eventData.EndTime = DateTime.Now.Add(TimeSpan.FromMinutes(10));
 
             AMSEventSqlAdapter.Instance.Update(eventData);
 

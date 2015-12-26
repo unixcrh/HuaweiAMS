@@ -1,4 +1,5 @@
-﻿using MCS.Library.Data.DataObjects;
+﻿using MCS.Library.Cloud.AMS.Data.Validators;
+using MCS.Library.Data.DataObjects;
 using MCS.Library.Data.Mapping;
 using MCS.Library.Validation;
 using System;
@@ -57,6 +58,8 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
 
         [DataMember]
         [ORFieldMapping("StartTime", UtcTimeToLocal = true)]
+        [DateTimeEmptyValidator(MessageTemplate = "起始时间不能为空")]
+        [DateTimeLessThanCompareValidator("EndTime", MessageTemplate = "起始时间必须小于结束时间")]
         public DateTime StartTime
         {
             get;
@@ -65,6 +68,7 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
 
         [DataMember]
         [ORFieldMapping("EndTime", UtcTimeToLocal = true)]
+        [DateTimeEmptyValidator(MessageTemplate = "结束时间不能为空")]
         public DateTime EndTime
         {
             get;
@@ -73,7 +77,7 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
 
         [DataMember]
         [SqlBehavior(BindingFlags = ClauseBindingFlags.Select | ClauseBindingFlags.Where)]
-        [ORFieldMapping("StartTime", UtcTimeToLocal = true)]
+        [ORFieldMapping("CreateTime", UtcTimeToLocal = true)]
         public DateTime CreateTime
         {
             get;

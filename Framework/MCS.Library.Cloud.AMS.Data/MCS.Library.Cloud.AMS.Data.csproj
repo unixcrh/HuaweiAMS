@@ -62,8 +62,12 @@
     <Compile Include="Entities\AMSUserView.cs" />
     <Compile Include="Mechanism\ContractManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\DateTimeLessThanCompareValidator.cs" />
+    <Compile Include="Validators\DateTimeLessThanCompareValidatorAttribute.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Validators\DateTimeLessThanCompareValidator.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>IF NOT EXIST "$(ProjectDir)..\..\Bin" MD "$(ProjectDir)..\..\Bin"
