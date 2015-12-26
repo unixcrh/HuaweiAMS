@@ -81,6 +81,9 @@
     <Build Include="AMS\Tables\Queue_Properties.sql" />
     <Build Include="AMS\Tables\UserViews.sql" />
     <Build Include="AMS\Procedures\InitEvents.sql" />
+    <Build Include="AMS\Tables\Admins.sql" />
+    <Build Include="AMS\Tables\Admins_Properties.sql" />
+    <Build Include="AMS\Procedures\InitAdmins.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AMSDB.refactorlog" />

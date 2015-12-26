@@ -10,4 +10,5 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 EXECUTE [AMS].[InitChannels]
+EXECUTE [AMS].[InitAdmins]
 --EXECUTE [AMS].[InitEvents]
