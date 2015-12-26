@@ -63,21 +63,13 @@
                     <asp:TemplateField HeaderText="操作">
                         <ItemTemplate>
                             <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-                                <a class="btn btn-xs btn-success" href='../forms/EventPlayer.aspx?channelID=<%#Eval("ChannelID") %>&id=<%#Eval("ID") %>'>
+                                <a title="播放..." class="btn btn-xs btn-success" href='../forms/EventPlayer.aspx?channelID=<%#Eval("ChannelID") %>&id=<%#Eval("ID") %>'>
                                     <i class="icon-play bigger-120"></i>
                                 </a>
 
-                                <a class="btn btn-xs btn-info" href="../forms/EditEvent.aspx?channelID=<%#Eval("ChannelID") %>&id=<%#Eval("ID") %>">
+                                <a title="编辑..." class="btn btn-xs btn-info" href="../forms/EditEvent.aspx?channelID=<%#Eval("ChannelID") %>&id=<%#Eval("ID") %>">
                                     <i class="icon-edit bigger-120"></i>
                                 </a>
-
-                                <%-- <asp:LinkButton runat="server" CssClass="btn btn-xs btn-danger" CommandName="DeleteEvent" CommandArgument='<%#Eval("ID") %>'>
-                                    <i class="icon-trash bigger-120"></i>
-                                </asp:LinkButton>--%>
-
-                                <%--<button class="btn btn-xs btn-warning">
-                                    <i class="icon-flag bigger-120"></i>
-                                </button>--%>
                             </div>
                             <div class="visible-xs visible-sm hidden-md hidden-lg">
                                 <div class="dropdown">
@@ -86,14 +78,14 @@
                                     </button>
                                     <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
                                         <li>
-                                            <a href='../forms/EventPlayer.aspx?channelID=<%#Eval("ChannelID") %>&id=<%#Eval("ID") %>' class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
+                                            <a title="播放..." href='../forms/EventPlayer.aspx?channelID=<%#Eval("ChannelID") %>&id=<%#Eval("ID") %>' class="tooltip-info" data-rel="tooltip" data-original-title="View">
                                                 <span class="blue">
                                                     <i class="icon-play bigger-120"></i>
                                                 </span>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="../forms/EditEvent.aspx?channelID=<%#Eval("ChannelID") %>&id=<%#Eval("ID") %>" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
+                                            <a title="编辑..." href="../forms/EditEvent.aspx?channelID=<%#Eval("ChannelID") %>&id=<%#Eval("ID") %>" class="tooltip-success" data-rel="tooltip" data-original-title="Edit">
                                                 <span class="green">
                                                     <i class="icon-edit bigger-120"></i>
                                                 </span>
