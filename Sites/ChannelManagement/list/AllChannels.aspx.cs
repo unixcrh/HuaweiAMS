@@ -1,4 +1,6 @@
 ﻿using MCS.Library.Cloud.AMSHelper.Mechanism;
+using MCS.Web.Responsive.Library;
+using MCS.Web.Responsive.Library.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,8 @@ namespace ChannelManagement.list
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            WebUtility.RequiredScript(typeof(ClientMsgResources));
+
             this.dataGrid.DataSource = LiveChannelManager.GetAllChannels(false);
             this.dataGrid.DataBind();
         }
