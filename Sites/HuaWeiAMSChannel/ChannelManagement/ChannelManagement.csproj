@@ -161,6 +161,7 @@
     <Content Include="css\Font-awesome\font\FontAwesome.otf" />
     <Content Include="css\fonts\azuremediaplayer.eot" />
     <Content Include="css\fonts\azuremediaplayer.woff" />
+    <Content Include="images\Huawei.png" />
     <Content Include="scripts\jquery-2.1.4.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
