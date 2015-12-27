@@ -8,8 +8,7 @@
     <script src="../scripts/jstz.main.js"></script>
     <script src="../scripts/jstz.rules.js"></script>
     <script type="text/javascript">
-        function onDocumentLoad()
-        {
+        function onDocumentLoad() {
             var offset = jstz.get_date_offset(new Date());
 
             $("#timeOffset").val(offset.toString());
@@ -39,6 +38,11 @@
             .form-signin .form-signin-heading, .form-signin .checkbox {
                 margin-bottom: 10px;
             }
+
+        .logo-image {
+            width: 56px;
+            height: 56px;
+        }
     </style>
 </head>
 <body onload="onDocumentLoad();">
@@ -46,7 +50,20 @@
         <div class="container">
             <div class="form-signin">
                 <div class="row">
-                    <h2>用户认证</h2>
+                    <div class="media" style="margin-bottom: 24px">
+                        <div class="media-left media-middle">
+                            <img class="media-object logo-image" src="../images/Huawei.png" alt="华为" />
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">视频直播系统</h3>
+                            <p>
+                                管理控制台
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
                     <div class="form-horizontal" role="form">
                         <div class="form-group">
                             <label for="txtUserName" class="col-lg-2 col-md-2 col-sm-3 control-label">
@@ -67,11 +84,11 @@
                         <div class="form-group">
                             <div class="col-lg-2 col-md-2 col-sm-3 control-label">
                             </div>
-                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
-                            <asp:Label CssClass="text-danger" ID="errorMessage" runat="server" Style="line-height: 100%; word-break: break-all"></asp:Label>
+                            <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12">
+                                <asp:Label CssClass="text-danger" ID="errorMessage" runat="server" Style="line-height: 100%; word-break: break-all"></asp:Label>
+                            </div>
                         </div>
-                        </div>
-                        
+
                     </div>
                     <div class="row">
                         <div class="col-md-2 col-sm-1 col-xs-1">
