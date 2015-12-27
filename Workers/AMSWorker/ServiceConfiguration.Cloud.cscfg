@@ -3,11 +3,11 @@
   <Role name="ChannelRole">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=huaweiams;AccountKey=ruBOWMwZfxlKgxDhuxssCy1pN9EtrmbXiFkmhXlWcMB+0FwEYGN9Uvqb4kboLK+PMQ2XPI7JhmwkTIrS4pyrEQ==" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=amshuaweidatarel;AccountKey=6bbB+xw6lhJW0/9JSGu4guKIJsS4w23DSYP0bIHHnwNdEFsrYNNaxAX6+We4fHlRm1xCXhAwd014z/Z45w0eDg==" />
       <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
       <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="zhshen" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEHngO7yfeV6NS2l7ynQjyHwwDQYJKoZIhvcNAQEBBQAEggEANG0ThzNsOOJsPdqrd5zYXyw00t1HBke3ap8WBzCdX6eWiMvOLyyp8Ds03Pi7DWhSYIXRlx98Zm+m7Na6Cektfd/Tt8ujai4d84oP+p1pT+YQxNhfoTzM/Fo/BClYVZcmLI3ysbr0Iv5q1ZltlqaBGMdvEDpw2Y/bUAuXUjIxjZBBoFkfIR228AJRTMIS+LJjcZMN6eokeumBKuTZNHN89j6ULaljv4s/gH9gEl2hZL1vjLpnyzN3kI08lsbAC/LhYfj1s+wDkG1UtH+mdfWIQ3jnp01ulhSUAUVXxRWUNxUgRWaW4uAuAJCG5kmnrD3bMdIRvGo0wYR7DFVhHaB2ZDAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECPUNOLuVSPEIgBDvpMw1bhN5feHPxi+8fHNo" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2016-12-31T23:59:59.0000000+08:00" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEHngO7yfeV6NS2l7ynQjyHwwDQYJKoZIhvcNAQEBBQAEggEAsrcN1x1Hw4zv6Se0PDsOqN0Lxk7hjJOdzTn0Hk8ExyLCNfwpPQ7/Y1uzil3Vfy5Iu7CPBO3dAxTzIR+OViJwA8+iR+LJMnOPgSLgGNXTbaqOfbAfVaeAFQyCCdlCaZ+ot1Ievl/sgqnUUpmLybh5oZ9MMwWv0ZmCumBrfXPOaHN2U8TOISfW4EO4QTh/c9GLZqRYJfckoe2ddoqgxx7f4dOy+IYnMs9Zu7ajXaBaFyWGU5tAdEXooZYaojKeSVl45L9XEfTNY4AAfBBPpFN/AJoqSYsEkGtL9pXG4AnA0cnwLxZV4xuOJR4B0IfX8B8U32TxJU+eMuZoffgjxfxZ6DAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECPNmorRbTXZlgBDjsnVKzOEEg4hkm5mSy/Bb" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2017-01-01T23:59:59.0000000+08:00" />
       <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
     </ConfigurationSettings>
     <Certificates>
