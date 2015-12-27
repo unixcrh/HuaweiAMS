@@ -106,6 +106,7 @@
   <ItemGroup>
     <None Include="AMSDB_Azure.zhshen-amsdb.publish.xml" />
     <None Include="AMSDB_Azure.zhshen-amsdb-test.publish.xml" />
+    <None Include="AMSDB_Azure.rel-amsdb.publish.xml" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AMSDB_Azure.refactorlog" />
