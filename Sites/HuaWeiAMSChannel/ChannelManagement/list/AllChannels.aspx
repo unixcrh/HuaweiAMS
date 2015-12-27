@@ -93,7 +93,7 @@
                                     <i class="icon-copy bigger-120"></i>
                                 </span>
                             </a>--%>
-                            <a href="<%# HttpUtility.HtmlAttributeEncode((string)Eval("PrimaryInputUrl"))%>" onclick="onRtmpClick(this);">显示...</a>
+                            <a href="<%# HttpUtility.HtmlAttributeEncode((string)Eval("PrimaryInputUrl"))%>" onclick="return onRtmpClick(this);">显示...</a>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:HyperLinkField HeaderText="事件" Text="查看..." DataNavigateUrlFields="ID" DataNavigateUrlFormatString="../list/EventsInChannel.aspx?channelID={0}" />
