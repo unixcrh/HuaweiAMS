@@ -34,6 +34,20 @@
         .hidden {
             display: none;
         }
+
+        .fullScreen {
+            z-index: 1000;
+            border: solid 1px double;
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+            height: 100%;
+            top: 0px;
+            left: 0px;
+            opacity: 1.0;
+            position: absolute;
+            background-color: black;
+        }
     </style>
 </head>
 <body>
@@ -61,17 +75,23 @@
                 <div id="videoContainer">
                     <video id="azuremediaplayer" class="azuremediaplayer aazuremediaplayer amp-default-skin amp-big-play-centered" width="100%" height="100%" tabindex="0"></video>
                 </div>
-                <div id="buttonContainer">
-                    <a class="mui-btn" id="switchVideoAddressType" runat="server">切换到</a>
-                </div>
                 <div>
                     <p id="description" />
+                </div>
+                <div id="buttonContainer">
+                    <a class="mui-btn" id="switchVideoAddressType" runat="server">切换到</a>
+                    <a class="mui-btn" id="pauseBtn">暂停</a>
+                    <a class="mui-btn" id="playBtn">播放</a>
                 </div>
                 <div>
                     <p id="userAgent" runat="server" />
                 </div>
                 <div>
                     <p id="allCookies" runat="server" />
+                </div>
+                <div>
+                    <p>client cookies:</p>
+                    <p id="clientCookies" style="overflow: auto"></p>
                 </div>
             </div>
         </div>
@@ -133,10 +153,13 @@
 
             $(document).ready(function () {
                 window.addEventListener('resize', function (event) {
-                    if (window.innerWidth < 750) {
-                        document.getElementById("videoContainer").style.height = $(window).width() * 11 / 16 + "px";
-                    } else {
-                        document.getElementById("videoContainer").style.height = "500px";
+
+                    if (fullScreenState.isFullScreen == false) {
+                        if (window.innerWidth < 750) {
+                            document.getElementById("videoContainer").style.height = $(window).width() * 11 / 16 + "px";
+                        } else {
+                            document.getElementById("videoContainer").style.height = "500px";
+                        }
                     }
                 });
 
@@ -148,12 +171,14 @@
                     initData(eventData);
                 }
 
-                mui("#buttonContainer").on("tap", "a", function () {
+                mui("#buttonContainer").on("tap", "#switchVideoAddressType", function () {
                     window.location.href = $(this).attr("href");
                 });
 
                 ams.initMenu();
                 initLoadData();
+
+                $("#clientCookies").text(document.cookie);
             });
 
             function initLoadData() {
@@ -184,6 +209,69 @@
                 }
 
                 return result;
+            }
+
+            var fullScreenState = {
+                switching: false,
+                isFullScreen: false,
+                originalHeight: "500px"
+            }
+
+            var playingState = {
+                switching: false,
+                paused: true
+            }
+
+            function switchPlayingState(player) {
+                if (playingState.switching == false) {
+                    playingState.switching = true;
+
+                    window.setTimeout(function () {
+
+                        if (playingState.paused)
+                            player.play();
+                        else
+                            player.pause();
+
+                        playingState.paused = !playingState.paused;
+                        playingState.switching = false;
+                    }, 100);
+                }
+            }
+
+            function switchFullscreen(player) {
+                if (fullScreenState.switching == false) {
+                    if (fullScreenState.isFullScreen == false) {
+                        if (player.isFullscreen() == false) {
+                            fullScreenState.switching = true;
+
+                            window.setTimeout(enterFullscreen, 100);
+                        }
+                    }
+                    else {
+                        if (player.isFullscreen() == false) {
+                            fullScreenState.switching = true;
+
+                            window.setTimeout(exitFullscreen, 100);
+                        }
+                    }
+                }
+            }
+
+            function enterFullscreen() {
+                fullScreenState.originalHeight = document.getElementById("videoContainer").style.height;
+                $("#videoContainer").removeAttr("style").addClass("fullScreen");
+                fullScreenState.switching = false;
+                fullScreenState.isFullScreen = true;
+            }
+
+            function exitFullscreen() {
+                if (fullScreenState.isFullScreen) {
+                    $("#videoContainer").removeClass("fullScreen");
+                    document.getElementById("videoContainer").style.height = fullScreenState.originalHeight;
+                    fullScreenState.isFullScreen = false;
+                    fullScreenState.switching = false;
+                }
             }
 
             function initData(eventData) {
@@ -220,6 +308,27 @@
 
                             stream.selectTrackByIndex(0);
                         }
+                    });
+
+                    //myPlayer.addEventListener(amp.eventName.fullscreenchange, function () {
+                    //    switchFullscreen(myPlayer);
+                    //});
+
+                    mui("#buttonContainer").on("tap", "#playBtn", function () {
+                        myPlayer.play();
+                    });
+
+                    mui("#buttonContainer").on("tap", "#pauseBtn", function () {
+                        myPlayer.pause();
+                    });
+
+                    mui("#videoContainer").on("tap", ".amp-controlbaricons-left", function () {
+                        switchPlayingState(myPlayer);
+                    });
+
+                    //logo class = .amp-logo
+                    mui("#videoContainer").on("tap", ".vjs-fullscreen-control", function () {
+                        switchFullscreen(myPlayer);
                     });
 
                     myPlayer.src([{ src: eventData.url, type: "application/vnd.ms-sstr+xml" }]);

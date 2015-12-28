@@ -40,6 +40,14 @@ namespace CutomerSite
 
             TimeZoneContext.Current.CurrentTimeZone =
                 TimeZoneInfo.CreateCustomTimeZone("TimeZoneInfoContext", TimeSpan.FromMinutes(minuteOffset), "TimeZoneInfoContext", "TimeZoneInfoContext");
+
+            HttpCookie resCookie = new HttpCookie("res_cookie1", DateTime.Now.ToString());
+            resCookie.Expires = DateTime.MinValue;
+            HttpContext.Current.Response.SetCookie(resCookie);
+
+            //HttpCookie resCookie2 = new HttpCookie("res_cookie2", DateTime.Now.ToString());
+            //resCookie2.Expires = DateTime.MinValue;
+            //HttpContext.Current.Response.SetCookie(resCookie2);
         }
     }
 }
