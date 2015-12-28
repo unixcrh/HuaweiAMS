@@ -32,7 +32,9 @@ namespace CutomerSite.forms
 
             userAgent.InnerHtml += "<br/>" + GetCoookies().Replace("\n", "<br/>");
             allCookies.InnerHtml = "AllCookies: <br/>";
-            allCookies.InnerHtml += this.Request.Headers["Cookie"].Replace(";", "<br/>");
+
+            if (this.Request.Headers["Cookie"] != null)
+                allCookies.InnerHtml += this.Request.Headers["Cookie"].Replace(";", "<br/>");
 
             if (agentText.IndexOf("android 5", StringComparison.OrdinalIgnoreCase) >= 0 ||
                 agentText.IndexOf("android 6", StringComparison.OrdinalIgnoreCase) >= 0)
