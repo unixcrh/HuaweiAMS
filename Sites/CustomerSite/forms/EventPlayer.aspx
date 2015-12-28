@@ -37,11 +37,10 @@
 
         .fullScreen {
             z-index: 1000;
-            border: solid 1px double;
             margin: 0px;
             padding: 0px;
             width: 100%;
-            height: 100%;
+            height: 90%;
             top: 0px;
             left: 0px;
             opacity: 1.0;
@@ -80,6 +79,7 @@
                 </div>
                 <div id="buttonContainer">
                     <a class="mui-btn" id="switchVideoAddressType" runat="server">切换到</a>
+                    <a class="mui-btn" id="fullscreenBtn">全屏</a>
                     <a class="mui-btn" id="pauseBtn">暂停</a>
                     <a class="mui-btn" id="playBtn">播放</a>
                 </div>
@@ -261,6 +261,7 @@
             function enterFullscreen() {
                 fullScreenState.originalHeight = document.getElementById("videoContainer").style.height;
                 $("#videoContainer").removeAttr("style").addClass("fullScreen");
+                $("#refreshContainer").removeClass("mui-content");
                 fullScreenState.switching = false;
                 fullScreenState.isFullScreen = true;
             }
@@ -268,6 +269,7 @@
             function exitFullscreen() {
                 if (fullScreenState.isFullScreen) {
                     $("#videoContainer").removeClass("fullScreen");
+                    $("#refreshContainer").addClass("mui-content");
                     document.getElementById("videoContainer").style.height = fullScreenState.originalHeight;
                     fullScreenState.isFullScreen = false;
                     fullScreenState.switching = false;
@@ -314,6 +316,10 @@
                     //    switchFullscreen(myPlayer);
                     //});
 
+                    mui("#buttonContainer").on("tap", "#fullscreenBtn", function () {
+                        switchFullscreen(myPlayer);
+                    });
+
                     mui("#buttonContainer").on("tap", "#playBtn", function () {
                         myPlayer.play();
                     });
@@ -330,7 +336,7 @@
                     mui("#videoContainer").on("tap", ".vjs-fullscreen-control", function () {
                         switchFullscreen(myPlayer);
                     });
-
+                    
                     myPlayer.src([{ src: eventData.url, type: "application/vnd.ms-sstr+xml" }]);
                 }
             }
