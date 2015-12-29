@@ -1,6 +1,6 @@
 <document version="6" os="windows" original_document_path="D:\ProjectsInGitHub\HuaweiAMS\Wirecast\Rel-Sales-Traning.wcst">
 	<open_windows>
-		<vamWindowGlass frame="0,0,1936,1056" asset_icon_scale="0.5" asset_icon_updateFPS="15" selected_layer="1836282930" vam_main_splitter="0.65" />
+		<vamWindowGlass frame="0,0,1936,1056" asset_icon_scale="0.5" asset_icon_updateFPS="15" selected_layer="1836282929" vam_main_splitter="0.65" />
 	</open_windows>
 	<vam_state master_audio_shown="1010" preview_audio_monitor="1" transition_0_unique_id="-- CUT --" transition_1_unique_id="-- SMOOTH --" transition_2_unique_id="side" master_audio_monitor="0" />
 	<transition_data />
@@ -41,8 +41,7 @@
 	<aspectRatio custom_width="1280" custom_height="720" />
 	<shot_key_map />
 	<shotsLiveWhenSaved>
-		<xml_tag vaLayerIndex="0" beLayerEnum="1" vaLayerEnum="1836282928" unique_id="a9f8d60c-08cb-4e50-8464-86d47ba01c29_shot" />
-		<xml_tag vaLayerIndex="1" beLayerEnum="2" vaLayerEnum="1836282929" unique_id="abc1af6e-7a97-4753-8fd4-03bebac57754_shot" />
+		<xml_tag vaLayerIndex="0" beLayerEnum="1" vaLayerEnum="1836282928" unique_id="35f6f71c-f9e6-485f-87e2-17f499417443_shot" />
 		<xml_tag vaLayerIndex="2" beLayerEnum="3" vaLayerEnum="1836282930" unique_id="8071b34c-3979-49e1-a5e3-8b6f65749f3c_shot" />
 	</shotsLiveWhenSaved>
 	<source_sdk_settings />
@@ -54,7 +53,7 @@
 		<asset name="Blank Shot" unique_id="cac13be4-dcc2-4f8c-b2c2-96df9ada5ae0_shot" type="shot" media-type="9" vam_state="1" created_for_layer="3" blank_shot="1" visible="1" />
 		<asset name="Blank Shot" unique_id="48c5043c-5a86-40a7-9a2e-535cb2cd3536_shot" type="shot" media-type="9" vam_state="1" created_for_layer="4" blank_shot="1" visible="1" />
 		<asset name="久石让在武道馆的音乐会.mp4" url="F:\Movie\久石让在武道馆的音乐会.mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="e7add359-4450-475d-98ed-dab23b4fd545_久石让在武道馆的音乐会.mp4" timescale="12800" duration="86930944" square_pixel_height="480" square_pixel_width="640" />
-		<asset name="无人区.mp4" url="F:\Movie\无人区.mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="def02610-e0d5-45db-ad1b-c0e8e5f4dc70_无人区.mp4" timescale="24000" duration="161450280" square_pixel_height="720" square_pixel_width="1280" />
+		<asset name="无人区.mp4" url="F:\Movie\无人区.mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="def02610-e0d5-45db-ad1b-c0e8e5f4dc70_无人区.mp4" timescale="24000" duration="161450280" square_pixel_width="1280" square_pixel_height="720" />
 		<asset type="capture" unique_id="USB2.0 Camera::\\?\usb#vid_1e4e&amp;pid_0109&amp;mi_00#7&amp;1f08925e&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" name="USB2.0 Camera" guid="\\?\usb#vid_1e4e&amp;pid_0109&amp;mi_00#7&amp;1f08925e&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" url="USB2.0 Camera" excluded="0" format="video" video_tracks="1" media-type="2" visible="1" square_pixel_height="288" square_pixel_width="352" isusb="1" />
 		<asset type="capture" unique_id="麦克风 (2- USB Microphone)::" name="麦克风 (2- USB Microphone)" url="麦克风 (2- USB Microphone)" excluded="0" format="audio" audio_tracks="1" media-type="3" visible="1" isusb="0" />
 		<asset type="capture" unique_id="麦克风 (USB Advanced Audio Device)::" name="麦克风 (USB Advanced Audio Device)" url="麦克风 (USB Advanced Audio Device)" excluded="0" format="audio" audio_tracks="1" media-type="3" visible="1" isusb="0" />
@@ -62,13 +61,12 @@
 		<asset name="05 4. Adagio - Wolfgang Amadeus Mozart.mp3" url="D:\Music\古典音乐\Adagio Karajan\05 4. Adagio - Wolfgang Amadeus Mozart.mp3" type="file" audio_tracks="1" media-type="1" unique_id="8d9a5a03-310e-4ecf-bb76-1d34195ccc36_05 4. Adagio - Wolfgang Amadeus Mozart.mp3" timescale="44100" duration="19448064" />
 		<asset url="D:\Music\古典音乐\Concierto de Aranjuez\01 Guitar Concerto.wma" audio_tracks="1" name="01 Guitar Concerto.wma" media-type="1" type="file" unique_id="483e091d-673d-48c6-ab02-f2bf510e3cf5_01 Guitar Concerto.wma" timescale="1000000" duration="315999000" />
 		<asset type="capture" unique_id="麦克风 (2- USB Advanced Audio Device)::" name="麦克风 (2- USB Advanced Audio Device)" url="麦克风 (2- USB Advanced Audio Device)" excluded="0" format="audio" audio_tracks="1" media-type="3" isusb="0" />
-		<asset name="USB2.0 Camera" unique_id="a9f8d60c-08cb-4e50-8464-86d47ba01c29_shot" type="shot" media-type="9" vam_state="6" audio_tracks="0" video_tracks="1" still_image_tracks="0" veil_track_count="0" alpha_track_count="0" created_for_layer="5" visible="1" />
-		<asset name="麦克风 (2- USB Advanced Audio Device)" unique_id="abc1af6e-7a97-4753-8fd4-03bebac57754_shot" type="shot" media-type="9" vam_state="14" audio_tracks="1" video_tracks="0" still_image_tracks="0" veil_track_count="0" alpha_track_count="0" created_for_layer="1" visible="1" />
+		<asset name="无人区.mp4" unique_id="35f6f71c-f9e6-485f-87e2-17f499417443_shot" type="shot" media-type="9" vam_state="14" audio_tracks="1" video_tracks="1" still_image_tracks="0" veil_track_count="0" alpha_track_count="0" created_for_layer="5" visible="1" />
 	</assets>
 	<chroma_key_configurations>
-		<chroma_key_configuration unique_id="麦克风 (2- USB Microphone)::" chroma_config_id="597" />
-		<chroma_key_configuration unique_id="麦克风 (USB Advanced Audio Device)::" chroma_config_id="598" />
-		<chroma_key_configuration unique_id="USB2.0 Camera::\\?\usb#vid_1e4e&amp;pid_0109&amp;mi_00#7&amp;1f08925e&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" chroma_config_id="599" />
+		<chroma_key_configuration unique_id="麦克风 (2- USB Microphone)::" chroma_config_id="594" />
+		<chroma_key_configuration unique_id="麦克风 (USB Advanced Audio Device)::" chroma_config_id="595" />
+		<chroma_key_configuration unique_id="USB2.0 Camera::\\?\usb#vid_1e4e&amp;pid_0109&amp;mi_00#7&amp;1f08925e&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" chroma_config_id="596" />
 	</chroma_key_configurations>
 	<shots>
 		<shot event_type="2" unique_id="e34f96f9-afcc-4790-988b-f4c0adc4c7e9_shot" />
@@ -76,17 +74,11 @@
 		<shot event_type="2" unique_id="8071b34c-3979-49e1-a5e3-8b6f65749f3c_shot" />
 		<shot event_type="2" unique_id="cac13be4-dcc2-4f8c-b2c2-96df9ada5ae0_shot" />
 		<shot event_type="2" unique_id="48c5043c-5a86-40a7-9a2e-535cb2cd3536_shot" />
-		<shot event_type="2" template_uuid="91550E48-A580-46FB-B949-CBF8494344FA" unique_id="a9f8d60c-08cb-4e50-8464-86d47ba01c29_shot">
-			<event event_type="4" zorder="5" unique_id="one_quad" template_tag="1">
-				<event event_type="2" channel_id="1" ro_respect_aspect_ratio="1" obj_scale="0.6875,1" unique_id="USB2.0 Camera::\\?\usb#vid_1e4e&amp;pid_0109&amp;mi_00#7&amp;1f08925e&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global">
-					<event event_type="1" channel_id="1" ro_media_type="1986618479" />
-				</event>
-			</event>
-		</shot>
-		<shot event_type="2" unique_id="abc1af6e-7a97-4753-8fd4-03bebac57754_shot">
-			<event event_type="4" zorder="5">
-				<event event_type="2" channel_id="1" unique_id="麦克风 (2- USB Advanced Audio Device)::">
-					<event event_type="1" channel_id="1" ro_media_type="1635083375" />
+		<shot event_type="2" template_uuid="91550E48-A580-46FB-B949-CBF8494344FA" unique_id="35f6f71c-f9e6-485f-87e2-17f499417443_shot">
+			<event event_type="4" zorder="1" unique_id="one_quad" template_tag="1">
+				<event event_type="2" channel_id="1" ro_respect_aspect_ratio="1" unique_id="def02610-e0d5-45db-ad1b-c0e8e5f4dc70_无人区.mp4">
+					<event event_type="1" channel_id="1" ro_media_type="1986618479" ro_playhead="0" action_time="33800000" action_duration="0" action_flags="24" />
+					<event event_type="1" channel_id="1" ro_media_type="1635083375" ro_playhead="0" action_time="33800000" action_duration="0" action_flags="24" />
 				</event>
 			</event>
 		</shot>
