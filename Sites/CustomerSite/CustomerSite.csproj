@@ -101,6 +101,7 @@
     <Content Include="css\mui\mui.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="forms\EventPlayer.aspx" />
+    <Content Include="forms\NoMuiEventPlayer.aspx" />
     <Content Include="Helpers\applicationInfo.aspx" />
     <Content Include="images\amsPoster1.png" />
     <Content Include="images\movie.png" />
@@ -205,6 +206,13 @@
     </Compile>
     <Compile Include="forms\EventPlayer.aspx.designer.cs">
       <DependentUpon>EventPlayer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="forms\NoMuiEventPlayer.aspx.cs">
+      <DependentUpon>NoMuiEventPlayer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="forms\NoMuiEventPlayer.aspx.designer.cs">
+      <DependentUpon>NoMuiEventPlayer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

@@ -110,7 +110,7 @@
             appendData(currentPageData);
 
             ams.initMenu();
-            initLoadData();
+            //initLoadData();
         });
 
         function initLoadData() {
@@ -136,7 +136,7 @@
             $.each(pageData.events, function (i, data) {
                 var li = $("<li>").addClass("mui-table-view-cell mui-media").appendTo("#listContainer");
 
-                var anchor = $("<a>").attr("href", appendTimeOffsetToUrl("../forms/EventPlayer.aspx?id=" + data.id)).appendTo(li);
+                var anchor = $("<a>").attr("href", appendTimeOffsetToUrl("../forms/NoMuiEventPlayer.aspx?id=" + data.id)).appendTo(li);
                 var img = $("<img>").attr("src", data.logo).addClass("mui-media-object mui-pull-left").appendTo(anchor);
                 var div = $("<div>").addClass("mui-media-body").text(data.name).appendTo(anchor);
 
