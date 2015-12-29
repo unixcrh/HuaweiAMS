@@ -20,7 +20,7 @@ namespace MCS.Library.Cloud.AMS.Data.DataSources
         protected override void OnBuildQueryCondition(QueryCondition qc)
         {
             if (qc.OrderByClause.IsNullOrEmpty())
-                qc.OrderByClause = "CreateTime";
+                qc.OrderByClause = "StartTime DESC";
         }
     }
 }
