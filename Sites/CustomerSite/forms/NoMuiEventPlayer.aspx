@@ -248,6 +248,8 @@
 
                 $(".outerVideo").addClass("hidden");
 
+                ams.enterFullScreen();
+
                 fullScreenState.switching = false;
                 fullScreenState.isFullScreen = true;
             }
@@ -260,6 +262,9 @@
                     $(".outerVideo").removeClass("hidden");
 
                     document.getElementById("videoContainer").style.height = fullScreenState.originalHeight;
+
+                    ams.exitFullScreen();
+
                     fullScreenState.isFullScreen = false;
                     fullScreenState.switching = false;
                 }

@@ -47,7 +47,7 @@
                 <AlternatingRowStyle />
                 <Columns>
                     <asp:HyperLinkField SortExpression="Name" HeaderText="事件" DataTextField="Name" DataNavigateUrlFields="ChannelID,ID" DataNavigateUrlFormatString="../forms/EditEvent.aspx?channelID={0}&id={1}" />
-                    <asp:TemplateField HeaderText="开始时间" SortExpression="Name">
+                    <asp:TemplateField HeaderText="开始时间" SortExpression="StartTime">
                         <ItemTemplate>
                             <%#((DateTime)Eval("StartTime")) == DateTime.MinValue ? string.Empty : ((DateTime)Eval("StartTime")).ToString("yyyy-MM-dd HH:mm:ss")%>
                         </ItemTemplate>

@@ -18,6 +18,18 @@ ams.initMenu = function () {
     }
 }
 
+ams.enterFullScreen = function () {
+    if (SDK.Lepus.Sys.isLepus()) {
+        SDK.Lepus.Sys.setFullScreen();
+    }
+}
+
+ams.exitFullScreen = function () {
+    if (SDK.Lepus.Sys.isLepus()) {
+        SDK.Lepus.Sys.quitFullScreen();
+    }
+}
+
 function appendTimeOffsetToUrl(url) {
     var offset = jstz.get_date_offset(new Date());
 

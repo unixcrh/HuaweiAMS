@@ -144,6 +144,42 @@ SDK.Lepus.Sys = {
 			LepusUtils.LOG("------当前版本不支持此hasUpdate方法----");
 		}
 		return false;
+	},
+	setFullScreen:function(){
+		try {
+			window.lepus.setFullScreen();
+		}catch (e) {
+			LepusUtils.LOG("------当前版本不支持此setFullScreen方法----");
+		}
+	},
+	quitFullScreen:function(){
+		try {
+			window.lepus.quitFullScreen();
+		}catch (e) {
+			LepusUtils.LOG("------当前版本不支持此quitFullScreen方法----");
+		}
+	},
+	showTitleBar:function(){
+		try {
+			window.lepus.showTitleBar();
+		}catch (e) {
+			LepusUtils.LOG("------当前版本不支持此showTitleBar方法----");
+		}
+	},
+	hideTitleBar:function(){
+		try {
+			window.lepus.hideTitleBar();
+		}catch (e) {
+			LepusUtils.LOG("------当前版本不支持此hideTitleBar方法----");
+		}
+	},
+	//横屏0 竖屏1 可旋转横屏6  可旋转竖屏7（推荐使用6、7）
+	setScreenOrientation:function(flag){
+		try {
+			window.lepus.setScreenOrientation(flag);
+		}catch (e) {
+			LepusUtils.LOG("------当前版本不支持此setScreenOrientation 方法----");
+		}
 	}
 }
 
@@ -194,6 +230,8 @@ SDK.Lepus.More = {
 	SHARE_TYPE_LIVE : 105,
 	// 分享支持类型：espace分享
 	SHARE_TYPE_ESPACE : 106,
+	// 分享支持类型Combat Index：战斗指数分享
+	SHARE_TYPE_COMBATINDEX : 107,
 	// 3.2.1 初始化更多选项(包含分享)
 	initMore : function(jsonData, callback) {
 		var fnKey = createFnKey("initMore_" + jsonData);
