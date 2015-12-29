@@ -21,12 +21,14 @@ ams.initMenu = function () {
 ams.enterFullScreen = function () {
     if (SDK.Lepus.Sys.isLepus()) {
         SDK.Lepus.Sys.setFullScreen();
+        //SDK.Lepus.Sys.setScreenOrientation(6);
     }
 }
 
 ams.exitFullScreen = function () {
     if (SDK.Lepus.Sys.isLepus()) {
         SDK.Lepus.Sys.quitFullScreen();
+        //SDK.Lepus.Sys.setScreenOrientation(7);
     }
 }
 
