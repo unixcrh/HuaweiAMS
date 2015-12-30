@@ -1,4 +1,5 @@
-﻿using MCS.Library.Configuration;
+﻿using MCS.Library.Core;
+using MCS.Library.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -25,6 +26,42 @@ namespace MCS.Library.Cloud.AMSHelper.Configuration
                 return (string)this["accountKey"];
             }
         }
+
+        /// <summary>
+        /// Media Context Scope. It is 'urn:WindowsAzureMediaServices' in Mooncake
+        /// </summary>
+        [ConfigurationProperty("scope", IsRequired = false)]
+        public string Scope
+        {
+            get
+            {
+                return (string)this["scope"];
+            }
+        }
+
+        /// <summary>
+        /// It is 'https://wamsprodglobal001acs.accesscontrol.chinacloudapi.cn' in Mooncake
+        /// </summary>
+        [ConfigurationProperty("acsBaseAddress", IsRequired = false)]
+        public string AcsBaseAddress
+        {
+            get
+            {
+                return (string)this["acsBaseAddress"];
+            }
+        }
+
+        /// <summary>
+        /// It is 'https://wamsshaclus001rest-hs.chinacloudapp.cn/API/' or 'https://wamsbjbclus001rest-hs.chinacloudapp.cn/API/' in Mooncake
+        /// </summary>
+        [ConfigurationProperty("apiServerAddress", IsRequired = false)]
+        public string ApiServerAddress
+        {
+            get
+            {
+                return (string)this["apiServerAddress"];
+            }
+        }
     }
 
     /// <summary>
@@ -40,7 +77,7 @@ namespace MCS.Library.Cloud.AMSHelper.Configuration
             {
                 MediaServiceAccountConfigurationElement elem = this.CheckAndGet(configedName);
 
-                result = new MediaServicesCredentials(elem.Name, elem.AccountKey);
+                result = new MediaServicesCredentials(elem.Name, elem.AccountKey, elem.Scope, elem.AcsBaseAddress);
             }
 
             return result;
@@ -53,7 +90,17 @@ namespace MCS.Library.Cloud.AMSHelper.Configuration
             CloudMediaContext result = null;
 
             if (credentials != null)
-                result = new CloudMediaContext(credentials);
+            {
+                string apiAddress = string.Empty;
+
+                if (this.ContainsKey(configedName))
+                    apiAddress = this[configedName].ApiServerAddress;
+
+                if (apiAddress.IsNotEmpty())
+                    result = new CloudMediaContext(new Uri(apiAddress), credentials);
+                else
+                    result = new CloudMediaContext(credentials);
+            }
 
             return result;
         }
