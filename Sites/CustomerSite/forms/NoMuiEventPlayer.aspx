@@ -34,10 +34,14 @@
             margin: 0px;
             padding: 0px;
             width: 100%;
-            height: 90%;
+            height: 100%;
             top: 0px;
             left: 0px;
             opacity: 1.0;
+            background-color: black;
+        }
+
+        .bodyFullScreen {
             background-color: black;
         }
     </style>
@@ -244,8 +248,8 @@
             function enterFullscreen() {
                 fullScreenState.originalHeight = document.getElementById("videoContainer").style.height;
                 $("#videoContainer").removeAttr("style").addClass("fullScreen");
-                $("#refreshContainer").removeClass("mui-content");
-
+                //$("#refreshContainer").removeClass("mui-content");
+                $("body").addClass("bodyFullScreen");
                 $(".outerVideo").addClass("hidden");
 
                 ams.enterFullScreen();
@@ -257,7 +261,8 @@
             function exitFullscreen() {
                 if (fullScreenState.isFullScreen) {
                     $("#videoContainer").removeClass("fullScreen");
-                    $("#refreshContainer").addClass("mui-content");
+                    //$("#refreshContainer").addClass("mui-content");
+                    $("body").removeClass("bodyFullScreen");
 
                     $(".outerVideo").removeClass("hidden");
 
@@ -292,11 +297,16 @@
                     myPlayer = amp("azuremediaplayer", myOptions);
 
                     myPlayer.addEventListener(amp.eventName.loadedmetadata, function () {
-                        var stream = myPlayer.currentVideoStreamList().streams ? myPlayer.currentVideoStreamList().streams[0] : undefined;
-                        if (stream && $("#fixedBitrate").val() == "true") {
-                            var track0 = stream.tracks[0];
+                        try {
+                            var stream = myPlayer.currentVideoStreamList().streams ? myPlayer.currentVideoStreamList().streams[0] : undefined;
 
-                            stream.selectTrackByIndex(0);
+                            if (stream && $("#fixedBitrate").val() == "true") {
+                                var track0 = stream.tracks[0];
+
+                                stream.selectTrackByIndex(0);
+                            }
+                        }
+                        catch (e) {
                         }
                     });
 

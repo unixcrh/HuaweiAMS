@@ -304,17 +304,13 @@
                 if (eventData.url != "") {
                     var myPlayer = amp("azuremediaplayer", myOptions);
 
-                    myPlayer.addEventListener(amp.eventName.loadedmetadata, function () {
-                        var stream = myPlayer.currentVideoStreamList().streams ? myPlayer.currentVideoStreamList().streams[0] : undefined;
-                        if (stream && $("#fixedBitrate").val() == "true") {
-                            var track0 = stream.tracks[0];
+                    //myPlayer.addEventListener(amp.eventName.loadedmetadata, function () {
+                    //    var stream = myPlayer.currentVideoStreamList().streams ? myPlayer.currentVideoStreamList().streams[0] : undefined;
+                    //    if (stream && $("#fixedBitrate").val() == "true") {
+                    //        var track0 = stream.tracks[0];
 
-                            stream.selectTrackByIndex(0);
-                        }
-                    });
-
-                    //myPlayer.addEventListener(amp.eventName.fullscreenchange, function () {
-                    //    switchFullscreen(myPlayer);
+                    //        stream.selectTrackByIndex(0);
+                    //    }
                     //});
 
                     mui("#buttonContainer").on("tap", "#fullscreenBtn", function () {
