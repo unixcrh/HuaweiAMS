@@ -7,14 +7,14 @@
 	<chroma_key_data />
 	<advanced_output>
 		<output_list output_last_selected="155ae8b9-766b-4b6d-9078-1503fdd18a60">
-			<output output_enabled="1" output_type="2" output_transport="7" output_url="rtmp://sales-training-amshuaweirel.channel.mediaservices.windows.net:1935/live/538540210e614d06adc37429e41481fb" output_location="myStream" output_branding="RTMP Server" output_display_name="Rel-Sales-Training" output_display_group_name="RTMP Server" output_guid="6daf5666-e29d-49db-9bce-f350a52763cb" unique_id="1" output_presetname="MainConcept H.264" impersonate_fme_2_5="0" flash_user_agent="Wirecast/FM 1.0" output_user_name="Rel-Sales-Training" output_settings_complete="1" output_id="155ae8b9-766b-4b6d-9078-1503fdd18a60" />
+			<output output_enabled="1" output_type="2" output_transport="7" output_url="rtmp://sales-training-amshuaweirel.channel.mediaservices.windows.net:1935/live/538540210e614d06adc37429e41481fb" output_location="myStream" output_branding="RTMP Server" output_display_name="Rel-Sales-Training" output_display_group_name="RTMP Server" output_guid="6daf5666-e29d-49db-9bce-f350a52763cb" unique_id="1" output_presetname="MainConcept 1024" impersonate_fme_2_5="0" flash_user_agent="Wirecast/FM 1.0" output_user_name="Rel-Sales-Training" output_settings_complete="1" output_id="155ae8b9-766b-4b6d-9078-1503fdd18a60" />
 			<output replay_quality="standard" replay_audio_enabled="0" replay_record_folder="C:\Users\Zheng Shen\Videos" replay_limit_record_duration="1" replaydialog_record_unit="1" replay_max_record_duration="60000" replay_shot_default_duration="30" replay_create_in_layer="1" replay_create_in_playlist="" replay_show_preview="1" replay_shot_template_asset_id="" replay_create_from_template="0" replay_activate_on_broadcast="0" replay_activate_on_record="0" replay_prompt_delete_shot="1" replay_keep_record_on_delete_shot="0" output_guid="21c3f8cc-5b3f-4a23-ba49-0982afbfde9d" output_presetname="21c3f8cc-5b3f-4a23-ba49-0982afbfde9d" output_type="6" output_enabled="1" unique_id="2" />
 		</output_list>
 	</advanced_output>
 	<output_presets>
-		<preset output_presetname="MainConcept H.264">
+		<preset output_presetname="MainConcept 1024">
 			<movie format="Flash" output_system="">
-				<track mo_width="1280" mo_height="720" type="1986618479" colourspace="846624121" mo_enabled="1" codecname="H.264" fps="30" compressed="1" timescale="3000" target_bit_rate="2025" profile="1835100526" limit_bit_rate="0" key_frame_rate="60" timecode_interval="30" timecode_on="0" FlashVideoDisableH264BFrames="0" codec_quality="veryfast" x264_gpu_on="0" x264_commandline="" absolute_time_stamps="1" key_frame_aligned="1" strict_cbr="1" main_concept="1" />
+				<track mo_width="1280" mo_height="720" type="1986618479" colourspace="846624121" mo_enabled="1" codecname="H.264" fps="30" compressed="1" timescale="3000" target_bit_rate="1024" profile="1835100526" limit_bit_rate="0" key_frame_rate="60" timecode_interval="30" timecode_on="0" FlashVideoDisableH264BFrames="0" codec_quality="veryfast" x264_gpu_on="0" x264_commandline="" absolute_time_stamps="1" key_frame_aligned="1" strict_cbr="1" main_concept="1" />
 				<track type="1635083375" bps="16" channels="2" samplerate="44100" mo_enabled="1" codecname="MPEG-4 Audio" target_bit_rate="128" timescale="44100" />
 			</movie>
 		</preset>
@@ -53,7 +53,7 @@
 		<asset name="Blank Shot" unique_id="cac13be4-dcc2-4f8c-b2c2-96df9ada5ae0_shot" type="shot" media-type="9" vam_state="1" created_for_layer="3" blank_shot="1" visible="1" />
 		<asset name="Blank Shot" unique_id="48c5043c-5a86-40a7-9a2e-535cb2cd3536_shot" type="shot" media-type="9" vam_state="1" created_for_layer="4" blank_shot="1" visible="1" />
 		<asset name="久石让在武道馆的音乐会.mp4" url="F:\Movie\久石让在武道馆的音乐会.mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="e7add359-4450-475d-98ed-dab23b4fd545_久石让在武道馆的音乐会.mp4" timescale="12800" duration="86930944" square_pixel_height="480" square_pixel_width="640" />
-		<asset name="无人区.mp4" url="F:\Movie\无人区.mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="def02610-e0d5-45db-ad1b-c0e8e5f4dc70_无人区.mp4" timescale="24000" duration="161450280" square_pixel_width="1280" square_pixel_height="720" />
+		<asset name="无人区.mp4" url="F:\Movie\无人区.mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="def02610-e0d5-45db-ad1b-c0e8e5f4dc70_无人区.mp4" timescale="24000" duration="161450280" square_pixel_height="720" square_pixel_width="1280" />
 		<asset type="capture" unique_id="USB2.0 Camera::\\?\usb#vid_1e4e&amp;pid_0109&amp;mi_00#7&amp;1f08925e&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" name="USB2.0 Camera" guid="\\?\usb#vid_1e4e&amp;pid_0109&amp;mi_00#7&amp;1f08925e&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" url="USB2.0 Camera" excluded="0" format="video" video_tracks="1" media-type="2" visible="1" square_pixel_height="288" square_pixel_width="352" isusb="1" />
 		<asset type="capture" unique_id="麦克风 (2- USB Microphone)::" name="麦克风 (2- USB Microphone)" url="麦克风 (2- USB Microphone)" excluded="0" format="audio" audio_tracks="1" media-type="3" visible="1" isusb="0" />
 		<asset type="capture" unique_id="麦克风 (USB Advanced Audio Device)::" name="麦克风 (USB Advanced Audio Device)" url="麦克风 (USB Advanced Audio Device)" excluded="0" format="audio" audio_tracks="1" media-type="3" visible="1" isusb="0" />
@@ -64,9 +64,9 @@
 		<asset name="无人区.mp4" unique_id="35f6f71c-f9e6-485f-87e2-17f499417443_shot" type="shot" media-type="9" vam_state="14" audio_tracks="1" video_tracks="1" still_image_tracks="0" veil_track_count="0" alpha_track_count="0" created_for_layer="5" visible="1" />
 	</assets>
 	<chroma_key_configurations>
-		<chroma_key_configuration unique_id="麦克风 (2- USB Microphone)::" chroma_config_id="594" />
-		<chroma_key_configuration unique_id="麦克风 (USB Advanced Audio Device)::" chroma_config_id="595" />
-		<chroma_key_configuration unique_id="USB2.0 Camera::\\?\usb#vid_1e4e&amp;pid_0109&amp;mi_00#7&amp;1f08925e&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" chroma_config_id="596" />
+		<chroma_key_configuration unique_id="麦克风 (2- USB Microphone)::" chroma_config_id="593" />
+		<chroma_key_configuration unique_id="麦克风 (USB Advanced Audio Device)::" chroma_config_id="594" />
+		<chroma_key_configuration unique_id="USB2.0 Camera::\\?\usb#vid_1e4e&amp;pid_0109&amp;mi_00#7&amp;1f08925e&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" chroma_config_id="595" />
 	</chroma_key_configurations>
 	<shots>
 		<shot event_type="2" unique_id="e34f96f9-afcc-4790-988b-f4c0adc4c7e9_shot" />
@@ -75,10 +75,10 @@
 		<shot event_type="2" unique_id="cac13be4-dcc2-4f8c-b2c2-96df9ada5ae0_shot" />
 		<shot event_type="2" unique_id="48c5043c-5a86-40a7-9a2e-535cb2cd3536_shot" />
 		<shot event_type="2" template_uuid="91550E48-A580-46FB-B949-CBF8494344FA" unique_id="35f6f71c-f9e6-485f-87e2-17f499417443_shot">
-			<event event_type="4" zorder="1" unique_id="one_quad" template_tag="1">
+			<event event_type="4" zorder="5" unique_id="one_quad" template_tag="1">
 				<event event_type="2" channel_id="1" ro_respect_aspect_ratio="1" unique_id="def02610-e0d5-45db-ad1b-c0e8e5f4dc70_无人区.mp4">
-					<event event_type="1" channel_id="1" ro_media_type="1986618479" ro_playhead="0" action_time="33800000" action_duration="0" action_flags="24" />
-					<event event_type="1" channel_id="1" ro_media_type="1635083375" ro_playhead="0" action_time="33800000" action_duration="0" action_flags="24" />
+					<event event_type="1" channel_id="1" ro_media_type="1986618479" ro_playhead="0" action_time="3200000" action_duration="0" action_flags="24" />
+					<event event_type="1" channel_id="1" ro_media_type="1635083375" ro_playhead="0" action_time="3200000" action_duration="0" action_flags="24" />
 				</event>
 			</event>
 		</shot>
