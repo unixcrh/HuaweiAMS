@@ -25,29 +25,53 @@ namespace CutomerSite
 
         protected void Global_AuthenticateRequest(object sender, EventArgs e)
         {
-            HttpCookie cookie = this.Request.Cookies.Get("login_uid");
+            InitTimeOffset();
+            ProcessLoginCookie();
+        }
 
-            if (cookie != null)
-            {
-                GenericIdentity identity = new GenericIdentity(cookie.Value);
-
-                GenericPrincipal pricipal = new GenericPrincipal(identity, new string[0]);
-
-                HttpContext.Current.User = pricipal;
-            }
-
+        private static void InitTimeOffset()
+        {
             double minuteOffset = Res.Request.GetRequestQueryValue("timeOffset", 0.0d);
 
             TimeZoneContext.Current.CurrentTimeZone =
                 TimeZoneInfo.CreateCustomTimeZone("TimeZoneInfoContext", TimeSpan.FromMinutes(minuteOffset), "TimeZoneInfoContext", "TimeZoneInfoContext");
+        }
 
-            HttpCookie resCookie = new HttpCookie("res_cookie1", DateTime.Now.ToString());
-            resCookie.Expires = DateTime.MinValue;
-            HttpContext.Current.Response.SetCookie(resCookie);
+        private static void ProcessLoginCookie()
+        {
+            string userName = string.Empty;
 
-            //HttpCookie resCookie2 = new HttpCookie("res_cookie2", DateTime.Now.ToString());
-            //resCookie2.Expires = DateTime.MinValue;
-            //HttpContext.Current.Response.SetCookie(resCookie2);
+            HttpCookie lepusCookie = HttpContext.Current.Request.Cookies.Get("login_uid");
+
+            if (lepusCookie != null)
+                userName = lepusCookie.Value;
+
+            if (HttpContext.Current.User == null || HttpContext.Current.User.Identity.Name.IsNullOrEmpty())
+            {
+                HttpCookie amsCookie = HttpContext.Current.Request.Cookies.Get("ams_login_uid");
+
+                if (amsCookie != null)
+                    userName = amsCookie.Value;
+            }
+
+            if (userName.IsNullOrEmpty())
+                userName = UuidHelper.NewUuidString();
+
+            CreatePrincipal(userName);
+
+            HttpCookie amsResCookie = new HttpCookie("ams_login_uid", userName);
+            amsResCookie.Expires = DateTime.MinValue;
+
+            HttpContext.Current.Response.Cookies.Add(amsResCookie);
+        }
+
+        private static void CreatePrincipal(string userName)
+        {
+            GenericIdentity identity = new GenericIdentity(userName);
+
+            GenericPrincipal pricipal = new GenericPrincipal(identity, new string[0]);
+
+            HttpContext.Current.User = pricipal;
         }
     }
 }
