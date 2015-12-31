@@ -10,7 +10,9 @@
     [CreateTime] DATETIME NULL DEFAULT GETUTCDATE(), 
     [PrimaryInputUrl] NVARCHAR(MAX) NULL, 
     [SecondaryInputUrl] NVARCHAR(MAX) NULL, 
-    [PreviewUrl] NVARCHAR(MAX) NULL 
+    [PreviewUrl] NVARCHAR(MAX) NULL, 
+    [CDNPrefixMode] NVARCHAR(32) NULL DEFAULT N'None', 
+    [CDNPrefix] NVARCHAR(MAX) NULL  
 )
 
 

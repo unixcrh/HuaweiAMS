@@ -93,6 +93,9 @@
     <Build Include="..\AMSDB\AMS\Procedures\InitChannels.sql">
       <Link>AMS\Procedures\InitChannels.sql</Link>
     </Build>
+    <Build Include="..\AMSDB\AMS\Procedures\InitTestChannels.sql">
+      <Link>AMS\Procedures\InitTestChannels.sql</Link>
+    </Build>
     <Build Include="..\AMSDB\AMS\Procedures\InitAdmins.sql">
       <Link>AMS\Procedures\InitAdmins.sql</Link>
     </Build>

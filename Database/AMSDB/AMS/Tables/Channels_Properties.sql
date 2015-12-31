@@ -96,3 +96,21 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'Channels',
     @level2type = N'COLUMN',
     @level2name = N'PreviewUrl'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'CDN前缀的模式，分为None, Prefix, Host',
+    @level0type = N'SCHEMA',
+    @level0name = N'AMS',
+    @level1type = N'TABLE',
+    @level1name = N'Channels',
+    @level2type = N'COLUMN',
+    @level2name = N'CDNPrefixMode'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'CDN的前缀',
+    @level0type = N'SCHEMA',
+    @level0name = N'AMS',
+    @level1type = N'TABLE',
+    @level1name = N'Channels',
+    @level2type = N'COLUMN',
+    @level2name = N'CDNPrefix'

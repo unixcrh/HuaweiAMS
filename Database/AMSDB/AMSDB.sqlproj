@@ -84,6 +84,7 @@
     <Build Include="AMS\Tables\Admins.sql" />
     <Build Include="AMS\Tables\Admins_Properties.sql" />
     <Build Include="AMS\Procedures\InitAdmins.sql" />
+    <Build Include="AMS\Procedures\InitTestChannels.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AMSDB.refactorlog" />
