@@ -16,6 +16,8 @@ namespace MCS.Library.Cloud.AMSHelper.Test.AMS
         public void ListChannelsFromConfig()
         {
             AMSChannelSqlAdapter.Instance.ClearAll();
+            AMSChannelSqlAdapter.Instance.InitChannels();
+
             AMSChannelCollection channels = LiveChannelManager.GetAllChannels();
 
             Output(channels);
@@ -25,6 +27,7 @@ namespace MCS.Library.Cloud.AMSHelper.Test.AMS
         public void UpdateAllChannelsToDB()
         {
             AMSChannelSqlAdapter.Instance.ClearAll();
+            AMSChannelSqlAdapter.Instance.InitChannels();
 
             AMSChannelCollection channels = LiveChannelManager.GetAllChannels(true);
 
@@ -37,6 +40,7 @@ namespace MCS.Library.Cloud.AMSHelper.Test.AMS
         public void UpdateAllChannelsWithExistsData()
         {
             AMSChannelSqlAdapter.Instance.ClearAll();
+            AMSChannelSqlAdapter.Instance.InitChannels();
 
             AMSChannelCollection channels = LiveChannelManager.GetAllChannels(true);
 
