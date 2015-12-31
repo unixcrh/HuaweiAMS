@@ -118,4 +118,25 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
         /// </summary>
         DeleteProgram
     }
+
+    /// <summary>
+    /// CDN前缀的模式
+    /// </summary>
+    public enum AMSCDNPrefixMode
+    {
+        /// <summary>
+        /// 无操作
+        /// </summary>
+        None,
+
+        /// <summary>
+        /// 在域名中添加前缀
+        /// </summary>
+        Prefix,
+
+        /// <summary>
+        /// 替换整个域名
+        /// </summary>
+        Host
+    }
 }

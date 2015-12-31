@@ -34,7 +34,10 @@ namespace MCS.Library.Cloud.AMS.Worker.Test
                         Console.WriteLine("All events cleared");
                         break;
                     case "addevent":
-                        DataHelper.AddEvent();
+                        DataHelper.AddEvent(DataHelper.TestChannelName);
+                        break;
+                    case "addmooncakeevent":
+                        DataHelper.AddEvent(DataHelper.MooncakeTestChannelName);
                         break;
                     case "clearqueue":
                         DataHelper.ClearQueue();
@@ -46,6 +49,9 @@ namespace MCS.Library.Cloud.AMS.Worker.Test
                         break;
                     case "endevents":
                         Console.WriteLine("{0} events updated.", DataHelper.EndAllRunningEvents());
+                        break;
+                    default:
+                        Console.WriteLine("{0}是不能识别的命令", cmd);
                         break;
                 }
             }

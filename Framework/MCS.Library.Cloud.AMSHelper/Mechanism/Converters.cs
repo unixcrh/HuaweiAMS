@@ -40,11 +40,6 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
             channel.NullCheck("channel");
             result.NullCheck("result");
 
-            //IProgram program = channel.Programs.FirstOrDefault();
-
-            //AMSEvent eventData = new AMSEvent();
-            //program.FillAMSEvent(eventData);
-
             result.AMSID = channel.Id;
             result.Name = channel.Name;
             result.Description = channel.Description;
@@ -55,7 +50,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
             result.SecondaryInputUrl = channel.Input.Endpoints.GetSecondaryUrl();
         }
 
-        public static void FillAMSEvent(this IProgram program, AMSEvent eventData)
+        public static void FillAMSEvent(this IProgram program, AMSChannel channel, AMSEvent eventData)
         {
             if (program != null)
             {
@@ -75,12 +70,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
                         if (locator != null)
                         {
                             eventData.DefaultPlaybackUrl = locator.Path + file.Name + "/manifest";
-
-                            Uri locatorPath = new Uri(locator.Path);
-
-                            eventData.CDNPlaybackUrl = locatorPath.Scheme +
-                                "://cdn-" + locatorPath.Host + (locatorPath.Port == 80 ? string.Empty : ":" + locatorPath.Port) +
-                                locatorPath.PathAndQuery + file.Name + "/manifest";
+                            eventData.CDNPlaybackUrl = GetCDNPlaybackUrl(locator.Path, eventData.DefaultPlaybackUrl, file.Name, channel.CDNPrefixMode, channel.CDNPrefix);
                         }
                     }
                 }
@@ -95,6 +85,38 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
         public static AMSEventState ToAMSEventState(this ProgramState state)
         {
             return (AMSEventState)((int)state);
+        }
+
+        private static string GetCDNPlaybackUrl(string locatorPath, string defaultPlaybackUrl, string fileName, AMSCDNPrefixMode prefixMode, string cdnPrefix)
+        {
+            Uri locatorUri = new Uri(locatorPath);
+
+            string result = defaultPlaybackUrl;
+
+            switch (prefixMode)
+            {
+                case AMSCDNPrefixMode.Prefix:
+                    result = MergePlaybackCDNPrefix(locatorUri, cdnPrefix, fileName);
+                    break;
+                case AMSCDNPrefixMode.Host:
+                    result = MergePlaybackCDNHost(locatorUri, cdnPrefix, fileName);
+                    break;
+            }
+
+            return result;
+        }
+
+        private static string MergePlaybackCDNHost(Uri locatorPath, string cdnHost, string fileName)
+        {
+            string locatorHost = locatorPath.Host + (locatorPath.Port == 80 ? string.Empty : ":" + locatorPath.Port);
+
+            return locatorPath.Scheme + "://" + cdnHost ?? locatorHost + locatorPath.PathAndQuery + fileName + "/manifest";
+        }
+
+        private static string MergePlaybackCDNPrefix(Uri locatorPath, string cdnPrefix, string fileName)
+        {
+            return locatorPath.Scheme + "://" + cdnPrefix ?? string.Empty + locatorPath.Host + (locatorPath.Port == 80 ? string.Empty : ":" + locatorPath.Port) +
+                                locatorPath.PathAndQuery + fileName + "/manifest";
         }
 
         private static string GetDefaultUrl(this IEnumerable<ChannelEndpoint> endpoints)

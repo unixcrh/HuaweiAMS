@@ -72,7 +72,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
                     if (channel.State == AMSChannelState.Running && program.State == ProgramState.Stopped)
                         TraceOperation("Start Program", () => program.Start());
 
-                    program.FillAMSEvent(eventData);
+                    program.FillAMSEvent(channel, eventData);
                 }
             }
         }
@@ -94,7 +94,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
                         if (program.State == ProgramState.Running)
                             TraceOperation("Stop Program", () => program.Stop());
 
-                        program.FillAMSEvent(eventData);
+                        program.FillAMSEvent(channel, eventData);
 
                         if (eventData.State == AMSEventState.NotStart)
                             eventData.State = AMSEventState.Completed;

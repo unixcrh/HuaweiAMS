@@ -49,7 +49,7 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
 
             timeBuilder.AppendItem("StartTime",
                     string.Format("DATEADD(SECOND, {0}, GETUTCDATE())", (int)warmupTime.TotalSeconds), "<=", true);
-            timeBuilder.AppendItem("StartTime", "GETUTCDATE()", ">", true);
+            //timeBuilder.AppendItem("StartTime", "GETUTCDATE()", ">", true);
 
             return this.LoadByBuilder(new ConnectiveSqlClauseCollection(LogicOperatorDefine.And, stateBuilder, timeBuilder));
         }

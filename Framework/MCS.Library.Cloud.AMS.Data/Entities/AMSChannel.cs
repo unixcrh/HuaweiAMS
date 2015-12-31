@@ -92,6 +92,21 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
             set;
         }
 
+        [DataMember]
+        [SqlBehavior(EnumUsage = EnumUsageTypes.UseEnumString)]
+        public AMSCDNPrefixMode CDNPrefixMode
+        {
+            get;
+            set;
+        }
+
+        [DataMember]
+        public string CDNPrefix
+        {
+            get;
+            set;
+        }
+
         public void FillStatusFromCloud(AMSChannel channelInCloud)
         {
             channelInCloud.NullCheck("channelInCloud");

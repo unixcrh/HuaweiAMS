@@ -77,7 +77,10 @@ namespace MCS.Library.Cloud.AMSHelper.Configuration
             {
                 MediaServiceAccountConfigurationElement elem = this.CheckAndGet(configedName);
 
-                result = new MediaServicesCredentials(elem.Name, elem.AccountKey, elem.Scope, elem.AcsBaseAddress);
+                if (elem.Scope.IsNotEmpty())
+                    result = new MediaServicesCredentials(elem.Name, elem.AccountKey, elem.Scope, elem.AcsBaseAddress);
+                else
+                    result = new MediaServicesCredentials(elem.Name, elem.AccountKey);
             }
 
             return result;

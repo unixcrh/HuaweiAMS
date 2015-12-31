@@ -103,6 +103,11 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
             return DbHelper.RunSql(sql, this.GetConnectionName());
         }
 
+        public void InitChannels()
+        {
+            DbHelper.RunSqlWithTransaction("EXECUTE AMS.InitChannels", this.GetConnectionName());
+        }
+
         protected override string GetConnectionName()
         {
             return ConnectionDefine.DBConnectionName;
