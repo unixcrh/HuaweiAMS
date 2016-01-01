@@ -1,0 +1,51 @@
+<document version="6" os="windows" original_document_path="D:\ProjectsInGitHub\HuaweiAMS\Wirecast\mooncakeSalesTraining.wcst">
+	<vam_state master_audio_shown="1000" transition_0_unique_id="-- CUT --" transition_1_unique_id="-- SMOOTH --" transition_2_unique_id="side" />
+	<transition_data />
+	<chroma_key_data />
+	<advanced_output>
+		<output_list output_last_selected="91de137e-cf59-43ad-91d2-7d855547df5e">
+			<output output_enabled="1" output_type="2" output_transport="7" output_url="rtmp://sales-channel-chn-amshuaweichn.channel.mediaservices.chinacloudapi.cn:1935/live/87c9367b20d74e02820ead101a100891" output_location="myStream" output_branding="RTMP Server" output_display_name="RTMP Server" output_display_group_name="RTMP Server" output_guid="3b69df06-1b03-40a9-b511-ae9f2c6fbb0b" unique_id="1" output_presetname="MainConcept H.264" impersonate_fme_2_5="0" flash_user_agent="Wirecast/FM 1.0" output_settings_complete="1" output_id="91de137e-cf59-43ad-91d2-7d855547df5e" />
+		</output_list>
+	</advanced_output>
+	<output_presets>
+		<preset output_presetname="MainConcept H.264">
+			<movie format="Flash" output_system="">
+				<track mo_width="1280" mo_height="720" type="1986618479" colourspace="846624121" mo_enabled="1" codecname="H.264" fps="30" compressed="1" timescale="3000" target_bit_rate="1560" profile="1835100526" limit_bit_rate="0" key_frame_rate="60" timecode_interval="30" timecode_on="0" FlashVideoDisableH264BFrames="0" codec_quality="veryfast" x264_gpu_on="0" x264_commandline="" absolute_time_stamps="1" key_frame_aligned="1" strict_cbr="1" main_concept="1" />
+				<track type="1635083375" bps="16" channels="2" samplerate="44100" mo_enabled="1" codecname="MPEG-4 Audio" target_bit_rate="128" timescale="44100" />
+			</movie>
+		</preset>
+	</output_presets>
+	<volume value="1" />
+	<preview_volume value="1" />
+	<auto_live />
+	<flip_flop />
+	<output_annotations />
+	<transition_duration />
+	<visual_style />
+	<single_output />
+	<media_directories />
+	<layer_names />
+	<layer_scales />
+	<layer_visible />
+	<sections />
+	<aspectRatio custom_width="1280" custom_height="720" />
+	<shot_key_map />
+	<shotsLiveWhenSaved />
+	<source_sdk_settings />
+	<social_media />
+	<assets>
+		<asset name="Blank Shot" unique_id="3052f134-45d3-4db7-8e2d-50d3ad7f890f_shot" type="shot" media-type="9" vam_state="1" created_for_layer="5" blank_shot="1" visible="1" />
+		<asset name="Blank Shot" unique_id="55d2ee8b-6111-4586-a769-c21b50c19f10_shot" type="shot" media-type="9" vam_state="1" created_for_layer="1" blank_shot="1" visible="1" />
+		<asset name="Blank Shot" unique_id="df89e62a-c2af-4cef-a39c-8c7b3547aa5f_shot" type="shot" media-type="9" vam_state="5" created_for_layer="2" blank_shot="1" visible="1" />
+		<asset name="Blank Shot" unique_id="6376d0e7-2415-4f79-af2d-e97508057cb1_shot" type="shot" media-type="9" vam_state="1" created_for_layer="3" blank_shot="1" visible="1" />
+		<asset name="Blank Shot" unique_id="229b7cac-c444-4ae4-83fc-f55144ebe9e1_shot" type="shot" media-type="9" vam_state="1" created_for_layer="4" blank_shot="1" visible="1" />
+	</assets>
+	<xml_tag />
+	<shots>
+		<shot event_type="2" unique_id="3052f134-45d3-4db7-8e2d-50d3ad7f890f_shot" />
+		<shot event_type="2" unique_id="55d2ee8b-6111-4586-a769-c21b50c19f10_shot" />
+		<shot event_type="2" unique_id="df89e62a-c2af-4cef-a39c-8c7b3547aa5f_shot" />
+		<shot event_type="2" unique_id="6376d0e7-2415-4f79-af2d-e97508057cb1_shot" />
+		<shot event_type="2" unique_id="229b7cac-c444-4ae4-83fc-f55144ebe9e1_shot" />
+	</shots>
+</document>
