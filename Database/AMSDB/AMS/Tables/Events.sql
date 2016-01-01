@@ -28,3 +28,7 @@ GO
 
 
 CREATE INDEX [IX_Events_StartTime] ON [AMS].[Events] ([StartTime])
+
+GO
+
+CREATE INDEX [IX_Events_EndTime] ON [AMS].[Events] ([EndTime])

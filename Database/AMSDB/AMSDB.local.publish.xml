@@ -7,4 +7,9 @@
     <TargetConnectionString>Data Source=MCSFramework;Integrated Security=True;Pooling=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="InitEnv">
+      <Value>Production</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
 </Project>

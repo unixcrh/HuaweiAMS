@@ -114,4 +114,10 @@
   <ItemGroup>
     <RefactorLog Include="AMSDB_Azure.refactorlog" />
   </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="InitEnv">
+      <DefaultValue>Production</DefaultValue>
+      <Value>$(SqlCmdVar__1)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
 </Project>

@@ -9,6 +9,14 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-EXECUTE [AMS].[InitChannels]
+DECLARE @initEnv NVARCHAR(64)
+
+SET @initEnv = N'$(InitEnv)'
+
+IF @initEnv = N'UnitTest'
+	EXECUTE [AMS].[InitTestChannels]
+ELSE
+	EXECUTE [AMS].[InitChannels]
+
 EXECUTE [AMS].[InitAdmins]
 --EXECUTE [AMS].[InitEvents]
