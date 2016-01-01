@@ -301,9 +301,9 @@
                             var stream = myPlayer.currentVideoStreamList().streams ? myPlayer.currentVideoStreamList().streams[0] : undefined;
 
                             if (stream && $("#fixedBitrate").val() == "true") {
-                                var track0 = stream.tracks[0];
+                                var midTrack = Math.floor(stream.tracks.length / 2);
 
-                                stream.selectTrackByIndex(0);
+                                stream.selectTrackByIndex(midTrack);
                             }
                         }
                         catch (e) {

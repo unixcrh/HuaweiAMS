@@ -20,10 +20,10 @@ namespace CutomerSite.forms
             ControllerHelper.ExecuteMethodByRequest(this);
 
             string agentText = this.Request.UserAgent;
-            userAgent.InnerText = agentText + " login_uid: ";
+            //userAgent.InnerText = agentText + " login_uid: ";
 
-            if (this.User != null)
-                userAgent.InnerText += this.User.Identity.Name;
+            //if (this.User != null)
+            //    userAgent.InnerText += this.User.Identity.Name;
 
             //userAgent.InnerHtml += "<br/>" + GetCoookies().Replace("\n", "<br/>");
             //allCookies.InnerHtml = "AllCookies: <br/>";
@@ -42,18 +42,18 @@ namespace CutomerSite.forms
             }
         }
 
-        private static string GetCoookies()
-        {
-            StringBuilder strB = new StringBuilder();
-            foreach (string key in HttpContext.Current.Request.Cookies.AllKeys)
-            {
-                HttpCookie cookie = HttpContext.Current.Request.Cookies.Get(key);
+        //private static string GetCoookies()
+        //{
+        //    StringBuilder strB = new StringBuilder();
+        //    foreach (string key in HttpContext.Current.Request.Cookies.AllKeys)
+        //    {
+        //        HttpCookie cookie = HttpContext.Current.Request.Cookies.Get(key);
 
-                strB.AppendFormat("Name={0}, Value={1}\n", cookie.Name, cookie.Value);
-            }
+        //        strB.AppendFormat("Name={0}, Value={1}\n", cookie.Name, cookie.Value);
+        //    }
 
-            return strB.ToString();
-        }
+        //    return strB.ToString();
+        //}
 
         [ControllerMethod]
         protected void InitByEventID(string id)
