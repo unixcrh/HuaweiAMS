@@ -15,12 +15,12 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 {
     public static class AMSOperations
     {
-        public static void StartEvent(string eventID, CancellationToken cancellationToken)
+        public static void StartEvent(AMSQueueItem message, CancellationToken cancellationToken)
         {
             AMSEvent eventData = null;
             try
             {
-                eventData = AMSEventSqlAdapter.Instance.LoadByID(eventID);
+                eventData = AMSEventSqlAdapter.Instance.LoadByID(message.ResourceID);
 
                 if (eventData != null)
                 {
@@ -47,12 +47,12 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
             }
         }
 
-        public static void StopEvent(string eventID, CancellationToken cancellationToken)
+        public static void StopEvent(AMSQueueItem message, CancellationToken cancellationToken)
         {
             AMSEvent eventData = null;
             try
             {
-                eventData = AMSEventSqlAdapter.Instance.LoadByID(eventID);
+                eventData = AMSEventSqlAdapter.Instance.LoadByID(message.ResourceID);
 
                 if (eventData != null)
                 {
@@ -69,7 +69,7 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
             }
         }
 
-        public static void SyncChannelInfo(CancellationToken cancellationToken)
+        public static void SyncChannelInfo(AMSQueueItem message, CancellationToken cancellationToken)
         {
             TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60013, "Start Sync Channel Info");
 
@@ -80,9 +80,9 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
             TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60013, "Complete Sync Channel Info");
         }
 
-        public static void StopChannel(string channelID, CancellationToken cancellationToken)
+        public static void StopChannel(AMSQueueItem message, CancellationToken cancellationToken)
         {
-            AMSChannel channel = AMSChannelSqlAdapter.Instance.LoadByID(channelID);
+            AMSChannel channel = AMSChannelSqlAdapter.Instance.LoadByID(message.ResourceID);
 
             if (channel != null)
             {
@@ -98,7 +98,7 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
             }
         }
 
-        public static void DeleteProgram(CancellationToken cancellationToken)
+        public static void DeleteProgram(AMSQueueItem message, CancellationToken cancellationToken)
         {
             TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60015, "Delete expired programs");
 

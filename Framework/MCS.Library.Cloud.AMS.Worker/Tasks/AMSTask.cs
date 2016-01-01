@@ -159,19 +159,19 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
                     switch (message.ItemType)
                     {
                         case AMSQueueItemType.StartEvent:
-                            AMSOperations.StartEvent(message.ResourceID, cancellationToken);
+                            RunQueueTask(message, cancellationToken, AMSOperations.StartEvent);
                             break;
                         case AMSQueueItemType.StopEvent:
-                            AMSOperations.StopEvent(message.ResourceID, cancellationToken);
+                            RunQueueTask(message, cancellationToken, AMSOperations.StopEvent);
                             break;
                         case AMSQueueItemType.SyncChannelInfo:
-                            AMSOperations.SyncChannelInfo(cancellationToken);
+                            RunQueueTask(message, cancellationToken, AMSOperations.SyncChannelInfo);
                             break;
                         case AMSQueueItemType.StopChannel:
-                            AMSOperations.StopChannel(message.ResourceID, cancellationToken);
+                            RunQueueTask(message, cancellationToken, AMSOperations.StopChannel);
                             break;
                         case AMSQueueItemType.DeleteProgram:
-                            AMSOperations.DeleteProgram(cancellationToken);
+                            RunQueueTask(message, cancellationToken, AMSOperations.DeleteProgram);
                             break;
                     }
                 }
@@ -192,6 +192,21 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
             message.ResourceName = eventData.Name;
 
             return message;
+        }
+
+        private static void RunQueueTask(AMSQueueItem message, CancellationToken cancellationToken, Action<AMSQueueItem, CancellationToken> action)
+        {
+            Task.Run(() =>
+            {
+                try
+                {
+                    action(message, cancellationToken);
+                }
+                catch (System.Exception ex)
+                {
+                    TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Error, 60014, ex.ToString());
+                }
+            });
         }
     }
 }

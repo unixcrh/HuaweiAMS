@@ -37,15 +37,25 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
                 AMSChannelState.Starting.ToString(),
                 AMSChannelState.Stopping.ToString());
 
-            WhereSqlClauseBuilder wBuilder = new WhereSqlClauseBuilder();
+            WhereSqlClauseBuilder startTimeBuilder = new WhereSqlClauseBuilder();
 
-            wBuilder.AppendItem("E.StartTime", "GETUTCDATE()", ">=", true);
-            wBuilder.AppendItem("E.StartTime",
+            startTimeBuilder.AppendItem("E.StartTime", "GETUTCDATE()", ">=", true);
+            startTimeBuilder.AppendItem("E.StartTime",
                 string.Format("DATEADD(second, {0}, GETUTCDATE())", (int)leadTime.TotalSeconds),
                 "<", true);
 
+            WhereSqlClauseBuilder endTimeBuilder = new WhereSqlClauseBuilder();
+
+            endTimeBuilder.AppendItem("E.EndTime", "GETUTCDATE()", ">", true);
+            endTimeBuilder.AppendItem("E.EndTime",
+                string.Format("DATEADD(second, {0}, GETUTCDATE())", (int)leadTime.TotalSeconds),
+                "<=", true);
+
+            ConnectiveSqlClauseCollection connective = new ConnectiveSqlClauseCollection(LogicOperatorDefine.Or,
+                startTimeBuilder, endTimeBuilder);
+
             string subSql = string.Format("SELECT C.ID FROM AMS.Channels C INNER JOIN AMS.Events E ON C.ID = E.ChannelID WHERE {0}",
-                wBuilder.ToSqlString(TSqlBuilder.Instance));
+                connective.ToSqlString(TSqlBuilder.Instance));
 
             string sql = string.Format("SELECT * FROM AMS.Channels OuterC WHERE {0} AND OuterC.ID NOT IN ({1})",
                         inBuilder.ToSqlStringWithInOperator(TSqlBuilder.Instance),

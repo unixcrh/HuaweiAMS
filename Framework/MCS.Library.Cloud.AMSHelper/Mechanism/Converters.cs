@@ -45,9 +45,15 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
             result.Description = channel.Description;
             result.State = channel.State.ToAMSChannelState();
             result.AMSLastModified = channel.LastModified;
-            result.PreviewUrl = channel.Preview.Endpoints.GetDefaultUrl();
-            result.PrimaryInputUrl = channel.Input.Endpoints.GetDefaultUrl();
-            result.SecondaryInputUrl = channel.Input.Endpoints.GetSecondaryUrl();
+
+            if (channel.Preview != null)
+                result.PreviewUrl = channel.Preview.Endpoints.GetDefaultUrl();
+
+            if (channel.Input != null)
+            {
+                result.PrimaryInputUrl = channel.Input.Endpoints.GetDefaultUrl();
+                result.SecondaryInputUrl = channel.Input.Endpoints.GetSecondaryUrl();
+            }
         }
 
         public static void FillAMSEvent(this IProgram program, AMSChannel channel, AMSEvent eventData)
