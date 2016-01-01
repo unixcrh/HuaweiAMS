@@ -35,6 +35,49 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
         }
 
         /// <summary>
+        /// 判断同一频道下是否有时间交叉的事件
+        /// </summary>
+        /// <param name="eventData"></param>
+        /// <returns></returns>
+        public bool HaveIntersectEvents(AMSEvent eventData)
+        {
+            eventData.NullCheck("eventData");
+
+            DateTime startTime = TimeZoneContext.Current.ConvertTimeToUtc(eventData.StartTime);
+            DateTime endTime = TimeZoneContext.Current.ConvertTimeToUtc(eventData.EndTime);
+
+            WhereSqlClauseBuilder builder1 = new WhereSqlClauseBuilder();
+            builder1.AppendItem("StartTime", startTime, ">=");
+            builder1.AppendItem("StartTime", endTime, "<");
+
+            WhereSqlClauseBuilder builder2 = new WhereSqlClauseBuilder();
+            builder2.AppendItem("EndTime", startTime, ">");
+            builder2.AppendItem("EndTime", endTime, "<");
+
+            WhereSqlClauseBuilder builder3 = new WhereSqlClauseBuilder();
+            builder3.AppendItem("StartTime", startTime, "<");
+            builder3.AppendItem("EndTime", startTime, ">");
+
+            WhereSqlClauseBuilder builder4 = new WhereSqlClauseBuilder();
+            builder4.AppendItem("StartTime", endTime, "<");
+            builder4.AppendItem("EndTime", endTime, ">");
+
+            ConnectiveSqlClauseCollection connectiveTime = new ConnectiveSqlClauseCollection(LogicOperatorDefine.Or,
+                builder1, builder2, builder3, builder4);
+
+            WhereSqlClauseBuilder idBuilder = new WhereSqlClauseBuilder();
+
+            idBuilder.AppendItem("ID", eventData.ID, "<>");
+            idBuilder.AppendItem("ChannelID", eventData.ChannelID);
+
+            ConnectiveSqlClauseCollection connective = new ConnectiveSqlClauseCollection(LogicOperatorDefine.And, idBuilder, connectiveTime);
+
+            string sql = string.Format("SELECT TOP 1 * FROM {0} WHERE {1}", this.GetTableName(), connective.ToSqlString(TSqlBuilder.Instance));
+
+            return this.QueryData(sql).FirstOrDefault() != null;
+        }
+
+        /// <summary>
         /// 读取需要启动的事件(时间状态为Stopped)，且加上提前时间
         /// </summary>
         /// <param name="warmupTime">需要提前预热的时间</param>

@@ -90,6 +90,10 @@ namespace ChannelManagement.forms
             {
                 this.bindingControl.CollectData(true);
 
+                AMSEventSqlAdapter.Instance.HaveIntersectEvents(this.Data).TrueThrow(
+                    "播放时间段{0:yyyy-MM-dd HH:mm}-{1:yyyy-MM-dd HH:mm}与别的事件重叠",
+                    this.Data.StartTime, this.Data.EndTime);
+
                 AMSEditEntityExecutor<AMSEvent> executor = new AMSEditEntityExecutor<AMSEvent>(
                     this.Data,
                     data => AMSEventSqlAdapter.Instance.Update(data),
