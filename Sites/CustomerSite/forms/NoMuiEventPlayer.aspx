@@ -91,10 +91,10 @@
                 <div>
                     <p id="allCookies" runat="server" />
                 </div>
-                <div>
+                <%--<div>
                     <p>client cookies:</p>
                     <p id="clientCookies" style="overflow: auto"></p>
-                </div>
+                </div>--%>
             </div>
         </div>
         <script>
@@ -142,7 +142,7 @@
                 ams.initMenu();
                 //initLoadData();
 
-                $("#clientCookies").text(document.cookie);
+                //$("#clientCookies").text(document.cookie);
             });
 
             function initButtons() {
