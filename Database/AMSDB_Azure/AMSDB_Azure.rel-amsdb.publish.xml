@@ -7,4 +7,9 @@
     <TargetConnectionString>Data Source=z1nszag55q.database.windows.net;Persist Security Info=True;User ID=zhshen;Pooling=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="InitEnv">
+      <Value>Production</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
 </Project>

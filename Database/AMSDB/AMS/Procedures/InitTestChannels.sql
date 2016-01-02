@@ -19,9 +19,10 @@ BEGIN
 	'Prefix', 'cdn-')
 	
 	--这是amshuaweichn的频道
-	INSERT INTO AMS.Channels(ID, AMSID, AMSAccountName, Name, [Description], PreviewUrl, PrimaryInputUrl, SecondaryInputUrl)
+	INSERT INTO AMS.Channels(ID, AMSID, AMSAccountName, Name, [Description], PreviewUrl, PrimaryInputUrl, SecondaryInputUrl, AlternateCDNEndpoint)
 	VALUES('D15214A7-DA20-4FF9-A696-5EAC938F0069', 'nb:chid:UUID:497a61f9-abf0-4d7f-bca5-5673785e9fad', 'amshuaweichn', 'test-channel-chn', '测试频道', 
 	'http://test-channel-chn-amshuaweichn.channel.mediaservices.chinacloudapi.cn/preview.isml/manifest',
 	'rtmp://test-channel-chn-amshuaweichn.channel.mediaservices.chinacloudapi.cn:1935/live/aa4f1a2cc9ff4799b80a1634d0a0ec96',
-	'rtmp://test-channel-chn-amshuaweichn.channel.mediaservices.chinacloudapi.cn:1936/live/aa4f1a2cc9ff4799b80a1634d0a0ec96')
+	'rtmp://test-channel-chn-amshuaweichn.channel.mediaservices.chinacloudapi.cn:1936/live/aa4f1a2cc9ff4799b80a1634d0a0ec96',
+	'az843435.vo.msecnd.net')
 END

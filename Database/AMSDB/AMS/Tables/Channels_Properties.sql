@@ -114,3 +114,12 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'Channels',
     @level2type = N'COLUMN',
     @level2name = N'CDNPrefix'
+GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'可变更的CDN端点，用于在客户端切换',
+    @level0type = N'SCHEMA',
+    @level0name = N'AMS',
+    @level1type = N'TABLE',
+    @level1name = N'Channels',
+    @level2type = N'COLUMN',
+    @level2name = N'AlternateCDNEndpoint'

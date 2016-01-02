@@ -12,8 +12,6 @@
     [SecondaryInputUrl] NVARCHAR(MAX) NULL, 
     [PreviewUrl] NVARCHAR(MAX) NULL, 
     [CDNPrefixMode] NVARCHAR(32) NULL DEFAULT N'None', 
-    [CDNPrefix] NVARCHAR(MAX) NULL  
+    [CDNPrefix] NVARCHAR(MAX) NULL, 
+    [AlternateCDNEndpoint] NVARCHAR(MAX) NULL  
 )
-
-
-GO
