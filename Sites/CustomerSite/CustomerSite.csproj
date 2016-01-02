@@ -100,7 +100,6 @@
     <Content Include="css\mui\mui.css" />
     <Content Include="css\mui\mui.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="forms\EventPlayer.aspx" />
     <Content Include="forms\NoMuiEventPlayer.aspx" />
     <Content Include="Helpers\applicationInfo.aspx" />
     <Content Include="images\amsPoster1.png" />
@@ -174,7 +173,14 @@
     <Content Include="scripts\lepus-util.js" />
     <Content Include="scripts\lepus-webview-sdk.js" />
     <Content Include="scripts\lepus.mobile.js" />
+    <Content Include="scripts\techs\MSAdaptiveStreamingPlugin-v1.0.12-osmf2.0.swf" />
+    <Content Include="scripts\techs\sample.html" />
+    <Content Include="scripts\techs\sample_AES128encryptedTokenContent.html" />
+    <Content Include="scripts\techs\StrobeMediaPlayback.2.0.swf" />
     <Content Include="services\QueryService.ashx" />
+    <Content Include="scripts\techs\MSAdaptiveStreamingPlugin-v1.0.12-osmf2.0.swc" />
+    <Content Include="scripts\techs\SmoothStreamingPlugin_EULA.rtf" />
+    <Content Include="scripts\techs\Smooth_Streaming_Plugin_for_OSMF.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -199,13 +205,6 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="forms\EventPlayer.aspx.cs">
-      <DependentUpon>EventPlayer.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="forms\EventPlayer.aspx.designer.cs">
-      <DependentUpon>EventPlayer.aspx</DependentUpon>
     </Compile>
     <Compile Include="forms\NoMuiEventPlayer.aspx.cs">
       <DependentUpon>NoMuiEventPlayer.aspx</DependentUpon>

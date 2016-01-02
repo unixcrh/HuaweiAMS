@@ -78,10 +78,10 @@
                 </div>
             </div>
             <div class="row outerVideo" id="buttonContainer">
-                <a class="btn btn-default" id="switchVideoAddressType" runat="server">切换到</a>
-                <div class="btn btn-default" id="fullscreenBtn">全屏</div>
-                <div class="btn btn-default" id="pauseBtn">暂停</div>
-                <div class="btn btn-default" id="playBtn">播放</div>
+                <a class="btn btn-default" id="switchVideoAddressType" runat="server">切换到备用CDN</a>
+                <div class="btn btn-default hidden" id="fullscreenBtn">全屏</div>
+                <div class="btn btn-default hidden" id="pauseBtn">暂停</div>
+                <div class="btn btn-default hidden" id="playBtn">播放</div>
                 <div class="btn btn-success" id="refreshBtn">刷新</div>
             </div>
             <div class="outerVideo">
@@ -147,7 +147,7 @@
 
             function initButtons() {
                 $("#switchVideoAddressType").click(function () {
-                    window.location.href = $(this).attr("href");
+                    window.location.replace($(this).attr("href"));
                     return false;
                 });
 

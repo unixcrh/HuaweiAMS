@@ -1,4 +1,5 @@
 ﻿using CutomerSite.Helpers;
+using MCS.Library.Cloud.AMS.Data.Adapters;
 using MCS.Library.Cloud.AMS.Data.DataSources;
 using MCS.Library.Cloud.AMS.Data.Entities;
 using System;
@@ -21,7 +22,7 @@ namespace CutomerSite.services
     public enum VideoAddressType
     {
         Default,
-        Mooncake
+        AlternateCDN
     }
 
     /// <summary>
@@ -56,8 +57,10 @@ namespace CutomerSite.services
                         AMSEvent eventData = DataHelper.GetEventByID(eventID);
 
                         if (eventData != null)
-                            result = DataHelper.GetSingleEventJson(eventData, WebHelper.GetVideoAddressType());
-
+                        {
+                            AMSChannel channel = AMSChannelSqlAdapter.Instance.LoadByID(eventData.ChannelID);
+                            result = DataHelper.GetSingleEventJson(channel, eventData, WebHelper.GetVideoAddressType());
+                        }
                         break;
                 }
             }

@@ -1,5 +1,6 @@
 ﻿using CutomerSite.Helpers;
 using CutomerSite.services;
+using MCS.Library.Cloud.AMS.Data.Adapters;
 using MCS.Library.Cloud.AMS.Data.Entities;
 using MCS.Library.Core;
 using MCS.Web.Responsive.Library.MVC;
@@ -42,6 +43,18 @@ namespace CutomerSite.forms
             }
         }
 
+        private AMSChannel Channel
+        {
+            get;
+            set;
+        }
+
+        private AMSEvent Event
+        {
+            get;
+            set;
+        }
+
         //private static string GetCoookies()
         //{
         //    StringBuilder strB = new StringBuilder();
@@ -64,43 +77,77 @@ namespace CutomerSite.forms
 
                 if (eventData != null)
                 {
-                    this.pageEventData.Value = DataHelper.GetSingleEventJson(eventData, WebHelper.GetVideoAddressType());
+                    this.Channel = AMSChannelSqlAdapter.Instance.LoadByID(eventData.ChannelID);
+                    this.pageEventData.Value = DataHelper.GetSingleEventJson(this.Channel, eventData, WebHelper.GetVideoAddressType());
                     this.videoTitle.Text = HttpUtility.HtmlEncode(eventData.Name);
 
                     DataHelper.UpdateUserView(id);
                 }
+
+                this.Event = eventData;
             }
         }
 
         protected override void OnPreRender(EventArgs e)
         {
             this.RegisterApplicationRoot();
+            this.InitAlternateCDNAddress(this.Channel, this.Event);
 
-            VideoAddressType videoAddressType = WebHelper.GetVideoAddressType();
+            //VideoAddressType videoAddressType = WebHelper.GetVideoAddressType();
 
-            this.videoAddressType.Value = videoAddressType.ToString();
+            //this.videoAddressType.Value = videoAddressType.ToString();
 
-            VideoAddressType targetType = VideoAddressType.Mooncake;
+            //VideoAddressType targetType = VideoAddressType.Mooncake;
 
-            string buttonText = string.Empty;
+            //string buttonText = string.Empty;
 
-            switch (videoAddressType)
-            {
-                case VideoAddressType.Default:
-                    targetType = VideoAddressType.Mooncake;
-                    buttonText = "切换到中国CDN";
-                    break;
-                case VideoAddressType.Mooncake:
-                    targetType = VideoAddressType.Default;
-                    buttonText = "切换到默认CDN";
-                    break;
-            }
+            //switch (videoAddressType)
+            //{
+            //    case VideoAddressType.Default:
+            //        targetType = VideoAddressType.Mooncake;
+            //        buttonText = "切换到中国CDN";
+            //        break;
+            //    case VideoAddressType.Mooncake:
+            //        targetType = VideoAddressType.Default;
+            //        buttonText = "切换到默认CDN";
+            //        break;
+            //}
 
-            switchVideoAddressType.HRef = UriHelper.ReplaceUriParams(this.Request.Url.ToString(),
-                parameters => parameters["videoAddressType"] = targetType.ToString());
-            switchVideoAddressType.InnerText = buttonText;
+            //switchVideoAddressType.HRef = UriHelper.ReplaceUriParams(this.Request.Url.ToString(),
+            //    parameters => parameters["videoAddressType"] = targetType.ToString());
+            //switchVideoAddressType.InnerText = buttonText;
 
             base.OnPreRender(e);
+        }
+
+        private void InitAlternateCDNAddress(AMSChannel channel, AMSEvent eventData)
+        {
+            if (channel != null && eventData != null && channel.AlternateCDNEndpoint.IsNotEmpty())
+            {
+                VideoAddressType videoAddressType = WebHelper.GetVideoAddressType();
+                VideoAddressType targetType = VideoAddressType.AlternateCDN;
+                string buttonText = this.switchVideoAddressType.InnerText;
+
+                switch (videoAddressType)
+                {
+                    case VideoAddressType.Default:
+                        targetType = VideoAddressType.AlternateCDN;
+                        buttonText = "切换到备用CDN";
+                        break;
+                    case VideoAddressType.AlternateCDN:
+                        targetType = VideoAddressType.Default;
+                        buttonText = "切换到默认地址";
+                        break;
+                }
+
+                this.switchVideoAddressType.HRef = UriHelper.ReplaceUriParams(this.Request.Url.ToString(),
+                    parameters => parameters["videoAddressType"] = targetType.ToString());
+                this.switchVideoAddressType.InnerText = buttonText;
+            }
+            else
+            {
+                this.switchVideoAddressType.Attributes["class"] = "btn btn-default disabled";
+            }
         }
     }
 }

@@ -89,7 +89,7 @@ namespace CutomerSite.Helpers
             return eventData;
         }
 
-        public static string GetSingleEventJson(AMSEvent eventData, VideoAddressType addressType)
+        public static string GetSingleEventJson(AMSChannel channel, AMSEvent eventData, VideoAddressType addressType)
         {
             var simpleEventData = new
             {
@@ -97,7 +97,7 @@ namespace CutomerSite.Helpers
                 name = eventData.Name,
                 description = eventData.Description,
                 speakers = eventData.Speakers,
-                url = ChangeVideoAddress(eventData.CDNPlaybackUrl, addressType),
+                url = ChangeVideoAddress(channel, eventData.CDNPlaybackUrl, addressType),
                 poster = eventData.PosterUrl,
                 views = string.Format("{0:#,##0}", eventData.Views),
                 startTime = string.Format("{0:yyyy-MM-dd HH:mm:ss}", eventData.StartTime),
@@ -124,19 +124,26 @@ namespace CutomerSite.Helpers
                 AMSUserViewSqlAdapter.Instance.UpdateUserView(userView);
         }
 
-        private static string ChangeVideoAddress(string url, VideoAddressType addressType)
+        private static string ChangeVideoAddress(AMSChannel channel, string url, VideoAddressType addressType)
         {
             string result = url;
 
-            if (url.IsNotEmpty())
+            if (channel != null && channel .AlternateCDNEndpoint.IsNotEmpty() && url.IsNotEmpty())
             {
                 Uri target = new Uri(url);
 
-                if (addressType == VideoAddressType.Mooncake)
-                    result = url.Replace(target.Host, "video.cqkfz.com");
+                if (addressType == VideoAddressType.AlternateCDN)
+                    result = MergePlaybackCDNHost(target, channel.AlternateCDNEndpoint);
             }
 
             return result;
+        }
+
+        private static string MergePlaybackCDNHost(Uri originalUri, string cdnHost)
+        {
+            string originalHost = originalUri.Host + (originalUri.Port == 80 ? string.Empty : ":" + originalUri.Port);
+
+            return originalUri.Scheme + "://" + (cdnHost ?? originalHost) + originalUri.PathAndQuery;
         }
 
         private static string GetTimeDescription(DateTime startTime, DateTime endTime)
