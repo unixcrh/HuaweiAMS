@@ -107,6 +107,13 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
             set;
         }
 
+        [DataMember]
+        public string AlternateCDNEndpoint
+        {
+            get;
+            set;
+        }
+
         public void FillStatusFromCloud(AMSChannel channelInCloud)
         {
             channelInCloud.NullCheck("channelInCloud");

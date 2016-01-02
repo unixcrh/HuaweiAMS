@@ -116,12 +116,12 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
         {
             string locatorHost = locatorPath.Host + (locatorPath.Port == 80 ? string.Empty : ":" + locatorPath.Port);
 
-            return locatorPath.Scheme + "://" + cdnHost ?? locatorHost + locatorPath.PathAndQuery + fileName + "/manifest";
+            return locatorPath.Scheme + "://" + (cdnHost ?? locatorHost) + locatorPath.PathAndQuery + fileName + "/manifest";
         }
 
         private static string MergePlaybackCDNPrefix(Uri locatorPath, string cdnPrefix, string fileName)
         {
-            return locatorPath.Scheme + "://" + cdnPrefix ?? string.Empty + locatorPath.Host + (locatorPath.Port == 80 ? string.Empty : ":" + locatorPath.Port) +
+            return locatorPath.Scheme + "://" + (cdnPrefix ?? string.Empty) + locatorPath.Host + (locatorPath.Port == 80 ? string.Empty : ":" + locatorPath.Port) +
                                 locatorPath.PathAndQuery + fileName + "/manifest";
         }
 
