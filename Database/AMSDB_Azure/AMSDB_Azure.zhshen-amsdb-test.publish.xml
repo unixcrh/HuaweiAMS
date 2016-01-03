@@ -2,9 +2,14 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
-    <TargetDatabaseName>zhshen-amsdb-test</TargetDatabaseName>
+    <TargetDatabaseName>AMSDB-TEST</TargetDatabaseName>
     <DeployScriptFileName>AMSDB_Azure.sql</DeployScriptFileName>
-    <TargetConnectionString>Data Source=d9pphp1cd1.database.windows.net;Persist Security Info=True;User ID=zhshen;Pooling=False</TargetConnectionString>
+    <TargetConnectionString>Data Source=z1nszag55q.database.windows.net;Persist Security Info=True;User ID=zhshen;Pooling=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="InitEnv">
+      <Value>UnitTest</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
 </Project>

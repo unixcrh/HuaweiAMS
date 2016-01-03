@@ -13,6 +13,7 @@
     <StartDevelopmentStorage>False</StartDevelopmentStorage>
     <Name>AMSWorker</Name>
     <UseWebProjectPorts>True</UseWebProjectPorts>
+    <PackageEnableRemoteDebugger>False</PackageEnableRemoteDebugger>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,11 +57,21 @@
   </ItemGroup>
   <ItemGroup>
     <PublishProfile Include="Profiles\HuaWeiAMSWorkerProduction.azurePubxml" />
+    <PublishProfile Include="Profiles\HuaWeiAMSWorkerStaging.azurePubxml" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
     <CloudExtensionsDir Condition=" '$(CloudExtensionsDir)' == '' ">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Windows Azure Tools\2.8\</CloudExtensionsDir>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release-Staging' ">
+    <OutputPath>bin\Release-Staging\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug-Staging' ">
+    <OutputPath>bin\Debug-Staging\</OutputPath>
+  </PropertyGroup>
   <Import Project="$(CloudExtensionsDir)Microsoft.WindowsAzure.targets" />
+  <Target Name="CopyWorkerRoleConfigurations" BeforeTargets="AfterPackageComputeService">
+    <Copy SourceFiles=".\ChannelRole\bin\$(Configuration)\ChannelRole.dll.config" DestinationFolder="$(IntermediateOutputPath)\ChannelRole" OverwriteReadOnlyFiles="true" />
+  </Target>
 </Project>
