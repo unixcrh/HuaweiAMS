@@ -14,9 +14,12 @@ DECLARE @initEnv NVARCHAR(64)
 SET @initEnv = N'$(InitEnv)'
 
 IF @initEnv = N'UnitTest'
+BEGIN
 	EXECUTE [AMS].[InitTestChannels]
+	EXECUTE [AMS].[InitAdmins]
+END
 ELSE
+BEGIN
 	EXECUTE [AMS].[InitChannels]
-
-EXECUTE [AMS].[InitAdmins]
+END
 --EXECUTE [AMS].[InitEvents]
