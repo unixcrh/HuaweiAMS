@@ -290,6 +290,7 @@
                     "nativeControlsForTouch": false,
                     autoplay: false,
                     controls: true,
+                    techOrder: ["html5", "azureHtml5JS", "flashSS", "silverlightSS"],
                     preload: "auto"
                 };
 
@@ -301,9 +302,10 @@
                             var stream = myPlayer.currentVideoStreamList().streams ? myPlayer.currentVideoStreamList().streams[0] : undefined;
 
                             if (stream && $("#fixedBitrate").val() == "true") {
-                                var midTrack = Math.floor(stream.tracks.length / 2);
+                                //var midTrack = Math.floor(stream.tracks.length / 2);
 
-                                stream.selectTrackByIndex(midTrack);
+                                //stream.selectTrackByIndex(midTrack);
+                                stream.selectTrackByIndex(0);
                             }
                         }
                         catch (e) {
