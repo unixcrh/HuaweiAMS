@@ -290,6 +290,7 @@
                     "nativeControlsForTouch": false,
                     autoplay: false,
                     controls: true,
+                    poster: eventData.poster,
                     techOrder: ["html5", "azureHtml5JS", "flashSS", "silverlightSS"],
                     preload: "auto"
                 };
