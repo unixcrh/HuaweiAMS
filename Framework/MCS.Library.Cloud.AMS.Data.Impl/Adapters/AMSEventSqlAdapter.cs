@@ -161,5 +161,51 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
 
             return DbHelper.RunSql(sql, this.GetConnectionName());
         }
+
+        public AMSEventChannel AddChannel(string eventID, string channelID)
+        {
+            eventID.CheckStringIsNullOrEmpty("eventID");
+            channelID.CheckStringIsNullOrEmpty("channelID");
+
+            AMSEventChannel eventChannel = new AMSEventChannel();
+
+            eventChannel.EventID = eventID;
+            eventChannel.ChannelID = channelID;
+            eventChannel.State = AMSEventState.NotStart;
+            eventChannel.IsDefault = false;
+
+            string sql = ORMapping.GetInsertSql(eventChannel, TSqlBuilder.Instance);
+
+            DbHelper.RunSql(sql, this.GetConnectionName());
+
+            return eventChannel;
+        }
+
+        public void DeleteChannels(string eventID, params string[] channelIDs)
+        {
+            eventID.CheckStringIsNullOrEmpty("eventID");
+            channelIDs.NullCheck("channelIDs");
+
+            InSqlClauseBuilder builder = new InSqlClauseBuilder("ChannelID");
+
+            ORMappingItemCollection mappings = ORMapping.GetMappingInfo(typeof(AMSEventChannel));
+
+            string sql = string.Format("DELETE {0} WHERE {1}", mappings.TableName, builder.ToSqlStringWithInOperator(TSqlBuilder.Instance));
+
+            DbHelper.RunSql(sql, this.GetConnectionName());
+        }
+
+        protected override string GetInsertSql(AMSEvent data, ORMappingItemCollection mappings, Dictionary<string, object> context)
+        {
+            StringBuilder strB = new StringBuilder();
+
+            strB.Append(base.GetInsertSql(data, mappings, context));
+            strB.Append(TSqlBuilder.Instance.DBStatementSeperator);
+
+            AMSEventChannel eventChannel = AMSEventChannel.FromAMSEvent(data);
+            strB.Append(ORMapping.GetInsertSql(eventChannel, TSqlBuilder.Instance));
+
+            return strB.ToString();
+        }
     }
 }

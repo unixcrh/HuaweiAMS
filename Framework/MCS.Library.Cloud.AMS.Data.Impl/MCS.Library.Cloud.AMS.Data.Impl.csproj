@@ -68,6 +68,7 @@
     <Compile Include="Adapters\AMSUserViewSqlAdapter.cs" />
     <Compile Include="Adapters\UserOperationLogSqlAdapter.cs" />
     <Compile Include="Common\ConnectionDefine.cs" />
+    <Compile Include="DataSources\AMSChannelDataSource.cs" />
     <Compile Include="DataSources\AMSEventDataSource.cs" />
     <Compile Include="Executors\AMSDeleteEntityExecutor.cs" />
     <Compile Include="Executors\AMSEditEntityExecutor.cs" />
