@@ -1,4 +1,4 @@
-<document version="6" os="windows" original_document_path="D:\ProjectsInGitHub\HuaweiAMS\Wirecast\mooncakeTestChannel.wcst">
+<document version="6" os="windows" original_document_path="D:\ProjectsInGitHub\HuaweiAMS\Wirecast\main.wcst">
 	<open_windows>
 		<vamWindowGlass frame="0,0,1936,1056" asset_icon_scale="0.5" asset_icon_updateFPS="15" selected_layer="1836282930" vam_main_splitter="0.65" />
 	</open_windows>
@@ -7,7 +7,7 @@
 	<chroma_key_data />
 	<advanced_output>
 		<output_list output_last_selected="0cf756be-5e66-4b6b-b5d3-d404fc28e9e2">
-			<output output_enabled="1" output_type="2" output_transport="7" output_url="rtmp://test-channel-chn-amshuaweichn.channel.mediaservices.chinacloudapi.cn:1935/live/aa4f1a2cc9ff4799b80a1634d0a0ec96" output_location="myStream" output_branding="RTMP Server" output_display_name="DirectChannel" output_display_group_name="RTMP Server" output_guid="65370980-ff43-4a17-9232-135a0a3386f4" unique_id="1" output_presetname="MainConcept 1024" impersonate_fme_2_5="0" flash_user_agent="Wirecast/FM 1.0" output_user_name="DirectChannel" output_settings_complete="1" output_id="0cf756be-5e66-4b6b-b5d3-d404fc28e9e2" />
+			<output output_enabled="1" output_type="2" output_transport="7" output_url="rtmp://main-channel-amshuaweirel.channel.mediaservices.windows.net:1935/live/01fa53e649a94c029a7a709db91ac0df" output_location="myStream" output_branding="RTMP Server" output_display_name="DirectChannel" output_display_group_name="RTMP Server" output_guid="65370980-ff43-4a17-9232-135a0a3386f4" unique_id="1" output_presetname="MainConcept 1024" impersonate_fme_2_5="0" flash_user_agent="Wirecast/FM 1.0" output_user_name="DirectChannel" output_settings_complete="1" output_id="0cf756be-5e66-4b6b-b5d3-d404fc28e9e2" output_username="" output_password="" />
 			<output replay_quality="standard" replay_audio_enabled="0" replay_record_folder="C:\Users\Zheng Shen\Videos" replay_limit_record_duration="1" replaydialog_record_unit="1" replay_max_record_duration="60000" replay_shot_default_duration="30" replay_create_in_layer="1" replay_create_in_playlist="" replay_show_preview="1" replay_shot_template_asset_id="" replay_create_from_template="0" replay_activate_on_broadcast="0" replay_activate_on_record="0" replay_prompt_delete_shot="1" replay_keep_record_on_delete_shot="0" output_guid="109fc6d4-1651-4c6d-9287-a6d3e3f9ea08" output_presetname="109fc6d4-1651-4c6d-9287-a6d3e3f9ea08" output_type="6" output_enabled="1" unique_id="2" />
 		</output_list>
 	</advanced_output>
@@ -66,8 +66,8 @@
 		<shot event_type="2" template_uuid="91550E48-A580-46FB-B949-CBF8494344FA" unique_id="61e01caa-47f7-4423-8ffe-4a716414aecf_shot">
 			<event event_type="4" zorder="5" unique_id="one_quad" template_tag="1">
 				<event event_type="2" channel_id="1" ro_respect_aspect_ratio="1" obj_scale="0.75,1" unique_id="84cdbe2d-485d-45b2-aa56-debea25f5bbe_久石让在武道馆的音乐会.mp4">
-					<event event_type="1" channel_id="1" ro_media_type="1986618479" ro_playhead="0" action_time="1733333" action_duration="0" action_flags="24" />
-					<event event_type="1" channel_id="1" ro_media_type="1635083375" ro_playhead="0" action_time="1733333" action_duration="0" action_flags="24" />
+					<event event_type="1" channel_id="1" ro_media_type="1986618479" ro_playhead="0" action_time="2133333" action_duration="0" action_flags="24" />
+					<event event_type="1" channel_id="1" ro_media_type="1635083375" ro_playhead="0" action_time="2133333" action_duration="0" action_flags="24" />
 				</event>
 			</event>
 		</shot>
