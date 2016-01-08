@@ -85,6 +85,7 @@
     <Build Include="AMS\Tables\Admins_Properties.sql" />
     <Build Include="AMS\Procedures\InitAdmins.sql" />
     <Build Include="AMS\Procedures\InitTestChannels.sql" />
+    <Build Include="AMS\Tables\EventsChannels.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AMSDB.refactorlog" />
@@ -93,6 +94,7 @@
     <None Include="AMSDB.UnitTest.local.publish.xml" />
     <None Include="AMSDB.local.publish.xml" />
     <Build Include="AMS\Tables\UserViews_Properties.sql" />
+    <None Include="AMS\Tables\EventsChannels_Properties.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\PostDeployment.sql" />

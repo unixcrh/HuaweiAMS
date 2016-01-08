@@ -42,4 +42,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="UserID" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="444c35a9-472f-4264-8f2a-75847bdd45a4" ChangeDateTime="01/08/2016 13:13:20">
+    <Property Name="ElementName" Value="[AMS].[EventsChannels].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[AMS].[EventsChannels]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EventID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c47aee37-9a04-4a97-b73f-68902a777db8" ChangeDateTime="01/08/2016 13:15:59">
+    <Property Name="ElementName" Value="[AMS].[EventsChannels].[EventState]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[AMS].[EventsChannels]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="State" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0277b3a7-f028-4f9e-9a22-06acecbcf4c6" ChangeDateTime="01/08/2016 13:51:12">
+    <Property Name="ElementName" Value="[AMS].[EventsChannels].[Default]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[AMS].[EventsChannels]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsDefault" />
+  </Operation>
 </Operations>

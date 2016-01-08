@@ -78,6 +78,9 @@
     <Build Include="..\AMSDB\AMS\Tables\Events.sql">
       <Link>AMS\Tables\Events.sql</Link>
     </Build>
+    <Build Include="..\AMSDB\AMS\Tables\EventsChannels.sql">
+      <Link>AMS\Tables\EventsChannels.sql</Link>
+    </Build>
     <Build Include="..\AMSDB\AMS\Tables\Locks.sql">
       <Link>AMS\Tables\Locks.sql</Link>
     </Build>
