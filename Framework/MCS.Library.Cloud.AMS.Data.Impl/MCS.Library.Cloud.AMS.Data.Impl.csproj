@@ -70,6 +70,9 @@
     <Compile Include="Common\ConnectionDefine.cs" />
     <Compile Include="DataSources\AMSChannelDataSource.cs" />
     <Compile Include="DataSources\AMSEventDataSource.cs" />
+    <Compile Include="Executors\AMSAddChannelInEventExecutor.cs" />
+    <Compile Include="Executors\AMSChannelInEventExecutorBase.cs" />
+    <Compile Include="Executors\AMSDeleteChannelsInEventExecutor.cs" />
     <Compile Include="Executors\AMSDeleteEntityExecutor.cs" />
     <Compile Include="Executors\AMSEditEntityExecutor.cs" />
     <Compile Include="Executors\AMSExecutorBase.cs" />

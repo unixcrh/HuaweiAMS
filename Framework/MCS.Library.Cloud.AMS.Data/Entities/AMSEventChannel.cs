@@ -1,4 +1,5 @@
-﻿using MCS.Library.Data.Mapping;
+﻿using MCS.Library.Data.DataObjects;
+using MCS.Library.Data.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,5 +76,11 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
 
             return eventChannel;
         }
+    }
+
+    [Serializable]
+    [DataContract]
+    public class AMSEventChannelCollection : EditableDataObjectCollectionBase<AMSEventChannel>
+    {
     }
 }

@@ -162,26 +162,49 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
             return DbHelper.RunSql(sql, this.GetConnectionName());
         }
 
-        public AMSEventChannel AddChannel(string eventID, string channelID)
+        /// <summary>
+        /// 在一个事件下增加频道(UI上用于频道列表)
+        /// </summary>
+        /// <param name="eventID"></param>
+        /// <param name="channelIDs"></param>
+        /// <returns></returns>
+        public int AddChannel(string eventID, IEnumerable<string> channelIDs)
         {
             eventID.CheckStringIsNullOrEmpty("eventID");
-            channelID.CheckStringIsNullOrEmpty("channelID");
+            channelIDs.NullCheck("channelIDs");
+
+            StringBuilder strB = new StringBuilder();
 
             AMSEventChannel eventChannel = new AMSEventChannel();
 
             eventChannel.EventID = eventID;
-            eventChannel.ChannelID = channelID;
             eventChannel.State = AMSEventState.NotStart;
             eventChannel.IsDefault = false;
 
-            string sql = ORMapping.GetInsertSql(eventChannel, TSqlBuilder.Instance);
+            foreach (string channelID in channelIDs)
+            {
+                eventChannel.ChannelID = channelID;
 
-            DbHelper.RunSql(sql, this.GetConnectionName());
+                if (strB.Length > 0)
+                    strB.Append(TSqlBuilder.Instance.DBStatementSeperator);
 
-            return eventChannel;
+                strB.Append(ORMapping.GetInsertSql(eventChannel, TSqlBuilder.Instance));
+            }
+
+            int result = 0;
+
+            if (strB.Length > 0)
+                result = DbHelper.RunSqlWithTransaction(strB.ToString(), this.GetConnectionName());
+
+            return result;
         }
 
-        public void DeleteChannels(string eventID, params string[] channelIDs)
+        /// <summary>
+        /// 删除某个事件下的频道（UI上用于频道列表）
+        /// </summary>
+        /// <param name="eventID"></param>
+        /// <param name="channelIDs"></param>
+        public int DeleteChannels(string eventID, IEnumerable<string> channelIDs)
         {
             eventID.CheckStringIsNullOrEmpty("eventID");
             channelIDs.NullCheck("channelIDs");
@@ -192,7 +215,7 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
 
             string sql = string.Format("DELETE {0} WHERE {1}", mappings.TableName, builder.ToSqlStringWithInOperator(TSqlBuilder.Instance));
 
-            DbHelper.RunSql(sql, this.GetConnectionName());
+            return DbHelper.RunSql(sql, this.GetConnectionName());
         }
 
         protected override string GetInsertSql(AMSEvent data, ORMappingItemCollection mappings, Dictionary<string, object> context)

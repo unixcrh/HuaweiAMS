@@ -25,5 +25,11 @@ namespace MCS.Library.Cloud.AMS.Data.Executors
         /// </summary>
         [EnumItemDescription("删除事件")]
         DeleteEvent,
+
+        [EnumItemDescription("在事件下增加频道")]
+        AddChannelInEvent,
+
+        [EnumItemDescription("在事件下删除频道")]
+        DeleteChannelsInEvent
     }
 }

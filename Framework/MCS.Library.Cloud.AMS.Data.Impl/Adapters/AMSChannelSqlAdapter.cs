@@ -28,6 +28,11 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
             return this.LoadByInBuilder(builder => builder.AppendItem(id), "ID").SingleOrDefault();
         }
 
+        /// <summary>
+        /// 读取需要停止的频道
+        /// </summary>
+        /// <param name="leadTime"></param>
+        /// <returns></returns>
         public AMSChannelCollection LoadNeedStopChannels(TimeSpan leadTime)
         {
             InSqlClauseBuilder inBuilder = new InSqlClauseBuilder("OuterC.State");

@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace MCS.Library.Cloud.AMS.Data.DataSources
 {
+    /// <summary>
+    /// 这个DataSource主要用显示某个事件下的频道列表
+    /// </summary>
     public class AMSEventDataSource : ObjectDataSourceQueryAdapterBase<AMSEvent, AMSEventCollection>
     {
         protected override string GetConnectionName()
