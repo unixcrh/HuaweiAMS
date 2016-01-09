@@ -39,8 +39,9 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
         /// 判断同一频道下是否有时间交叉的事件
         /// </summary>
         /// <param name="eventData"></param>
+        /// <param name="additionalChannelID">额外的频道</param>
         /// <returns></returns>
-        public bool HaveIntersectEvents(AMSEvent eventData)
+        public bool HaveIntersectEvents(AMSEvent eventData, string additionalChannelID = "")
         {
             eventData.NullCheck("eventData");
 
@@ -72,13 +73,18 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
 
             AMSChannelCollection channels = this.LoadRelativeChannels(eventData.ID);
 
-            InSqlClauseBuilder channelIDBuilder = new InSqlClauseBuilder("ChannelID");
+            InSqlClauseBuilder channelIDBuilder = new InSqlClauseBuilder("EC.ChannelID");
 
             channels.ForEach(c => channelIDBuilder.AppendItem(c.ID));
+            channelIDBuilder.AppendItem(eventData.ChannelID);
+
+            if (additionalChannelID.IsNotEmpty())
+                channelIDBuilder.AppendItem(additionalChannelID);
 
             ConnectiveSqlClauseCollection connective = new ConnectiveSqlClauseCollection(LogicOperatorDefine.And, idBuilder, channelIDBuilder, connectiveTime);
 
-            string sql = string.Format("SELECT TOP 1 * FROM {0} WHERE {1}", this.GetTableName(), connective.ToSqlString(TSqlBuilder.Instance));
+            string sql = string.Format("SELECT TOP 1 * FROM {0} E INNER JOIN AMS.EventsChannels EC ON E.ID = EC.EventID WHERE {1}",
+                this.GetTableName(), connective.ToSqlString(TSqlBuilder.Instance));
 
             return this.QueryData(sql).FirstOrDefault() != null;
         }

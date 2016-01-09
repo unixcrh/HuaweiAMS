@@ -296,5 +296,55 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
             needToStopChannels.Output();
             Assert.AreEqual(1, needToStopChannels.Count);
         }
+
+        [TestMethod]
+        public void CheckNewIntersectEvent()
+        {
+            AMSEventSqlAdapter.Instance.ClearAll();
+            AMSChannelSqlAdapter.Instance.ClearAll();
+
+            AMSChannel originalChannel = DataHelper.PrepareChannelData();
+
+            AMSChannelSqlAdapter.Instance.Update(originalChannel);
+
+            AMSEvent originalEvent = DataHelper.PrepareEventData(originalChannel.ID);
+
+            AMSEventSqlAdapter.Instance.Update(originalEvent);
+
+            AMSEvent newEvent = DataHelper.PrepareEventData(originalChannel.ID);
+
+            Assert.IsTrue(AMSEventSqlAdapter.Instance.HaveIntersectEvents(newEvent));
+        }
+
+        [TestMethod]
+        public void CheckAddChannelIntersectEvent()
+        {
+            AMSEventSqlAdapter.Instance.ClearAll();
+            AMSChannelSqlAdapter.Instance.ClearAll();
+
+            AMSChannel originalChannel = DataHelper.PrepareChannelData();
+
+            AMSChannelSqlAdapter.Instance.Update(originalChannel);
+
+            AMSEvent originalEvent = DataHelper.PrepareEventData(originalChannel.ID);
+
+            AMSEventSqlAdapter.Instance.Update(originalEvent);
+
+            AMSChannel theSecondChannel = DataHelper.PrepareChannelData();
+
+            AMSChannelSqlAdapter.Instance.Update(theSecondChannel);
+
+            AMSEventSqlAdapter.Instance.AddChannel(originalEvent.ID, new string[] { theSecondChannel.ID });
+
+            AMSChannel theThirdChannel = DataHelper.PrepareChannelData();
+
+            AMSChannelSqlAdapter.Instance.Update(theThirdChannel);
+
+            AMSEvent newEvent = DataHelper.PrepareEventData(theThirdChannel.ID);
+
+            AMSEventSqlAdapter.Instance.Update(newEvent);
+
+            Assert.IsTrue(AMSEventSqlAdapter.Instance.HaveIntersectEvents(newEvent, theSecondChannel.ID));
+        }
     }
 }
