@@ -69,9 +69,14 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
             WhereSqlClauseBuilder idBuilder = new WhereSqlClauseBuilder();
 
             idBuilder.AppendItem("ID", eventData.ID, "<>");
-            idBuilder.AppendItem("ChannelID", eventData.ChannelID);
 
-            ConnectiveSqlClauseCollection connective = new ConnectiveSqlClauseCollection(LogicOperatorDefine.And, idBuilder, connectiveTime);
+            AMSChannelCollection channels = this.LoadRelativeChannels(eventData.ID);
+
+            InSqlClauseBuilder channelIDBuilder = new InSqlClauseBuilder("ChannelID");
+
+            channels.ForEach(c => channelIDBuilder.AppendItem(c.ID));
+
+            ConnectiveSqlClauseCollection connective = new ConnectiveSqlClauseCollection(LogicOperatorDefine.And, idBuilder, channelIDBuilder, connectiveTime);
 
             string sql = string.Format("SELECT TOP 1 * FROM {0} WHERE {1}", this.GetTableName(), connective.ToSqlString(TSqlBuilder.Instance));
 

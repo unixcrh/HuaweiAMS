@@ -31,7 +31,7 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
         /// <summary>
         /// 读取需要停止的频道
         /// </summary>
-        /// <param name="leadTime"></param>
+        /// <param name="leadTime">多长时间之内没有节目</param>
         /// <returns></returns>
         public AMSChannelCollection LoadNeedStopChannels(TimeSpan leadTime)
         {
@@ -42,6 +42,7 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
                 AMSChannelState.Starting.ToString(),
                 AMSChannelState.Stopping.ToString());
 
+            //得到从现在开始到leadTime时间段内，需要启动的节目
             WhereSqlClauseBuilder startTimeBuilder = new WhereSqlClauseBuilder();
 
             startTimeBuilder.AppendItem("E.StartTime", "GETUTCDATE()", ">=", true);
@@ -49,6 +50,7 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
                 string.Format("DATEADD(second, {0}, GETUTCDATE())", (int)leadTime.TotalSeconds),
                 "<", true);
 
+            //得到还没有结束的节目
             WhereSqlClauseBuilder endTimeBuilder = new WhereSqlClauseBuilder();
 
             endTimeBuilder.AppendItem("E.EndTime", "GETUTCDATE()", ">", true);
@@ -59,7 +61,8 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
             ConnectiveSqlClauseCollection connective = new ConnectiveSqlClauseCollection(LogicOperatorDefine.Or,
                 startTimeBuilder, endTimeBuilder);
 
-            string subSql = string.Format("SELECT C.ID FROM AMS.Channels C INNER JOIN AMS.Events E ON C.ID = E.ChannelID WHERE {0}",
+            //子查询，表示在未来一段时间内需要播放的节目
+            string subSql = string.Format("SELECT C.ID FROM AMS.Channels C INNER JOIN AMS.EventsChannels EC ON C.ID = EC.ChannelID INNER JOIN AMS.Events E ON EC.EventID = E.ID WHERE {0}",
                 connective.ToSqlString(TSqlBuilder.Instance));
 
             string sql = string.Format("SELECT * FROM AMS.Channels OuterC WHERE {0} AND OuterC.ID NOT IN ({1})",

@@ -197,5 +197,104 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
             //用户观看次数依然是1
             Assert.AreEqual(1, eventLoaded.Views);
         }
+
+        /// <summary>
+        /// 包含已结束的事件和未开始的事件的，需要停止的频道测试
+        /// </summary>
+        [TestMethod]
+        public void IncludeCompletedAndNotStartEventsLoadNeedStopChannels()
+        {
+            AMSEventSqlAdapter.Instance.ClearAll();
+            AMSChannelSqlAdapter.Instance.ClearAll();
+
+            AMSChannel channel = DataHelper.PrepareChannelData();
+
+            AMSChannelSqlAdapter.Instance.Update(channel);
+
+            AMSEvent prevEventData = DataHelper.PrepareEventData(channel.ID);
+
+            prevEventData.StartTime = DateTime.Now.AddHours(-2);
+            prevEventData.EndTime = DateTime.Now.AddHours(-1);
+
+            AMSEventSqlAdapter.Instance.Update(prevEventData);
+
+            AMSEvent nextEventData = DataHelper.PrepareEventData(channel.ID);
+
+            nextEventData.StartTime = DateTime.Now.AddHours(2);
+            nextEventData.EndTime = DateTime.Now.AddHours(3);
+
+            AMSEventSqlAdapter.Instance.Update(prevEventData);
+
+            AMSChannelCollection needToStopChannels = AMSChannelSqlAdapter.Instance.LoadNeedStopChannels(TimeSpan.FromHours(1));
+
+            needToStopChannels.Output();
+            Assert.AreEqual(1, needToStopChannels.Count);
+        }
+
+        /// <summary>
+        /// 包含未结束的事件和未开始的事件的，需要停止的频道测试
+        /// </summary>
+        [TestMethod]
+        public void IncludeNoCompletedAndNotStartEventsLoadNeedStopChannels()
+        {
+            AMSEventSqlAdapter.Instance.ClearAll();
+            AMSChannelSqlAdapter.Instance.ClearAll();
+
+            AMSChannel channel = DataHelper.PrepareChannelData();
+
+            AMSChannelSqlAdapter.Instance.Update(channel);
+
+            AMSEvent prevEventData = DataHelper.PrepareEventData(channel.ID);
+
+            prevEventData.StartTime = DateTime.Now.AddHours(-2);
+            prevEventData.EndTime = DateTime.Now.AddHours(1);
+
+            AMSEventSqlAdapter.Instance.Update(prevEventData);
+
+            AMSEvent nextEventData = DataHelper.PrepareEventData(channel.ID);
+
+            nextEventData.StartTime = DateTime.Now.AddHours(2);
+            nextEventData.EndTime = DateTime.Now.AddHours(3);
+
+            AMSEventSqlAdapter.Instance.Update(prevEventData);
+
+            AMSChannelCollection needToStopChannels = AMSChannelSqlAdapter.Instance.LoadNeedStopChannels(TimeSpan.FromHours(1));
+
+            needToStopChannels.Output();
+            Assert.AreEqual(0, needToStopChannels.Count);
+        }
+
+        /// <summary>
+        /// 包含未结束的事件和未开始的事件的，需要停止的频道测试
+        /// </summary>
+        [TestMethod]
+        public void IncludeCompletedAndNeedStartEventsLoadNeedStopChannels()
+        {
+            AMSEventSqlAdapter.Instance.ClearAll();
+            AMSChannelSqlAdapter.Instance.ClearAll();
+
+            AMSChannel channel = DataHelper.PrepareChannelData();
+
+            AMSChannelSqlAdapter.Instance.Update(channel);
+
+            AMSEvent prevEventData = DataHelper.PrepareEventData(channel.ID);
+
+            prevEventData.StartTime = DateTime.Now.AddHours(-2);
+            prevEventData.EndTime = DateTime.Now.AddHours(-1);
+
+            AMSEventSqlAdapter.Instance.Update(prevEventData);
+
+            AMSEvent nextEventData = DataHelper.PrepareEventData(channel.ID);
+
+            nextEventData.StartTime = DateTime.Now.AddMinutes(30);
+            nextEventData.EndTime = DateTime.Now.AddHours(3);
+
+            AMSEventSqlAdapter.Instance.Update(prevEventData);
+
+            AMSChannelCollection needToStopChannels = AMSChannelSqlAdapter.Instance.LoadNeedStopChannels(TimeSpan.FromHours(1));
+
+            needToStopChannels.Output();
+            Assert.AreEqual(1, needToStopChannels.Count);
+        }
     }
 }
