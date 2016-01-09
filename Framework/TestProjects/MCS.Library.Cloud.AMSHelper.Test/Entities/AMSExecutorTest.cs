@@ -75,5 +75,31 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
 
             executor.Execute();
         }
+
+        [TestMethod]
+        public void AddChannelInEventExecutor()
+        {
+            AMSEventSqlAdapter.Instance.ClearAll();
+            AMSChannelSqlAdapter.Instance.ClearAll();
+
+            AMSChannel channel = DataHelper.PrepareChannelData();
+            AMSChannelSqlAdapter.Instance.Update(channel);
+
+            AMSEvent eventData = DataHelper.PrepareEventData(channel.ID);
+
+            AMSEventSqlAdapter.Instance.Update(eventData);
+
+            AMSChannel newChannel = DataHelper.PrepareChannelData();
+            AMSChannelSqlAdapter.Instance.Update(newChannel);
+
+            AMSAddChannelInEventExecutor executor = new AMSAddChannelInEventExecutor(eventData.ID, newChannel.ID);
+
+            executor.Execute();
+
+            AMSChannelCollection channels = AMSEventSqlAdapter.Instance.LoadRelativeChannels(eventData.ID);
+
+            Console.WriteLine("Channels: {0}", channels.Count);
+            Assert.AreEqual(2, channels.Count);
+        }
     }
 }

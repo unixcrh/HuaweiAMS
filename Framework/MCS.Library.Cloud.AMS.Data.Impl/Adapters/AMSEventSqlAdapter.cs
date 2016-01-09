@@ -162,6 +162,20 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
             return DbHelper.RunSql(sql, this.GetConnectionName());
         }
 
+        public AMSChannelCollection LoadRelativeChannels(string eventID)
+        {
+            eventID.CheckStringIsNullOrEmpty("eventID");
+
+            WhereSqlClauseBuilder builder = new WhereSqlClauseBuilder();
+
+            builder.AppendItem("EC.EventID", eventID);
+
+            string sql = string.Format("SELECT C.* FROM AMS.Channels C INNER JOIN AMS.EventsChannels EC ON C.ID = EC.ChannelID WHERE {0}",
+                builder.ToSqlString(TSqlBuilder.Instance));
+
+            return this.QueryData<AMSChannel, AMSChannelCollection>(ORMapping.GetMappingInfo<AMSChannel>(), sql);
+        }
+
         /// <summary>
         /// 在一个事件下增加频道(UI上用于频道列表)
         /// </summary>
