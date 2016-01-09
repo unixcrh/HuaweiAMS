@@ -105,6 +105,9 @@
     <Build Include="..\AMSDB\AMS\Procedures\InitEvents.sql">
       <Link>AMS\Procedures\InitEvents.sql</Link>
     </Build>
+    <Build Include="..\AMSDB\AMS\Procedures\InitEventsChannels.sql">
+      <Link>AMS\Procedures\InitEventsChannels.sql</Link>
+    </Build>
     <PostDeploy Include="..\AMSDB\Scripts\PostDeployment.sql">
       <Link>Scripts\PostDeployment.sql</Link>
     </PostDeploy>
