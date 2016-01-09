@@ -26,7 +26,7 @@ namespace MCS.Library.Cloud.AMS.Data.Executors
             }
             catch (System.Data.SqlClient.SqlException ex)
             {
-                if (ex.ErrorCode == 2627)
+                if (ex.Number == 2627)
                     throw new SystemSupportException(string.Format("在事件{0}中不能增加重复的频道", this.EventID));
                 else
                     throw;

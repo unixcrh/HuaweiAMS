@@ -17,6 +17,18 @@ namespace MCS.Library.Cloud.AMS.Data.Executors
         {
         }
 
+        public AMSDeleteChannelsInEventExecutor(string eventID, bool includeDefault, params string[] channelIDs)
+            : base(eventID, channelIDs, AMSOperationType.DeleteChannelsInEvent)
+        {
+            this.IncludeDefault = includeDefault;
+        }
+
+        public bool IncludeDefault
+        {
+            get;
+            private set;
+        }
+
         protected override object DoOperation(AMSOperationContext context)
         {
             return AMSEventSqlAdapter.Instance.DeleteChannels(this.EventID, this.ChannelIDs);

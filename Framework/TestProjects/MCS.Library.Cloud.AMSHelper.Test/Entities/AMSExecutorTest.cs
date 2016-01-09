@@ -98,7 +98,91 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
 
             AMSChannelCollection channels = AMSEventSqlAdapter.Instance.LoadRelativeChannels(eventData.ID);
 
-            Console.WriteLine("Channels: {0}", channels.Count);
+            channels.Output();
+            Assert.AreEqual(2, channels.Count);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(SystemSupportException))]
+        public void AddDuplicateChannelInEventExecutor()
+        {
+            AMSEventSqlAdapter.Instance.ClearAll();
+            AMSChannelSqlAdapter.Instance.ClearAll();
+
+            AMSChannel channel = DataHelper.PrepareChannelData();
+            AMSChannelSqlAdapter.Instance.Update(channel);
+
+            AMSEvent eventData = DataHelper.PrepareEventData(channel.ID);
+
+            AMSEventSqlAdapter.Instance.Update(eventData);
+
+            AMSChannel newChannel = DataHelper.PrepareChannelData();
+            newChannel.ID = channel.ID;
+            AMSChannelSqlAdapter.Instance.Update(newChannel);
+
+            AMSAddChannelInEventExecutor executor = new AMSAddChannelInEventExecutor(eventData.ID, newChannel.ID);
+
+            executor.Execute();
+
+            AMSChannelCollection channels = AMSEventSqlAdapter.Instance.LoadRelativeChannels(eventData.ID);
+
+            channels.Output();
+            Assert.AreEqual(2, channels.Count);
+        }
+
+        [TestMethod]
+        public void DeleteChannelInEventExecutor()
+        {
+            AMSEventSqlAdapter.Instance.ClearAll();
+            AMSChannelSqlAdapter.Instance.ClearAll();
+
+            AMSChannel channel = DataHelper.PrepareChannelData();
+            AMSChannelSqlAdapter.Instance.Update(channel);
+
+            AMSEvent eventData = DataHelper.PrepareEventData(channel.ID);
+
+            AMSEventSqlAdapter.Instance.Update(eventData);
+
+            AMSChannel newChannel = DataHelper.PrepareChannelData();
+            AMSChannelSqlAdapter.Instance.Update(newChannel);
+
+            AMSEventSqlAdapter.Instance.AddChannel(eventData.ID, new string[] { newChannel.ID });
+
+            AMSDeleteChannelsInEventExecutor executor = new AMSDeleteChannelsInEventExecutor(eventData.ID, newChannel.ID);
+
+            executor.Execute();
+
+            AMSChannelCollection channels = AMSEventSqlAdapter.Instance.LoadRelativeChannels(eventData.ID);
+
+            channels.Output();
+            Assert.AreEqual(1, channels.Count);
+        }
+
+        [TestMethod]
+        public void DeleteDefaultChannelInEventExecutor()
+        {
+            AMSEventSqlAdapter.Instance.ClearAll();
+            AMSChannelSqlAdapter.Instance.ClearAll();
+
+            AMSChannel channel = DataHelper.PrepareChannelData();
+            AMSChannelSqlAdapter.Instance.Update(channel);
+
+            AMSEvent eventData = DataHelper.PrepareEventData(channel.ID);
+
+            AMSEventSqlAdapter.Instance.Update(eventData);
+
+            AMSChannel newChannel = DataHelper.PrepareChannelData();
+            AMSChannelSqlAdapter.Instance.Update(newChannel);
+
+            AMSEventSqlAdapter.Instance.AddChannel(eventData.ID, new string[] { newChannel.ID });
+
+            AMSDeleteChannelsInEventExecutor executor = new AMSDeleteChannelsInEventExecutor(eventData.ID, channel.ID);
+
+            executor.Execute();
+
+            AMSChannelCollection channels = AMSEventSqlAdapter.Instance.LoadRelativeChannels(eventData.ID);
+
+            channels.Output();
             Assert.AreEqual(2, channels.Count);
         }
     }

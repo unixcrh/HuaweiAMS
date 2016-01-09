@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MCS.Library.Cloud.AMS.Data.Impl.DataSources
 {
-    public class AMSChannelDataSource : ObjectDataSourceQueryAdapterBase<AMSChannel, AMSChannelCollection>
+    public class AMSChannelInEventDataSource : ObjectDataSourceQueryAdapterBase<AMSChannelInEvent, AMSChannelInEventCollection>
     {
         protected override string GetConnectionName()
         {

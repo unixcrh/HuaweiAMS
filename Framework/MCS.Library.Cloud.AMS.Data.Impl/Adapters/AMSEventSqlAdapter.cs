@@ -5,6 +5,7 @@ using MCS.Library.Data.Builder;
 using MCS.Library.Data.Mapping;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -170,10 +171,23 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
 
             builder.AppendItem("EC.EventID", eventID);
 
-            string sql = string.Format("SELECT C.* FROM AMS.Channels C INNER JOIN AMS.EventsChannels EC ON C.ID = EC.ChannelID WHERE {0}",
+            string sql = string.Format("SELECT C.*, EC.IsDefault FROM AMS.Channels C INNER JOIN AMS.EventsChannels EC ON C.ID = EC.ChannelID WHERE {0} ORDER BY EC.IsDefault DESC",
                 builder.ToSqlString(TSqlBuilder.Instance));
 
-            return this.QueryData<AMSChannel, AMSChannelCollection>(ORMapping.GetMappingInfo<AMSChannel>(), sql);
+            DataTable table = DbHelper.RunSqlReturnDS(sql, this.GetConnectionName()).Tables[0];
+
+            AMSChannelCollection channels = new AMSChannelCollection();
+
+            foreach (DataRow row in table.Rows)
+            {
+                AMSChannelInEvent channel = new AMSChannelInEvent();
+
+                ORMapping.DataRowToObject(row, channel);
+
+                channels.Add(channel);
+            }
+
+            return channels;
         }
 
         /// <summary>
@@ -218,18 +232,31 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
         /// </summary>
         /// <param name="eventID"></param>
         /// <param name="channelIDs"></param>
-        public int DeleteChannels(string eventID, IEnumerable<string> channelIDs)
+        /// <param name="includeDefault">是否包含默认频道</param>
+        public int DeleteChannels(string eventID, IEnumerable<string> channelIDs, bool includeDefault = false)
         {
             eventID.CheckStringIsNullOrEmpty("eventID");
             channelIDs.NullCheck("channelIDs");
 
             InSqlClauseBuilder builder = new InSqlClauseBuilder("ChannelID");
 
+            channelIDs.ForEach(channelID => builder.AppendItem(channelID));
+
             ORMappingItemCollection mappings = ORMapping.GetMappingInfo(typeof(AMSEventChannel));
 
             string sql = string.Format("DELETE {0} WHERE {1}", mappings.TableName, builder.ToSqlStringWithInOperator(TSqlBuilder.Instance));
 
-            return DbHelper.RunSql(sql, this.GetConnectionName());
+            int result = 0;
+
+            if (builder.IsEmpty == false)
+            {
+                if (includeDefault == false)
+                    sql += " AND IsDefault <> 1";
+
+                result = DbHelper.RunSql(sql, this.GetConnectionName());
+            }
+
+            return result;
         }
 
         protected override string GetInsertSql(AMSEvent data, ORMappingItemCollection mappings, Dictionary<string, object> context)
