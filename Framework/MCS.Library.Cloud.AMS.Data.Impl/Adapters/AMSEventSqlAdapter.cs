@@ -154,6 +154,82 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
         }
 
         /// <summary>
+        /// 根据每一个频道（节目）的状态的汇总来设置整个事件的运行状态
+        /// </summary>
+        /// <param name="eventID"></param>
+        /// <returns></returns>
+        public int UpdateRunningStateByChannels(string eventID)
+        {
+            eventID.CheckStringIsNullOrEmpty("eventID");
+
+            bool allRunning = true;
+
+            AMSEventChannelCollection ecs = this.LoadEventAndChannel(eventID);
+
+            foreach (AMSEventChannel ec in ecs)
+            {
+                if (ec.State != AMSEventState.Running)
+                {
+                    allRunning = false;
+                    break;
+                }
+            }
+
+            int result = 0;
+
+            if (allRunning)
+                result = this.UpdateState(eventID, AMSEventState.Running);
+
+            return result;
+        }
+
+        public int UpdateCompletedStateByChannels(string eventID)
+        {
+            eventID.CheckStringIsNullOrEmpty("eventID");
+
+            bool allCompleted = true;
+
+            AMSEventChannelCollection ecs = this.LoadEventAndChannel(eventID);
+
+            foreach (AMSEventChannel ec in ecs)
+            {
+                if (ec.State != AMSEventState.Completed)
+                {
+                    allCompleted = false;
+                    break;
+                }
+            }
+
+            int result = 0;
+
+            if (allCompleted)
+                result = this.UpdateState(eventID, AMSEventState.Completed);
+
+            return result;
+        }
+
+        public int UpdateEventChannelState(string eventID, string channelID, AMSEventState state)
+        {
+            eventID.CheckStringIsNullOrEmpty("eventID");
+            channelID.CheckStringIsNullOrEmpty("channelID");
+
+            WhereSqlClauseBuilder wBuilder = new WhereSqlClauseBuilder();
+
+            wBuilder.AppendItem("EventID", eventID);
+            wBuilder.AppendItem("ChannelID", channelID);
+
+            ORMappingItemCollection mappings = ORMapping.GetMappingInfo<AMSEventChannel>();
+
+            SqlClauseBuilderBase uBuilder = new UpdateSqlClauseBuilder().AppendItem("State", state.ToString());
+
+            string sql = string.Format("UPDATE {0} SET {1} WHERE {2}",
+                mappings.TableName, uBuilder.ToSqlString(TSqlBuilder.Instance),
+                wBuilder.ToSqlString(TSqlBuilder.Instance));
+
+            return DbHelper.RunSql(sql, this.GetConnectionName());
+        }
+
+        /// <summary>
         /// 更新某一状态下所有时间的完成时间
         /// </summary>
         /// <param name="endTime"></param>
@@ -174,6 +250,15 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
             return DbHelper.RunSql(sql, this.GetConnectionName());
         }
 
+        public int UpdateEventChannel(AMSEventChannel ec)
+        {
+            ec.NullCheck("ec");
+
+            string sql = ORMapping.GetUpdateSql(ec, TSqlBuilder.Instance);
+
+            return DbHelper.RunSql(sql, this.GetConnectionName());
+        }
+
         public AMSChannelCollection LoadRelativeChannels(string eventID)
         {
             eventID.CheckStringIsNullOrEmpty("eventID");
@@ -182,7 +267,7 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
 
             builder.AppendItem("EC.EventID", eventID);
 
-            string sql = string.Format("SELECT C.*, EC.IsDefault FROM AMS.Channels C INNER JOIN AMS.EventsChannels EC ON C.ID = EC.ChannelID WHERE {0} ORDER BY EC.IsDefault DESC",
+            string sql = string.Format("SELECT C.*, EC.DefaultPlaybackUrl, EC.CDNPlaybackUrl, EC.IsDefault FROM AMS.Channels C INNER JOIN AMS.EventsChannels EC ON C.ID = EC.ChannelID WHERE {0} ORDER BY EC.IsDefault DESC",
                 builder.ToSqlString(TSqlBuilder.Instance));
 
             DataTable table = DbHelper.RunSqlReturnDS(sql, this.GetConnectionName()).Tables[0];
@@ -199,6 +284,20 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
             }
 
             return channels;
+        }
+
+        public AMSEventChannelCollection LoadEventAndChannel(string eventID)
+        {
+            eventID.CheckStringIsNullOrEmpty("eventID");
+
+            WhereSqlClauseBuilder builder = new WhereSqlClauseBuilder();
+
+            builder.AppendItem("EventID", eventID);
+
+            string sql = string.Format("SELECT * FROM AMS.EventsChannels WHERE {0} ORDER BY IsDefault DESC",
+                builder.ToSqlString(TSqlBuilder.Instance));
+
+            return this.QueryData<AMSEventChannel, AMSEventChannelCollection>(ORMapping.GetMappingInfo<AMSEventChannel>(), sql);
         }
 
         /// <summary>

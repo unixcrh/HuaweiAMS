@@ -1,4 +1,5 @@
-﻿using MCS.Library.Data.DataObjects;
+﻿using MCS.Library.Cloud.AMS.Data.Contracts;
+using MCS.Library.Data.DataObjects;
 using MCS.Library.Data.Mapping;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
     [Serializable]
     [DataContract]
     [ORTableMapping("AMS.EventsChannels")]
-    public class AMSEventChannel
+    public class AMSEventChannel : IProgramRelativeEntity
     {
         [DataMember]
         [ORFieldMapping("EventID", PrimaryKey = true)]

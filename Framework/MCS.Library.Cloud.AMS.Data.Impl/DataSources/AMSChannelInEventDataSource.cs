@@ -19,6 +19,9 @@ namespace MCS.Library.Cloud.AMS.Data.Impl.DataSources
 
         protected override void OnBuildQueryCondition(QueryCondition qc)
         {
+            qc.FromClause = "AMS.Channels C INNER JOIN AMS.EventsChannels EC ON C.ID = EC.ChannelID";
+            qc.SelectFields = "C.*, EC.DefaultPlaybackUrl, EC.CDNPlaybackUrl, EC.IsDefault";
+
             if (qc.OrderByClause.IsNullOrEmpty())
                 qc.OrderByClause = "IsDefault DESC";
         }

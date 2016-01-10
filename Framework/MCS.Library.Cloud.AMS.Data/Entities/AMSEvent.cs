@@ -1,4 +1,5 @@
-﻿using MCS.Library.Cloud.AMS.Data.Validators;
+﻿using MCS.Library.Cloud.AMS.Data.Contracts;
+using MCS.Library.Cloud.AMS.Data.Validators;
 using MCS.Library.Data.DataObjects;
 using MCS.Library.Data.Mapping;
 using MCS.Library.Validation;
@@ -14,7 +15,7 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
     [Serializable]
     [DataContract]
     [ORTableMapping("AMS.Events")]
-    public class AMSEvent
+    public class AMSEvent : IProgramRelativeEntity
     {
         [DataMember]
         [ORFieldMapping("ID", PrimaryKey = true)]

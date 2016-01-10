@@ -38,6 +38,15 @@ namespace MCS.Library.Cloud.AMS.Worker.Configuration
             }
         }
 
+        [ConfigurationProperty("enableSimulation", DefaultValue = false, IsRequired = false)]
+        public bool EnableSimulation
+        {
+            get
+            {
+                return (bool)this["enableSimulation"];
+            }
+        }
+
         [ConfigurationProperty("durations", IsRequired = false)]
         public AMSWorkerDurationConfigurationElementCollection Durations
         {

@@ -1,4 +1,5 @@
-﻿using MCS.Library.Cloud.AMS.Data.Entities;
+﻿using MCS.Library.Cloud.AMS.Data.Contracts;
+using MCS.Library.Cloud.AMS.Data.Entities;
 using MCS.Library.Cloud.AMS.Data.Mechanism;
 using MCS.Library.Cloud.AMSHelper.Configuration;
 using MCS.Library.Core;
@@ -54,7 +55,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
             }
         }
 
-        public static void StartProgram(AMSChannel channel, AMSEvent eventData)
+        public static void StartProgram(AMSChannel channel, AMSEvent eventData, IProgramRelativeEntity retProgramInfo)
         {
             if (channel != null && channel.AMSID.IsNotEmpty())
             {
@@ -72,12 +73,12 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
                     if (channel.State == AMSChannelState.Running && program.State == ProgramState.Stopped)
                         TraceOperation("Start Program", () => program.Start());
 
-                    program.FillAMSEvent(channel, eventData);
+                    program.FillAMSEvent(channel, retProgramInfo);
                 }
             }
         }
 
-        public static void StopProgram(AMSChannel channel, AMSEvent eventData)
+        public static void StopProgram(AMSChannel channel, AMSEvent eventData, IProgramRelativeEntity retProgramInfo)
         {
             if (channel != null && channel.AMSID.IsNotEmpty())
             {
@@ -94,13 +95,13 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
                         if (program.State == ProgramState.Running)
                             TraceOperation("Stop Program", () => program.Stop());
 
-                        program.FillAMSEvent(channel, eventData);
+                        program.FillAMSEvent(channel, retProgramInfo);
 
-                        if (eventData.State == AMSEventState.NotStart)
-                            eventData.State = AMSEventState.Completed;
+                        if (retProgramInfo.State == AMSEventState.NotStart)
+                            retProgramInfo.State = AMSEventState.Completed;
                     }
                     else
-                        eventData.State = AMSEventState.Completed;
+                        retProgramInfo.State = AMSEventState.Completed;
                 }
             }
         }

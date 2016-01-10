@@ -36,6 +36,9 @@ namespace MCS.Library.Cloud.AMS.Worker.Test
                     case "addevent":
                         DataHelper.AddEvent(DataHelper.TestChannelName);
                         break;
+                    case "addtwochannelsevent":
+                        DataHelper.AddEvent(DataHelper.TestChannelName, DataHelper.TestChannel2Name);
+                        break;
                     case "addmooncakeevent":
                         DataHelper.AddEvent(DataHelper.MooncakeTestChannelName);
                         break;

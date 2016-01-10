@@ -1,4 +1,5 @@
-﻿using MCS.Library.Cloud.AMS.Data.Entities;
+﻿using MCS.Library.Cloud.AMS.Data.Contracts;
+using MCS.Library.Cloud.AMS.Data.Entities;
 using MCS.Library.Core;
 using Microsoft.WindowsAzure.MediaServices.Client;
 using System;
@@ -56,7 +57,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
             }
         }
 
-        public static void FillAMSEvent(this IProgram program, AMSChannel channel, AMSEvent eventData)
+        public static void FillAMSEvent(this IProgram program, AMSChannel channel, IProgramRelativeEntity eventData)
         {
             if (program != null)
             {

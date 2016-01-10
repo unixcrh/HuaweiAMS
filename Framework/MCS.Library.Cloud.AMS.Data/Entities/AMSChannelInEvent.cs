@@ -17,6 +17,18 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
             get;
             set;
         }
+
+        public string DefaultPlaybackUrl
+        {
+            get;
+            set;
+        }
+
+        public string CDNPlaybackUrl
+        {
+            get;
+            set;
+        }
     }
 
     [Serializable]

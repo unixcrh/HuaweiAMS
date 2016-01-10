@@ -59,6 +59,7 @@
     <Compile Include="Configuration\AMSDataAdapterSettings.cs" />
     <Compile Include="Configuration\AMSLockSettings.cs" />
     <Compile Include="Contracts\IAMSChannelAdapter.cs" />
+    <Compile Include="Contracts\IProgramRelativeEntity.cs" />
     <Compile Include="Entities\AMSAdmin.cs" />
     <Compile Include="Entities\AMSChannel.cs" />
     <Compile Include="Entities\AMSChannelInEvent.cs" />
