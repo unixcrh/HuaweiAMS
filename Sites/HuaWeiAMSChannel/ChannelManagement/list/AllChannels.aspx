@@ -74,11 +74,11 @@
                     <asp:BoundField DataField="Name" HeaderText="名称">
                         <ItemStyle HorizontalAlign="Left" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="AMSAccountName" HeaderText="媒体账户">
-                        <ItemStyle HorizontalAlign="Left" />
+                    <asp:BoundField DataField="AMSAccountName" HeaderText="媒体账户" HeaderStyle-CssClass="visible-md visible-lg hidden-sm">
+                        <ItemStyle HorizontalAlign="Left" CssClass="visible-md visible-lg hidden-sm" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="Description" HeaderText="描述">
-                        <ItemStyle HorizontalAlign="Left" />
+                    <asp:BoundField DataField="Description" HeaderText="描述" HeaderStyle-CssClass="visible-md visible-lg hidden-sm">
+                        <ItemStyle HorizontalAlign="Left" CssClass="visible-md visible-lg hidden-sm" />
                     </asp:BoundField>
                     <asp:BoundField DataField="State" HeaderText="状态">
                         <ItemStyle HorizontalAlign="Left" />

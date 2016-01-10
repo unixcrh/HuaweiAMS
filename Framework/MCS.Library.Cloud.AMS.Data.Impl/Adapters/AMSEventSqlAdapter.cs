@@ -60,6 +60,14 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
             return this.QueryData(sql).SingleOrDefault();
         }
 
+        public AMSChannelCollection LoadUnusedChannels(string eventID)
+        {
+            string sql = string.Format("SELECT C.* FROM AMS.Channels C WHERE C.ID NOT IN (SELECT ChannelID FROM AMS.EventsChannels WHERE EventID = {0})",
+                TSqlBuilder.Instance.CheckUnicodeQuotationMark(eventID));
+
+            return this.QueryData<AMSChannel, AMSChannelCollection>(ORMapping.GetMappingInfo<AMSChannel>(), sql);
+        }
+
         /// <summary>
         /// 判断同一频道下是否有时间交叉的事件
         /// </summary>

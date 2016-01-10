@@ -22,6 +22,15 @@ namespace ChannelManagement.list {
         protected global::System.Web.UI.HtmlControls.HtmlForm serverForm;
         
         /// <summary>
+        /// ChannelHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ChannelManagement.Templates.ChannelHeader ChannelHeader;
+        
+        /// <summary>
         /// addChannelButton control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace ChannelManagement.list {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor addChannelButton;
+        
+        /// <summary>
+        /// deleteEventButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button deleteEventButton;
         
         /// <summary>
         /// dataGrid control.
@@ -56,5 +74,23 @@ namespace ChannelManagement.list {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton refreshBtn;
+        
+        /// <summary>
+        /// unusedChannels control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList unusedChannels;
+        
+        /// <summary>
+        /// postAddChannelBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton postAddChannelBtn;
     }
 }

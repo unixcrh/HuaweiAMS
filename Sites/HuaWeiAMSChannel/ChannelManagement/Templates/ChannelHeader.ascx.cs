@@ -69,6 +69,22 @@ namespace ChannelManagement.Templates
             }
         }
 
+        public BreadcrumbItemCollection Items
+        {
+            get
+            {
+                BreadcrumbItemCollection result = (BreadcrumbItemCollection)this.ViewState["Items"];
+
+                if (result == null)
+                {
+                    result = new BreadcrumbItemCollection();
+                    this.ViewState["Items"] = result;
+                }
+
+                return result;
+            }
+        }
+
         protected override void OnPreRender(EventArgs e)
         {
             this.RenderBreadcrumbTrail();
@@ -80,17 +96,30 @@ namespace ChannelManagement.Templates
         {
             this.header.Controls.Clear();
 
+            BreadcrumbItemCollection items = this.Items;
+
+            if (items.Count == 0)
+                items = BuildDefaultItems();
+
+            items.ForEach(item => AddItem(this.header, item.Name, this.ResolveUrl(item.Url)));
+        }
+
+        private BreadcrumbItemCollection BuildDefaultItems()
+        {
+            BreadcrumbItemCollection result = new BreadcrumbItemCollection();
+
             if (this.Channel != null)
             {
-                AddItem(this.header, this.Channel.Name, this.ResolveUrl("~/list/AllChannels.aspx"));
+                result.Add(new BreadcrumbItem() { Name = this.Channel.Name, Url = "~/list/AllChannels.aspx" });
 
                 if (this.Event != null)
-                    AddItem(this.header, "事件列表", this.ResolveUrl(string.Format("~/list/EventsInChannel.aspx?channelID={0}", this.Channel.ID)));
+                    result.Add(new BreadcrumbItem() { Name = "事件列表", Url = string.Format("~/list/EventsInChannel.aspx?channelID={0}", this.Channel.ID) });
             }
 
-
             if (this.CurrentName.IsNotEmpty())
-                AddItem(this.header, this.CurrentName, string.Empty);
+                result.Add(new BreadcrumbItem() { Name = this.CurrentName, Url = string.Empty });
+
+            return result;
         }
 
         private static void AddItem(Control parent, string name, string link)

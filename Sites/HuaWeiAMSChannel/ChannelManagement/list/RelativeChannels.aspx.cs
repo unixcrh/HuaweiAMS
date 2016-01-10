@@ -1,4 +1,7 @@
-﻿using MCS.Library.Cloud.AMS.Data.Conditions;
+﻿using MCS.Library.Cloud.AMS.Data.Adapters;
+using MCS.Library.Cloud.AMS.Data.Conditions;
+using MCS.Library.Cloud.AMS.Data.Executors;
+using MCS.Library.Core;
 using MCS.Web.Responsive.Library;
 using MCS.Web.Responsive.Library.Resources;
 using System;
@@ -27,9 +30,9 @@ namespace ChannelManagement.list
                     this.QueryCondition = new ChannelInEventQueryCondition();
 
                     this.QueryCondition.EventID = this.EventID;
+                    this.unusedChannels.DataSource = AMSEventSqlAdapter.Instance.LoadUnusedChannels(this.EventID);
+                    this.unusedChannels.DataBind();
                 }
-
-                //this.bindingControl.Data = this.QueryCondition;
             }
         }
 
@@ -49,8 +52,16 @@ namespace ChannelManagement.list
         {
             get
             {
-                return MCS.Web.Responsive.Library.Request.GetRequestQueryString("eventID", string.Empty);
+                return MCS.Web.Responsive.Library.Request.GetRequestQueryString("id", string.Empty);
             }
+        }
+
+        protected override void OnPreRender(EventArgs e)
+        {
+            if (this.ChannelHeader.Event != null)
+                ChannelHeader.CurrentName = this.ChannelHeader.Event.Name;
+
+            base.OnPreRender(e);
         }
 
         protected void eventChannelDataSource_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
@@ -70,6 +81,36 @@ namespace ChannelManagement.list
             this.dataGrid.SelectedKeys.Clear();
 
             this.dataGrid.DataBind();
+        }
+
+        protected void postAddChannelBtn_Click(object sender, EventArgs e)
+        {
+            string channelID = this.unusedChannels.SelectedValue;
+
+            if (channelID.IsNotEmpty())
+            {
+                AMSAddChannelInEventExecutor executor = new AMSAddChannelInEventExecutor(this.EventID, channelID);
+
+                executor.Execute();
+
+                this.RefreshChannelsAndList();
+            }
+        }
+
+        protected void deleteChannelButton_Click(object sender, EventArgs e)
+        {
+            AMSDeleteChannelsInEventExecutor executor = new AMSDeleteChannelsInEventExecutor(this.EventID, this.dataGrid.SelectedKeys.ToArray());
+
+            executor.Execute();
+
+            this.RefreshChannelsAndList();
+        }
+
+        private void RefreshChannelsAndList()
+        {
+            this.unusedChannels.DataSource = AMSEventSqlAdapter.Instance.LoadUnusedChannels(this.EventID);
+            this.unusedChannels.DataBind();
+            this.InnerRefreshList();
         }
     }
 }

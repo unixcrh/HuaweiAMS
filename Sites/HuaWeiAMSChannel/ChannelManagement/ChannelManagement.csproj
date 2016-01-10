@@ -272,6 +272,7 @@
       <DependentUpon>RelativeChannels.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates\BreadcrumbItem.cs" />
     <Compile Include="Templates\ChannelHeader.ascx.cs">
       <DependentUpon>ChannelHeader.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
