@@ -83,9 +83,6 @@
                     <asp:BoundField DataField="State" HeaderText="状态">
                         <ItemStyle HorizontalAlign="Left" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="State" HeaderText="状态">
-                        <ItemStyle HorizontalAlign="Left" />
-                    </asp:BoundField>
                     <asp:TemplateField HeaderText="地址">
                         <ItemTemplate>
                             <%--<a class="btn btn-xs btn-info" onclick="onCopyRtmpClick(this);">

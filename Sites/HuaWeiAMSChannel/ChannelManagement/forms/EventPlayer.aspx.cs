@@ -28,9 +28,9 @@ namespace ChannelManagement.forms
         }
 
         [ControllerMethod]
-        protected void InitByEventID(string id)
+        protected void InitByEventID(string id, string channelID)
         {
-            AMSEvent eventData = AMSEventSqlAdapter.Instance.LoadByID(id);
+            AMSEvent eventData = AMSEventSqlAdapter.Instance.Load(id, channelID);
 
             eventData.NullCheck(string.Format("不能找到ID为{0}的事件", id));
 

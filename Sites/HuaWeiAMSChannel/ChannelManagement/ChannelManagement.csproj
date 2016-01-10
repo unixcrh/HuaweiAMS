@@ -162,6 +162,7 @@
     <Content Include="css\fonts\azuremediaplayer.eot" />
     <Content Include="css\fonts\azuremediaplayer.woff" />
     <Content Include="images\Huawei.png" />
+    <Content Include="list\RelativeChannels.aspx" />
     <Content Include="scripts\jquery-2.1.4.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -262,6 +263,13 @@
     </Compile>
     <Compile Include="list\EventsInChannel.aspx.designer.cs">
       <DependentUpon>EventsInChannel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="list\RelativeChannels.aspx.cs">
+      <DependentUpon>RelativeChannels.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="list\RelativeChannels.aspx.designer.cs">
+      <DependentUpon>RelativeChannels.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates\ChannelHeader.ascx.cs">

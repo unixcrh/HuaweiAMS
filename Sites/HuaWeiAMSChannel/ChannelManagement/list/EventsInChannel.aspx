@@ -60,6 +60,7 @@
                     <asp:BoundField DataField="State" HeaderText="状态" SortExpression="State">
                         <ItemStyle HorizontalAlign="Left" />
                     </asp:BoundField>
+                    <asp:HyperLinkField HeaderText="频道" Text="查看..." DataNavigateUrlFields="ID" DataNavigateUrlFormatString="RelativeChannels.aspx?eventID={0}" />
                     <asp:TemplateField HeaderText="操作">
                         <ItemTemplate>
                             <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
