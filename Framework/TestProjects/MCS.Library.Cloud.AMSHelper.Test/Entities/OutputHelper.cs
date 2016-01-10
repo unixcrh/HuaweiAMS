@@ -20,7 +20,11 @@ namespace MCS.Library.Cloud.AMSHelper.Test.Entities
                 Console.WriteLine("AMSID: {0}", channel.AMSID);
 
                 if (channel is AMSChannelInEvent)
+                { 
                     Console.WriteLine("IsDefault: {0}", ((AMSChannelInEvent)channel).IsDefault);
+                    Console.WriteLine("DefaultPlaybackUrl: {0}", ((AMSChannelInEvent)channel).DefaultPlaybackUrl);
+                    Console.WriteLine("CDNPlaybackUrl: {0}", ((AMSChannelInEvent)channel).CDNPlaybackUrl);
+                }
             }
         }
 
