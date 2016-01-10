@@ -36,6 +36,27 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
         }
 
         /// <summary>
+        /// 根据EventID和ChannelID从Events和EventsChannels中合并查询
+        /// </summary>
+        /// <param name="eventID"></param>
+        /// <param name="channelID"></param>
+        /// <returns></returns>
+        public AMSEvent Load(string eventID, string channelID)
+        {
+            eventID.CheckStringIsNullOrEmpty("eventID");
+            channelID.CheckStringIsNullOrEmpty("channelID");
+
+            WhereSqlClauseBuilder builder = new WhereSqlClauseBuilder();
+
+            builder.AppendItem("ID", eventID).AppendItem("ChannelID", channelID);
+
+            string sql = string.Format("SELECT * FROM AMS.EventsChannelsView WHERE {0}",
+                builder.ToSqlString(TSqlBuilder.Instance));
+
+            return this.QueryData(sql).SingleOrDefault();
+        }
+
+        /// <summary>
         /// 判断同一频道下是否有时间交叉的事件
         /// </summary>
         /// <param name="eventData"></param>
@@ -267,7 +288,7 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
 
             builder.AppendItem("EC.EventID", eventID);
 
-            string sql = string.Format("SELECT C.*, EC.DefaultPlaybackUrl, EC.CDNPlaybackUrl, EC.IsDefault FROM AMS.Channels C INNER JOIN AMS.EventsChannels EC ON C.ID = EC.ChannelID WHERE {0} ORDER BY EC.IsDefault DESC",
+            string sql = string.Format("SELECT C.*, EC.EventID, EC.DefaultPlaybackUrl, EC.CDNPlaybackUrl, EC.IsDefault FROM AMS.Channels C INNER JOIN AMS.EventsChannels EC ON C.ID = EC.ChannelID WHERE {0} ORDER BY EC.IsDefault DESC",
                 builder.ToSqlString(TSqlBuilder.Instance));
 
             DataTable table = DbHelper.RunSqlReturnDS(sql, this.GetConnectionName()).Tables[0];

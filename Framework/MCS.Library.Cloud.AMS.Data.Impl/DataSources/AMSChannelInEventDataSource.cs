@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MCS.Library.Cloud.AMS.Data.Impl.DataSources
+namespace MCS.Library.Cloud.AMS.Data.DataSources
 {
     public class AMSChannelInEventDataSource : ObjectDataSourceQueryAdapterBase<AMSChannelInEvent, AMSChannelInEventCollection>
     {
@@ -20,7 +20,7 @@ namespace MCS.Library.Cloud.AMS.Data.Impl.DataSources
         protected override void OnBuildQueryCondition(QueryCondition qc)
         {
             qc.FromClause = "AMS.Channels C INNER JOIN AMS.EventsChannels EC ON C.ID = EC.ChannelID";
-            qc.SelectFields = "C.*, EC.DefaultPlaybackUrl, EC.CDNPlaybackUrl, EC.IsDefault";
+            qc.SelectFields = "C.*, EC.EventID, EC.DefaultPlaybackUrl, EC.CDNPlaybackUrl, EC.IsDefault";
 
             if (qc.OrderByClause.IsNullOrEmpty())
                 qc.OrderByClause = "IsDefault DESC";

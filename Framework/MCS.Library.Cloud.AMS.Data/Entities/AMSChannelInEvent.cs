@@ -12,6 +12,12 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
     [DataContract]
     public class AMSChannelInEvent : AMSChannel
     {
+        public string EventID
+        {
+            get;
+            set;
+        }
+
         public bool IsDefault
         {
             get;

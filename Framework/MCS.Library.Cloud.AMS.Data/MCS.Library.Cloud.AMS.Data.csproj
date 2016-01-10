@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conditions\ChannelInEventQueryCondition.cs" />
     <Compile Include="Conditions\EventQueryCondition.cs" />
     <Compile Include="Configuration\AMSDataAdapterSettings.cs" />
     <Compile Include="Configuration\AMSLockSettings.cs" />
