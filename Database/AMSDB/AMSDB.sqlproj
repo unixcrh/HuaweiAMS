@@ -64,6 +64,7 @@
     <Folder Include="AMS\Tables" />
     <Folder Include="Scripts" />
     <Folder Include="AMS\Procedures" />
+    <Folder Include="AMS\Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Security\AMS.sql" />
@@ -87,6 +88,7 @@
     <Build Include="AMS\Procedures\InitTestChannels.sql" />
     <Build Include="AMS\Tables\EventsChannels.sql" />
     <Build Include="AMS\Procedures\InitEventsChannels.sql" />
+    <Build Include="AMS\Views\EventsChannelsView.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="AMSDB.refactorlog" />

@@ -64,6 +64,7 @@
     <Folder Include="AMS\Tables\" />
     <Folder Include="AMS\Procedures" />
     <Folder Include="Scripts" />
+    <Folder Include="AMS\Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="..\AMSDB\Security\AMS.sql">
@@ -107,6 +108,9 @@
     </Build>
     <Build Include="..\AMSDB\AMS\Procedures\InitEventsChannels.sql">
       <Link>AMS\Procedures\InitEventsChannels.sql</Link>
+    </Build>
+    <Build Include="..\AMSDB\AMS\Views\EventsChannelsView.sql">
+      <Link>AMS\Views\EventsChannelsView.sql</Link>
     </Build>
     <PostDeploy Include="..\AMSDB\Scripts\PostDeployment.sql">
       <Link>Scripts\PostDeployment.sql</Link>
