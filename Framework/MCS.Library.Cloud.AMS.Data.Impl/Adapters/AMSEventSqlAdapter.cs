@@ -41,14 +41,18 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
         /// <param name="eventID"></param>
         /// <param name="channelID"></param>
         /// <returns></returns>
-        public AMSEvent Load(string eventID, string channelID)
+        public AMSEvent Load(string eventID, string channelID = "")
         {
             eventID.CheckStringIsNullOrEmpty("eventID");
-            channelID.CheckStringIsNullOrEmpty("channelID");
 
             WhereSqlClauseBuilder builder = new WhereSqlClauseBuilder();
 
-            builder.AppendItem("ID", eventID).AppendItem("ChannelID", channelID);
+            builder.AppendItem("ID", eventID);
+
+            if (channelID.IsNotEmpty())
+                builder.AppendItem("ChannelID", channelID);
+            else
+                builder.AppendItem("IsDefault", 1);
 
             string sql = string.Format("SELECT * FROM AMS.EventsChannelsView WHERE {0}",
                 builder.ToSqlString(TSqlBuilder.Instance));
