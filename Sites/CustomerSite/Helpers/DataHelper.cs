@@ -74,9 +74,9 @@ namespace CutomerSite.Helpers
             return events;
         }
 
-        public static AMSEvent GetEventByID(string id)
+        public static AMSEvent GetEventByID(string id, string channelID = "")
         {
-            AMSEvent eventData = AMSEventSqlAdapter.Instance.LoadByID(id);
+            AMSEvent eventData = AMSEventSqlAdapter.Instance.Load(id, channelID);
 
             if (eventData != null)
             {
@@ -94,6 +94,7 @@ namespace CutomerSite.Helpers
             var simpleEventData = new
             {
                 id = eventData.ID,
+                channelID = eventData.ChannelID,
                 name = eventData.Name,
                 description = eventData.Description,
                 speakers = eventData.Speakers,
@@ -128,7 +129,7 @@ namespace CutomerSite.Helpers
         {
             string result = url;
 
-            if (channel != null && channel .AlternateCDNEndpoint.IsNotEmpty() && url.IsNotEmpty())
+            if (channel != null && channel.AlternateCDNEndpoint.IsNotEmpty() && url.IsNotEmpty())
             {
                 Uri target = new Uri(url);
 

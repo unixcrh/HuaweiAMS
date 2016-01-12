@@ -56,6 +56,7 @@
         <div>
             <div class="outerVideo">
                 <input type="hidden" id="eventID" />
+                <input type="hidden" id="channelID" />
                 <div class="row">
                     <p id="timeScope"></p>
                 </div>
@@ -70,7 +71,6 @@
                 <div id="videoContainer">
                     <video id="azuremediaplayer" class="azuremediaplayer aazuremediaplayer amp-default-skin amp-big-play-centered" width="100%" height="100%" tabindex="0"></video>
                 </div>
-
                 <div class="outerVideo">
                     <div class="row">
                         <p id="description" />
@@ -79,6 +79,7 @@
             </div>
             <div class="row outerVideo" id="buttonContainer">
                 <a class="btn btn-default" id="switchVideoAddressType" runat="server">切换到备用CDN</a>
+                <select id="channels" runat="server" class="form-control" style="width: 120px; display: inline"></select>
                 <div class="btn btn-default hidden" id="fullscreenBtn">全屏</div>
                 <div class="btn btn-default hidden" id="pauseBtn">暂停</div>
                 <div class="btn btn-default hidden" id="playBtn">播放</div>
@@ -91,15 +92,11 @@
                 <div>
                     <p id="allCookies" runat="server" />
                 </div>
-                <%--<div>
-                    <p>client cookies:</p>
-                    <p id="clientCookies" style="overflow: auto"></p>
-                </div>--%>
             </div>
         </div>
         <script>
             function getServiceUrl() {
-                var url = "../services/QueryService.ashx?opType=SingleEvent&id=" + $("#eventID").val();
+                var url = "../services/QueryService.ashx?opType=SingleEvent&id=" + $("#eventID").val() + "&" + $("#channelID").val();
 
                 return appendTimeOffsetToUrl(url);
             }
@@ -140,9 +137,6 @@
                 }).insertAfter(".vjs-fullscreen-control");
 
                 ams.initMenu();
-                //initLoadData();
-
-                //$("#clientCookies").text(document.cookie);
             });
 
             function initButtons() {
@@ -166,6 +160,11 @@
                 $("#refreshBtn").click(function () {
                     initLoadData();
                 });
+
+                $("channels").change(function () {
+                    $("#channelID").val($("channels").val());
+                    initLoadData();
+                })
             }
 
             function initLoadData() {
@@ -279,6 +278,7 @@
 
             function initData(eventData) {
                 $("#eventID").val(eventData.id);
+                $("#channelID").val(eventData.channelID);
                 $("#timeScope").text(eventData.startTime + "到" + eventData.endTime);
 
                 $("#eventName").text(eventData.name);

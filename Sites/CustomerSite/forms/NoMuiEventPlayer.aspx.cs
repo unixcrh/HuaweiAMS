@@ -21,16 +21,6 @@ namespace CutomerSite.forms
             ControllerHelper.ExecuteMethodByRequest(this);
 
             string agentText = this.Request.UserAgent;
-            //userAgent.InnerText = agentText + " login_uid: ";
-
-            //if (this.User != null)
-            //    userAgent.InnerText += this.User.Identity.Name;
-
-            //userAgent.InnerHtml += "<br/>" + GetCoookies().Replace("\n", "<br/>");
-            //allCookies.InnerHtml = "AllCookies: <br/>";
-
-            //if (this.Request.Headers["Cookie"] != null)
-            //    allCookies.InnerHtml += this.Request.Headers["Cookie"].Replace(";", "<br/>");
 
             if (agentText.IndexOf("android 5", StringComparison.OrdinalIgnoreCase) >= 0 ||
                 agentText.IndexOf("android 6", StringComparison.OrdinalIgnoreCase) >= 0)
@@ -55,25 +45,12 @@ namespace CutomerSite.forms
             set;
         }
 
-        //private static string GetCoookies()
-        //{
-        //    StringBuilder strB = new StringBuilder();
-        //    foreach (string key in HttpContext.Current.Request.Cookies.AllKeys)
-        //    {
-        //        HttpCookie cookie = HttpContext.Current.Request.Cookies.Get(key);
-
-        //        strB.AppendFormat("Name={0}, Value={1}\n", cookie.Name, cookie.Value);
-        //    }
-
-        //    return strB.ToString();
-        //}
-
         [ControllerMethod]
-        protected void InitByEventID(string id)
+        protected void InitByEventID(string id, string channelID)
         {
             if (id.IsNotEmpty())
             {
-                AMSEvent eventData = DataHelper.GetEventByID(id);
+                AMSEvent eventData = DataHelper.GetEventByID(id, channelID);
 
                 if (eventData != null)
                 {
@@ -92,32 +69,22 @@ namespace CutomerSite.forms
         {
             this.RegisterApplicationRoot();
             this.InitAlternateCDNAddress(this.Channel, this.Event);
-
-            //VideoAddressType videoAddressType = WebHelper.GetVideoAddressType();
-
-            //this.videoAddressType.Value = videoAddressType.ToString();
-
-            //VideoAddressType targetType = VideoAddressType.Mooncake;
-
-            //string buttonText = string.Empty;
-
-            //switch (videoAddressType)
-            //{
-            //    case VideoAddressType.Default:
-            //        targetType = VideoAddressType.Mooncake;
-            //        buttonText = "切换到中国CDN";
-            //        break;
-            //    case VideoAddressType.Mooncake:
-            //        targetType = VideoAddressType.Default;
-            //        buttonText = "切换到默认CDN";
-            //        break;
-            //}
-
-            //switchVideoAddressType.HRef = UriHelper.ReplaceUriParams(this.Request.Url.ToString(),
-            //    parameters => parameters["videoAddressType"] = targetType.ToString());
-            //switchVideoAddressType.InnerText = buttonText;
+            this.BindRelativeChannels();
 
             base.OnPreRender(e);
+        }
+
+        private void BindRelativeChannels()
+        {
+            if (this.Event != null)
+            {
+                AMSChannelCollection channels = AMSEventSqlAdapter.Instance.LoadRelativeChannels(this.Event.ID);
+
+                this.channels.DataSource = channels;
+                this.channels.DataValueField = "ID";
+                this.channels.DataTextField = "Name";
+                this.channels.DataBind();
+            }
         }
 
         private void InitAlternateCDNAddress(AMSChannel channel, AMSEvent eventData)

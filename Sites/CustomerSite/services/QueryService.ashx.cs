@@ -54,7 +54,9 @@ namespace CutomerSite.services
                         break;
                     case OperationType.SingleEvent:
                         string eventID = Res.Request.GetRequestQueryString("id", string.Empty);
-                        AMSEvent eventData = DataHelper.GetEventByID(eventID);
+                        string channelID = Res.Request.GetRequestQueryString("channelID", string.Empty);
+
+                        AMSEvent eventData = DataHelper.GetEventByID(eventID, channelID);
 
                         if (eventData != null)
                         {
