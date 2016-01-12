@@ -1,0 +1,126 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AMSExplorer.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="LoginList" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="WAMEPresetXMLFilesCurrentFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CallUpgrade" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="DisplayAssetIDinGrid" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DisplayJobIDinGrid" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="useStorageEncryption" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="useProtectedConfiguration" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="useTransferQueue" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="NbItemsDisplayedInGrid" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="DisplayLiveChannelIDinGrid" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DisplayLiveProgramIDinGrid" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DisplayOriginIDinGrid" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="AutoRefresh" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="AutoRefreshTime" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="LiveKeyFrameInterval" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:02</Value>
+    </Setting>
+    <Setting Name="LiveHLSFragmentsPerSegment" Type="System.Int16" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="CustomPlayerUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://amsplayer.azurewebsites.net/?player=flash&amp;format=smooth&amp;url={manifest url}</Value>
+    </Setting>
+    <Setting Name="CustomPlayerEnabled" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DefaultJobPriority" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="DefaultLocatorDurationDays" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">365</Value>
+    </Setting>
+    <Setting Name="DisplayAssetStorageinGrid" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="PremiumWorkflowPresetXMLFilesCurrentFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="AMEPrice" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1.99</Value>
+    </Setting>
+    <Setting Name="LegacyEncodingPrice" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">1.39</Value>
+    </Setting>
+    <Setting Name="IndexingPrice" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="Currency" Type="System.String" Scope="User">
+      <Value Profile="(Default)">$</Value>
+    </Setting>
+    <Setting Name="DefaultTokenDuration" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="ffmpegPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%programfiles32%\ffmpeg\bin</Value>
+    </Setting>
+    <Setting Name="VLCPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%programfiles32%\VideoLAN\VLC</Value>
+    </Setting>
+    <Setting Name="DirectShowAudioDevice" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Microphone (High Definition Audio Device)</Value>
+    </Setting>
+    <Setting Name="DirectShowVideoDevice" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Webcam (High Definition Audio Device)</Value>
+    </Setting>
+    <Setting Name="DefaultSlateCurrentFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="AMEStandardPresetXMLFilesCurrentFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DynEncTokenIssuer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://testacs</Value>
+    </Setting>
+    <Setting Name="DynEncTokenAudience" Type="System.String" Scope="User">
+      <Value Profile="(Default)">urn:test</Value>
+    </Setting>
+    <Setting Name="MEPremiumWorkflowPrice" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">3.99</Value>
+    </Setting>
+    <Setting Name="DefaultLocatorDurationDaysNew" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3650</Value>
+    </Setting>
+    <Setting Name="DeleteInstallationFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DisplayIngestManifestIDinGrid" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SigniantFlightAPIKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

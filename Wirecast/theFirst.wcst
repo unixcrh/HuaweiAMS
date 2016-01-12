@@ -1,6 +1,6 @@
 <document version="6" os="windows" original_document_path="D:\ProjectsInGitHub\HuaweiAMS\Wirecast\theFirst.wcst">
 	<open_windows>
-		<vamWindowGlass frame="0,0,1936,1056" asset_icon_scale="0.5" asset_icon_updateFPS="15" selected_layer="1836282928" vam_main_splitter="0.65" />
+		<vamWindowGlass frame="0,0,1936,1056" asset_icon_scale="0.5" asset_icon_updateFPS="15" selected_layer="1836282930" vam_main_splitter="0.65" />
 	</open_windows>
 	<vam_state master_audio_shown="1000" transition_0_unique_id="-- CUT --" transition_1_unique_id="-- SMOOTH --" transition_2_unique_id="side" />
 	<transition_data />
@@ -14,7 +14,7 @@
 	<output_presets>
 		<preset output_presetname="Azure MainConcept H.264">
 			<movie format="Flash" output_system="">
-				<track mo_width="1280" mo_height="720" type="1986618479" colourspace="846624121" mo_enabled="1" codecname="H.264" fps="30" compressed="1" timescale="3000" target_bit_rate="2025" profile="1835100526" limit_bit_rate="0" key_frame_rate="60" timecode_interval="30" timecode_on="0" FlashVideoDisableH264BFrames="0" codec_quality="veryfast" x264_gpu_on="0" x264_commandline="" absolute_time_stamps="1" key_frame_aligned="1" strict_cbr="1" main_concept="1" />
+				<track mo_width="1280" mo_height="720" type="1986618479" colourspace="846624121" mo_enabled="1" codecname="H.264" fps="30" compressed="1" timescale="3000" target_bit_rate="1024" profile="1835100526" limit_bit_rate="0" key_frame_rate="60" timecode_interval="30" timecode_on="0" FlashVideoDisableH264BFrames="0" codec_quality="veryfast" x264_gpu_on="0" x264_commandline="" absolute_time_stamps="1" key_frame_aligned="1" strict_cbr="1" main_concept="1" />
 				<track type="1635083375" bps="16" channels="2" samplerate="44100" mo_enabled="1" codecname="MPEG-4 Audio" target_bit_rate="128" timescale="44100" />
 			</movie>
 		</preset>
@@ -52,8 +52,8 @@
 		<asset name="Blank Shot" unique_id="bedd9a14-38aa-4f35-86f9-69e7f19ce85b_shot" type="shot" media-type="9" visible="1" created_for_layer="2" blank_shot="1" vam_state="7" />
 		<asset name="Blank Shot" unique_id="4b4d4727-f565-4f33-ad6a-efd7f5bb9c5f_shot" type="shot" media-type="9" visible="1" created_for_layer="3" blank_shot="1" vam_state="1" />
 		<asset name="Blank Shot" unique_id="29b98aef-86b8-45de-8f74-3e556e1362fc_shot" type="shot" media-type="9" visible="1" created_for_layer="4" blank_shot="1" vam_state="1" />
-		<asset type="capture" unique_id="Integrated Camera::\\?\usb#vid_04f2&amp;pid_b217&amp;mi_00#7&amp;6db4ca1&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" name="Integrated Camera" guid="\\?\usb#vid_04f2&amp;pid_b217&amp;mi_00#7&amp;6db4ca1&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" url="Integrated Camera" excluded="0" format="video" video_tracks="1" media-type="2" square_pixel_height="360" square_pixel_width="640" isusb="1" />
-		<asset name="朝鲜名侦探-高山乌头花的秘密_超清.mp4" url="F:\Movie\朝鲜名侦探-高山乌头花的秘密_超清.mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="154833c9-b7db-498f-ba08-f09d7e7d28f5_朝鲜名侦探-高山乌头花的秘密_超清.mp4" timescale="5994" duration="41678829" square_pixel_height="608" square_pixel_width="1136" />
+		<asset type="capture" unique_id="Integrated Camera::\\?\usb#vid_04f2&amp;pid_b217&amp;mi_00#7&amp;6db4ca1&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" name="Integrated Camera" guid="\\?\usb#vid_04f2&amp;pid_b217&amp;mi_00#7&amp;6db4ca1&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" url="Integrated Camera" excluded="0" format="video" video_tracks="1" media-type="2" square_pixel_width="640" square_pixel_height="360" isusb="1" />
+		<asset name="朝鲜名侦探-高山乌头花的秘密_超清.mp4" url="F:\Movie\朝鲜名侦探-高山乌头花的秘密_超清.mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="154833c9-b7db-498f-ba08-f09d7e7d28f5_朝鲜名侦探-高山乌头花的秘密_超清.mp4" timescale="5994" duration="41678829" square_pixel_width="1136" square_pixel_height="608" />
 		<asset name="朝鲜名侦探-高山乌头花的秘密_超清.mp4" unique_id="1b6f16c4-f569-4ef2-8613-397c0bda5e25_shot" type="shot" media-type="9" vam_state="14" audio_tracks="1" video_tracks="1" still_image_tracks="0" veil_track_count="0" alpha_track_count="0" created_for_layer="5" visible="1" />
 	</assets>
 	<xml_tag />
@@ -64,10 +64,10 @@
 		<shot event_type="2" unique_id="4b4d4727-f565-4f33-ad6a-efd7f5bb9c5f_shot" />
 		<shot event_type="2" unique_id="29b98aef-86b8-45de-8f74-3e556e1362fc_shot" />
 		<shot event_type="2" template_uuid="91550E48-A580-46FB-B949-CBF8494344FA" unique_id="1b6f16c4-f569-4ef2-8613-397c0bda5e25_shot">
-			<event event_type="4" zorder="1" unique_id="one_quad" template_tag="1">
+			<event event_type="4" zorder="5" unique_id="one_quad" template_tag="1">
 				<event event_type="2" channel_id="1" ro_respect_aspect_ratio="1" obj_scale="1,0.951487" unique_id="154833c9-b7db-498f-ba08-f09d7e7d28f5_朝鲜名侦探-高山乌头花的秘密_超清.mp4">
-					<event event_type="1" channel_id="1" ro_media_type="1986618479" ro_playhead="18200000" action_time="2149666667" action_duration="0" action_flags="24" />
-					<event event_type="1" channel_id="1" ro_media_type="1635083375" ro_playhead="18200000" action_time="2149666667" action_duration="0" action_flags="24" />
+					<event event_type="1" channel_id="1" ro_media_type="1986618479" ro_playhead="18200000" action_time="2400000" action_duration="0" action_flags="24" />
+					<event event_type="1" channel_id="1" ro_media_type="1635083375" ro_playhead="18200000" action_time="2400000" action_duration="0" action_flags="24" />
 				</event>
 			</event>
 		</shot>
