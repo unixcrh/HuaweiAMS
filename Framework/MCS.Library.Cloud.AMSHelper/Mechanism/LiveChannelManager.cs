@@ -176,21 +176,21 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
 
         private static void CreateLocator(CloudMediaContext context, IAsset asset)
         {
-            IAccessPolicy policy = GetOrCreateAccessPolicy(context);
+            IAccessPolicy policy = GetOrCreateAccessPolicy(context, asset.Name);
 
             context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset, policy);
         }
 
         private const string DefaultPolicyName = "ReadOnly3000Days";
 
-        private static IAccessPolicy GetOrCreateAccessPolicy(CloudMediaContext context)
+        private static IAccessPolicy GetOrCreateAccessPolicy(CloudMediaContext context, string assetName)
         {
-            IAccessPolicy result = context.AccessPolicies.Where(p => p.Name == DefaultPolicyName).FirstOrDefault();
+            //IAccessPolicy result = context.AccessPolicies.Where(p => p.Name == DefaultPolicyName).FirstOrDefault();
 
-            if (result == null)
-                result = context.AccessPolicies.Create(DefaultPolicyName, TimeSpan.FromDays(3000), AccessPermissions.Read | AccessPermissions.List);
+            //if (result == null)
+            //    result = context.AccessPolicies.Create(DefaultPolicyName, TimeSpan.FromDays(3000), AccessPermissions.Read);
 
-            return result;
+            return context.AccessPolicies.Create("AP:" + assetName, TimeSpan.FromDays(3000), AccessPermissions.Read);
         }
 
         private static IAsset CreateAsset(CloudMediaContext context, string assetName)
