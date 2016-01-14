@@ -84,6 +84,8 @@ namespace CutomerSite.forms
                 this.channels.DataValueField = "ID";
                 this.channels.DataTextField = "Name";
                 this.channels.DataBind();
+
+                this.channels.Visible = channels.Count > 1;
             }
         }
 
