@@ -48,7 +48,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
                 if (amsChannel != null)
                 {
                     if (amsChannel.State == ChannelState.Stopped)
-                        TraceOperation("Channel", () => amsChannel.Start());
+                        TraceOperation("Channel {0}", () => amsChannel.Start(), amsChannel.Name);
 
                     amsChannel.FillAMSChannel(channel);
                 }
@@ -71,7 +71,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
                         program = CreateProgram(context, amsChannel, eventData);
 
                     if (channel.State == AMSChannelState.Running && program.State == ProgramState.Stopped)
-                        TraceOperation("Start Program", () => program.Start());
+                        TraceOperation("Start Program {0}", () => program.Start(), program.Name);
 
                     program.FillAMSEvent(channel, retProgramInfo);
                 }
@@ -93,7 +93,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
                     if (program != null)
                     {
                         if (program.State == ProgramState.Running)
-                            TraceOperation("Stop Program", () => program.Stop());
+                            TraceOperation("Stop Program {0}", () => program.Stop(), program.Name);
 
                         program.FillAMSEvent(channel, retProgramInfo);
 
@@ -124,7 +124,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
                     {
                         if (program.State == ProgramState.Stopped && (program.LastModified + expiredTime) < DateTime.UtcNow)
                         {
-                            TraceOperation("Delete Program", () => program.Delete());
+                            TraceOperation("Delete Program {0}", () => program.Delete(), program.Name);
                             count++;
                         }
                     }
@@ -145,7 +145,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
                 if (amsChannel != null)
                 {
                     if (amsChannel.State == ChannelState.Running)
-                        TraceOperation("Stop Channel", () => amsChannel.Stop());
+                        TraceOperation("Stop Channel {0}", () => amsChannel.Stop(), amsChannel.Name);
 
                     amsChannel.FillAMSChannel(channel);
                 }
@@ -171,7 +171,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
             options.Description = eventData.Name;
             options.ArchiveWindowLength = TimeSpan.FromHours(4);
 
-            return TraceOperation("Create Program", () => amsChannel.Programs.Create(options));
+            return TraceOperation("Create Program {0}", () => amsChannel.Programs.Create(options), options.Name);
         }
 
         private static void CreateLocator(CloudMediaContext context, IAsset asset)
@@ -181,7 +181,7 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
             context.Locators.CreateLocator(LocatorType.OnDemandOrigin, asset, policy);
         }
 
-        private const string DefaultPolicyName = "ReadOnly3000Days";
+        //private const string DefaultPolicyName = "ReadOnly3000Days";
 
         private static IAccessPolicy GetOrCreateAccessPolicy(CloudMediaContext context, string assetName)
         {
@@ -285,24 +285,26 @@ namespace MCS.Library.Cloud.AMSHelper.Mechanism
             }
         }
 
-        private static void TraceOperation(string opName, Action action)
+        private static void TraceOperation(string opName, Action action, params object[] args)
         {
-            AMSOpTraceSource.TraceEvent(TraceEventType.Information, 61000, "Start: {0}", opName);
+            string operation = string.Format(opName, args);
 
-            Trace.TraceInformation("Start: {0}", opName);
+            AMSOpTraceSource.TraceEvent(TraceEventType.Information, 61000, "Start: {0}", operation);
 
             action();
 
-            AMSOpTraceSource.TraceEvent(TraceEventType.Information, 61000, "Complete: {0}", opName);
+            AMSOpTraceSource.TraceEvent(TraceEventType.Information, 61000, "Complete: {0}", operation);
         }
 
-        private static T TraceOperation<T>(string opName, Func<T> func)
+        private static T TraceOperation<T>(string opName, Func<T> func, params object[] args)
         {
-            AMSOpTraceSource.TraceEvent(TraceEventType.Information, 61000, "Start: {0}", opName);
+            string operation = string.Format(opName, args);
+
+            AMSOpTraceSource.TraceEvent(TraceEventType.Information, 61000, "Start: {0}", operation);
 
             T result = func();
 
-            AMSOpTraceSource.TraceEvent(TraceEventType.Information, 61000, "Complete: {0}", opName);
+            AMSOpTraceSource.TraceEvent(TraceEventType.Information, 61000, "Complete: {0}", operation);
 
             return result;
         }
