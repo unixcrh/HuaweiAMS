@@ -1,6 +1,6 @@
 <document version="6" os="windows" original_document_path="D:\ProjectsInGitHub\HuaweiAMS\Wirecast\Rel-Sales-Traning.wcst">
 	<open_windows>
-		<vamWindowGlass frame="0,0,1936,1056" asset_icon_scale="0.5" asset_icon_updateFPS="15" selected_layer="1836282929" vam_main_splitter="0.65" />
+		<vamWindowGlass frame="0,0,1936,1056" asset_icon_scale="0.5" asset_icon_updateFPS="15" selected_layer="1836282928" vam_main_splitter="0.65" />
 	</open_windows>
 	<vam_state master_audio_shown="1010" preview_audio_monitor="1" transition_0_unique_id="-- CUT --" transition_1_unique_id="-- SMOOTH --" transition_2_unique_id="side" master_audio_monitor="0" />
 	<transition_data />
@@ -53,7 +53,7 @@
 		<asset name="Blank Shot" unique_id="cac13be4-dcc2-4f8c-b2c2-96df9ada5ae0_shot" type="shot" media-type="9" vam_state="1" created_for_layer="3" blank_shot="1" visible="1" />
 		<asset name="Blank Shot" unique_id="48c5043c-5a86-40a7-9a2e-535cb2cd3536_shot" type="shot" media-type="9" vam_state="1" created_for_layer="4" blank_shot="1" visible="1" />
 		<asset name="久石让在武道馆的音乐会.mp4" url="F:\Movie\久石让在武道馆的音乐会.mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="e7add359-4450-475d-98ed-dab23b4fd545_久石让在武道馆的音乐会.mp4" timescale="12800" duration="86930944" square_pixel_height="480" square_pixel_width="640" />
-		<asset name="无人区.mp4" url="F:\Movie\无人区.mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="def02610-e0d5-45db-ad1b-c0e8e5f4dc70_无人区.mp4" timescale="24000" duration="161450280" square_pixel_height="720" square_pixel_width="1280" />
+		<asset name="无人区.mp4" url="F:\Movie\无人区.mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="def02610-e0d5-45db-ad1b-c0e8e5f4dc70_无人区.mp4" timescale="24000" duration="161450280" square_pixel_width="1280" square_pixel_height="720" />
 		<asset type="capture" unique_id="USB2.0 Camera::\\?\usb#vid_1e4e&amp;pid_0109&amp;mi_00#7&amp;1f08925e&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" name="USB2.0 Camera" guid="\\?\usb#vid_1e4e&amp;pid_0109&amp;mi_00#7&amp;1f08925e&amp;0&amp;0000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\global" url="USB2.0 Camera" excluded="0" format="video" video_tracks="1" media-type="2" visible="1" square_pixel_height="288" square_pixel_width="352" isusb="1" />
 		<asset type="capture" unique_id="麦克风 (2- USB Microphone)::" name="麦克风 (2- USB Microphone)" url="麦克风 (2- USB Microphone)" excluded="0" format="audio" audio_tracks="1" media-type="3" visible="1" isusb="0" />
 		<asset type="capture" unique_id="麦克风 (USB Advanced Audio Device)::" name="麦克风 (USB Advanced Audio Device)" url="麦克风 (USB Advanced Audio Device)" excluded="0" format="audio" audio_tracks="1" media-type="3" visible="1" isusb="0" />
@@ -77,8 +77,8 @@
 		<shot event_type="2" template_uuid="91550E48-A580-46FB-B949-CBF8494344FA" unique_id="35f6f71c-f9e6-485f-87e2-17f499417443_shot">
 			<event event_type="4" zorder="5" unique_id="one_quad" template_tag="1">
 				<event event_type="2" channel_id="1" ro_respect_aspect_ratio="1" unique_id="def02610-e0d5-45db-ad1b-c0e8e5f4dc70_无人区.mp4">
-					<event event_type="1" channel_id="1" ro_media_type="1986618479" ro_playhead="0" action_time="3200000" action_duration="0" action_flags="24" />
-					<event event_type="1" channel_id="1" ro_media_type="1635083375" ro_playhead="0" action_time="3200000" action_duration="0" action_flags="24" />
+					<event event_type="1" channel_id="1" ro_media_type="1986618479" ro_playhead="0" action_time="3533333" action_duration="0" action_flags="24" />
+					<event event_type="1" channel_id="1" ro_media_type="1635083375" ro_playhead="0" action_time="3533333" action_duration="0" action_flags="24" />
 				</event>
 			</event>
 		</shot>

@@ -1,18 +1,21 @@
 <document version="6" os="windows" original_document_path="D:\ProjectsInGitHub\HuaweiAMS\Wirecast\main-channel.wcst">
+	<open_windows>
+		<vamWindowGlass frame="-8,-8,1928,1048" asset_icon_scale="0.5" asset_icon_updateFPS="15" selected_layer="1836282930" vam_main_splitter="0.65" />
+	</open_windows>
 	<vam_state master_audio_shown="1000" transition_0_unique_id="-- CUT --" transition_1_unique_id="-- SMOOTH --" transition_2_unique_id="side" />
 	<transition_data />
 	<chroma_key_data />
 	<advanced_output>
 		<output_list output_last_selected="163ebf5b-0d5d-484c-b982-33cd89eae3b2">
-			<output output_enabled="1" output_type="2" output_transport="7" output_url="rtmp://main-channel-amshuaweirel.channel.mediaservices.windows.net:1935/live/01fa53e649a94c029a7a709db91ac0df" output_location="myStream" output_branding="RTMP Server" output_display_name="RTMP Server" output_display_group_name="RTMP Server" output_guid="32766d62-e88c-460d-853f-4de4ca87400f" unique_id="1" output_presetname="H.264 720p 16:9 (1280x720)" impersonate_fme_2_5="0" flash_user_agent="Wirecast/FM 1.0" output_settings_complete="1" output_id="163ebf5b-0d5d-484c-b982-33cd89eae3b2" />
+			<output output_enabled="1" output_type="2" output_transport="7" output_url="rtmp://main-channel-amshuaweirel.channel.mediaservices.windows.net:1935/live/01fa53e649a94c029a7a709db91ac0df" output_location="myStream" output_branding="RTMP Server" output_display_name="RTMP Server" output_display_group_name="RTMP Server" output_guid="32766d62-e88c-460d-853f-4de4ca87400f" unique_id="1" output_presetname="MainConcept 1024" impersonate_fme_2_5="0" flash_user_agent="Wirecast/FM 1.0" output_settings_complete="1" output_id="163ebf5b-0d5d-484c-b982-33cd89eae3b2" />
 			<output replay_quality="standard" replay_audio_enabled="0" replay_record_folder="C:\Users\Zheng Shen\Videos" replay_limit_record_duration="1" replaydialog_record_unit="1" replay_max_record_duration="60000" replay_shot_default_duration="30" replay_create_in_layer="1" replay_create_in_playlist="" replay_show_preview="1" replay_shot_template_asset_id="" replay_create_from_template="0" replay_activate_on_broadcast="0" replay_activate_on_record="0" replay_prompt_delete_shot="1" replay_keep_record_on_delete_shot="0" output_guid="1cc1c6e6-08ad-4701-8f66-b5c5e4198823" output_presetname="1cc1c6e6-08ad-4701-8f66-b5c5e4198823" output_type="6" output_enabled="1" unique_id="2" />
 		</output_list>
 	</advanced_output>
 	<output_presets>
-		<preset output_presetname="H.264 720p 16:9 (1280x720)">
+		<preset output_presetname="MainConcept 1024">
 			<movie format="Flash" output_system="">
-				<track mo_width="1280" mo_height="720" type="1986618479" colourspace="846624121" mo_enabled="1" codecname="x264" fps="30" compressed="1" timescale="3000" target_bit_rate="2025" profile="1835100526" limit_bit_rate="0" key_frame_rate="240" timecode_interval="30" timecode_on="0" FlashVideoDisableH264BFrames="0" codec_quality="" x264_gpu_on="0" x264_commandline="" absolute_time_stamps="0" key_frame_aligned="0" strict_cbr="0" main_concept="1" />
-				<track type="1635083375" bps="16" channels="2" samplerate="44100" mo_enabled="1" codecname="MPEG-4 Audio" target_bit_rate="192" timescale="44100" />
+				<track mo_width="1280" mo_height="720" type="1986618479" colourspace="846624121" mo_enabled="1" codecname="H.264" fps="30" compressed="1" timescale="3000" target_bit_rate="1024" profile="1835100526" limit_bit_rate="0" key_frame_rate="60" timecode_interval="30" timecode_on="0" FlashVideoDisableH264BFrames="0" codec_quality="veryfast" x264_gpu_on="0" x264_commandline="" absolute_time_stamps="1" key_frame_aligned="1" strict_cbr="1" main_concept="1" />
+				<track type="1635083375" bps="16" channels="2" samplerate="44100" mo_enabled="1" codecname="MPEG-4 Audio" target_bit_rate="128" timescale="44100" />
 			</movie>
 		</preset>
 		<preset output_presetname="1cc1c6e6-08ad-4701-8f66-b5c5e4198823">
@@ -24,8 +27,8 @@
 	</output_presets>
 	<volume value="1" />
 	<preview_volume value="1" />
-	<auto_live />
-	<flip_flop />
+	<auto_live value="0" />
+	<flip_flop value="0" />
 	<output_annotations />
 	<transition_duration />
 	<visual_style />
@@ -49,7 +52,7 @@
 		<asset name="Blank Shot" unique_id="e155ba02-93fb-4ff9-b3de-b48e66846108_shot" type="shot" media-type="9" vam_state="7" created_for_layer="2" blank_shot="1" visible="1" />
 		<asset name="Blank Shot" unique_id="64b6468f-0692-4af2-98f8-07b1e0b63309_shot" type="shot" media-type="9" vam_state="1" created_for_layer="3" blank_shot="1" visible="1" />
 		<asset name="Blank Shot" unique_id="584a70ce-d7fb-4099-a60e-10bd812f876d_shot" type="shot" media-type="9" vam_state="1" created_for_layer="4" blank_shot="1" visible="1" />
-		<asset name="Il.Divo.-.[2011年伦敦演唱会].演唱会.(720P)(New1).mp4" url="\\192.168.0.4\Time Capsule\IPad\Video\MV\Il.Divo.-.[2011年伦敦演唱会].演唱会.(720P)(New1).mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="4508456b-5888-4b82-94cb-3e04aa361dd9_Il.Divo.-.[2011年伦敦演唱会].演唱会.(720P)(New1).mp4" timescale="2997" duration="17269900" square_pixel_height="720" square_pixel_width="1280" />
+		<asset name="Il.Divo.-.[2011年伦敦演唱会].演唱会.(720P)(New1).mp4" url="\\192.168.0.4\Time Capsule\IPad\Video\MV\Il.Divo.-.[2011年伦敦演唱会].演唱会.(720P)(New1).mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="4508456b-5888-4b82-94cb-3e04aa361dd9_Il.Divo.-.[2011年伦敦演唱会].演唱会.(720P)(New1).mp4" timescale="2997" duration="17269900" square_pixel_width="1280" square_pixel_height="720" />
 		<asset name="Il.Divo.-.[2011年伦敦演唱会].演唱会.(720P)(New1).mp4" unique_id="d7c056c2-c9ef-43d7-95a9-4ad3573eb86e_shot" type="shot" media-type="9" vam_state="14" audio_tracks="1" video_tracks="1" still_image_tracks="0" veil_track_count="0" alpha_track_count="0" created_for_layer="5" visible="1" />
 	</assets>
 	<xml_tag />
@@ -60,10 +63,10 @@
 		<shot event_type="2" unique_id="64b6468f-0692-4af2-98f8-07b1e0b63309_shot" />
 		<shot event_type="2" unique_id="584a70ce-d7fb-4099-a60e-10bd812f876d_shot" />
 		<shot event_type="2" template_uuid="91550E48-A580-46FB-B949-CBF8494344FA" unique_id="d7c056c2-c9ef-43d7-95a9-4ad3573eb86e_shot">
-			<event event_type="4" zorder="1" unique_id="one_quad" template_tag="1">
+			<event event_type="4" zorder="5" unique_id="one_quad" template_tag="1">
 				<event event_type="2" channel_id="1" ro_respect_aspect_ratio="1" unique_id="4508456b-5888-4b82-94cb-3e04aa361dd9_Il.Divo.-.[2011年伦敦演唱会].演唱会.(720P)(New1).mp4">
-					<event event_type="1" channel_id="1" ro_media_type="1986618479" ro_playhead="0" action_time="102866667" action_duration="0" action_flags="24" />
-					<event event_type="1" channel_id="1" ro_media_type="1635083375" ro_playhead="0" action_time="102866667" action_duration="0" action_flags="24" />
+					<event event_type="1" channel_id="1" ro_media_type="1986618479" ro_playhead="0" action_time="9400000" action_duration="0" action_flags="24" />
+					<event event_type="1" channel_id="1" ro_media_type="1635083375" ro_playhead="0" action_time="9400000" action_duration="0" action_flags="24" />
 				</event>
 			</event>
 		</shot>
