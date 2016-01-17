@@ -25,6 +25,12 @@ namespace CutomerSite.services
         AlternateCDN
     }
 
+    public enum TechOrderType
+    {
+        Html5,
+        AzureHtml5JS
+    }
+
     /// <summary>
     /// Summary description for QueryService
     /// </summary>

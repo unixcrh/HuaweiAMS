@@ -50,13 +50,17 @@
     <div>
         <input runat="server" id="pageEventData" type="hidden" />
         <input runat="server" id="fixedBitrate" type="hidden" />
+
         <input runat="server" id="videoAddressType" type="hidden" />
+        <input runat="server" id="targetAddressType" type="hidden" />
+        <input type="hidden" id="eventID" runat="server" />
+        <input type="hidden" id="channelID" runat="server" />
+        <input type="hidden" id="techOrder" runat="server" />
+         <input type="hidden" id="targetTechOrder" runat="server" />
     </div>
     <div class="container">
         <div>
             <div class="outerVideo">
-                <input type="hidden" id="eventID" />
-                <input type="hidden" id="channelID" />
                 <div class="row">
                     <p id="timeScope"></p>
                 </div>
@@ -84,6 +88,7 @@
                 <div class="btn btn-default hidden" id="pauseBtn">暂停</div>
                 <div class="btn btn-default hidden" id="playBtn">播放</div>
                 <div class="btn btn-success" id="refreshBtn">刷新</div>
+                <div class="btn btn-default" id="switchTechOrder" runat="server">动态码率</div>
             </div>
             <div class="outerVideo">
                 <div>
@@ -99,6 +104,20 @@
                 var url = "../services/QueryService.ashx?opType=SingleEvent&id=" + $("#eventID").val() + "&" + $("#channelID").val();
 
                 return appendTimeOffsetToUrl(url);
+            }
+
+            function refreshPage() {
+                var url = document.location.href;
+
+                var paramIndex = url.indexOf("?");
+
+                if (paramIndex >= 0)
+                    url = url.substr(0, paramIndex);
+
+                var result = url + "?id=" + $("#eventID").val() + "&videoAddressType=" + $("#videoAddressType").val() +
+                    "&techOrder=" + $("#techOrder").val() + "&channelID=" + $("#channelID").val();
+
+                window.location.replace(result);
             }
 
             var videoWidth = 500;
@@ -141,7 +160,8 @@
 
             function initButtons() {
                 $("#switchVideoAddressType").click(function () {
-                    window.location.replace($(this).attr("href"));
+                    $("#videoAddressType").val($("#targetAddressType").val());
+                    refreshPage();
                     return false;
                 });
 
@@ -161,10 +181,15 @@
                     initLoadData();
                 });
 
-                $("channels").change(function () {
-                    $("#channelID").val($("channels").val());
-                    initLoadData();
-                })
+                $("#channels").change(function () {
+                    $("#channelID").val($("#channels").val());
+                    refreshPage();
+                });
+
+                $("#switchTechOrder").click(function () {
+                    $("#techOrder").val($("#targetTechOrder").val());
+                    refreshPage();
+                });
             }
 
             function initLoadData() {
@@ -275,10 +300,11 @@
             }
 
             var myPlayer = null;
+            var html5TechOrder = ["html5", "azureHtml5JS", "flashSS", "silverlightSS"];
+            var mseTechOrder = ["azureHtml5JS", "html5", "flashSS", "silverlightSS"];
 
             function initData(eventData) {
                 $("#eventID").val(eventData.id);
-                $("#channelID").val(eventData.channelID);
                 $("#timeScope").text(eventData.startTime + "到" + eventData.endTime);
 
                 $("#eventName").text(eventData.name);
@@ -291,7 +317,7 @@
                     autoplay: false,
                     controls: true,
                     poster: eventData.poster,
-                    techOrder: ["html5", "azureHtml5JS", "flashSS", "silverlightSS"],
+                    techOrder: $("#techOrder").val() == "Html5" ? html5TechOrder : mseTechOrder,
                     preload: "auto"
                 };
 

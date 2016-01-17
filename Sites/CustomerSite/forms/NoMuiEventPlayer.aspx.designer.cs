@@ -49,6 +49,51 @@ namespace CutomerSite.forms {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden videoAddressType;
         
         /// <summary>
+        /// targetAddressType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden targetAddressType;
+        
+        /// <summary>
+        /// eventID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden eventID;
+        
+        /// <summary>
+        /// channelID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden channelID;
+        
+        /// <summary>
+        /// techOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden techOrder;
+        
+        /// <summary>
+        /// targetTechOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden targetTechOrder;
+        
+        /// <summary>
         /// switchVideoAddressType control.
         /// </summary>
         /// <remarks>
@@ -65,6 +110,15 @@ namespace CutomerSite.forms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect channels;
+        
+        /// <summary>
+        /// switchTechOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl switchTechOrder;
         
         /// <summary>
         /// userAgent control.

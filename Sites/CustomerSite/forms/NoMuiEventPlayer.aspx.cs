@@ -11,6 +11,7 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Res = MCS.Web.Responsive.Library;
 
 namespace CutomerSite.forms
 {
@@ -70,8 +71,21 @@ namespace CutomerSite.forms
             this.RegisterApplicationRoot();
             this.InitAlternateCDNAddress(this.Channel, this.Event);
             this.BindRelativeChannels();
+            this.InitHiddens();
+            this.InitTechOrderButton();
 
             base.OnPreRender(e);
+        }
+
+        private void InitHiddens()
+        {
+            if (this.Event != null)
+                this.eventID.Value = this.Event.ID;
+
+            if (this.Channel != null)
+                this.channelID.Value = this.Channel.ID;
+
+            this.techOrder.Value = Res.Request.GetRequestQueryValue("techOrder", TechOrderType.Html5).ToString();
         }
 
         private void BindRelativeChannels()
@@ -86,6 +100,28 @@ namespace CutomerSite.forms
                 this.channels.DataBind();
 
                 this.channels.Visible = channels.Count > 1;
+
+                if (this.Channel != null)
+                    this.channels.Value = this.Channel.ID;
+            }
+        }
+
+        private void InitTechOrderButton()
+        {
+            TechOrderType techOrderType = Res.Request.GetRequestQueryValue("techOrder", TechOrderType.Html5);
+
+            this.techOrder.Value = techOrderType.ToString();
+
+            switch (techOrderType)
+            {
+                case TechOrderType.Html5:
+                    this.switchTechOrder.InnerText = "动态码率";
+                    this.targetTechOrder.Value = TechOrderType.AzureHtml5JS.ToString();
+                    break;
+                case TechOrderType.AzureHtml5JS:
+                    this.switchTechOrder.InnerText = "Htm5播放";
+                    this.targetTechOrder.Value = TechOrderType.Html5.ToString();
+                    break;
             }
         }
 
@@ -109,9 +145,9 @@ namespace CutomerSite.forms
                         break;
                 }
 
-                this.switchVideoAddressType.HRef = UriHelper.ReplaceUriParams(this.Request.Url.ToString(),
-                    parameters => parameters["videoAddressType"] = targetType.ToString());
+                this.targetAddressType.Value = targetType.ToString();
                 this.switchVideoAddressType.InnerText = buttonText;
+                this.videoAddressType.Value = videoAddressType.ToString();
             }
             else
             {
