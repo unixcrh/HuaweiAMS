@@ -184,7 +184,7 @@
                 <img id="ctImg" class="arrow" src="../images/rightArrow.png" />
             </a>
         </div>
-        <div class="doudou-item" id="notice">
+       <%-- <div class="doudou-item" id="notice">
             <a href="http://amsplayer.azurewebsites.net/azuremediaplayer.html?url=http%3a%2f%2famshuaweichn.streaming.mediaservices.chinacloudapi.cn%2f94706d4f-ea13-4eb4-a938-a58c9b9a0897%2fXBox%2520Video.ism%2fmanifest">
                 <div class="div-img" id="cImgDiv">
                     <img class="icon" id="cImg" src="../images/movie.png" />
@@ -192,7 +192,7 @@
                 <div class="title" id="cNameDiv">内部测试</div>
                 <img id="ctImg" class="arrow" src="../images/rightArrow.png" />
             </a>
-        </div>
+        </div>--%>
     </div>
 </body>
 </html>
