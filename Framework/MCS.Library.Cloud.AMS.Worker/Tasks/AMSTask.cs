@@ -110,7 +110,7 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 
                 if (LockHelper.IsLockAvailable(eventData))
                 {
-                    messages.Add(CreateMessage(eventData, AMSQueueItemType.StartEvent));
+                    messages.Add(eventData.ToQueueMessage(AMSQueueItemType.StartEvent));
 
                     TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60011, "Add start new event {0} to queue.", eventData.ID);
                 }
@@ -137,7 +137,7 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
 
                 if (LockHelper.IsLockAvailable(eventData))
                 {
-                    messages.Add(CreateMessage(eventData, AMSQueueItemType.StopEvent));
+                    messages.Add(eventData.ToQueueMessage(AMSQueueItemType.StopEvent));
                     TraceHelper.AMSTaskTraceSource.TraceEvent(TraceEventType.Verbose, 60012, "Add stop new event {0} to queue.", eventData.ID);
                 }
             }
@@ -181,17 +181,6 @@ namespace MCS.Library.Cloud.AMS.Worker.Tasks
         private static IQueue<AMSQueueItem> GetQueue()
         {
             return QueueManager.GetQueue<AMSQueueItem>("amsQueue");
-        }
-
-        private static AMSQueueItem CreateMessage(AMSEvent eventData, AMSQueueItemType itemType)
-        {
-            AMSQueueItem message = new AMSQueueItem();
-
-            message.ItemType = itemType;
-            message.ResourceID = eventData.ID;
-            message.ResourceName = eventData.Name;
-
-            return message;
         }
 
         private static void RunQueueTask(AMSQueueItem message, CancellationToken cancellationToken, Action<AMSQueueItem, CancellationToken> action)
