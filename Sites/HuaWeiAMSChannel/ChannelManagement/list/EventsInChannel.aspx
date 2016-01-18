@@ -20,6 +20,17 @@
             return canDelete;
         }
 
+        function onStopEventButtonClick() {
+            var canDelete = $find("dataGrid").get_clientSelectedKeys().length > 0;
+
+            if (canDelete > 0)
+                canDelete = window.confirm("确定停止事件吗？");
+            else
+                $HGClientMsg.stop("请选择需要停止的事件", "", "错误");
+
+            return canDelete;
+        }
+
         function onDeleteEventClick(id) {
             if (window.confirm("确定删除事件吗？") == false)
                 return false;
@@ -32,7 +43,8 @@
             <ams:ChannelHeader runat="server" ID="ChannelHeader" CurrentName="事件列表" />
             <div>
                 <a runat="server" id="addEventButton" class="btn btn-success">增加事件...</a>
-                <asp:Button runat="server" ID="deleteEventButton" class="btn btn-default" Text="删除事件..." OnClientClick="return onDeleteEventButtonClick();" OnClick="deleteEventButton_Click" />
+                <asp:Button runat="server" ID="deleteEventButton" class="btn btn-danger" Text="删除事件..." OnClientClick="return onDeleteEventButtonClick();" OnClick="deleteEventButton_Click" />
+                <asp:Button runat="server" ID="stopEventButton" class="btn btn-warning" Text="停止事件..." OnClientClick="return onStopEventButtonClick();" OnClick="stopEventButton_Click" />
             </div>
             <res:DeluxeGrid ID="dataGrid" runat="server" GridLines="None" AllowPaging="True" ShowCheckBoxes="true"
                 GridTitle="事件列表" EnableViewState="false" AutoGenerateColumns="False" UseAccessibleHeader="False"

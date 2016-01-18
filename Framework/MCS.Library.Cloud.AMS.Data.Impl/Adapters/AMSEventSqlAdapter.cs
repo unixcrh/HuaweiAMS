@@ -1,5 +1,6 @@
 ﻿using MCS.Library.Cloud.AMS.Data.Entities;
 using MCS.Library.Core;
+using MCS.Library.Data;
 using MCS.Library.Data.Adapters;
 using MCS.Library.Data.Builder;
 using MCS.Library.Data.Mapping;
@@ -9,6 +10,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace MCS.Library.Cloud.AMS.Data.Adapters
 {
@@ -281,6 +283,71 @@ namespace MCS.Library.Cloud.AMS.Data.Adapters
                 mappings.TableName, uBuilder.ToSqlString(TSqlBuilder.Instance), wBuilder.ToSqlString(TSqlBuilder.Instance));
 
             return DbHelper.RunSql(sql, this.GetConnectionName());
+        }
+
+        /// <summary>
+        /// 发送停止事件的消息。只有状态允许停止的消息才会执行。
+        /// </summary>
+        /// <param name="eventIDs"></param>
+        /// <returns></returns>
+        public int SendStopEventMessages(params string[] eventIDs)
+        {
+            AMSEventCollection events = PrepareCanStopEvents(eventIDs);
+
+            AMSQueueItemCollection messages = new AMSQueueItemCollection();
+
+            events.ForEach(e => messages.Add(e.ToQueueMessage(AMSQueueItemType.StopEvent)));
+
+            using (TransactionScope scope = TransactionScopeFactory.Create())
+            {
+                this.ForceStopEvents(events);
+                AMSQueueSqlAdapter.Instance.AddMessages(string.Empty, messages.ToArray());
+
+                scope.Complete();
+            }
+
+            return events.Count;
+        }
+
+        private void ForceStopEvents(IEnumerable<AMSEvent> events)
+        {
+            StringBuilder strB = new StringBuilder();
+
+            foreach (AMSEvent eventData in events)
+            {
+                if (strB.Length > 0)
+                    strB.Append(TSqlBuilder.Instance.DBStatementSeperator);
+
+                WhereSqlClauseBuilder wBuilder = ORMapping.GetWhereSqlClauseBuilderByPrimaryKey(eventData);
+                UpdateSqlClauseBuilder uBuilder = new UpdateSqlClauseBuilder();
+
+                uBuilder.AppendItem("State", AMSEventState.Stopping.ToString());
+                uBuilder.AppendItem("EndTime", "GETUTCDATE()", "=", true);
+
+                strB.AppendFormat("UPDATE {0} SET {1} WHERE {2}",
+                    this.GetTableName(),
+                    uBuilder.ToSqlString(TSqlBuilder.Instance),
+                    wBuilder.ToSqlString(TSqlBuilder.Instance));
+            }
+
+            if (strB.Length > 0)
+                DbHelper.RunSqlWithTransaction(strB.ToString(), this.GetConnectionName());
+        }
+
+        private AMSEventCollection PrepareCanStopEvents(string[] eventIDs)
+        {
+            eventIDs.NullCheck("eventIDs");
+
+            InSqlClauseBuilder idInBuilder = new InSqlClauseBuilder("ID");
+            idInBuilder.AppendItem(eventIDs);
+
+            InSqlClauseBuilder stateInBuilder = new InSqlClauseBuilder("State");
+
+            stateInBuilder.AppendItem(AMSEventState.Running.ToString(), AMSEventState.Starting.ToString());
+
+            ConnectiveSqlClauseCollection connective = new ConnectiveSqlClauseCollection(LogicOperatorDefine.And, idInBuilder, stateInBuilder);
+
+            return this.LoadByBuilder(connective);
         }
 
         public int UpdateEventChannel(AMSEventChannel ec)

@@ -155,6 +155,22 @@ namespace MCS.Library.Cloud.AMS.Data.Entities
             get;
             set;
         }
+
+        /// <summary>
+        /// 转换为操作类
+        /// </summary>
+        /// <param name="itemType"></param>
+        /// <returns></returns>
+        public AMSQueueItem ToQueueMessage(AMSQueueItemType itemType)
+        {
+            AMSQueueItem message = new AMSQueueItem();
+
+            message.ItemType = itemType;
+            message.ResourceID = this.ID;
+            message.ResourceName = this.Name;
+
+            return message;
+        }
     }
 
     [Serializable]

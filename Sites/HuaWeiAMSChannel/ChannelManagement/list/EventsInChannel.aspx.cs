@@ -78,6 +78,13 @@ namespace ChannelManagement.list
             this.InnerRefreshList();
         }
 
+        protected void stopEventButton_Click(object sender, EventArgs e)
+        {
+            AMSEventSqlAdapter.Instance.SendStopEventMessages(this.dataGrid.SelectedKeys.ToArray());
+
+            this.InnerRefreshList();
+        }
+
         protected void refreshBtn_Click(object sender, EventArgs e)
         {
             this.InnerRefreshList();
