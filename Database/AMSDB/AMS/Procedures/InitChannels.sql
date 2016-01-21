@@ -22,18 +22,33 @@ BEGIN
 
 		--这是amshuaweirel的频道
 		INSERT INTO AMS.Channels(ID, AMSID, AMSAccountName, Name, [Description], PreviewUrl, PrimaryInputUrl, SecondaryInputUrl, CDNPrefixMode, CDNPrefix, AlternateCDNEndpoint)
-		VALUES('BDBC67E0-BF27-4E0B-BDC9-237EDF26B96D', 'nb:chid:UUID:2932f550-bd1f-4293-b1a5-54694e178450', 'amshuaweirel', 'sales-training', '销售大讲堂', 
+		VALUES('BDBC67E0-BF27-4E0B-BDC9-237EDF26B96D', 'nb:chid:UUID:2932f550-bd1f-4293-b1a5-54694e178450', 'amshuaweirel', 'sales-training', '华为直播频道1(海外)', 
 		'http://sales-training-amshuaweirel.channel.mediaservices.windows.net/preview.isml/manifest',
 		'rtmp://sales-training-amshuaweirel.channel.mediaservices.windows.net:1935/live/538540210e614d06adc37429e41481fb',
 		'rtmp://sales-training-amshuaweirel.channel.mediaservices.windows.net:1936/live/538540210e614d06adc37429e41481fb',
 		'Prefix', 'cdn-', 'vod2.cqkfz.com')
 
 		INSERT INTO AMS.Channels(ID, AMSID, AMSAccountName, Name, [Description], PreviewUrl, PrimaryInputUrl, SecondaryInputUrl, CDNPrefixMode, CDNPrefix, AlternateCDNEndpoint)
-		VALUES('DBE36981-ED6B-4B69-86BD-9173BEF61879', 'nb:chid:UUID:0f0cbd12-fb35-464b-aa71-be20729f3618', 'amshuaweirel', 'tech-training', '技术大讲堂',
+		VALUES('DBE36981-ED6B-4B69-86BD-9173BEF61879', 'nb:chid:UUID:0f0cbd12-fb35-464b-aa71-be20729f3618', 'amshuaweirel', 'tech-training', '华为直播频道2(海外)',
 		'http://tech-training-amshuaweirel.channel.mediaservices.windows.net/preview.isml/manifest',
 		'rtmp://tech-training-amshuaweirel.channel.mediaservices.windows.net:1935/live/30b10c5ee9b5454d87dc41e2f36f52cc',
 		'rtmp://tech-training-amshuaweirel.channel.mediaservices.windows.net:1936/live/30b10c5ee9b5454d87dc41e2f36f52cc',
 		'Prefix', 'cdn-', 'vod2.cqkfz.com')
+
+		--这是huaweiamschn的频道
+		INSERT INTO AMS.Channels(ID, AMSID, AMSAccountName, Name, [Description], PreviewUrl, PrimaryInputUrl, SecondaryInputUrl, AlternateCDNEndpoint)
+		VALUES('01DBA7F4-1F74-4EEC-831D-91CBD29F7BB3', 'nb:chid:UUID:a2df1dbe-bc6f-42f3-a3f1-0eb7d87ce0bc', 'huaweiamschn', 'sales-channel-chn', '华为直播频道1(中国)', 
+		'http://sales-channel-chn-huaweiamschn.channel.mediaservices.chinacloudapi.cn/preview.isml/manifest',
+		'rtmp://sales-channel-chn-huaweiamschn.channel.mediaservices.chinacloudapi.cn:1935/live/464ddb25cea146e6a586c0da9f852025',
+		'rtmp://sales-channel-chn-huaweiamschn.channel.mediaservices.chinacloudapi.cn:1936/live/464ddb25cea146e6a586c0da9f852025',
+		'az843435.vo.msecnd.net')
+
+		INSERT INTO AMS.Channels(ID, AMSID, AMSAccountName, Name, [Description], PreviewUrl, PrimaryInputUrl, SecondaryInputUrl, AlternateCDNEndpoint)
+		VALUES('B3F6AA2D-562B-41EF-A7A7-66C4D6FAB760', 'nb:chid:UUID:44e861e9-7af7-4ced-b817-21c23b0d00c1', 'huaweiamschn', 'tech-channel-chn', '华为直播频道2(中国)',
+		'http://tech-channel-chn-huaweiamschn.channel.mediaservices.chinacloudapi.cn/preview.isml/manifest',
+		'rtmp://tech-channel-chn-huaweiamschn.channel.mediaservices.chinacloudapi.cn:1935/live/587c94cb1688446ea04c2e436941358a',
+		'rtmp://tech-channel-chn-huaweiamschn.channel.mediaservices.chinacloudapi.cn:1936/live/587c94cb1688446ea04c2e436941358a',
+		'az843435.vo.msecnd.net')
 
 		--这是amshuaweichn的频道
 		--INSERT INTO AMS.Channels(ID, AMSID, AMSAccountName, Name, [Description], PreviewUrl, PrimaryInputUrl, SecondaryInputUrl, AlternateCDNEndpoint)
