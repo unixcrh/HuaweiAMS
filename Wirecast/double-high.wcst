@@ -1,0 +1,75 @@
+<document version="6" os="windows" original_document_path="D:\ProjectsInGitHub\HuaweiAMS\Wirecast\double-high.wcst">
+	<open_windows>
+		<vamWindowGlass frame="0,0,1936,1056" asset_icon_scale="0.5" asset_icon_updateFPS="15" selected_layer="1836282929" vam_main_splitter="0.65" />
+	</open_windows>
+	<vam_state master_audio_shown="1010" transition_0_unique_id="-- CUT --" transition_1_unique_id="-- SMOOTH --" transition_2_unique_id="side" master_audio_monitor="0" />
+	<transition_data />
+	<chroma_key_data />
+	<advanced_output>
+		<output_list output_last_selected="0deda51f-bd5b-4f43-8a0a-cf5201998f19">
+			<output output_enabled="1" output_type="2" output_transport="7" output_url="rtmp://main-channel-amshuaweirel.channel.mediaservices.windows.net:1935/live/01fa53e649a94c029a7a709db91ac0df" output_location="myStream" output_branding="RTMP Server" output_display_name="Global" output_display_group_name="RTMP Server" output_guid="827db638-006c-4199-8b60-f03500a462b9" unique_id="1" output_presetname="MainConcept640-800" impersonate_fme_2_5="0" flash_user_agent="Wirecast/FM 1.0" output_user_name="Global" output_settings_complete="1" output_id="0deda51f-bd5b-4f43-8a0a-cf5201998f19" />
+			<output output_enabled="1" output_type="2" output_transport="7" output_url="rtmp://test-channel-chn-huaweiamschn.channel.mediaservices.chinacloudapi.cn:1935/live/1905089f1c2941079de11e158ce81dae" output_location="myStream" output_branding="RTMP Server" output_display_name="Mooncake" output_display_group_name="RTMP Server" output_guid="7bfe298d-2c39-4cf4-917d-9f7fc123036d" unique_id="2" output_presetname="MainConcept640-800" impersonate_fme_2_5="0" flash_user_agent="Wirecast/FM 1.0" output_user_name="Mooncake" output_settings_complete="1" output_id="c87f44ef-f385-4251-a861-cc737d00f048" />
+			<output replay_quality="standard" replay_audio_enabled="0" replay_record_folder="C:\Users\Zheng Shen\Videos" replay_limit_record_duration="1" replaydialog_record_unit="1" replay_max_record_duration="60000" replay_shot_default_duration="30" replay_create_in_layer="1" replay_create_in_playlist="" replay_show_preview="1" replay_shot_template_asset_id="" replay_create_from_template="0" replay_activate_on_broadcast="0" replay_activate_on_record="0" replay_prompt_delete_shot="1" replay_keep_record_on_delete_shot="0" output_guid="b08ab69d-31fe-4e61-a704-a1b24cbde536" output_presetname="b08ab69d-31fe-4e61-a704-a1b24cbde536" output_type="6" output_enabled="1" unique_id="3" />
+		</output_list>
+	</advanced_output>
+	<output_presets>
+		<preset output_presetname="MainConcept640-800">
+			<movie format="Flash" output_system="">
+				<track mo_width="640" mo_height="480" type="1986618479" colourspace="846624121" mo_enabled="1" codecname="H.264" fps="30" compressed="1" timescale="3000" target_bit_rate="768" profile="1650553701" limit_bit_rate="0" key_frame_rate="60" timecode_interval="30" timecode_on="0" FlashVideoDisableH264BFrames="0" codec_quality="veryfast" x264_gpu_on="0" x264_commandline="" absolute_time_stamps="1" key_frame_aligned="1" strict_cbr="1" main_concept="1" />
+				<track type="1635083375" bps="16" channels="2" samplerate="44100" mo_enabled="1" codecname="MPEG-4 Audio" target_bit_rate="96" timescale="44100" />
+			</movie>
+		</preset>
+		<preset output_presetname="b08ab69d-31fe-4e61-a704-a1b24cbde536">
+			<movie format="Replay" output_system="replay">
+				<track mo_width="640" mo_height="480" type="1986618479" colourspace="846624121" mo_enabled="1" codecname="H.264" fps="30" compressed="1" timescale="3000" target_bit_rate="500" profile="1835100526" limit_bit_rate="0" key_frame_rate="240" timecode_interval="30" timecode_on="0" FlashVideoDisableH264BFrames="0" codec_quality="" x264_gpu_on="0" x264_commandline="" absolute_time_stamps="0" key_frame_aligned="0" strict_cbr="0" main_concept="1" />
+				<track type="1635083375" bps="16" channels="2" samplerate="44100" mo_enabled="1" codecname="MPEG-4 Audio" target_bit_rate="128" timescale="44100" />
+			</movie>
+		</preset>
+	</output_presets>
+	<volume value="1" />
+	<preview_volume value="1" />
+	<auto_live value="0" />
+	<flip_flop value="0" />
+	<output_annotations />
+	<transition_duration />
+	<visual_style />
+	<single_output />
+	<media_directories />
+	<layer_names />
+	<layer_scales />
+	<layer_visible />
+	<sections />
+	<aspectRatio custom_width="640" custom_height="480" />
+	<shot_key_map />
+	<shotsLiveWhenSaved>
+		<xml_tag vaLayerIndex="0" beLayerEnum="1" vaLayerEnum="1836282928" unique_id="bc117804-89c1-4ee5-aff4-a815f3bcfbd0_shot" />
+		<xml_tag vaLayerIndex="2" beLayerEnum="3" vaLayerEnum="1836282930" unique_id="1449d567-af18-4523-85b4-9e0b3f45c1a2_shot" />
+	</shotsLiveWhenSaved>
+	<source_sdk_settings />
+	<social_media />
+	<assets>
+		<asset name="Blank Shot" unique_id="60c1fccf-81d5-4107-86d4-abfb1e96c4da_shot" type="shot" media-type="9" vam_state="1" created_for_layer="5" blank_shot="1" visible="1" />
+		<asset name="Blank Shot" unique_id="3a97fd01-5d20-4ecf-898f-8478391cfed7_shot" type="shot" media-type="9" vam_state="1" created_for_layer="1" blank_shot="1" visible="1" />
+		<asset name="Blank Shot" unique_id="1449d567-af18-4523-85b4-9e0b3f45c1a2_shot" type="shot" media-type="9" vam_state="7" created_for_layer="2" blank_shot="1" visible="1" />
+		<asset name="Blank Shot" unique_id="b3bc2e39-3f27-4eb8-b93f-140e306eb9a2_shot" type="shot" media-type="9" vam_state="1" created_for_layer="3" blank_shot="1" visible="1" />
+		<asset name="Blank Shot" unique_id="572cffaf-37c2-4b2d-bcdb-b32562cc5bd3_shot" type="shot" media-type="9" vam_state="1" created_for_layer="4" blank_shot="1" visible="1" />
+		<asset name="Yanni.-.[雅尼音乐会].演唱会.(720P).mp4" url="F:\Movie\Yanni.-.[雅尼音乐会].演唱会.(720P).mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="c637886d-af90-4d56-8704-cd89f412f511_Yanni.-.[雅尼音乐会].演唱会.(720P).mp4" timescale="25" duration="121913" square_pixel_width="1024" square_pixel_height="768" />
+		<asset name="Yanni.-.[雅尼音乐会].演唱会.(720P).mp4" unique_id="bc117804-89c1-4ee5-aff4-a815f3bcfbd0_shot" type="shot" media-type="9" vam_state="14" audio_tracks="1" video_tracks="1" still_image_tracks="0" veil_track_count="0" alpha_track_count="0" created_for_layer="5" visible="1" />
+	</assets>
+	<xml_tag />
+	<shots>
+		<shot event_type="2" unique_id="60c1fccf-81d5-4107-86d4-abfb1e96c4da_shot" />
+		<shot event_type="2" unique_id="3a97fd01-5d20-4ecf-898f-8478391cfed7_shot" />
+		<shot event_type="2" unique_id="1449d567-af18-4523-85b4-9e0b3f45c1a2_shot" />
+		<shot event_type="2" unique_id="b3bc2e39-3f27-4eb8-b93f-140e306eb9a2_shot" />
+		<shot event_type="2" unique_id="572cffaf-37c2-4b2d-bcdb-b32562cc5bd3_shot" />
+		<shot event_type="2" template_uuid="91550E48-A580-46FB-B949-CBF8494344FA" unique_id="bc117804-89c1-4ee5-aff4-a815f3bcfbd0_shot">
+			<event event_type="4" zorder="5" unique_id="one_quad" template_tag="1">
+				<event event_type="2" channel_id="1" ro_respect_aspect_ratio="1" unique_id="c637886d-af90-4d56-8704-cd89f412f511_Yanni.-.[雅尼音乐会].演唱会.(720P).mp4">
+					<event event_type="1" channel_id="1" ro_media_type="1986618479" ro_playhead="0" action_time="13667400000" action_duration="0" action_flags="24" />
+					<event event_type="1" channel_id="1" ro_media_type="1635083375" ro_playhead="0" action_time="13667400000" action_duration="0" action_flags="24" />
+				</event>
+			</event>
+		</shot>
+	</shots>
+</document>
