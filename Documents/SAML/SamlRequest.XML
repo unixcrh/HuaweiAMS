@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<samlp:AuthnRequest ID="_94ee6f42-293c-4529-b789-b42b6b2e3b42" Version="2.0" IssueInstant="2009-02-06T20:24:15Z" ForceAuthn="False" IsPassive="False" ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" AssertionConsumerServiceIndex="0" AssertionConsumerServiceURL="http://localhost:1330/SAML2PageListener/AssertionConsumerService.aspx?binding=urn%3aoasis%3anames%3atc%3aSAML%3a2.0%3abindings%3aHTTP-POST" AttributeConsumingServiceIndex="0" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
+	<saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">www.Kenexa.com</saml:Issuer>
+	<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+		<SignedInfo>
+			<CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+			<SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+			<Reference URI="#_94ee6f42-293c-4529-b789-b42b6b2e3b42">
+				<Transforms>
+					<Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+					<Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
+						<InclusiveNamespaces PrefixList="#default code ds kind rw saml samlp typens" xmlns="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+					</Transform>
+				</Transforms>
+				<DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+				<DigestValue>eowTjU2gZq3H1h9Q8q/lpWaYB2I=</DigestValue>
+			</Reference>
+		</SignedInfo>
+		<SignatureValue>ZMSpg4M1XlMux08c5WKlhVGBJ1OokWxiKKDVvK91ny4MGGPqyV7T0B2TBHa847inyE7Tyq05WPwONZnXuovLIhgYIDlfoFcuz1G4trl3n5boQ4gGlZRlEfAgkDqf8uW1wR8DIETZfFcJVhi+/xBsunps14k4Du3cH4kUYHYPZl0=</SignatureValue>
+		<KeyInfo>
+			<X509Data>
+				<X509Certificate>MIID+DCCAuCgAwIBAgILAQAAAAABHlCZoKQwDQYJKoZIhvcNAQEFBQAwUDEXMBUGA1UEChMOQ3liZXJ0cnVzdCBJbmMxNTAzBgNVBAMTLEN5YmVydHJ1c3QgU3VyZVNlcnZlciBTdGFuZGFyZCBWYWxpZGF0aW9uIENBMB4XDTA4MTIxOTE4MDEzN +</X509Certificate>
+			</X509Data>
+		</KeyInfo>
+	</Signature>
+	<samlp:NameIDPolicy AllowCreate="False"/>
+</samlp:AuthnRequest>

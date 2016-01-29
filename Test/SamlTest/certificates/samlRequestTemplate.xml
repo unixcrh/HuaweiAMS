@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<samlp:AuthnRequest ID="_94ee6f42-293c-4529-b789-b42b6b2e3b42" Version="2.0" IssueInstant="2009-02-06T20:24:15Z" ForceAuthn="False" IsPassive="False" ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" AssertionConsumerServiceIndex="0" AssertionConsumerServiceURL="http://localhost:1330/SAML2PageListener/AssertionConsumerService.aspx?binding=urn%3aoasis%3anames%3atc%3aSAML%3a2.0%3abindings%3aHTTP-POST" AttributeConsumingServiceIndex="0" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
+  <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">www.Kenexa.com</saml:Issuer>
+  <samlp:NameIDPolicy AllowCreate="False"/>
+</samlp:AuthnRequest>
