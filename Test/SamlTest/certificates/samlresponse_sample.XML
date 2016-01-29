@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<samlp:Response xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+	Destination="https://stagingsso.brassring.com/sso/saml/SAML2PageListener/AssertionConsumerService.aspx"
+	ID="s28228e4a61438f9afc60ebe81feaa13ae0d1a97cc"
+	IssueInstant="2012-07-17T01:27:02Z" Version="2.0">
+	<saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
+		http://career.huawei.com
+	</saml:Issuer>
+	<samlp:Status>
+		<samlp:StatusCode
+			Value="urn:oasis:names:tc:SAML:2.0:status:Success">
+		</samlp:StatusCode>
+	</samlp:Status>
+	<saml:Assertion xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+		ID="s2405bf5a9bb2bec450f23ed4772866115aacbb72a"
+		IssueInstant="2012-07-17T01:27:02Z" Version="2.0">
+		<saml:Issuer>http://career.huawei.com</saml:Issuer>
+		<Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+			<SignedInfo>
+				<CanonicalizationMethod
+					Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+				<SignatureMethod
+					Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+				<Reference URI="">
+					<Transforms>
+						<Transform
+							Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+					</Transforms>
+					<DigestMethod
+						Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+					<DigestValue>
+						DgFwOoGAq1UTHAbGcUxKHu0ZBqY=
+					</DigestValue>
+				</Reference>
+			</SignedInfo>
+			<SignatureValue>
+				HYbp6/nVkZYnoNtsef7vCQv3UbLErPNKJcSUR+X9+J3a63Jnrg4cEywTeLWCd65ch4Z2ofBSiySg
+				7uyy8c8uLbka1vdZkse2T1gnNpiIJOZE1rwtpardLaY+hiqRa3tGMvX6E58DPeWK/qBqdjauJ8bV
+				dkzEBoCMNNCRAqywTA0kO1DHZN1asWVilPLPdeuZO7tYFh7YmPUvo1+nvR25sT65QXxo7fs9NqZm
+				MUNb2UCXQ8dI+IEjqAOT3YY3IPXDcqJ4uZiew47JcT7zc8IpttfK/a0ShtU94+IZuLGYCfPSj8it
+				HZLe1z6+f6wPTX5cRHXf/51EC6VpDMdOB9JKQQ==
+			</SignatureValue>
+			<KeyInfo>
+				<X509Data>
+					<X509Certificate>
+						MIID9TCCAt0CBE+h/I8wDQYJKoZIhvcNAQEFBQAwgb4xJTAjBgkqhkiG9w0BCQEWFmNoYW9ndS56
+						aG91QGh1YXdlaS5jb20xCzAJBgNVBAYTAkNOMQ8wDQYDVQQIDAZDYW50b24xLDAqBgNVBAcMI0Jh
+						bnRpYW4sIExvbmdnYW5nIERpc3RyaWN0LFNoZW56aGVuMSYwJAYDVQQKDB1IdWF3ZWkgVGVjaG5v
+						bG9naWVzIENvLiwgTHRkLjEOMAwGA1UECwwFQlAmSVQxETAPBgNVBAMMCEh1YXdlaUNBMB4XDTEy
+						MDUwMzAzMzMzNVoXDTM5MDkxODAzMzMzNVowgb4xJTAjBgkqhkiG9w0BCQEWFmNoYW9ndS56aG91
+						QGh1YXdlaS5jb20xCzAJBgNVBAYTAkNOMQ8wDQYDVQQIDAZDYW50b24xLDAqBgNVBAcMI0JhbnRp
+						YW4sIExvbmdnYW5nIERpc3RyaWN0LFNoZW56aGVuMSYwJAYDVQQKDB1IdWF3ZWkgVGVjaG5vbG9n
+						aWVzIENvLiwgTHRkLjEOMAwGA1UECwwFQlAmSVQxETAPBgNVBAMMCEh1YXdlaUNBMIIBIjANBgkq
+						hkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAikvKFSqeyqP17qWVNrWKS1lINd9pWKN7ccHqNk9gvJPX
+						QYVPXl3YswAH+ZYpgHl4eGNDaigeJwaLscQK4FywK8WPv6qcqxg9LU/LlVRyfrkMPRTLwQOlq8/Q
+						doKdOJJPYfddqRv/rLpZNa2VpjUW7UWrqRaK9WvAVSY26OmjG/MHYB9vWj2FdeyC4SZOVhCWlphq
+						IxQKeT75cbAA9ULBuoMsWYOzrtGpKGbyu0eiEisrLMii7iGAFRaaeO5BdQE2VDolYQo6D8bZQLcK
+						6I0OB1Q+mxnDpxndgMKsJiWNP31lDyc7/Q+/fAUuIJ6lsyDBLxci+BKeNrgedj8l2AljFwIDAQAB
+						MA0GCSqGSIb3DQEBBQUAA4IBAQAuGljlYUryqxTGJuaqmcdZurQcZNnF7GNf/NXeKAZbo9XIXDT7
+						kT/jAD3+/hXg+FtQIsP4sFZzdF31ny9stkg5yuQlyscPTRPsRdB7+nOR0WJoURt0RqZ+LIOjmiUB
+						cn7c1yZphzyXE5DbKTs+/z0XtXVYHlY8dLrYNmP5YyovZ87/p27mtQV2pEO1NbFPjsw/rWMeKX2h
+						WifDjKJht6yvrwE9d4vAfjeG5mbEdYC/EaQRZhwpUDPLPt1BwA9MAfuBuejUzFRGGMivKVn7bWZ4
+						yg8E2aptRgbFgZ3swTexlayCxafK2uuz2m6knmcbVRDgcGPKxuvPV2iqdj5WNdeq
+					</X509Certificate>
+				</X509Data>
+			</KeyInfo>
+		</Signature>
+		<saml:Subject>
+			<saml:NameID
+				Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"
+				NameQualifier="http://career.huawei.com"
+				SPNameQualifier="stagingsso.brassring.com">
+				00192033
+			</saml:NameID>
+			<saml:SubjectConfirmation
+				Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+				<saml:SubjectConfirmationData
+					NotOnOrAfter="2012-07-17T01:37:02Z"
+					Recipient="https://stagingsso.brassring.com/sso/saml/SAML2PageListener/AssertionConsumerService.aspx">
+				</saml:SubjectConfirmationData>
+			</saml:SubjectConfirmation>
+		</saml:Subject>
+		<saml:Conditions NotBefore="2012-07-17T01:17:02Z"
+			NotOnOrAfter="2012-07-17T01:37:02Z">
+			<saml:AudienceRestriction>
+				<saml:Audience>stagingsso.brassring.com</saml:Audience>
+			</saml:AudienceRestriction>
+		</saml:Conditions>
+		<saml:AuthnStatement AuthnInstant="2012-07-17T01:27:02Z"
+			SessionIndex="s27048188119f80a56622f61f3780e6742da38f13c">
+			<saml:AuthnContext>
+				<saml:AuthnContextClassRef>
+					urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport
+				</saml:AuthnContextClassRef>
+			</saml:AuthnContext>
+		</saml:AuthnStatement>
+		<saml:AttributeStatement>
+			<saml:Attribute FriendlyName="SiteId" Name="SiteId">
+				<saml:AttributeValue>5299</saml:AttributeValue>
+			</saml:Attribute>
+			<saml:Attribute FriendlyName="Application"
+				Name="Application">
+				<saml:AttributeValue>3</saml:AttributeValue>
+			</saml:Attribute>
+		</saml:AttributeStatement>
+	</saml:Assertion>
+</samlp:Response>
+

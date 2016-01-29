@@ -15,18 +15,44 @@ namespace SamlTest
         static void Main(string[] args)
         {
             //Console.WriteLine(DESHelper.DecryptString(DESHelper.EncryptedPassword));
-            X509Certificate2 cert = CertificateHelper.GetCertificate(".\\certificates\\HuaweiCA.p12", "Pr0d1234");
-
+            //X509Certificate2 cert = CertificateHelper.GetCertificate(".\\certificates\\HuaweiCA.p12", "Pr0d1234");
+            X509Certificate cert = CertificateHelper.GetCertificate(".\\certificates\\HuaweiCA.cer");
             Console.WriteLine(cert.ToString());
             //Console.WriteLine(CertificateHelper.GetPrivateKey(".\\certificates\\HuaweiCA.p12", "Pr0d1234").ToXmlString(false));
 
-            SignXml();
+            //SignXml();
+            CheckSignedXml();
+        }
+
+        private static void CheckSignedXml()
+        {
+            X509Certificate2 certificate = CertificateHelper.GetCertificate(".\\certificates\\HuaweiCA.cer");
+
+            XmlDocument xmlDoc = new XmlDocument();
+
+            xmlDoc.PreserveWhitespace = true;
+            xmlDoc.Load(".\\certificates\\samlresponse_sample.XML");
+
+            XmlNamespaceManager ns = new XmlNamespaceManager(xmlDoc.NameTable);
+            ns.AddNamespace("saml", "urn:oasis:names:tc:SAML:2.0:assertion");
+            ns.AddNamespace("samlp", "urn:oasis:names:tc:SAML:2.0:protocol");
+            ns.AddNamespace("x", "http://www.w3.org/2000/09/xmldsig#");
+
+            XmlElement signatureElem = (XmlElement)xmlDoc.DocumentElement.SelectSingleNode("//x:Signature", ns);
+
+            //SignedXml signedXml = new SignedXml((XmlElement)xmlDoc.DocumentElement);
+            SignedXml signedXml = new SignedXml((XmlElement)signatureElem.ParentNode);
+
+            signedXml.LoadXml(signatureElem);
+
+            Console.WriteLine(signedXml.CheckSignature(certificate, true));
         }
 
         private static XmlDocument SignXml()
         {
             XmlDocument xmlDoc = new XmlDocument();
 
+            xmlDoc.PreserveWhitespace = true;
             xmlDoc.Load(".\\certificates\\samlRequestTemplate.xml");
             X509Certificate2 certificate = CertificateHelper.GetCertificate(".\\certificates\\HuaweiCA.p12", "Pr0d1234");
             AsymmetricAlgorithm key = certificate.PrivateKey;
@@ -43,10 +69,11 @@ namespace SamlTest
 
             KeyInfo keyInfo = new KeyInfo();
 
-            XmlDocument keyDoc = new XmlDocument();
+            //XmlDocument keyDoc = new XmlDocument();
 
-            keyDoc.LoadXml(certificate.PublicKey.Key.ToXmlString(false));
-            keyInfo.LoadXml(keyDoc.DocumentElement);
+            //keyDoc.LoadXml(certificate.PublicKey.Key.ToXmlString(false));
+            //keyInfo.LoadXml(keyDoc.DocumentElement);
+            keyInfo.AddClause(new KeyInfoX509Data(certificate));
             signedXml.KeyInfo = keyInfo;
 
             string refId = xmlDoc.DocumentElement.GetAttribute("ID");
@@ -55,7 +82,7 @@ namespace SamlTest
             reference.Uri = "#" + refId;
 
             XmlDsigEnvelopedSignatureTransform env = new XmlDsigEnvelopedSignatureTransform();
-            
+
             reference.AddTransform(env);
 
             XmlDsigExcC14NTransform env2 = new XmlDsigExcC14NTransform();

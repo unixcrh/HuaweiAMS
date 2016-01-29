@@ -21,5 +21,10 @@ namespace SamlTest
 
             return cert.PrivateKey;
         }
+
+        public static X509Certificate2 GetCertificate(string path)
+        {
+            return new X509Certificate2(path);
+        }
     }
 }
