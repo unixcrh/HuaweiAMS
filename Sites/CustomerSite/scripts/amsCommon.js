@@ -18,6 +18,15 @@ ams.initMenu = function () {
     }
 }
 
+ams.initTopBar = function () {
+    if (SDK.Lepus.Sys.isLepus())
+        $("#header").appendTo($("#headerContainer"));
+
+    mui(".mui-bar-nav").on("tap", ".mui-icon-arrowleft", function () {
+        window.history.back();
+    });
+}
+
 ams.enterFullScreen = function () {
     if (SDK.Lepus.Sys.isLepus()) {
         SDK.Lepus.Sys.setFullScreen();

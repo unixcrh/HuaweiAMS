@@ -16,7 +16,7 @@
     <script src="../scripts/lepus-util.js"></script>
     <script src="../scripts/lepus-webview-sdk.js"></script>
     <script src="../scripts/amsCommon.js"></script>
-    
+
     <script src="../scripts/jstz.main.js"></script>
     <script src="../scripts/jstz.rules.js"></script>
 
@@ -42,47 +42,30 @@
         <input runat="server" id="pageSize" />
     </div>
     <div id="headerContainer" class="hidden">
-        <header class="mui-bar mui-bar-nav">
-            <%--<a class="mui-icon mui-icon-bars mui-pull-left"></a>--%>
-            <%--<a class="mui-icon mui-icon-search mui-pull-right"></a>--%>
-            <a class="mui-icon mui-icon-arrowleft mui-pull-left"></a>
-            <h1 class="mui-title">往期直播</h1>
-            <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" href="#topPopover"></a>
-        </header>
     </div>
-
+    <header id="header" class="mui-bar mui-bar-nav">
+        <a class="mui-icon mui-icon-arrowleft mui-pull-left"></a>
+        <h1 class="mui-title">往期直播</h1>
+        <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" href="#topPopover"></a>
+    </header>
     <div runat="server" id="uid"></div>
     <div id="refreshContainer" class="mui-content mui-scroll-wrapper">
         <div class="mui-scroll">
-            <%--<div runat="server" id="httpHeaders">
-            </div>--%>
             <!--数据列表-->
             <ul id="listContainer" class="mui-table-view">
             </ul>
         </div>
     </div>
     <div id="menu_back" class="menu_back"></div>
-    <%-- <div id="menu" class="mui-content menu">
-        <div class="title">侧滑导航</div>
-        <div class="content">
-            <ul>
-                <li>全部视频</li>
-                <li>局部视频</li>
-            </ul>
-        </div>
-    </div>--%>
     <!--右上角弹出菜单-->
     <div id="topPopover" class="mui-popover">
         <div class="mui-popover-arrow"></div>
         <div class="mui-scroll-wrapper">
             <div class="mui-scroll">
                 <ul class="mui-table-view">
-                    <li class="mui-table-view-cell">
-                        <a href="#">Item1</a>
+                    <li class="mui-table-view-cell"><a href="UpcomingEvents.aspx">即将直播</a>
                     </li>
-                    <li class="mui-table-view-cell"><a href="#">Item2</a>
-                    </li>
-                    <li class="mui-table-view-cell"><a href="#">Item3</a>
+                    <li class="mui-table-view-cell"><a href="CompletedEvents.aspx">往期直播</a>
                     </li>
                 </ul>
             </div>
@@ -100,6 +83,8 @@
         }
 
         $(document).ready(function () {
+            ams.initTopBar();
+
             var jsonData = $("#firstPageData").val();
             var currentPageData = JSON.parse(jsonData);
 

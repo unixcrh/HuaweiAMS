@@ -46,12 +46,12 @@
         <input runat="server" id="pageSize" />
     </div>
     <div id="headerContainer" class="hidden">
-        <header class="mui-bar mui-bar-nav">
-            <a class="mui-icon mui-icon-arrowleft mui-pull-left"></a>
-            <h1 class="mui-title">即将直播</h1>
-            <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" href="#topPopover"></a>
-        </header>
     </div>
+    <header id="header" class="mui-bar mui-bar-nav">
+        <a class="mui-icon mui-icon-arrowleft mui-pull-left"></a>
+        <h1 class="mui-title">即将直播</h1>
+        <a id="menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right" href="#topPopover"></a>
+    </header>
     <div id="refreshContainer" class="mui-content mui-scroll-wrapper">
         <div class="mui-scroll">
             <!--数据列表-->
@@ -66,12 +66,9 @@
         <div class="mui-scroll-wrapper">
             <div class="mui-scroll">
                 <ul class="mui-table-view">
-                    <li class="mui-table-view-cell">
-                        <a href="#">Item1</a>
+                    <li class="mui-table-view-cell"><a href="UpcomingEvents.aspx">即将直播</a>
                     </li>
-                    <li class="mui-table-view-cell"><a href="#">Item2</a>
-                    </li>
-                    <li class="mui-table-view-cell"><a href="#">Item3</a>
+                    <li class="mui-table-view-cell"><a href="CompletedEvents.aspx">往期直播</a>
                     </li>
                 </ul>
             </div>
@@ -89,6 +86,7 @@
         }
 
         $(document).ready(function () {
+            ams.initTopBar();
             var jsonData = $("#firstPageData").val();
             var currentPageData = JSON.parse(jsonData);
 
