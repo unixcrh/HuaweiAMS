@@ -20,7 +20,7 @@ namespace SamlTest
             Console.WriteLine(cert.ToString());
             //Console.WriteLine(CertificateHelper.GetPrivateKey(".\\certificates\\HuaweiCA.p12", "Pr0d1234").ToXmlString(false));
 
-            //SignXml();
+            SignXml();
             CheckSignedXml();
         }
 
