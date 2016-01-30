@@ -11,6 +11,7 @@
     <ProjectItem Include="MCS.Library.Cloud.AMS.Data.Impl\MCS.Library.Cloud.AMS.Data.Impl.csproj" />
     <ProjectItem Include="MCS.Library.Cloud.AMSHelper\MCS.Library.Cloud.AMSHelper.csproj" />
     <ProjectItem Include="MCS.Library.Cloud.AMS.Worker\MCS.Library.Cloud.AMS.Worker.csproj" />
+    <ProjectItem Include="MCS.Library.Cloud.W3\MCS.Library.Cloud.W3.csproj" />
   </ItemGroup>
   <Target Name="BuildOtherProjects">
     <MSBuild Projects="@(ProjectItem)" RebaseOutputs="True" />
