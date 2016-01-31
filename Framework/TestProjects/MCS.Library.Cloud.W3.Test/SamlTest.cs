@@ -5,7 +5,7 @@ using System.Xml;
 namespace MCS.Library.Cloud.W3.Test
 {
     [TestClass]
-    public class UnitTest1
+    public class SamlTest
     {
         [TestMethod]
         public void SamlRequestTest()
