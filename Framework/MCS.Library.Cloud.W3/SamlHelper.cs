@@ -15,6 +15,28 @@ namespace MCS.Library.Cloud.W3
 {
     public static class SamlHelper
     {
+        public static bool ValidateResponseDoc(XmlDocument xmlDoc)
+        {
+            xmlDoc.NullCheck("xmlDoc");
+
+            XmlNamespaceManager ns = new XmlNamespaceManager(xmlDoc.NameTable);
+            ns.AddNamespace("saml", "urn:oasis:names:tc:SAML:2.0:assertion");
+            ns.AddNamespace("samlp", "urn:oasis:names:tc:SAML:2.0:protocol");
+            ns.AddNamespace("x", "http://www.w3.org/2000/09/xmldsig#");
+
+            XmlElement signatureElem = (XmlElement)xmlDoc.DocumentElement.SelectSingleNode("//x:Signature", ns);
+
+            XmlElement assertionNode = (XmlElement)xmlDoc.DocumentElement.SelectSingleNode("saml:Assertion", ns);
+
+            SignedXml signedXml = new SignedXml(assertionNode);
+
+            signedXml.LoadXml(signatureElem);
+
+            X509Certificate2 certificate = GetEmbededPublicCertificate();
+
+            return signedXml.CheckSignature(certificate, true);
+        }
+
         public static XmlDocument GetSignedRequestDoc(string issuer, string assertionUrl)
         {
             issuer.CheckStringIsNullOrEmpty("issuer");
@@ -37,6 +59,11 @@ namespace MCS.Library.Cloud.W3
 
             if (assertionUrl.IsNotEmpty())
                 xmlDoc.DocumentElement.SetAttribute("AssertionConsumerServiceURL", assertionUrl);
+
+            XmlElement issuerNode = (XmlElement)xmlDoc.DocumentElement.SelectSingleNode("saml:Issuer", ns);
+
+            if (issuerNode != null)
+                issuerNode.InnerText = issuer;
         }
 
         private static void AddSignatureNodce(XmlDocument xmlDoc, XmlNamespaceManager ns, X509Certificate2 certificate)
@@ -83,6 +110,18 @@ namespace MCS.Library.Cloud.W3
             }
 
             return new X509Certificate2(rawData, "Pr0d1234");
+        }
+
+        private static X509Certificate2 GetEmbededPublicCertificate()
+        {
+            byte[] rawData = null;
+
+            using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("MCS.Library.Cloud.W3.Resources.HuaweiCA.cer"))
+            {
+                rawData = stream.ToBytes();
+            }
+
+            return new X509Certificate2(rawData);
         }
     }
 }
