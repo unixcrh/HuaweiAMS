@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<samlp:AuthnRequest ID="_aea87c81-08c0-8ff7-4f1f-5e4d7dfa6853" Version="2.0" IssueInstant="2009-02-06T20:24:15Z" ForceAuthn="False" IsPassive="False" ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" AssertionConsumerServiceIndex="0" AssertionConsumerServiceURL="http://localhost:6375/W3/LocalResponse.aspx?binding=urn%3aoasis%3anames%3atc%3aSAML%3a2.0%3abindings%3aHTTP-POST" AttributeConsumingServiceIndex="0" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
+  <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">www.Kenexa.com</saml:Issuer>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="#_aea87c81-08c0-8ff7-4f1f-5e4d7dfa6853">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+          <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
+            <InclusiveNamespaces PrefixList="#default code ds kind rw saml samlp typens" xmlns="http://www.w3.org/2001/10/xml-exc-c14n#" />
+          </Transform>
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>CtM1AsAOtFXij0GZrfNVadQTMWE=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>ImmVrEO8AofGc6RaPpXlbzsprY5IlWC7IWHsFSpx43fosVEYDr66ohyaw0kjIuhBmzJAvdx2LMXn2Gnzbyyzi5ExaR/CBzO1ln8M7M3iktRQ5dM4xNGvlAKF1R3R3aXebwq3IgwdKMoZMC/bU1YSCi8c+mOpzYcXBusyC7K6C8gpw510movrmyJaF1BGvXd5QdMrfaLYmWOdiNL8R5LvHIGGLt58VhPpTEpW0dfEKvs4sRjABTHmApSmSxkWG9YrvwqI60A1VaWKzDdYyUugOwwKa+v2FJiqjYRBfNW0DS5HJqMD51qRTtgR3ya2QK1UkxHlkHyQZUS1z5GXmbSmog==</SignatureValue>
+    <KeyInfo>
+      <X509Data>
+        <X509Certificate>MIID9TCCAt0CBE+h/I8wDQYJKoZIhvcNAQEFBQAwgb4xJTAjBgkqhkiG9w0BCQEWFmNoYW9ndS56aG91QGh1YXdlaS5jb20xCzAJBgNVBAYTAkNOMQ8wDQYDVQQIDAZDYW50b24xLDAqBgNVBAcMI0JhbnRpYW4sIExvbmdnYW5nIERpc3RyaWN0LFNoZW56aGVuMSYwJAYDVQQKDB1IdWF3ZWkgVGVjaG5vbG9naWVzIENvLiwgTHRkLjEOMAwGA1UECwwFQlAmSVQxETAPBgNVBAMMCEh1YXdlaUNBMB4XDTEyMDUwMzAzMzMzNVoXDTM5MDkxODAzMzMzNVowgb4xJTAjBgkqhkiG9w0BCQEWFmNoYW9ndS56aG91QGh1YXdlaS5jb20xCzAJBgNVBAYTAkNOMQ8wDQYDVQQIDAZDYW50b24xLDAqBgNVBAcMI0JhbnRpYW4sIExvbmdnYW5nIERpc3RyaWN0LFNoZW56aGVuMSYwJAYDVQQKDB1IdWF3ZWkgVGVjaG5vbG9naWVzIENvLiwgTHRkLjEOMAwGA1UECwwFQlAmSVQxETAPBgNVBAMMCEh1YXdlaUNBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAikvKFSqeyqP17qWVNrWKS1lINd9pWKN7ccHqNk9gvJPXQYVPXl3YswAH+ZYpgHl4eGNDaigeJwaLscQK4FywK8WPv6qcqxg9LU/LlVRyfrkMPRTLwQOlq8/QdoKdOJJPYfddqRv/rLpZNa2VpjUW7UWrqRaK9WvAVSY26OmjG/MHYB9vWj2FdeyC4SZOVhCWlphqIxQKeT75cbAA9ULBuoMsWYOzrtGpKGbyu0eiEisrLMii7iGAFRaaeO5BdQE2VDolYQo6D8bZQLcK6I0OB1Q+mxnDpxndgMKsJiWNP31lDyc7/Q+/fAUuIJ6lsyDBLxci+BKeNrgedj8l2AljFwIDAQABMA0GCSqGSIb3DQEBBQUAA4IBAQAuGljlYUryqxTGJuaqmcdZurQcZNnF7GNf/NXeKAZbo9XIXDT7kT/jAD3+/hXg+FtQIsP4sFZzdF31ny9stkg5yuQlyscPTRPsRdB7+nOR0WJoURt0RqZ+LIOjmiUBcn7c1yZphzyXE5DbKTs+/z0XtXVYHlY8dLrYNmP5YyovZ87/p27mtQV2pEO1NbFPjsw/rWMeKX2hWifDjKJht6yvrwE9d4vAfjeG5mbEdYC/EaQRZhwpUDPLPt1BwA9MAfuBuejUzFRGGMivKVn7bWZ4yg8E2aptRgbFgZ3swTexlayCxafK2uuz2m6knmcbVRDgcGPKxuvPV2iqdj5WNdeq</X509Certificate>
+      </X509Data>
+    </KeyInfo>
+  </Signature>
+  <samlp:NameIDPolicy AllowCreate="False" />
+</samlp:AuthnRequest>

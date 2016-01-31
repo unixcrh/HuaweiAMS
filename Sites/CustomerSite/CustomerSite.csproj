@@ -52,6 +52,9 @@
     <Reference Include="MCS.Library.Cloud.AMS.Data.Impl">
       <HintPath>..\..\Bin\MCS.Library.Cloud.AMS.Data.Impl.dll</HintPath>
     </Reference>
+    <Reference Include="MCS.Library.Cloud.W3">
+      <HintPath>..\..\Bin\MCS.Library.Cloud.W3.dll</HintPath>
+    </Reference>
     <Reference Include="MCS.Library.Data">
       <HintPath>..\..\Bin\MCS.Library.Data.dll</HintPath>
     </Reference>
@@ -200,6 +203,10 @@
     <Content Include="scripts\azuremediaplayer.min.js" />
     <Content Include="scripts\mui.js" />
     <Content Include="scripts\mui.min.js" />
+    <Content Include="W3\LocalResponse.aspx" />
+    <Content Include="W3\RequestTest.aspx" />
+    <Content Include="W3\samlRequest.xml" />
+    <Content Include="W3\samlResponse.xml" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -288,6 +295,20 @@
     </Compile>
     <Compile Include="services\QueryService.ashx.cs">
       <DependentUpon>QueryService.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="W3\LocalResponse.aspx.cs">
+      <DependentUpon>LocalResponse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="W3\LocalResponse.aspx.designer.cs">
+      <DependentUpon>LocalResponse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="W3\RequestTest.aspx.cs">
+      <DependentUpon>RequestTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="W3\RequestTest.aspx.designer.cs">
+      <DependentUpon>RequestTest.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
