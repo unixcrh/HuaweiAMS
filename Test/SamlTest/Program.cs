@@ -55,6 +55,8 @@ namespace SamlTest
             xmlDoc.PreserveWhitespace = true;
             xmlDoc.Load(".\\certificates\\samlRequestTemplate.xml");
             X509Certificate2 certificate = CertificateHelper.GetCertificate(".\\certificates\\HuaweiCA.p12", "Pr0d1234");
+            
+            //AsymmetricAlgorithm key = certificate.PrivateKey;
             AsymmetricAlgorithm key = certificate.PrivateKey;
 
             XmlNamespaceManager ns = new XmlNamespaceManager(xmlDoc.NameTable);
