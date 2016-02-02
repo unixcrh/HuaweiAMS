@@ -25,7 +25,7 @@ namespace CutomerSite.W3
                 xmlDoc.PreserveWhitespace = true;
                 xmlDoc.LoadXml(xmlString);
 
-                this.ValidateResult.Text = SamlHelper.ValidateResponseDoc(xmlDoc).ToString();
+                this.ResponseUserID.Text = SamlHelper.CheckAndGetUserIDResponseDoc(xmlDoc).ToString();
             }
         }
     }

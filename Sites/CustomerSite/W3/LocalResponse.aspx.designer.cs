@@ -31,12 +31,12 @@ namespace CutomerSite.W3 {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea SAMLResponse;
         
         /// <summary>
-        /// ValidateResult control.
+        /// ResponseUserID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ValidateResult;
+        protected global::System.Web.UI.WebControls.Literal ResponseUserID;
     }
 }

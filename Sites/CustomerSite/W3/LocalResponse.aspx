@@ -12,7 +12,7 @@
             <textarea runat="server" id="SAMLResponse" cols="80" rows="30"></textarea>
         </div>
         <div>
-            <asp:Literal runat="server" ID="ValidateResult" Mode="Encode"></asp:Literal>
+            <asp:Literal runat="server" ID="ResponseUserID" Mode="Encode"></asp:Literal>
         </div>
     </form>
 </body>
