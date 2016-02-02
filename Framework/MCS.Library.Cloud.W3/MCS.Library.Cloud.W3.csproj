@@ -34,6 +34,7 @@
       <HintPath>..\..\Bin\MCS.Library.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -44,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\W3IssuerConfigurationElement.cs" />
+    <Compile Include="Configuration\W3Settings.cs" />
     <Compile Include="SamlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
