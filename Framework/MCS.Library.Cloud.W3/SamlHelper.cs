@@ -132,7 +132,7 @@ namespace MCS.Library.Cloud.W3
             xmlDoc.DocumentElement.InsertAfter(xmlDoc.ImportNode(xmlDigitalSignature, true), issuerNode);
         }
 
-        private static X509Certificate2 GetEmbededPrivateCertificate()
+        public static X509Certificate2 GetEmbededPrivateCertificate()
         {
             byte[] rawData = null;
 
@@ -142,7 +142,7 @@ namespace MCS.Library.Cloud.W3
                 rawData = stream.ToBytes();
             }
 
-            return new X509Certificate2(rawData, "Pr0d1234");
+            return new X509Certificate2(rawData, "Pr0d1234", X509KeyStorageFlags.Exportable | X509KeyStorageFlags.MachineKeySet);
         }
 
         private static X509Certificate2 GetEmbededPublicCertificate()
