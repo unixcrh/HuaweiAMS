@@ -36,5 +36,10 @@ namespace MCS.Library.Cloud.W3.Configuration
                 return (W3IssuerConfigurationElementCollection)this["issuers"];
             }
         }
+
+        public W3IssuerConfigurationElement GetSelectedIssuer()
+        {
+            return this.Issuers.CheckAndGet(this.SelectedIssuer);
+        }
     }
 }

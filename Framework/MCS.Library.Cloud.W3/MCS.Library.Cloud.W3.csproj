@@ -51,8 +51,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\HuaweiCA.cer" />
-    <EmbeddedResource Include="Resources\HuaweiCA.p12" />
+    <EmbeddedResource Include="Resources\TestHuaweiCA.cer" />
+    <EmbeddedResource Include="Resources\TestHuaweiCA.p12" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\samlRequestTemplate.xml" />

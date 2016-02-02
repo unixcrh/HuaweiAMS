@@ -1,4 +1,5 @@
-﻿using MCS.Library.Core;
+﻿using MCS.Library.Cloud.W3.Configuration;
+using MCS.Library.Core;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,9 +16,28 @@ namespace MCS.Library.Cloud.W3
 {
     public static class SamlHelper
     {
-        public static bool ValidateResponseDoc(XmlDocument xmlDoc)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="xmlDoc"></param>
+        /// <returns></returns>
+        public static string CheckAndGetUserIDResponseDoc(XmlDocument xmlDoc)
+        {
+            bool validateResult = false;
+
+            string userID = ValidateAndGetUserIDResponseDoc(xmlDoc, out validateResult);
+
+            validateResult.FalseThrow("W3认证返回的结果验证不通过");
+
+            return userID;
+        }
+
+        public static string ValidateAndGetUserIDResponseDoc(XmlDocument xmlDoc, out bool validateResult)
         {
             xmlDoc.NullCheck("xmlDoc");
+
+            validateResult = false;
+            string userID = string.Empty;
 
             XmlNamespaceManager ns = new XmlNamespaceManager(xmlDoc.NameTable);
             ns.AddNamespace("saml", "urn:oasis:names:tc:SAML:2.0:assertion");
@@ -26,15 +46,25 @@ namespace MCS.Library.Cloud.W3
 
             XmlElement signatureElem = (XmlElement)xmlDoc.DocumentElement.SelectSingleNode("//x:Signature", ns);
 
-            XmlElement assertionNode = (XmlElement)xmlDoc.DocumentElement.SelectSingleNode("saml:Assertion", ns);
+            if (signatureElem != null)
+            {
+                XmlElement assertionNode = (XmlElement)xmlDoc.DocumentElement.SelectSingleNode("saml:Assertion", ns);
 
-            SignedXml signedXml = new SignedXml(assertionNode);
+                if (assertionNode != null)
+                {
+                    SignedXml signedXml = new SignedXml(assertionNode);
 
-            signedXml.LoadXml(signatureElem);
+                    signedXml.LoadXml(signatureElem);
 
-            X509Certificate2 certificate = GetEmbededPublicCertificate();
+                    X509Certificate2 certificate = GetEmbededPublicCertificate();
 
-            return signedXml.CheckSignature(certificate, true);
+                    validateResult = signedXml.CheckSignature(certificate, true);
+
+                    userID = assertionNode.GetSingleNodeText("saml:Subject/saml:NameID", ns);
+                }
+            }
+
+            return userID;
         }
 
         public static XmlDocument GetSignedRequestDoc(string issuer, string assertionUrl)
@@ -48,7 +78,7 @@ namespace MCS.Library.Cloud.W3
             ns.AddNamespace("samlp", "urn:oasis:names:tc:SAML:2.0:protocol");
 
             FillPrameters(xmlDoc, ns, issuer, assertionUrl);
-            AddSignatureNodce(xmlDoc, ns, GetEmbededPrivateCertificate());
+            AddSignatureNode(xmlDoc, ns, GetEmbededPrivateCertificate());
 
             return xmlDoc;
         }
@@ -57,8 +87,10 @@ namespace MCS.Library.Cloud.W3
         {
             xmlDoc.DocumentElement.SetAttribute("ID", "_" + UuidHelper.NewUuidString());
 
-            if (assertionUrl.IsNotEmpty())
-                xmlDoc.DocumentElement.SetAttribute("AssertionConsumerServiceURL", assertionUrl);
+            if (assertionUrl.IsNullOrEmpty())
+                assertionUrl = W3Settings.GetSettings().GetSelectedIssuer().ResponseUri;
+
+            xmlDoc.DocumentElement.SetAttribute("AssertionConsumerServiceURL", assertionUrl);
 
             XmlElement issuerNode = (XmlElement)xmlDoc.DocumentElement.SelectSingleNode("saml:Issuer", ns);
 
@@ -66,7 +98,7 @@ namespace MCS.Library.Cloud.W3
                 issuerNode.InnerText = issuer;
         }
 
-        private static void AddSignatureNodce(XmlDocument xmlDoc, XmlNamespaceManager ns, X509Certificate2 certificate)
+        private static void AddSignatureNode(XmlDocument xmlDoc, XmlNamespaceManager ns, X509Certificate2 certificate)
         {
             XmlElement issuerNode = (XmlElement)xmlDoc.DocumentElement.SelectSingleNode("saml:Issuer", ns);
 
@@ -104,7 +136,8 @@ namespace MCS.Library.Cloud.W3
         {
             byte[] rawData = null;
 
-            using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("MCS.Library.Cloud.W3.Resources.HuaweiCA.p12"))
+            using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("MCS.Library.Cloud.W3.Resources." +
+                W3Settings.GetSettings().GetSelectedIssuer().PrivateCA))
             {
                 rawData = stream.ToBytes();
             }
@@ -116,7 +149,8 @@ namespace MCS.Library.Cloud.W3
         {
             byte[] rawData = null;
 
-            using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("MCS.Library.Cloud.W3.Resources.HuaweiCA.cer"))
+            using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("MCS.Library.Cloud.W3.Resources." +
+                W3Settings.GetSettings().GetSelectedIssuer().PublicCA))
             {
                 rawData = stream.ToBytes();
             }

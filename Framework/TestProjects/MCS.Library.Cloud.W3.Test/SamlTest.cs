@@ -27,7 +27,9 @@ namespace MCS.Library.Cloud.W3.Test
             xmlDoc.PreserveWhitespace = true;
             xmlDoc.LoadXml(responseString);
 
-            Console.WriteLine(SamlHelper.ValidateResponseDoc(xmlDoc));
+            bool validateResult = false;
+
+            Console.WriteLine(SamlHelper.ValidateAndGetUserIDResponseDoc(xmlDoc, out validateResult));
         }
     }
 }
