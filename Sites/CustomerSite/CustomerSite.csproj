@@ -204,6 +204,7 @@
     <Content Include="scripts\mui.js" />
     <Content Include="scripts\mui.min.js" />
     <Content Include="W3\LocalResponse.aspx" />
+    <Content Include="W3\PrivateKey.xml" />
     <Content Include="W3\RequestTest.aspx" />
     <Content Include="W3\samlRequest.xml" />
     <Content Include="W3\SamlRequestTest.aspx" />
