@@ -17,8 +17,13 @@ namespace CutomerSite.W3
             string returnUrl = string.Format("http://amshuawei-customer.azurewebsites.net/w3/SamlResponse.aspx?binding={0}",
                 HttpUtility.UrlEncode(urn));
 
-            byte[] samlReq = Encoding.UTF8.GetBytes(SamlHelper.GetSignedRequestDoc("www.huaweiams.com", returnUrl).OuterXml);
+            string xml = SamlHelper.GetSignedRequestDoc("www.huaweiams.com", returnUrl).OuterXml;
+            SAMLRequestXml.InnerText = xml;
+
+            byte[] samlReq = Encoding.UTF8.GetBytes(xml);
             SAMLRequest.InnerText = Convert.ToBase64String(samlReq);
+
+            privateCAInfo.InnerText = SamlHelper.GetEmbededPrivateCertificate().ToString();
         }
     }
 }

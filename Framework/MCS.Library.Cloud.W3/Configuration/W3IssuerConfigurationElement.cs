@@ -28,6 +28,15 @@ namespace MCS.Library.Cloud.W3.Configuration
             }
         }
 
+        [ConfigurationProperty("privateCAPassword")]
+        public string PrivateCAPassword
+        {
+            get
+            {
+                return (string)this["privateCAPassword"];
+            }
+        }
+
         [ConfigurationProperty("responseUri")]
         public string ResponseUri
         {

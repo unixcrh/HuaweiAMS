@@ -1,0 +1,2 @@
+"C:\Program Files\Java\jdk1.8.0_71\jre\bin\keytool" -importkeystore -srckeystore huaweiams_client_pri.jks -destkeystore huaweiams_client_pri.p12 -srcstoretype JKS -deststoretype PKCS12 -srcalias huaweiams_client -destalias huaweiams_client
+pause

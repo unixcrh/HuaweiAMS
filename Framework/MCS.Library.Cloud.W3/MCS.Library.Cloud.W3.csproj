@@ -60,6 +60,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\huawei_ams_server.cer" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\huaweiams_client_pri.p12" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>IF NOT EXIST "$(ProjectDir)..\..\Bin" MD "$(ProjectDir)..\..\Bin"

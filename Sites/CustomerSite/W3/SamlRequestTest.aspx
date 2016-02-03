@@ -14,6 +14,8 @@
         <p>
             <input type="submit" id="singin" value="Sign In" />
         </p>
+        <div runat="server" id="privateCAInfo"></div>
     </form>
+    <textarea id="SAMLRequestXml" runat="server" cols="80" rows="30"></textarea>
 </body>
 </html>

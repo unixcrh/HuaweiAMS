@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<samlp:AuthnRequest ID="_aea87c81-08c0-8ff7-4f1f-5e4d7dfa6853" Version="2.0" IssueInstant="2009-02-06T20:24:15Z" ForceAuthn="False" IsPassive="False" ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" AssertionConsumerServiceIndex="0" AssertionConsumerServiceURL="http://localhost:6375/W3/LocalResponse.aspx?binding=urn%3aoasis%3anames%3atc%3aSAML%3a2.0%3abindings%3aHTTP-POST" AttributeConsumingServiceIndex="0" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
-  <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">www.Kenexa.com</saml:Issuer>
+<samlp:AuthnRequest ID="_d6d0699b-17b7-9e5b-4c69-56bd5f60a897" Version="2.0" IssueInstant="2009-02-06T20:24:15Z" ForceAuthn="False" IsPassive="False" ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" AssertionConsumerServiceIndex="0" AssertionConsumerServiceURL="http://amshuawei-customer.azurewebsites.net/w3/SamlResponse.aspx?binding=urn%3aoasis%3anames%3atc%3aSAML%3a2.0%3abindings%3aHTTP-POST" AttributeConsumingServiceIndex="0" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
+  <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">www.huaweiams.com</saml:Issuer>
   <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
     <SignedInfo>
       <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
       <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
-      <Reference URI="#_aea87c81-08c0-8ff7-4f1f-5e4d7dfa6853">
+      <Reference URI="#_d6d0699b-17b7-9e5b-4c69-56bd5f60a897">
         <Transforms>
           <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
           <Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#">
@@ -13,13 +13,13 @@
           </Transform>
         </Transforms>
         <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <DigestValue>CtM1AsAOtFXij0GZrfNVadQTMWE=</DigestValue>
+        <DigestValue>ZdQwRSxOqn+QmAWNu/hbTZ/RFeU=</DigestValue>
       </Reference>
     </SignedInfo>
-    <SignatureValue>ImmVrEO8AofGc6RaPpXlbzsprY5IlWC7IWHsFSpx43fosVEYDr66ohyaw0kjIuhBmzJAvdx2LMXn2Gnzbyyzi5ExaR/CBzO1ln8M7M3iktRQ5dM4xNGvlAKF1R3R3aXebwq3IgwdKMoZMC/bU1YSCi8c+mOpzYcXBusyC7K6C8gpw510movrmyJaF1BGvXd5QdMrfaLYmWOdiNL8R5LvHIGGLt58VhPpTEpW0dfEKvs4sRjABTHmApSmSxkWG9YrvwqI60A1VaWKzDdYyUugOwwKa+v2FJiqjYRBfNW0DS5HJqMD51qRTtgR3ya2QK1UkxHlkHyQZUS1z5GXmbSmog==</SignatureValue>
+    <SignatureValue>p4vOmdO+xDHoITtdT19N1Tl7bk/ub1x3EPEjXuj2tAbM0+PtidTfGjEqwwKiXbmmGzSnDGvxPDwTUGvQBkXgtxBa3SYmpsyO0laghbphthiaRna9lgai8/+nBqQx2gKmvr6FkxGCg5OvjgAL8zirmpHHPGxYnpnSSOaeXUwHhLg=</SignatureValue>
     <KeyInfo>
       <X509Data>
-        <X509Certificate>MIID9TCCAt0CBE+h/I8wDQYJKoZIhvcNAQEFBQAwgb4xJTAjBgkqhkiG9w0BCQEWFmNoYW9ndS56aG91QGh1YXdlaS5jb20xCzAJBgNVBAYTAkNOMQ8wDQYDVQQIDAZDYW50b24xLDAqBgNVBAcMI0JhbnRpYW4sIExvbmdnYW5nIERpc3RyaWN0LFNoZW56aGVuMSYwJAYDVQQKDB1IdWF3ZWkgVGVjaG5vbG9naWVzIENvLiwgTHRkLjEOMAwGA1UECwwFQlAmSVQxETAPBgNVBAMMCEh1YXdlaUNBMB4XDTEyMDUwMzAzMzMzNVoXDTM5MDkxODAzMzMzNVowgb4xJTAjBgkqhkiG9w0BCQEWFmNoYW9ndS56aG91QGh1YXdlaS5jb20xCzAJBgNVBAYTAkNOMQ8wDQYDVQQIDAZDYW50b24xLDAqBgNVBAcMI0JhbnRpYW4sIExvbmdnYW5nIERpc3RyaWN0LFNoZW56aGVuMSYwJAYDVQQKDB1IdWF3ZWkgVGVjaG5vbG9naWVzIENvLiwgTHRkLjEOMAwGA1UECwwFQlAmSVQxETAPBgNVBAMMCEh1YXdlaUNBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAikvKFSqeyqP17qWVNrWKS1lINd9pWKN7ccHqNk9gvJPXQYVPXl3YswAH+ZYpgHl4eGNDaigeJwaLscQK4FywK8WPv6qcqxg9LU/LlVRyfrkMPRTLwQOlq8/QdoKdOJJPYfddqRv/rLpZNa2VpjUW7UWrqRaK9WvAVSY26OmjG/MHYB9vWj2FdeyC4SZOVhCWlphqIxQKeT75cbAA9ULBuoMsWYOzrtGpKGbyu0eiEisrLMii7iGAFRaaeO5BdQE2VDolYQo6D8bZQLcK6I0OB1Q+mxnDpxndgMKsJiWNP31lDyc7/Q+/fAUuIJ6lsyDBLxci+BKeNrgedj8l2AljFwIDAQABMA0GCSqGSIb3DQEBBQUAA4IBAQAuGljlYUryqxTGJuaqmcdZurQcZNnF7GNf/NXeKAZbo9XIXDT7kT/jAD3+/hXg+FtQIsP4sFZzdF31ny9stkg5yuQlyscPTRPsRdB7+nOR0WJoURt0RqZ+LIOjmiUBcn7c1yZphzyXE5DbKTs+/z0XtXVYHlY8dLrYNmP5YyovZ87/p27mtQV2pEO1NbFPjsw/rWMeKX2hWifDjKJht6yvrwE9d4vAfjeG5mbEdYC/EaQRZhwpUDPLPt1BwA9MAfuBuejUzFRGGMivKVn7bWZ4yg8E2aptRgbFgZ3swTexlayCxafK2uuz2m6knmcbVRDgcGPKxuvPV2iqdj5WNdeq</X509Certificate>
+        <X509Certificate>MIICvTCCAiagAwIBAgIEVrBG5zANBgkqhkiG9w0BAQUFADCBojELMAkGA1UEBhMCQ04xEjAQBgNVBAgTCUd1YW5nZG9uZzEsMCoGA1UEBxMjQmFudGlhbiwgTG9uZ2dhbmcgRGlzdHJpY3QsU2hlbnpoZW4xJjAkBgNVBAoTHUh1YXdlaSBUZWNobm9sb2dpZXMgQ28uLCBMdGQuMQ4wDAYDVQQLDAVCUCZJVDEZMBcGA1UEAwwQaHVhd2VpYW1zX2NsaWVudDAeFw0xNjAyMDIwNjA0MjNaFw00MzA2MTkwNjA0MjNaMIGiMQswCQYDVQQGEwJDTjESMBAGA1UECBMJR3Vhbmdkb25nMSwwKgYDVQQHEyNCYW50aWFuLCBMb25nZ2FuZyBEaXN0cmljdCxTaGVuemhlbjEmMCQGA1UEChMdSHVhd2VpIFRlY2hub2xvZ2llcyBDby4sIEx0ZC4xDjAMBgNVBAsMBUJQJklUMRkwFwYDVQQDDBBodWF3ZWlhbXNfY2xpZW50MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC061k5/CVdR1GWnqgJS52u5jrrsbgaURMaGnLdzTz8V64gATsMNpPbipGiyKbBXR7y9tZiHFb/xASDE1hr4coktSOcj5zuV9t0QbsCxkAjeEm3+JRhKXfOtchir498cUX43ACvuo1N5IpuItdQR00BebCuw0htPybiws1XfijIfwIDAQABMA0GCSqGSIb3DQEBBQUAA4GBAKPLjd6A5jpwTyR0OQp8pHKuY+GuvgZLsa5lIxyYB8UL+xrKFjkTWlXlYzh8WYFpLp+n7UUYmTDrRMTK5duXbBrUduCOEHFZQ76BkHWXyedNoem8EvGTk+Fy+AnJcVNBv1Bjn4dYMo6PBr4EQVVZ+UwzYKPseLLRg+v04sFizo/T</X509Certificate>
       </X509Data>
     </KeyInfo>
   </Signature>

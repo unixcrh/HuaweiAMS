@@ -136,13 +136,15 @@ namespace MCS.Library.Cloud.W3
         {
             byte[] rawData = null;
 
+            W3IssuerConfigurationElement issuer = W3Settings.GetSettings().GetSelectedIssuer();
+
             using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("MCS.Library.Cloud.W3.Resources." +
-                W3Settings.GetSettings().GetSelectedIssuer().PrivateCA))
+                issuer.PrivateCA))
             {
                 rawData = stream.ToBytes();
             }
 
-            return new X509Certificate2(rawData, "Pr0d1234", X509KeyStorageFlags.Exportable | X509KeyStorageFlags.MachineKeySet);
+            return new X509Certificate2(rawData, issuer.PrivateCAPassword, X509KeyStorageFlags.Exportable | X509KeyStorageFlags.MachineKeySet);
         }
 
         private static X509Certificate2 GetEmbededPublicCertificate()
