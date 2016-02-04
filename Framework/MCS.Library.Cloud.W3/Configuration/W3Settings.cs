@@ -19,6 +19,15 @@ namespace MCS.Library.Cloud.W3.Configuration
             return settings;
         }
 
+        [ConfigurationProperty("signInUri")]
+        public string SignInUri
+        {
+            get
+            {
+                return (string)this["signInUri"];
+            }
+        }
+
         [ConfigurationProperty("selectedIssuer")]
         public string SelectedIssuer
         {

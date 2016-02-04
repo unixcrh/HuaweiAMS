@@ -19,6 +19,16 @@ namespace MCS.Library.Cloud.W3.Configuration
             }
         }
 
+
+        [ConfigurationProperty("issuerID")]
+        public string IssuerID
+        {
+            get
+            {
+                return (string)this["issuerID"];
+            }
+        }
+
         [ConfigurationProperty("publicCA")]
         public string PublicCA
         {

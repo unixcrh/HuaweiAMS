@@ -64,9 +64,8 @@
     <Reference Include="MCS.Web.Responsive.Library">
       <HintPath>..\..\Bin\MCS.Web.Responsive.Library.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\..\SDK\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
@@ -210,6 +209,7 @@
     <Content Include="W3\SamlRequestTest.aspx" />
     <Content Include="W3\SamlResponse.aspx" />
     <Content Include="W3\samlResponse.xml" />
+    <Content Include="W3\SignInBridge.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -326,6 +326,13 @@
     </Compile>
     <Compile Include="W3\SamlResponse.aspx.designer.cs">
       <DependentUpon>SamlResponse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="W3\SignInBridge.aspx.cs">
+      <DependentUpon>SignInBridge.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="W3\SignInBridge.aspx.designer.cs">
+      <DependentUpon>SignInBridge.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

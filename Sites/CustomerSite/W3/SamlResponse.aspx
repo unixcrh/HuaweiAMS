@@ -14,6 +14,9 @@
         <div>
             <asp:Literal runat="server" ID="ResponseUserID" Mode="Encode"></asp:Literal>
         </div>
+       <div>
+            <asp:Literal runat="server" ID="validateResult" Mode="Encode"></asp:Literal>
+        </div>
     </form>
 </body>
 </html>

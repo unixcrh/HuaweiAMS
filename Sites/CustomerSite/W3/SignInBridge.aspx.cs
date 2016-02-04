@@ -10,13 +10,17 @@ using System.Web.UI.WebControls;
 
 namespace CutomerSite.W3
 {
-    public partial class RequestTest : System.Web.UI.Page
+    public partial class SignInBridge : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            loginForm.Action = W3Settings.GetSettings().SignInUri;
+
             W3IssuerConfigurationElement issuerElement = W3Settings.GetSettings().GetSelectedIssuer();
 
-            byte[] samlReq = Encoding.UTF8.GetBytes(SamlHelper.GetSignedRequestDoc(issuerElement.IssuerID, string.Empty).OuterXml);
+            string xml = SamlHelper.GetSignedRequestDoc(issuerElement.IssuerID, string.Empty).OuterXml;
+
+            byte[] samlReq = Encoding.UTF8.GetBytes(xml);
             SAMLRequest.InnerText = Convert.ToBase64String(samlReq);
         }
     }

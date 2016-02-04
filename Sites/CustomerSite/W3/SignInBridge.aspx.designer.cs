@@ -10,42 +10,33 @@
 namespace CutomerSite.W3 {
     
     
-    public partial class SamlResponse {
+    public partial class SignInBridge {
         
         /// <summary>
-        /// serverForm control.
+        /// loginForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm serverForm;
+        protected global::System.Web.UI.HtmlControls.HtmlForm loginForm;
         
         /// <summary>
-        /// SAMLResponse control.
+        /// SAMLRequest control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea SAMLResponse;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea SAMLRequest;
         
         /// <summary>
-        /// ResponseUserID control.
+        /// privateCAInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ResponseUserID;
-        
-        /// <summary>
-        /// validateResult control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal validateResult;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl privateCAInfo;
     }
 }

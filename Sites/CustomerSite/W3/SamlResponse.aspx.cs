@@ -26,6 +26,10 @@ namespace CutomerSite.W3
                 xmlDoc.LoadXml(xmlString);
 
                 this.ResponseUserID.Text = SamlHelper.CheckAndGetUserIDResponseDoc(xmlDoc).ToString();
+                //bool result = false;
+
+                //this.ResponseUserID.Text = SamlHelper.ValidateAndGetUserIDResponseDoc(xmlDoc, out result).ToString();
+                //this.validateResult.Text = result.ToString();
             }
         }
     }
