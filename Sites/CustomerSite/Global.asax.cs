@@ -26,7 +26,7 @@ namespace CutomerSite
         protected void Global_AuthenticateRequest(object sender, EventArgs e)
         {
             InitTimeOffset();
-            ProcessLoginCookie();
+            //ProcessLoginCookie();
         }
 
         private static void InitTimeOffset()

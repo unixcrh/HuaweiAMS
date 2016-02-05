@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
@@ -25,7 +26,12 @@ namespace CutomerSite.W3
                 xmlDoc.PreserveWhitespace = true;
                 xmlDoc.LoadXml(xmlString);
 
-                this.ResponseUserID.Text = SamlHelper.CheckAndGetUserIDResponseDoc(xmlDoc).ToString();
+                string userID = SamlHelper.CheckAndGetUserIDResponseDoc(xmlDoc).ToString();
+
+                this.ResponseUserID.Text = userID;
+                FormsAuthentication.SetAuthCookie(userID, false);
+
+                this.Response.Redirect("../list/AllEvents.aspx");
             }
         }
     }
