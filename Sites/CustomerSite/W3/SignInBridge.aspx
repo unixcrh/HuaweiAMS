@@ -11,15 +11,17 @@
         }
     </script>
 </head>
-<body>
-    <form id="loginForm" name="loginForm" method="post" runat="server"
-        action="https://uniportal.huawei.com/saaslogin/sp">
-        <textarea id="SAMLRequest" runat="server" cols="80" rows="30"></textarea>
-        <input id="RelayState" name="RelayState" type="hidden" value="" />
-        <p>
-            <input type="submit" id="singin" value="Sign In" />
-        </p>
-        <div runat="server" id="privateCAInfo"></div>
-    </form>
+<body onload="onDocumentLoad();">
+    <div style="display: none">
+        <form id="loginForm" name="loginForm" method="post" runat="server"
+            action="https://uniportal.huawei.com/saaslogin/sp">
+            <textarea id="SAMLRequest" runat="server" cols="80" rows="30"></textarea>
+            <input id="RelayState" name="RelayState" type="hidden" value="" />
+            <p>
+                <input type="submit" id="singin" value="Sign In" />
+            </p>
+            <div runat="server" id="privateCAInfo"></div>
+        </form>
+    </div>
 </body>
 </html>

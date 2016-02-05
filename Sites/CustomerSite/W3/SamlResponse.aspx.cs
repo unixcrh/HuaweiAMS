@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Xml;
@@ -27,6 +28,8 @@ namespace CutomerSite.W3
 
                 SamlResponseResult responseResult = SamlHelper.CheckAndGetUserIDResponseDoc(xmlDoc);
                 this.ResponseUserID.Text = responseResult.UserID;
+
+                FormsAuthentication.SetAuthCookie(responseResult.UserID, false);
 
                 Response.Redirect("../list/AllEvents.aspx");
             }
