@@ -49,6 +49,7 @@
     <Compile Include="Configuration\W3Settings.cs" />
     <Compile Include="SamlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SamlResponseResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\TestHuaweiCA.cer" />

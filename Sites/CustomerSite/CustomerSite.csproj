@@ -184,6 +184,7 @@
     <Content Include="scripts\techs\MSAdaptiveStreamingPlugin-v1.0.12-osmf2.0.swc" />
     <Content Include="scripts\techs\SmoothStreamingPlugin_EULA.rtf" />
     <Content Include="scripts\techs\Smooth_Streaming_Plugin_for_OSMF.pdf" />
+    <Content Include="W3\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

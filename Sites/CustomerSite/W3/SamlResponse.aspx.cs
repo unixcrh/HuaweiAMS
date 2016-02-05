@@ -25,11 +25,10 @@ namespace CutomerSite.W3
                 xmlDoc.PreserveWhitespace = true;
                 xmlDoc.LoadXml(xmlString);
 
-                this.ResponseUserID.Text = SamlHelper.CheckAndGetUserIDResponseDoc(xmlDoc).ToString();
-                //bool result = false;
+                SamlResponseResult responseResult = SamlHelper.CheckAndGetUserIDResponseDoc(xmlDoc);
+                this.ResponseUserID.Text = responseResult.UserID;
 
-                //this.ResponseUserID.Text = SamlHelper.ValidateAndGetUserIDResponseDoc(xmlDoc, out result).ToString();
-                //this.validateResult.Text = result.ToString();
+                Response.Redirect("../list/AllEvents.aspx");
             }
         }
     }

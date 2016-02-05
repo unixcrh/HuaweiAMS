@@ -15,8 +15,14 @@ namespace CutomerSite
         public override void Init()
         {
             this.AuthenticateRequest += new EventHandler(Global_AuthenticateRequest);
+            this.PreRequestHandlerExecute += Global_PreRequestHandlerExecute;
 
             base.Init();
+        }
+
+        private void Global_PreRequestHandlerExecute(object sender, EventArgs e)
+        {
+            
         }
 
         protected void Application_Start(object sender, EventArgs e)

@@ -26,10 +26,10 @@ namespace CutomerSite.W3
                 xmlDoc.PreserveWhitespace = true;
                 xmlDoc.LoadXml(xmlString);
 
-                string userID = SamlHelper.CheckAndGetUserIDResponseDoc(xmlDoc).ToString();
+                SamlResponseResult result = SamlHelper.CheckAndGetUserIDResponseDoc(xmlDoc);
 
-                this.ResponseUserID.Text = userID;
-                FormsAuthentication.SetAuthCookie(userID, false);
+                this.ResponseUserID.Text = result.UserID;
+                FormsAuthentication.SetAuthCookie(result.UserID, false);
 
                 this.Response.Redirect("../list/AllEvents.aspx");
             }

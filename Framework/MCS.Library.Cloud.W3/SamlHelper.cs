@@ -21,22 +21,21 @@ namespace MCS.Library.Cloud.W3
         /// </summary>
         /// <param name="xmlDoc"></param>
         /// <returns></returns>
-        public static string CheckAndGetUserIDResponseDoc(XmlDocument xmlDoc)
+        public static SamlResponseResult CheckAndGetUserIDResponseDoc(XmlDocument xmlDoc)
         {
-            bool validateResult = false;
+            SamlResponseResult result = ValidateAndGetUserIDResponseDoc(xmlDoc);
 
-            string userID = ValidateAndGetUserIDResponseDoc(xmlDoc, out validateResult);
+            result.ValidateResult.FalseThrow("W3认证返回的结果验证不通过");
 
-            validateResult.FalseThrow("W3认证返回的结果验证不通过");
-
-            return userID;
+            return result;
         }
 
-        public static string ValidateAndGetUserIDResponseDoc(XmlDocument xmlDoc, out bool validateResult)
+        public static SamlResponseResult ValidateAndGetUserIDResponseDoc(XmlDocument xmlDoc)
         {
+            SamlResponseResult result = new SamlResponseResult();
+
             xmlDoc.NullCheck("xmlDoc");
 
-            validateResult = false;
             string userID = string.Empty;
 
             XmlNamespaceManager ns = new XmlNamespaceManager(xmlDoc.NameTable);
@@ -58,13 +57,13 @@ namespace MCS.Library.Cloud.W3
 
                     X509Certificate2 certificate = GetEmbededPublicCertificate();
 
-                    validateResult = signedXml.CheckSignature(certificate, true);
+                    result.ValidateResult = signedXml.CheckSignature(certificate, true);
 
-                    userID = assertionNode.GetSingleNodeText("saml:Subject/saml:NameID", ns);
+                    result.UserID = assertionNode.GetSingleNodeText("saml:Subject/saml:NameID", ns);
                 }
             }
 
-            return userID;
+            return result;
         }
 
         public static XmlDocument GetSignedRequestDoc(string issuer, string assertionUrl)
