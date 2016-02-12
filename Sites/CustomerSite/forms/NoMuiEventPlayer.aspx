@@ -316,6 +316,7 @@
                     "nativeControlsForTouch": false,
                     autoplay: false,
                     controls: true,
+                    heuristicProfile: "High Quality",
                     poster: eventData.poster,
                     techOrder: $("#techOrder").val() == "Html5" ? html5TechOrder : mseTechOrder,
                     preload: "auto"

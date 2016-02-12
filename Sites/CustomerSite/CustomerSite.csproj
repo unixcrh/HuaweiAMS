@@ -90,6 +90,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\azuremediaplayer.min.css" />
     <Content Include="css\bootstrap\css\bootstrap-theme.css" />
     <Content Include="css\bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap\css\bootstrap.css" />
@@ -161,11 +162,16 @@
     <None Include="Properties\PublishProfiles\amshuawei-customer-dev - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\amshuawei-customer-dev - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\amshuawei-customer.pubxml" />
+    <Content Include="samples\directTest.html" />
+    <Content Include="samples\mainAmp.js" />
+    <Content Include="samples\Web.config" />
     <None Include="scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="samples\FixedBitrate.aspx" />
     <Content Include="samples\FlashVideo.aspx" />
+    <Content Include="samples\framePlayer.aspx" />
     <Content Include="samples\Html5Video.aspx" />
     <Content Include="scripts\amsCommon.js" />
+    <Content Include="scripts\azuremediaplayer.min.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="scripts\jquery-2.1.4.js" />
@@ -196,11 +202,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\azuremediaplayer.min.css" />
+    <Content Include="css\azuremediaplayer1-5-0.min.css" />
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="samples\simpleVideo.aspx" />
-    <Content Include="scripts\azuremediaplayer.min.js" />
+    <Content Include="scripts\azuremediaplayer1-5-0.min.js" />
     <Content Include="scripts\mui.js" />
     <Content Include="scripts\mui.min.js" />
     <Content Include="W3\LocalResponse.aspx" />
@@ -282,6 +288,13 @@
     </Compile>
     <Compile Include="samples\FlashVideo.aspx.designer.cs">
       <DependentUpon>FlashVideo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="samples\framePlayer.aspx.cs">
+      <DependentUpon>framePlayer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="samples\framePlayer.aspx.designer.cs">
+      <DependentUpon>framePlayer.aspx</DependentUpon>
     </Compile>
     <Compile Include="samples\Html5Video.aspx.cs">
       <DependentUpon>Html5Video.aspx</DependentUpon>

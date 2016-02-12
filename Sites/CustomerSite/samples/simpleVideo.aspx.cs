@@ -16,7 +16,7 @@ namespace CutomerSite.samples
                 if (this.Request.QueryString["url"] != null)
                     this.videoUrl.Text = this.Request.QueryString["url"];
                 else
-                    this.videoUrl.Text = "http://amshuaweichn.streaming.mediaservices.chinacloudapi.cn/94706d4f-ea13-4eb4-a938-a58c9b9a0897/XBox%20Video.ism/manifest";
+                    this.videoUrl.Text = "http://huaweiamschn.streaming.mediaservices.chinacloudapi.cn/b3c814b9-dfef-4897-9478-7d47213ff815/30195156-3eaa-414b-b82f-ce4b3ccb5b14.ism/manifest";
 
             }
         }
