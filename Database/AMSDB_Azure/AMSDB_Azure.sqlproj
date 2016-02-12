@@ -63,6 +63,7 @@
     <Folder Include="AMS\" />
     <Folder Include="AMS\Tables\" />
     <Folder Include="AMS\Procedures" />
+    <Folder Include="AMS\Functions" />
     <Folder Include="Scripts" />
     <Folder Include="AMS\Views" />
   </ItemGroup>
@@ -111,6 +112,12 @@
     </Build>
     <Build Include="..\AMSDB\AMS\Views\EventsChannelsView.sql">
       <Link>AMS\Views\EventsChannelsView.sql</Link>
+    </Build>
+    <Build Include="..\AMSDB\AMS\Functions\SplitString.sql">
+      <Link>AMS\Functions\SplitString.sql</Link>
+    </Build>
+    <Build Include="..\AMSDB\AMS\Functions\FormatIPAddress.sql">
+      <Link>AMS\Functions\FormatIPAddress.sql</Link>
     </Build>
     <PostDeploy Include="..\AMSDB\Scripts\PostDeployment.sql">
       <Link>Scripts\PostDeployment.sql</Link>

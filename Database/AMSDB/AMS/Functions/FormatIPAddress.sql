@@ -1,0 +1,24 @@
+﻿CREATE FUNCTION [AMS].[FormatIPAddress]
+(
+	@sourceIP NVARCHAR(max)
+)
+RETURNS NVARCHAR(max)
+AS
+BEGIN
+	DECLARE @IPTable AS TABLE(Id INT, Value NVARCHAR(MAX))
+
+	INSERT INTO @IPTable
+	SELECT * FROM [AMS].[SplitString](@sourceIP, '.', 1)
+
+	DECLARE @ip1 NVARCHAR(32)
+	DECLARE @ip2 NVARCHAR(32)
+	DECLARE @ip3 NVARCHAR(32)
+	DECLARE @ip4 NVARCHAR(32)
+
+	SELECT @ip1 = FORMAT(CAST(Value AS INT), '000') FROM @IPTable WHERE Id = 1
+	SELECT @ip2 = FORMAT(CAST(Value AS INT), '000') FROM @IPTable WHERE Id = 2
+	SELECT @ip3 = FORMAT(CAST(Value AS INT), '000') FROM @IPTable WHERE Id = 3
+	SELECT @ip4 = FORMAT(CAST(Value AS INT), '000') FROM @IPTable WHERE Id = 4
+
+	RETURN @ip1 + '.' + @ip2 + '.' + @ip3 + '.' + @ip4
+END
