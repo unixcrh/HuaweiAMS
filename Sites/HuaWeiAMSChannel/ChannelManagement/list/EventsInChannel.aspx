@@ -35,6 +35,34 @@
             if (window.confirm("确定删除事件吗？") == false)
                 return false;
         }
+
+        function onPlaybackUrlClick(a) {
+            event.returnValue = false;
+            $("#playbackUrl").text(a.href);
+
+            var options = {
+                title: "播放地址",
+                width: 520,
+                height: 280,
+                okBtn: {
+                    visible: false,
+                    text: "确定"
+                },
+                cancelBtn: {
+                    visible: true,
+                    text: "关闭"
+                },
+                onOk: function () {
+                },
+                control: {
+                    id: 'playbackUrlContainer',
+                    clone: false
+                }
+            };
+            $HGModalBox.show(options);
+
+            return false;
+        }
     </script>
 </head>
 <body>
@@ -83,6 +111,9 @@
                                 <a title="编辑..." class="btn btn-xs btn-info" href="../forms/EditEvent.aspx?channelID=<%#Eval("ChannelID") %>&id=<%#Eval("ID") %>">
                                     <i class="icon-edit bigger-120"></i>
                                 </a>
+                                <a title="播放地址..." class="btn btn-xs btn-info" href="http://amshuawei-customer.azurewebsites.net/forms/NoMuiEventPlayer.aspx?channelID=<%#Eval("ChannelID") %>&id=<%#Eval("ID") %>" onclick="return onPlaybackUrlClick(this);">
+                                    <i class="icon-share bigger-120"></i>
+                                </a>
                             </div>
                             <div class="visible-xs visible-sm hidden-md hidden-lg">
                                 <div class="dropdown">
@@ -101,6 +132,13 @@
                                             <a title="编辑..." href="../forms/EditEvent.aspx?channelID=<%#Eval("ChannelID") %>&id=<%#Eval("ID") %>" class="tooltip-success" data-rel="tooltip" data-original-title="Edit">
                                                 <span class="green">
                                                     <i class="icon-edit bigger-120"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a title="播放地址..." href="http://amshuawei-customer.azurewebsites.net/forms/NoMuiEventPlayer.aspx?channelID=<%#Eval("ChannelID") %>&id=<%#Eval("ID") %>" class="tooltip-success" data-rel="tooltip" data-original-title="Edit" onclick="return onPlaybackUrlClick(this);">
+                                                <span class="green">
+                                                    <i class="icon-share bigger-120"></i>
                                                 </span>
                                             </a>
                                         </li>
@@ -123,6 +161,17 @@
             </res:DeluxeObjectDataSource>
             <div>
                 <asp:LinkButton ID="refreshBtn" runat="server" OnClick="refreshBtn_Click"></asp:LinkButton>
+            </div>
+            <div id="playbackUrlContainer" class="modal-body" style="display: none">
+                <div class="form-group">
+                    <label class="col-md-3 control-lable" for="playbackUrl">
+                        播放地址：</label>
+                    <div class="col-md-9">
+                        <textarea id="playbackUrl" class="form-control" readonly="readonly" rows="5"></textarea>
+                    </div>
+                </div>
+                <br />
+                <br />
             </div>
         </div>
     </form>
