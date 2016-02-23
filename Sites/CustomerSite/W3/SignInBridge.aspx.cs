@@ -18,7 +18,9 @@ namespace CutomerSite.W3
 
             W3IssuerConfigurationElement issuerElement = W3Settings.GetSettings().GetSelectedIssuer();
 
-            string xml = SamlHelper.GetSignedRequestDoc(issuerElement.IssuerID, string.Empty).OuterXml;
+            string returnUrl = this.Request.QueryString["ReturnUrl"];
+
+            string xml = SamlHelper.GetSignedRequestDoc(issuerElement.IssuerID, returnUrl).OuterXml;
 
             byte[] samlReq = Encoding.UTF8.GetBytes(xml);
             SAMLRequest.InnerText = Convert.ToBase64String(samlReq);

@@ -1,4 +1,5 @@
 ﻿using MCS.Library.Cloud.W3;
+using MCS.Library.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,10 @@ namespace CutomerSite.W3
 
                 FormsAuthentication.SetAuthCookie(responseResult.UserID, false);
 
-                Response.Redirect("../list/AllEvents.aspx");
+                if (responseResult.ReturnUrl.IsNotEmpty())
+                    this.Response.Redirect(responseResult.ReturnUrl);
+                else
+                    this.Response.Redirect("../list/AllEvents.aspx");
             }
         }
     }

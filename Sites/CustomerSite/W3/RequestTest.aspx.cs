@@ -14,9 +14,12 @@ namespace CutomerSite.W3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (this.User != null && this.User.Identity != null)
+                identity.Text = this.User.Identity.Name;
+
             W3IssuerConfigurationElement issuerElement = W3Settings.GetSettings().GetSelectedIssuer();
 
-            byte[] samlReq = Encoding.UTF8.GetBytes(SamlHelper.GetSignedRequestDoc(issuerElement.IssuerID, string.Empty).OuterXml);
+            byte[] samlReq = Encoding.UTF8.GetBytes(SamlHelper.GetSignedRequestDoc(issuerElement.IssuerID, this.Request.Url.ToString()).OuterXml);
             SAMLRequest.InnerText = Convert.ToBase64String(samlReq);
         }
     }

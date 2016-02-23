@@ -1,24 +1,24 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<samlp:Response xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" Destination="http://localhost:6375/W3/LocalResponse.aspx?binding=urn%3aoasis%3anames%3atc%3aSAML%3a2.0%3abindings%3aHTTP-POST" ID="s2c6846f301c1c46257c01af7f5164e18d9568e79c" InResponseTo="_65d761f9-b3b8-987b-4de4-bf4d6c97a9b7" IssueInstant="2016-01-31T07:58:33Z" Version="2.0">
+<samlp:Response xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" Destination="http://localhost:6375/W3/LocalResponse.aspx?binding=urn%3aoasis%3anames%3atc%3aSAML%3a2.0%3abindings%3aHTTP-POST" ID="s2ed3fbc7654454d3b6cce3f237b0659d71538ec90" InResponseTo="_15171ca9-5fa8-9cd5-4fdc-35ddaac9f4e2" IssueInstant="2016-02-23T09:12:08Z" Version="2.0">
   <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">www.huawei.com</saml:Issuer>
   <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
     <SignedInfo>
       <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
       <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
-      <Reference URI="#s2c6846f301c1c46257c01af7f5164e18d9568e79c">
+      <Reference URI="#s2ed3fbc7654454d3b6cce3f237b0659d71538ec90">
         <Transforms>
           <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
         </Transforms>
         <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <DigestValue>I2/8c4m/5TnuR2MGudI+d07OdYg=</DigestValue>
+        <DigestValue>HFwS+9YrbNOJDeI4zFwSk9Kxg4g=</DigestValue>
       </Reference>
     </SignedInfo>
     <SignatureValue>
-      dbsVfaTKLpGkD/3poO2aC8gtDxR3zPZZ+5m8XlVyizVbzlCOAMuIhcOe/3lJV8rAYSOOD8lovYtI
-      2LSnfVU0LMMY15Ur8o4MyJnG3vFGp7CA0c+NVTuHWRsCm6HSRgRLqLJ9EUuGo1BG5p2+ykdMp7ev
-      Oi29LZQFDJWp3WoXAv/Dldr3lxb06K0nBKNl+yXUKG7rQXkKP4T+cDbXKcj7on/vTeNIXvxyywV4
-      cGqtIf6kNUKCTvOosnqY3WiPlgh22nelg0gxz48i+TzIrZ+rrEwAKeF0DAhJkB2poqDk15O5Q208
-      gH3aWuhxLeMWpEuWk9ysDIie5rbNKpmzURHGmQ==
+      PnSqnQcMNBdXVg2SqsELXliv+miF9MhTkE53iQBeIrtcZk9fPjxpnzIRCMk0ywEFGZtVOhfnVKaC
+      Dg+AOvwhdOpY8gdOqJTTN3sw11xwrjM3rk0aXIRd+tJM/ZCnu1gUU9bTWf+BJZL/J0nRUbOAn4oJ
+      3a4iikhlnbQOEchJPAvsk4opLyllL1xWz4M/ZRm+MjhJvPsvA4RXAj+S1Q9duTWLt2UCLspJu+2a
+      lQB7okT/DCfenPmvWQyDw3AA+FcrOaTKX+9G5DhvOau+Rr3bo8Gp4Oo3oyNRwCNJSwH841KpZbH9
+      PjzUmfqMBkn7DsnjKBp7Tm19mF7O2It3To0J9g==
     </SignatureValue>
     <KeyInfo>
       <X509Data>
@@ -48,23 +48,28 @@
   <samlp:Status>
     <samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success" />
   </samlp:Status>
-  <saml:Assertion xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="s23886ade2b53432ce3c07224b3abed14f51a00a89" IssueInstant="2016-01-31T07:58:33Z" Version="2.0">
+  <saml:Assertion xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" ID="s2e587e5db4f47c1a7bf8a1f5d05b85e4807cfbebe" IssueInstant="2016-02-23T09:12:08Z" Version="2.0">
     <saml:Issuer>www.huawei.com</saml:Issuer>
     <saml:Subject>
       <saml:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent" NameQualifier="www.huawei.com" SPNameQualifier="www.Kenexa.com">lizhi</saml:NameID>
       <saml:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
-        <saml:SubjectConfirmationData InResponseTo="_65d761f9-b3b8-987b-4de4-bf4d6c97a9b7" NotOnOrAfter="2016-01-31T08:08:33Z" Recipient="http://localhost:6375/W3/LocalResponse.aspx?binding=urn%3aoasis%3anames%3atc%3aSAML%3a2.0%3abindings%3aHTTP-POST" />
+        <saml:SubjectConfirmationData InResponseTo="_15171ca9-5fa8-9cd5-4fdc-35ddaac9f4e2" NotOnOrAfter="2016-02-23T09:22:08Z" Recipient="http://localhost:6375/W3/LocalResponse.aspx?binding=urn%3aoasis%3anames%3atc%3aSAML%3a2.0%3abindings%3aHTTP-POST" />
       </saml:SubjectConfirmation>
     </saml:Subject>
-    <saml:Conditions NotBefore="2016-01-31T07:48:33Z" NotOnOrAfter="2016-01-31T08:08:33Z">
+    <saml:Conditions NotBefore="2016-02-23T09:02:08Z" NotOnOrAfter="2016-02-23T09:22:08Z">
       <saml:AudienceRestriction>
         <saml:Audience>www.Kenexa.com</saml:Audience>
       </saml:AudienceRestriction>
     </saml:Conditions>
-    <saml:AuthnStatement AuthnInstant="2016-01-31T07:58:33Z" SessionIndex="s2eed24a481cc9ebdc7f9bc0e850e0cd749c410565">
+    <saml:AuthnStatement AuthnInstant="2016-02-23T09:12:08Z" SessionIndex="s235dff3d7d0adc1c34085747f6110dc3aa835eb22">
       <saml:AuthnContext>
         <saml:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport</saml:AuthnContextClassRef>
       </saml:AuthnContext>
     </saml:AuthnStatement>
+    <saml:AttributeStatement>
+      <saml:Attribute FriendlyName="source" Name="source">
+        <saml:AttributeValue>http://localhost:6375/W3/RequestTest.aspx</saml:AttributeValue>
+      </saml:Attribute>
+    </saml:AttributeStatement>
   </saml:Assertion>
 </samlp:Response>

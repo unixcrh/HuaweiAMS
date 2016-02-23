@@ -60,6 +60,7 @@ namespace MCS.Library.Cloud.W3
                     result.ValidateResult = signedXml.CheckSignature(certificate, true);
 
                     result.UserID = assertionNode.GetSingleNodeText("saml:Subject/saml:NameID", ns);
+                    result.ReturnUrl = assertionNode.GetSingleNodeText("saml:AttributeStatement/saml:Attribute[@Name='source']/saml:AttributeValue", ns);
                 }
             }
 
@@ -90,6 +91,7 @@ namespace MCS.Library.Cloud.W3
                 assertionUrl = W3Settings.GetSettings().GetSelectedIssuer().ResponseUri;
 
             xmlDoc.DocumentElement.SetAttribute("AssertionConsumerServiceURL", assertionUrl);
+            xmlDoc.DocumentElement.SetAttribute("source", assertionUrl);
 
             XmlElement issuerNode = (XmlElement)xmlDoc.DocumentElement.SelectSingleNode("saml:Issuer", ns);
 

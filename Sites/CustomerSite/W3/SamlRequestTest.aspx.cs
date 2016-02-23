@@ -13,9 +13,7 @@ namespace CutomerSite.W3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string urn = "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST";
-            string returnUrl = string.Format("http://amshuawei-customer.azurewebsites.net/w3/SamlResponse.aspx?binding={0}",
-                HttpUtility.UrlEncode(urn));
+            string returnUrl = this.Request.Url.ToString();
 
             string xml = SamlHelper.GetSignedRequestDoc("www.huaweiams.com", returnUrl).OuterXml;
             SAMLRequestXml.InnerText = xml;

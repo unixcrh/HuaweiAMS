@@ -9,6 +9,9 @@
 <body>
     <form id="loginForm" name="loginForm" method="post"
         action="https://uniportal-beta.huawei.com/saaslogin/sp">
+        <div>
+            <asp:Literal runat="server" ID="identity" Mode="Encode"></asp:Literal>
+        </div>
         <textarea id="SAMLRequest" runat="server" cols="80" rows="30"></textarea>
         <input id="RelayState" name="RelayState" type="hidden" value="" />
         <p>
