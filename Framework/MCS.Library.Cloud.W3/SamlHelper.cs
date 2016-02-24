@@ -67,7 +67,7 @@ namespace MCS.Library.Cloud.W3
             return result;
         }
 
-        public static XmlDocument GetSignedRequestDoc(string issuer, string assertionUrl)
+        public static XmlDocument GetSignedRequestDoc(string issuer, string assertionUrl, string source)
         {
             issuer.CheckStringIsNullOrEmpty("issuer");
 
@@ -77,13 +77,13 @@ namespace MCS.Library.Cloud.W3
             ns.AddNamespace("saml", "urn:oasis:names:tc:SAML:2.0:assertion");
             ns.AddNamespace("samlp", "urn:oasis:names:tc:SAML:2.0:protocol");
 
-            FillPrameters(xmlDoc, ns, issuer, assertionUrl);
+            FillPrameters(xmlDoc, ns, issuer, assertionUrl, source);
             AddSignatureNode(xmlDoc, ns, GetEmbededPrivateCertificate());
 
             return xmlDoc;
         }
 
-        private static void FillPrameters(XmlDocument xmlDoc, XmlNamespaceManager ns, string issuer, string assertionUrl)
+        private static void FillPrameters(XmlDocument xmlDoc, XmlNamespaceManager ns, string issuer, string assertionUrl, string source)
         {
             xmlDoc.DocumentElement.SetAttribute("ID", "_" + UuidHelper.NewUuidString());
 
@@ -91,7 +91,9 @@ namespace MCS.Library.Cloud.W3
                 assertionUrl = W3Settings.GetSettings().GetSelectedIssuer().ResponseUri;
 
             xmlDoc.DocumentElement.SetAttribute("AssertionConsumerServiceURL", assertionUrl);
-            xmlDoc.DocumentElement.SetAttribute("source", assertionUrl);
+
+            if (source.IsNotEmpty())
+                xmlDoc.DocumentElement.SetAttribute("source", source);
 
             XmlElement issuerNode = (XmlElement)xmlDoc.DocumentElement.SelectSingleNode("saml:Issuer", ns);
 

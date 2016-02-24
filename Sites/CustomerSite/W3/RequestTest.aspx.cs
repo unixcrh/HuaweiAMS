@@ -19,7 +19,7 @@ namespace CutomerSite.W3
 
             W3IssuerConfigurationElement issuerElement = W3Settings.GetSettings().GetSelectedIssuer();
 
-            byte[] samlReq = Encoding.UTF8.GetBytes(SamlHelper.GetSignedRequestDoc(issuerElement.IssuerID, this.Request.Url.ToString()).OuterXml);
+            byte[] samlReq = Encoding.UTF8.GetBytes(SamlHelper.GetSignedRequestDoc(issuerElement.IssuerID, string.Empty, this.Request.Url.ToString()).OuterXml);
             SAMLRequest.InnerText = Convert.ToBase64String(samlReq);
         }
     }

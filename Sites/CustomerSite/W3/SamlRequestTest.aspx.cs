@@ -15,7 +15,7 @@ namespace CutomerSite.W3
         {
             string returnUrl = this.Request.Url.ToString();
 
-            string xml = SamlHelper.GetSignedRequestDoc("www.huaweiams.com", returnUrl).OuterXml;
+            string xml = SamlHelper.GetSignedRequestDoc("www.huaweiams.com", string.Empty, returnUrl).OuterXml;
             SAMLRequestXml.InnerText = xml;
 
             byte[] samlReq = Encoding.UTF8.GetBytes(xml);

@@ -20,7 +20,7 @@ namespace CutomerSite.W3
 
             string returnUrl = this.Request.QueryString["ReturnUrl"];
 
-            string xml = SamlHelper.GetSignedRequestDoc(issuerElement.IssuerID, returnUrl).OuterXml;
+            string xml = SamlHelper.GetSignedRequestDoc(issuerElement.IssuerID, string.Empty, returnUrl).OuterXml;
 
             byte[] samlReq = Encoding.UTF8.GetBytes(xml);
             SAMLRequest.InnerText = Convert.ToBase64String(samlReq);
