@@ -17,6 +17,69 @@ namespace CutomerSite.Helpers
     public static class DataHelper
     {
         public const int DefaultPageSize = 10;
+        public const int MaxPageSize = int.MaxValue;
+
+        #region SimpleEventData
+        private class SimpleEventData
+        {
+            public SimpleEventData()
+            {
+            }
+
+            public SimpleEventData(AMSEvent eventData)
+            {
+                this.id = eventData.ID;
+                this.name = eventData.Name;
+                this.description = eventData.Description;
+                this.speakers = eventData.Speakers;
+                this.timeDescription = GetTimeDescription(eventData.StartTime, eventData.EndTime);
+                this.logo = eventData.LogoUrl.IsNotEmpty() ? eventData.LogoUrl : "/images/amsPoster1.png";
+                this.state = eventData.State.ToString();
+            }
+
+            public string id
+            {
+                get;
+                set;
+            }
+
+            public string name
+            {
+                get;
+                set;
+            }
+
+            public string description
+            {
+                get;
+                set;
+            }
+
+            public string speakers
+            {
+                get;
+                set;
+            }
+
+            public string timeDescription
+            {
+                get;
+                set;
+            }
+
+            public string logo
+            {
+                get;
+                set;
+            }
+
+            public string state
+            {
+                get;
+                set;
+            }
+        }
+        #endregion SimpleEventData
 
         public static string GetEventsListJson(int pageIndex, int pageSize, int totalCount, IEnumerable<AMSEvent> events)
         {
@@ -24,15 +87,7 @@ namespace CutomerSite.Helpers
 
             foreach (AMSEvent eventData in events)
             {
-                var simpleEventData = new
-                {
-                    id = eventData.ID,
-                    name = eventData.Name,
-                    description = eventData.Description,
-                    speakers = eventData.Speakers,
-                    timeDescription = GetTimeDescription(eventData.StartTime, eventData.EndTime),
-                    logo = eventData.LogoUrl.IsNotEmpty() ? eventData.LogoUrl : "/images/amsPoster1.png"
-                };
+                SimpleEventData simpleEventData = new SimpleEventData(eventData);
 
                 list.Add(simpleEventData);
             }
@@ -43,6 +98,35 @@ namespace CutomerSite.Helpers
                 pageSize = pageSize,
                 totalCount = totalCount,
                 events = list
+            };
+
+            return JSONSerializerExecute.Serialize(allData);
+        }
+
+        public static string GetEventsListJson(int pageIndex, int pageSize, int totalCount, Dictionary<string, IEnumerable<AMSEvent>> eventsDict)
+        {
+            Dictionary<string, ArrayList> eventList = new Dictionary<string, ArrayList>();
+
+            foreach (KeyValuePair<string, IEnumerable<AMSEvent>> kp in eventsDict)
+            {
+                ArrayList list = new ArrayList();
+
+                foreach (AMSEvent eventData in kp.Value)
+                {
+                    SimpleEventData simpleEventData = new SimpleEventData(eventData);
+
+                    list.Add(simpleEventData);
+                }
+
+                eventList[kp.Key] = list;
+            }
+
+            var allData = new
+            {
+                pageIndex = pageIndex,
+                pageSize = pageSize,
+                totalCount = totalCount,
+                events = eventList
             };
 
             return JSONSerializerExecute.Serialize(allData);

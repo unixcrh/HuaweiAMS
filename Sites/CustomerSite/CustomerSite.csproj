@@ -111,6 +111,7 @@
     <Content Include="images\rightArrow.png" />
     <Content Include="list\AllEvents.aspx" />
     <Content Include="list\CompletedEvents.aspx" />
+    <Content Include="list\MergedEvents.aspx" />
     <Content Include="list\MoreMenu.aspx" />
     <Content Include="list\UpcomingEvents.aspx" />
     <Content Include="menu\css\main.css" />
@@ -259,6 +260,13 @@
     </Compile>
     <Compile Include="list\CompletedEvents.aspx.designer.cs">
       <DependentUpon>CompletedEvents.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="list\MergedEvents.aspx.cs">
+      <DependentUpon>MergedEvents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="list\MergedEvents.aspx.designer.cs">
+      <DependentUpon>MergedEvents.aspx</DependentUpon>
     </Compile>
     <Compile Include="list\MoreMenu.aspx.cs">
       <DependentUpon>MoreMenu.aspx</DependentUpon>

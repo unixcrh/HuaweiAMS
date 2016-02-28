@@ -10,7 +10,7 @@
     <script src="../scripts/amsCommon.js"></script>
 
     <script type="text/javascript">
-        window.location.href = appendTimeOffsetToUrl("UpcomingEvents.aspx");
+        window.location.href = appendTimeOffsetToUrl("MergedEvents.aspx");
     </script>
 </head>
 <body></body>

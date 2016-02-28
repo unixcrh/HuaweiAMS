@@ -3,6 +3,7 @@ using MCS.Library.Cloud.AMS.Data.Adapters;
 using MCS.Library.Cloud.AMS.Data.DataSources;
 using MCS.Library.Cloud.AMS.Data.Entities;
 using System;
+using System.Collections.Generic;
 using System.Web;
 using Res = MCS.Web.Responsive.Library;
 
@@ -13,7 +14,8 @@ namespace CutomerSite.services
         None,
         AllEvents,
         UpcomingEvents,
-        SingleEvent
+        SingleEvent,
+        MergedEvents
     }
 
     /// <summary>
@@ -45,9 +47,6 @@ namespace CutomerSite.services
 
             try
             {
-                //System.Threading.Thread.Sleep(2000);
-                //throw new ApplicationException("这是一个异常...");
-
                 OperationType opType = Res.Request.GetRequestQueryValue("opType", OperationType.None);
 
                 switch (opType)
@@ -57,6 +56,22 @@ namespace CutomerSite.services
                         break;
                     case OperationType.UpcomingEvents:
                         result = QueryEvents((pageIndex, pageSize, totalCount) => DataHelper.GetUpcomingEvents(pageIndex, pageSize, totalCount));
+                        break;
+                    case OperationType.MergedEvents:
+                        result = QueryEvents((pageIndex, pageSize, totalCount) =>
+                        {
+                            AMSEventCollection upcomingEvents = DataHelper.GetUpcomingEvents(0, DataHelper.MaxPageSize, -1);
+                            upcomingEvents.TotalCount = -1;
+
+                            AMSEventCollection startedEvents = DataHelper.GetStartedEvents(pageIndex, pageSize, totalCount);
+
+                            return new Dictionary<string, IEnumerable<AMSEvent>>() {
+                                { "upcomingEvents", upcomingEvents },
+                                { "startedEvents", startedEvents }
+                            };
+                        }
+                        );
+
                         break;
                     case OperationType.SingleEvent:
                         string eventID = Res.Request.GetRequestQueryString("id", string.Empty);
@@ -91,6 +106,24 @@ namespace CutomerSite.services
             AMSEventCollection events = getEvents(pageIndex, DataHelper.DefaultPageSize, totalCount);
 
             return DataHelper.GetEventsListJson(pageIndex, DataHelper.DefaultPageSize, events.TotalCount, events);
+        }
+
+        private static string QueryEvents(Func<int, int, int, Dictionary<string, IEnumerable<AMSEvent>>> getEvents)
+        {
+            int pageIndex = Res.Request.GetRequestQueryValue("pageIndex", 0);
+            int totalCount = Res.Request.GetRequestQueryValue("totalCount", -1);
+
+            Dictionary<string, IEnumerable<AMSEvent>> eventsDict = getEvents(pageIndex, DataHelper.DefaultPageSize, totalCount);
+
+            foreach(KeyValuePair<string, IEnumerable<AMSEvent>> kp in eventsDict)
+            {
+                AMSEventCollection events = kp.Value as AMSEventCollection;
+
+                if (events != null && events.TotalCount >= 0)
+                    totalCount = events.TotalCount;
+            }
+
+            return DataHelper.GetEventsListJson(pageIndex, DataHelper.DefaultPageSize, totalCount, eventsDict);
         }
 
         public bool IsReusable
