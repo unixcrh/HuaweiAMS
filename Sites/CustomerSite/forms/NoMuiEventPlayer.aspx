@@ -81,7 +81,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row outerVideo" id="buttonContainer">
+            <div class="row outerVideo hidden" id="buttonContainer">
                 <a class="btn btn-default" id="switchVideoAddressType" runat="server">切换到备用CDN</a>
                 <select id="channels" runat="server" class="form-control" style="width: 120px; display: inline"></select>
                 <div class="btn btn-default hidden" id="fullscreenBtn">全屏</div>
