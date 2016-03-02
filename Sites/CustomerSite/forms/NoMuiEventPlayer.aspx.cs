@@ -84,8 +84,6 @@ namespace CutomerSite.forms
 
             if (this.Channel != null)
                 this.channelID.Value = this.Channel.ID;
-
-            this.techOrder.Value = Res.Request.GetRequestQueryValue("techOrder", TechOrderType.Html5).ToString();
         }
 
         private void BindRelativeChannels()
@@ -108,7 +106,7 @@ namespace CutomerSite.forms
 
         private void InitTechOrderButton()
         {
-            TechOrderType techOrderType = Res.Request.GetRequestQueryValue("techOrder", TechOrderType.Html5);
+            TechOrderType techOrderType = Res.Request.GetRequestQueryValue("techOrder", GetDefaultTechByUAString());
 
             this.techOrder.Value = techOrderType.ToString();
 
@@ -153,6 +151,19 @@ namespace CutomerSite.forms
             {
                 this.switchVideoAddressType.Attributes["class"] = "btn btn-default disabled";
             }
+        }
+
+        private static TechOrderType GetDefaultTechByUAString()
+        {
+            TechOrderType result = TechOrderType.Html5;
+
+            string ua = HttpContext.Current.Request.UserAgent;
+
+            if (ua.IndexOf("rv:11.0", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                ua.IndexOf("MSIE", StringComparison.OrdinalIgnoreCase) >= 0)
+                result = TechOrderType.AzureHtml5JS;
+
+            return result;
         }
     }
 }

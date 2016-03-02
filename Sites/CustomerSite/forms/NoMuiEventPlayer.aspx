@@ -56,7 +56,7 @@
         <input type="hidden" id="eventID" runat="server" />
         <input type="hidden" id="channelID" runat="server" />
         <input type="hidden" id="techOrder" runat="server" />
-         <input type="hidden" id="targetTechOrder" runat="server" />
+        <input type="hidden" id="targetTechOrder" runat="server" />
     </div>
     <div class="container">
         <div>

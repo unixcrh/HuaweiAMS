@@ -239,10 +239,12 @@ namespace CutomerSite.Helpers
 
             strB.AppendFormat("{0:yyyy-MM-dd HH:mm}", startTime);
 
-            strB.AppendFormat(" 时长{0:}小时", ts.Hours);
+            //strB.AppendFormat(" 时长{0:}小时", ts.Hours);
+            strB.AppendFormat(" {0:} hour(s)", ts.Hours);
 
             if (ts.Minutes > 0)
-                strB.AppendFormat("{0:00}分钟", ts.Minutes);
+                //strB.AppendFormat("{0:00}分钟", ts.Minutes);
+                strB.AppendFormat("{0:00} min(s)", ts.Minutes);
 
             return strB.ToString();
         }

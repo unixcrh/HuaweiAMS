@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>视频节目</title>
+    <title>All Programs</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <link href="../css/mui/mui.min.css" rel="stylesheet" />
     <link href="../css/main.css" rel="stylesheet" />
@@ -70,13 +70,13 @@
     <div id="refreshContainer" class="mui-content mui-scroll-wrapper">
         <div class="mui-scroll">
             <header id="upcomingHeader" class="segmentBar">
-                <h1 class="segmentTitle">即将直播</h1>
+                <h1 class="segmentTitle">Coming soon</h1>
             </header>
             <!--数据列表-->
             <ul id="upcomingListContainer" class="mui-table-view">
             </ul>
             <header id="completedHeader" class="segmentBar">
-                <h1 class="segmentTitle">往期直播</h1>
+                <h1 class="segmentTitle">Recent</h1>
             </header>
             <!--数据列表-->
             <ul id="completedListContainer" class="mui-table-view">
@@ -111,7 +111,8 @@
         });
 
         function initLoadData() {
-            showBack.message("加载数据...", true);
+            //showBack.message("加载数据...", true);
+            showBack.message("Loading...", true);
 
             $.getJSON(getServiceURL(), function (data) {
                 if (afterReloadAllData(data))
@@ -119,7 +120,8 @@
             }).done(function () {
 
             }).fail(function (e) {
-                showBack.error("对不起，网络连接异常");
+                //showBack.error("对不起，网络连接异常");
+                showBack.error("Sorry, Network error.");
             }).always(function () {
 
             });
@@ -162,7 +164,8 @@
 
             if (typeof (data.stackTrace) != "undefined") {
                 result = false;
-                showBack.error("对不起，网络连接异常");
+                //showBack.error("对不起，网络连接异常");
+                showBack.error("Sorry, Network error.");
             }
             else {
                 $("#upcomingListContainer").empty();
@@ -181,9 +184,12 @@
             pullRefresh: {
                 container: "#refreshContainer", //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
                 down: {
-                    contentdown: "下拉可以刷新", //可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
-                    contentover: "释放立即刷新", //可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
-                    contentrefresh: "正在刷新...", //可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+                    //contentdown: "下拉可以刷新", //可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+                    contentdown: "Pull down to refresh", //可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+                    //contentover: "释放立即刷新", //可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+                    contentover: "Release to refresh", //可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+                    //contentrefresh: "正在刷新...", //可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+                    contentrefresh: "Refresing...", //可选，正在刷新状态时，下拉刷新控件上显示的标题内容
                     callback: function () {
                         $.getJSON(getServiceURL(), function (data) {
                             afterReloadAllData(data);
@@ -193,22 +199,26 @@
                         }).fail(function (e) {
                             console.log("error");
 
-                            showBack.error("对不起，网络连接异常");
+                            //showBack.error("对不起，网络连接异常");
+                            showBack.error("Sorry, Network error.");
                         }).always(function () {
                             mui('#refreshContainer').pullRefresh().endPullupToRefresh();
                         });
                     }
                 },
                 up: {
-                    contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
-                    contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
+                    //contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
+                    contentrefresh: "Loading...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
+                    //contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
+                    contentnomore: 'No more data', //可选，请求完毕若没有更多数据时显示的提醒内容；
                     callback: function () {
                         if ((pageIndex + 1) * pageSize < totalCount) {
                             var url = "../services/QueryService.ashx?opType=MergedEvents&pageIndex=" + pageIndex + 1 + "&totalCount=" + totalCount;
 
                             $.getJSON(appendTimeOffsetToUrl(url), function (data) {
                                 if (typeof (data.stackTrace) != "undefined") {
-                                    showBack.error("对不起，网络连接异常");
+                                    //showBack.error("对不起，网络连接异常");
+                                    showBack.error("Sorry, Network error.");
                                     console.error(data.message);
                                 }
                                 else {
@@ -219,7 +229,8 @@
                                 mui('#refreshContainer').pullRefresh().endPullupToRefresh();
                             }).fail(function (e) {
                                 console.log("error");
-                                showBack.error("对不起，网络连接异常");
+                                //showBack.error("对不起，网络连接异常");
+                                showBack.error("Sorry, Network error.");
 
                             }).always(function () {
                                 mui('#refreshContainer').pullRefresh().endPullupToRefresh();
