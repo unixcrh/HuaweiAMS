@@ -1,0 +1,110 @@
+<document version="6" os="windows" original_document_path="D:\ProjectsInGitHub\HuaweiAMS\Wirecast\MainProfile720p-rel.wcst">
+	<open_windows>
+		<vamWindowGlass frame="0,0,1936,1056" asset_icon_scale="0.5" asset_icon_updateFPS="15" selected_layer="1836282930" vam_main_splitter="0.65" />
+	</open_windows>
+	<vam_state master_audio_shown="1110" transition_0_unique_id="-- CUT --" transition_1_unique_id="-- SMOOTH --" transition_2_unique_id="side" master_audio_monitor="0" />
+	<transition_data />
+	<chroma_key_data />
+	<advanced_output>
+		<output_list output_last_selected="0cf756be-5e66-4b6b-b5d3-d404fc28e9e2">
+			<output output_enabled="1" output_type="2" output_transport="7" output_url="rtmp://mainprofile720p-amshuaweirel.channel.mediaservices.windows.net:1935/live/aab5e6e5db394fa8b5490591b8c6370f" output_location="myStream" output_branding="RTMP Server" output_display_name="DirectChannel" output_display_group_name="RTMP Server" output_guid="65370980-ff43-4a17-9232-135a0a3386f4" unique_id="1" output_presetname="MainConcept 1024" impersonate_fme_2_5="0" flash_user_agent="Wirecast/FM 1.0" output_user_name="DirectChannel" output_settings_complete="1" output_id="0cf756be-5e66-4b6b-b5d3-d404fc28e9e2" output_username="" output_password="" />
+			<output replay_quality="standard" replay_audio_enabled="0" replay_record_folder="C:\Users\Zheng Shen\Videos" replay_limit_record_duration="1" replaydialog_record_unit="1" replay_max_record_duration="60000" replay_shot_default_duration="30" replay_create_in_layer="1" replay_create_in_playlist="" replay_show_preview="1" replay_shot_template_asset_id="" replay_create_from_template="0" replay_activate_on_broadcast="0" replay_activate_on_record="0" replay_prompt_delete_shot="1" replay_keep_record_on_delete_shot="0" output_guid="109fc6d4-1651-4c6d-9287-a6d3e3f9ea08" output_presetname="109fc6d4-1651-4c6d-9287-a6d3e3f9ea08" output_type="6" output_enabled="1" unique_id="2" />
+		</output_list>
+	</advanced_output>
+	<output_presets>
+		<preset output_presetname="MainConcept 1024">
+			<movie format="Flash" output_system="">
+				<track mo_width="1280" mo_height="720" type="1986618479" colourspace="846624121" mo_enabled="1" codecname="H.264" fps="30" compressed="1" timescale="3000" target_bit_rate="1024" profile="1835100526" limit_bit_rate="0" key_frame_rate="60" timecode_interval="30" timecode_on="0" FlashVideoDisableH264BFrames="0" codec_quality="veryfast" x264_gpu_on="0" x264_commandline="" absolute_time_stamps="1" key_frame_aligned="1" strict_cbr="1" main_concept="1" />
+				<track type="1635083375" bps="16" channels="2" samplerate="44100" mo_enabled="1" codecname="MPEG-4 Audio" target_bit_rate="128" timescale="44100" />
+			</movie>
+		</preset>
+		<preset output_presetname="109fc6d4-1651-4c6d-9287-a6d3e3f9ea08">
+			<movie format="Replay" output_system="replay">
+				<track mo_width="640" mo_height="480" type="1986618479" colourspace="846624121" mo_enabled="1" codecname="H.264" fps="30" compressed="1" timescale="3000" target_bit_rate="500" profile="1835100526" limit_bit_rate="0" key_frame_rate="240" timecode_interval="30" timecode_on="0" FlashVideoDisableH264BFrames="0" codec_quality="" x264_gpu_on="0" x264_commandline="" absolute_time_stamps="0" key_frame_aligned="0" strict_cbr="0" main_concept="1" />
+				<track type="1635083375" bps="16" channels="2" samplerate="44100" mo_enabled="1" codecname="MPEG-4 Audio" target_bit_rate="128" timescale="44100" />
+			</movie>
+		</preset>
+	</output_presets>
+	<volume value="1" />
+	<preview_volume value="1" />
+	<auto_live value="0" />
+	<flip_flop value="0" />
+	<output_annotations />
+	<transition_duration />
+	<visual_style />
+	<single_output />
+	<media_directories />
+	<layer_names />
+	<layer_scales />
+	<layer_visible />
+	<sections />
+	<aspectRatio custom_width="1280" custom_height="720" />
+	<shot_key_map />
+	<shotsLiveWhenSaved>
+		<xml_tag vaLayerIndex="0" beLayerEnum="1" vaLayerEnum="1836282928" unique_id="6da9a60e-a3c7-483a-8a34-be08ce04999d_shot" />
+		<xml_tag vaLayerIndex="2" beLayerEnum="3" vaLayerEnum="1836282930" unique_id="41a8dddb-1efe-45f7-8cb0-b309aee3c7a8_shot" />
+	</shotsLiveWhenSaved>
+	<source_sdk_settings>
+		<xml_tag SOURCE_SDK_ID_DOC="pc-capture~pc-capture-1">
+			<settings unique_id="1" output_guid="3e3161bf-9881-484b-aacc-cdbfca30105d">
+				<parameter name="Type" value="0" />
+				<parameter name="window" value="" />
+				<parameter name="class" value="" />
+				<parameter name="cursor" value="true" />
+				<parameter name="process" value="" />
+				<parameter name="monitor" value="1" />
+				<parameter name="fps" value="4" />
+				<parameter name="audio" value="false" />
+				<parameter name="audioDevice" value="" />
+				<parameter name="regionSelect" value="false" />
+				<parameter name="regionLeft" value="0" />
+				<parameter name="regionRight" value="300" />
+				<parameter name="regionTop" value="0" />
+				<parameter name="regionBottom" value="300" />
+				<parameter name="disable" value="false" />
+			</settings>
+		</xml_tag>
+	</source_sdk_settings>
+	<social_media />
+	<assets>
+		<asset name="Blank Shot" unique_id="6b82dedd-f240-4d64-a045-b6e7ecaee27f_shot" type="shot" media-type="9" vam_state="1" created_for_layer="5" blank_shot="1" visible="1" />
+		<asset name="Blank Shot" unique_id="e6e3e626-77c2-4e86-8ad2-13fd89d91ae5_shot" type="shot" media-type="9" vam_state="1" created_for_layer="1" blank_shot="1" visible="1" />
+		<asset name="Blank Shot" unique_id="41a8dddb-1efe-45f7-8cb0-b309aee3c7a8_shot" type="shot" media-type="9" vam_state="7" created_for_layer="2" blank_shot="1" visible="1" />
+		<asset name="Blank Shot" unique_id="538e5ce4-527a-4972-be94-c9a3d17fb0b0_shot" type="shot" media-type="9" vam_state="1" created_for_layer="3" blank_shot="1" visible="1" />
+		<asset name="Blank Shot" unique_id="94619767-7b13-40de-a804-1cb715001d46_shot" type="shot" media-type="9" vam_state="1" created_for_layer="4" blank_shot="1" visible="1" />
+		<asset name="无人区.mp4" url="F:\Movie\无人区.mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="5c1aaec9-348e-44ad-8273-a3bbfa36b82f_无人区.mp4" timescale="24000" duration="161450280" square_pixel_height="720" square_pixel_width="1280" />
+		<asset name="久石让在武道馆的音乐会.mp4" url="F:\Movie\久石让在武道馆的音乐会.mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="84cdbe2d-485d-45b2-aa56-debea25f5bbe_久石让在武道馆的音乐会.mp4" timescale="12800" duration="86930944" square_pixel_height="480" square_pixel_width="640" />
+		<asset type="capture" unique_id="Internal Microphone (Conexant 20672 SmartAudio HD)::" name="Internal Microphone (Conexant 20672 SmartAudio HD)" url="Internal Microphone (Conexant 20672 SmartAudio HD)" excluded="0" format="audio" audio_tracks="1" media-type="3" isusb="0" />
+		<asset name="Internal Microphone (Conexant 20672 SmartAudio HD)" unique_id="920dba6c-a457-4312-9a72-d04330159f0e_shot" type="shot" media-type="9" vam_state="8" audio_tracks="1" video_tracks="0" still_image_tracks="0" veil_track_count="0" alpha_track_count="0" created_for_layer="5" visible="1" />
+		<asset media-type="4" type="vaSourcesManager" url="vaSourcesManager::URL" unique_id="pc-capture~pc-capture-1" name="Second Monitor" video_tracks="1" audio_tracks="1" sourceGUID="f3f01752-bcd5-442c-862e-e15477fca326" square_pixel_width="2560" square_pixel_height="1440" />
+		<asset name="Second Monitor" unique_id="6da9a60e-a3c7-483a-8a34-be08ce04999d_shot" type="shot" media-type="9" vam_state="14" alpha_track_count="0" audio_tracks="2" video_tracks="1" still_image_tracks="0" veil_track_count="0" created_for_layer="5" visible="1" />
+	</assets>
+	<xml_tag />
+	<shots>
+		<shot event_type="2" unique_id="6b82dedd-f240-4d64-a045-b6e7ecaee27f_shot" />
+		<shot event_type="2" unique_id="e6e3e626-77c2-4e86-8ad2-13fd89d91ae5_shot" />
+		<shot event_type="2" unique_id="41a8dddb-1efe-45f7-8cb0-b309aee3c7a8_shot" />
+		<shot event_type="2" unique_id="538e5ce4-527a-4972-be94-c9a3d17fb0b0_shot" />
+		<shot event_type="2" unique_id="94619767-7b13-40de-a804-1cb715001d46_shot" />
+		<shot event_type="2" unique_id="920dba6c-a457-4312-9a72-d04330159f0e_shot">
+			<event event_type="4" zorder="1">
+				<event event_type="2" channel_id="1" unique_id="Internal Microphone (Conexant 20672 SmartAudio HD)::">
+					<event event_type="1" channel_id="1" ro_media_type="1635083375" />
+				</event>
+			</event>
+		</shot>
+		<shot event_type="2" template_uuid="91550E48-A580-46FB-B949-CBF8494344FA" unique_id="6da9a60e-a3c7-483a-8a34-be08ce04999d_shot">
+			<event event_type="4" zorder="1" unique_id="one_quad">
+				<event event_type="2" channel_id="1" unique_id="Internal Microphone (Conexant 20672 SmartAudio HD)::">
+					<event event_type="1" channel_id="1" ro_media_type="1635083375" />
+				</event>
+			</event>
+			<event event_type="4" zorder="5" unique_id="one_quad" template_tag="1">
+				<event event_type="2" channel_id="1" ro_respect_aspect_ratio="1" unique_id="pc-capture~pc-capture-1">
+					<event event_type="1" channel_id="1" ro_media_type="1635083375" />
+					<event event_type="1" channel_id="1" ro_media_type="1986618479" />
+				</event>
+			</event>
+		</shot>
+	</shots>
+</document>

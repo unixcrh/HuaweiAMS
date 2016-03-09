@@ -1,6 +1,6 @@
 <document version="6" os="windows" original_document_path="D:\ProjectsInGitHub\HuaweiAMS\Wirecast\moonCake-MainProfile720p.wcst">
 	<open_windows>
-		<vamWindowGlass frame="-16,0,1920,1056" asset_icon_scale="0.5" asset_icon_updateFPS="15" selected_layer="1836282930" vam_main_splitter="0.65" />
+		<vamWindowGlass frame="0,0,1936,1056" asset_icon_scale="0.5" asset_icon_updateFPS="15" selected_layer="1836282928" vam_main_splitter="0.65" />
 	</open_windows>
 	<vam_state master_audio_shown="1000" transition_0_unique_id="-- CUT --" transition_1_unique_id="-- SMOOTH --" transition_2_unique_id="side" />
 	<transition_data />
@@ -44,7 +44,27 @@
 		<xml_tag vaLayerIndex="0" beLayerEnum="1" vaLayerEnum="1836282928" unique_id="7da35d2b-bc1c-4695-8f55-d8a43d893715_shot" />
 		<xml_tag vaLayerIndex="2" beLayerEnum="3" vaLayerEnum="1836282930" unique_id="df89e62a-c2af-4cef-a39c-8c7b3547aa5f_shot" />
 	</shotsLiveWhenSaved>
-	<source_sdk_settings />
+	<source_sdk_settings>
+		<xml_tag SOURCE_SDK_ID_DOC="pc-capture~pc-capture-1">
+			<settings unique_id="1" output_guid="ff0a451f-1bc2-4e38-b1d8-6486d395c427">
+				<parameter name="Type" value="0" />
+				<parameter name="window" value="" />
+				<parameter name="class" value="" />
+				<parameter name="cursor" value="true" />
+				<parameter name="process" value="" />
+				<parameter name="monitor" value="0" />
+				<parameter name="fps" value="4" />
+				<parameter name="audio" value="false" />
+				<parameter name="audioDevice" value="" />
+				<parameter name="regionSelect" value="false" />
+				<parameter name="regionLeft" value="0" />
+				<parameter name="regionRight" value="300" />
+				<parameter name="regionTop" value="0" />
+				<parameter name="regionBottom" value="300" />
+				<parameter name="disable" value="false" />
+			</settings>
+		</xml_tag>
+	</source_sdk_settings>
 	<social_media />
 	<assets>
 		<asset name="Blank Shot" unique_id="3052f134-45d3-4db7-8e2d-50d3ad7f890f_shot" type="shot" media-type="9" vam_state="1" created_for_layer="5" blank_shot="1" visible="1" />
@@ -54,8 +74,9 @@
 		<asset name="Blank Shot" unique_id="229b7cac-c444-4ae4-83fc-f55144ebe9e1_shot" type="shot" media-type="9" vam_state="1" created_for_layer="4" blank_shot="1" visible="1" />
 		<asset name="Yanni.-.[雅尼音乐会].演唱会.(720P).mp4" url="F:\Movie\Yanni.-.[雅尼音乐会].演唱会.(720P).mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="53e954f8-f0d3-4288-9f61-55c7898b9fa4_Yanni.-.[雅尼音乐会].演唱会.(720P).mp4" timescale="25" duration="121913" square_pixel_height="768" square_pixel_width="1024" />
 		<asset name="Ennio.Morricone.-.[埃尼奥·莫里康内：威尼斯和平音乐会.-.Ennio.Morricone.Peace.Notes.Live.in.Venice].演唱会.(720P).mp4" url="E:\Ennio.Morricone.-.[埃尼奥·莫里康内：威尼斯和平音乐会.-.Ennio.Morricone.Peace.Notes.Live.in.Venice].演唱会.(720P).mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="60efe8ee-fea0-4edd-bb87-7ab8712cb39b_Ennio.Morricone.-.[埃尼奥·莫里康内：威尼斯和平音乐会.-.Ennio.Morricone.Peace.Notes.Live.in.Venice].演唱会.(720P).mp4" timescale="2997" duration="19609002" square_pixel_height="720" square_pixel_width="1280" />
-		<asset name="久石让在武道馆的音乐会.mp4" url="F:\Movie\久石让在武道馆的音乐会.mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="d30e4b65-98d3-495d-bb09-d89c26e2c27f_久石让在武道馆的音乐会.mp4" timescale="12800" duration="86930944" square_pixel_height="480" square_pixel_width="640" />
-		<asset name="久石让在武道馆的音乐会.mp4" unique_id="7da35d2b-bc1c-4695-8f55-d8a43d893715_shot" type="shot" media-type="9" vam_state="14" audio_tracks="1" video_tracks="1" still_image_tracks="0" veil_track_count="0" alpha_track_count="0" created_for_layer="5" visible="1" />
+		<asset name="久石让在武道馆的音乐会.mp4" url="F:\Movie\久石让在武道馆的音乐会.mp4" type="file" video_tracks="1" audio_tracks="1" media-type="1" unique_id="d30e4b65-98d3-495d-bb09-d89c26e2c27f_久石让在武道馆的音乐会.mp4" timescale="12800" duration="86930944" square_pixel_width="640" square_pixel_height="480" />
+		<asset media-type="4" type="vaSourcesManager" url="vaSourcesManager::URL" unique_id="pc-capture~pc-capture-1" name="Local Monitor" video_tracks="1" audio_tracks="1" sourceGUID="daaa77c1-7a51-4ebe-b07c-bed53c3003f8" square_pixel_width="1920" square_pixel_height="1080" />
+		<asset name="Local Monitor" unique_id="2d2df3e9-5c1d-4057-bdef-a1003d524c1d_shot" type="shot" media-type="9" vam_state="12" audio_tracks="1" video_tracks="1" still_image_tracks="0" veil_track_count="0" alpha_track_count="0" created_for_layer="5" visible="1" />
 	</assets>
 	<xml_tag />
 	<shots>
@@ -64,11 +85,11 @@
 		<shot event_type="2" unique_id="df89e62a-c2af-4cef-a39c-8c7b3547aa5f_shot" />
 		<shot event_type="2" unique_id="6376d0e7-2415-4f79-af2d-e97508057cb1_shot" />
 		<shot event_type="2" unique_id="229b7cac-c444-4ae4-83fc-f55144ebe9e1_shot" />
-		<shot event_type="2" template_uuid="91550E48-A580-46FB-B949-CBF8494344FA" unique_id="7da35d2b-bc1c-4695-8f55-d8a43d893715_shot">
-			<event event_type="4" zorder="5" unique_id="one_quad" template_tag="1">
-				<event event_type="2" channel_id="1" ro_respect_aspect_ratio="1" obj_scale="0.75,1" unique_id="d30e4b65-98d3-495d-bb09-d89c26e2c27f_久石让在武道馆的音乐会.mp4">
-					<event event_type="1" channel_id="1" ro_media_type="1986618479" ro_playhead="0" action_time="18266667" action_duration="0" action_flags="24" />
-					<event event_type="1" channel_id="1" ro_media_type="1635083375" ro_playhead="0" action_time="18266667" action_duration="0" action_flags="24" />
+		<shot event_type="2" template_uuid="91550E48-A580-46FB-B949-CBF8494344FA" unique_id="2d2df3e9-5c1d-4057-bdef-a1003d524c1d_shot">
+			<event event_type="4" zorder="1" unique_id="one_quad" template_tag="1">
+				<event event_type="2" channel_id="1" ro_respect_aspect_ratio="1" unique_id="pc-capture~pc-capture-1">
+					<event event_type="1" channel_id="1" ro_media_type="1635083375" />
+					<event event_type="1" channel_id="1" ro_media_type="1986618479" />
 				</event>
 			</event>
 		</shot>
