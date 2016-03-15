@@ -46,7 +46,7 @@
         }
     </style>
 </head>
-<body>
+<body style="background-color: black">
     <div>
         <input runat="server" id="pageEventData" type="hidden" />
         <input runat="server" id="fixedBitrate" type="hidden" />
@@ -60,7 +60,7 @@
     </div>
     <div class="container">
         <div>
-            <div class="outerVideo">
+            <div class="outerVideo hidden">
                 <div class="row">
                     <p id="timeScope"></p>
                 </div>
@@ -75,7 +75,7 @@
                 <div id="videoContainer">
                     <video id="azuremediaplayer" class="azuremediaplayer aazuremediaplayer amp-default-skin amp-big-play-centered" width="100%" height="100%" tabindex="0"></video>
                 </div>
-                <div class="outerVideo">
+                <div class="outerVideo hidden">
                     <div class="row">
                         <p id="description" />
                     </div>
