@@ -60,15 +60,17 @@
     </div>
     <div class="container">
         <div>
-            <div class="outerVideo hidden">
-                <div class="row">
-                    <p id="timeScope"></p>
-                </div>
-                <div class="row">
-                    <p id="views"></p>
-                </div>
-                <div class="row">
-                    <cite id="speakers"></cite>
+            <div class="hidden">
+                <div class="outerVideo hidden">
+                    <div class="row">
+                        <p id="timeScope"></p>
+                    </div>
+                    <div class="row">
+                        <p id="views"></p>
+                    </div>
+                    <div class="row">
+                        <cite id="speakers"></cite>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -81,14 +83,16 @@
                     </div>
                 </div>
             </div>
-            <div class="row outerVideo hidden" id="buttonContainer">
-                <a class="btn btn-default" id="switchVideoAddressType" runat="server">切换到备用CDN</a>
-                <select id="channels" runat="server" class="form-control" style="width: 120px; display: inline"></select>
-                <div class="btn btn-default hidden" id="fullscreenBtn">全屏</div>
-                <div class="btn btn-default hidden" id="pauseBtn">暂停</div>
-                <div class="btn btn-default hidden" id="playBtn">播放</div>
-                <div class="btn btn-success" id="refreshBtn">刷新</div>
-                <div class="btn btn-default" id="switchTechOrder" runat="server">动态码率</div>
+            <div class="hidden">
+                <div class="row outerVideo hidden" id="buttonContainer">
+                    <a class="btn btn-default" id="switchVideoAddressType" runat="server">切换到备用CDN</a>
+                    <select id="channels" runat="server" class="form-control" style="width: 120px; display: inline"></select>
+                    <div class="btn btn-default hidden" id="fullscreenBtn">全屏</div>
+                    <div class="btn btn-default hidden" id="pauseBtn">暂停</div>
+                    <div class="btn btn-default hidden" id="playBtn">播放</div>
+                    <div class="btn btn-success" id="refreshBtn">刷新</div>
+                    <div class="btn btn-default" id="switchTechOrder" runat="server">动态码率</div>
+                </div>
             </div>
             <div class="outerVideo">
                 <div>
