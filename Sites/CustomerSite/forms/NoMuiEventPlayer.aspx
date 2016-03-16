@@ -29,7 +29,6 @@
 
         .fullScreen {
             position: absolute;
-            /*transform: rotate(90deg);*/
             z-index: 1000;
             margin: 0px;
             padding: 0px;
@@ -46,7 +45,7 @@
         }
     </style>
 </head>
-<body style="background-color: black">
+<body>
     <div>
         <input runat="server" id="pageEventData" type="hidden" />
         <input runat="server" id="fixedBitrate" type="hidden" />
@@ -74,7 +73,7 @@
                 </div>
             </div>
             <div class="row">
-                <div id="videoContainer">
+                <div id="videoContainer" >
                     <video id="azuremediaplayer" class="azuremediaplayer aazuremediaplayer amp-default-skin amp-big-play-centered" width="100%" height="100%" tabindex="0"></video>
                 </div>
                 <div class="outerVideo hidden">
